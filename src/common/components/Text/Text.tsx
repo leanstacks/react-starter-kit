@@ -1,6 +1,7 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
-import classNames from 'classnames';
 import { PropsWithChildren } from 'react';
+import classNames from 'classnames';
+
+import { BaseComponentProps } from 'common/utils/types';
 
 /**
  * The variations of `Text` components.
@@ -10,11 +11,10 @@ export type TextVariant = 'heading1' | 'heading2' | 'heading3';
 /**
  * Properties for the `Text` React component.
  * @param {TextVariant} [variant] - Optional. The variant. Default: `none`
+ * @see {@link BaseComponentProps}
  * @see {@link PropsWithChildren}
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
  */
-interface TextProps extends PropsWithChildren, PropsWithClassName, PropsWithTestId {
+interface TextProps extends BaseComponentProps, PropsWithChildren {
   variant?: TextVariant;
 }
 
