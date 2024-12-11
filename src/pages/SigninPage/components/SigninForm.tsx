@@ -29,14 +29,8 @@ interface SigninFormValues {
  * Signin form validation schema.
  */
 const validationSchema = object<SigninFormValues>({
-  password: string()
-    .matches(/[0-9]/, 'Must have a number. ')
-    .matches(/[a-z]/, 'Must have a lowercase letter. ')
-    .matches(/[A-Z]/, 'Must have an uppercase letter. ')
-    .matches(/[$*.[{}()?"!@#%&/,><':;|_~`^\]\\]/, 'Must have a special character. ')
-    .min(12, 'Must have at least 12 characters. ')
-    .required('Required. '),
-  username: string().required('Required.'),
+  password: string().required('Required. '),
+  username: string().required('Required. '),
 });
 
 /**

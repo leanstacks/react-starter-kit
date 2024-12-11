@@ -12,7 +12,7 @@ This project's API integration uses the simulated REST endpoints made available 
 
 ### Authentication
 
-When running the application, you may sign in with any of the JSON Placeholder [Users](https://jsonplaceholder.typicode.com/users). Simply enter the _Username_ value from any user in the API and use any value for the _Password_ so long as it meets the password validation requirements. For example, try username `Bret` and password `aB123456789!`.
+When running the application, you may sign in with any of the JSON Placeholder [Users](https://jsonplaceholder.typicode.com/users). Simply enter the _Username_ value from any user in the API and use any value for the _Password_. For example, try username `Bret` and password `abc123`.
 
 ## About
 
