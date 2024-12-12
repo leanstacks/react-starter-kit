@@ -3,13 +3,13 @@ import classNames from 'classnames';
 import { Form, Formik } from 'formik';
 import { object, string } from 'yup';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '@leanstacks/react-common';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { useSignin } from '../api/useSignin';
 import TextField from 'common/components/Form/TextField';
 import FAIcon from 'common/components/Icon/FAIcon';
 import Alert from 'common/components/Alert/Alert';
+import Button from 'common/components/Button/Button';
 
 /**
  * Properties for the `SigninForm` component.

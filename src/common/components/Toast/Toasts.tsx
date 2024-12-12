@@ -1,5 +1,4 @@
-import { PropsWithTestId } from '@leanstacks/react-common';
-
+import { PropsWithTestId } from 'common/utils/types';
 import { useToasts } from 'common/hooks/useToasts';
 import Toast from './Toast';
 

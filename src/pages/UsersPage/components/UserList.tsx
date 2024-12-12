@@ -1,17 +1,16 @@
 import { useParams } from 'react-router-dom';
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
 
+import { BaseComponentProps } from 'common/utils/types';
 import { useGetUsers } from '../api/useGetUsers';
 import UserListItem from './UserListItem';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 
 /**
  * Properties for the `UserList` component.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface UserListProps extends PropsWithClassName, PropsWithTestId {}
+interface UserListProps extends BaseComponentProps {}
 
 /**
  * The `UserList` React component renders a list of `User` objects with the

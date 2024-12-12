@@ -1,16 +1,15 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import { Outlet } from 'react-router-dom';
 
+import { BaseComponentProps } from 'common/utils/types';
 import Header from 'common/components/Header/Header';
 import Footer from 'common/components/Footer/Footer';
 import Toasts from 'common/components/Toast/Toasts';
 
 /**
  * Properties for the `StandardLayout` component.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface StandardLayoutProps extends PropsWithClassName, PropsWithTestId {}
+interface StandardLayoutProps extends BaseComponentProps {}
 
 /**
  * The `StandardLayout` React component renders the standard page layout. It

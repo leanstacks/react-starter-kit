@@ -1,14 +1,14 @@
 import { PropsWithChildren } from 'react';
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
+
+import { BaseComponentProps } from 'common/utils/types';
 
 /**
  * Properties for the `DropdownContent` component.
  * @see {@link PropsWithChildren}
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface DropdownContentProps extends PropsWithChildren, PropsWithClassName, PropsWithTestId {}
+interface DropdownContentProps extends BaseComponentProps, PropsWithChildren {}
 
 /**
  * The `DropdownContent` component renders a wrapper for the content displayed

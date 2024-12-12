@@ -1,12 +1,12 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
+
+import { BaseComponentProps } from 'common/utils/types';
 
 /**
  * Properties for the `LoaderSkeleton` component.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface LoaderSkeletonProps extends PropsWithClassName, PropsWithTestId {}
+interface LoaderSkeletonProps extends BaseComponentProps {}
 
 /**
  * The `LoaderSkeleton` component renders an animated loader which pulses

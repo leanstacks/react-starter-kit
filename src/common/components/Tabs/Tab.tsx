@@ -1,5 +1,6 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
+
+import { BaseComponentProps } from 'common/utils/types';
 
 /**
  * Properties for the `Tab` React component.
@@ -8,10 +9,9 @@ import classNames from 'classnames';
  * @param {string} label - The tab label.
  * @param {function} [onClick] - Optional. A function to be invoked when the
  * tab is clicked.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-export interface TabProps extends PropsWithClassName, PropsWithTestId {
+export interface TabProps extends BaseComponentProps {
   isActive?: boolean;
   label: string;
   onClick?: () => void;

@@ -1,8 +1,8 @@
 import { InputHTMLAttributes, useEffect, useMemo, useState } from 'react';
-import { PropsWithTestId } from '@leanstacks/react-common';
 import { useField } from 'formik';
 import classNames from 'classnames';
 
+import { PropsWithTestId } from 'common/utils/types';
 import FAIcon from 'common/components/Icon/FAIcon';
 
 /**

@@ -1,6 +1,6 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import { Outlet, useParams } from 'react-router-dom';
 
+import { BaseComponentProps } from 'common/utils/types';
 import { useGetUser } from 'common/api/useGetUser';
 import Text from 'common/components/Text/Text';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
@@ -9,10 +9,9 @@ import FAIcon from 'common/components/Icon/FAIcon';
 
 /**
  * Properties for the `UserDetailLayout` React component.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface UserDetailLayoutProps extends PropsWithClassName, PropsWithTestId {}
+interface UserDetailLayoutProps extends BaseComponentProps {}
 
 /**
  * The `UserDetailLayout` component renders a layout for the display of

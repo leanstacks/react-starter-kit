@@ -1,9 +1,21 @@
 import { PropsWithChildren } from 'react';
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
 
-interface BadgeProps extends PropsWithChildren, PropsWithClassName, PropsWithTestId {}
+import { BaseComponentProps } from 'common/utils/types';
 
+/**
+ * Properties for the `Badge` React component.
+ * @see {@link BaseComponentProps}
+ * @see {@link PropsWithChildren}
+ */
+interface BadgeProps extends BaseComponentProps, PropsWithChildren {}
+
+/**
+ * The `Badge` component highlights a notification, a count, or a piece status
+ * information.
+ * @param {BadgeProps} props - Component properties.
+ * @returns JSX
+ */
 const Badge = ({ children, className, testId = 'badge' }: BadgeProps): JSX.Element => {
   return (
     <div

@@ -1,13 +1,11 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
-
+import { BaseComponentProps } from 'common/utils/types';
 import MessageCard from 'common/components/Card/MessageCard';
 
 /**
  * Properties for the `UserDetailEmpty` component.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface UserDetailEmptyProps extends PropsWithClassName, PropsWithTestId {}
+interface UserDetailEmptyProps extends BaseComponentProps {}
 
 /**
  * The `UserDetailEmpty` component renders a message when there is no specific

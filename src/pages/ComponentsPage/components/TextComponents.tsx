@@ -1,6 +1,6 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import { createColumnHelper } from '@tanstack/react-table';
 
+import { BaseComponentProps } from 'common/utils/types';
 import CodeSnippet from 'common/components/Text/CodeSnippet';
 import Text from 'common/components/Text/Text';
 import { ComponentProperty } from '../model/components';
@@ -8,10 +8,9 @@ import Table from 'common/components/Table/Table';
 
 /**
  * Properties for the `TextComponents` React component.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface TextComponentsProps extends PropsWithClassName, PropsWithTestId {}
+interface TextComponentsProps extends BaseComponentProps {}
 
 /**
  * The `TextComponents` React component renders a set of examples illustrating

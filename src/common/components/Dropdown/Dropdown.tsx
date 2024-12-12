@@ -1,15 +1,15 @@
 import { ReactNode, useState } from 'react';
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
+
+import { BaseComponentProps } from 'common/utils/types';
 
 /**
  * Properties for the `Dropdown` component.
  * @param {ReactNode} toggle - The content which toggles display of the dropdown content.
  * @param {ReactNode} content - The dropdown content.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface DropdownProps extends PropsWithClassName, PropsWithTestId {
+interface DropdownProps extends BaseComponentProps {
   toggle: ReactNode;
   content: ReactNode;
 }

@@ -1,5 +1,4 @@
 import { ComponentPropsWithoutRef } from 'react';
-import { BaseComponentProps } from '@leanstacks/react-common';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
@@ -34,6 +33,8 @@ import {
   faUsers,
   faXmark,
 } from '@fortawesome/free-solid-svg-icons';
+
+import { BaseComponentProps } from 'common/utils/types';
 
 /**
  * A union type of all Font Awesome icon names (without the `fa-` prefix)

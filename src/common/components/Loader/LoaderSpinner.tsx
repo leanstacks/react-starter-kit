@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import { BaseComponentProps } from '@leanstacks/react-common';
 
+import { BaseComponentProps } from 'common/utils/types';
 import FAIcon, { FAIconProps } from 'common/components/Icon/FAIcon';
 
 /**

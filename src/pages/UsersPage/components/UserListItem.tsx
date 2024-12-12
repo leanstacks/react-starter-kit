@@ -1,7 +1,7 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 
+import { BaseComponentProps } from 'common/utils/types';
 import { User } from 'common/api/useGetUser';
 
 /**
@@ -9,10 +9,9 @@ import { User } from 'common/api/useGetUser';
  * @param {User} user - A `User` object.
  * @param {boolean} [isActive] - Optional. Indicates if this is the currently
  * selected item in the list. Default: `false`.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface UserListItemProps extends PropsWithClassName, PropsWithTestId {
+interface UserListItemProps extends BaseComponentProps {
   user: User;
   isActive?: boolean;
 }

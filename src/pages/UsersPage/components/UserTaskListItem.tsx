@@ -1,5 +1,4 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
-
+import { BaseComponentProps } from 'common/utils/types';
 import { Task } from '../api/useGetUserTasks';
 import TaskCompleteToggle from '../Tasks/components/TaskCompleteToggle';
 import Link from 'common/components/Link/Link';
@@ -7,10 +6,9 @@ import Link from 'common/components/Link/Link';
 /**
  * Properties for the `UserTaskListItem` React component.
  * @param {Task} task - A `Task` object.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface UserTaskListItemProps extends PropsWithClassName, PropsWithTestId {
+interface UserTaskListItemProps extends BaseComponentProps {
   task: Task;
 }
 

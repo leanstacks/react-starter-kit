@@ -1,16 +1,15 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
 import dayjs from 'dayjs';
 import { useTranslation } from 'react-i18next';
 
+import { BaseComponentProps } from 'common/utils/types';
 import Link from 'common/components/Link/Link';
 
 /**
  * Properties for the `Footer` component.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface FooterProps extends PropsWithClassName, PropsWithTestId {}
+interface FooterProps extends BaseComponentProps {}
 
 /**
  * The `Footer` React component renders the standard page footer content used

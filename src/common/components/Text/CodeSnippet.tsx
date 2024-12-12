@@ -1,6 +1,7 @@
 import { SandpackProvider, SandpackLayout, SandpackCodeEditor } from '@codesandbox/sandpack-react';
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
+
 import { useSettings } from 'common/hooks/useSettings';
+import { BaseComponentProps } from 'common/utils/types';
 
 /**
  * The GitHub light Sandpack theme.
@@ -35,10 +36,9 @@ const themeLight = {
 /**
  * Properties for the `CodeSnippet` React component.
  * @param {string} code - The code snippet.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface CodeSnippetProps extends PropsWithClassName, PropsWithTestId {
+interface CodeSnippetProps extends BaseComponentProps {
   code: string;
 }
 

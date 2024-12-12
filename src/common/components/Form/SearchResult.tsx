@@ -1,15 +1,15 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
 import { PropsWithChildren } from 'react';
+
+import { BaseComponentProps } from 'common/utils/types';
 
 /**
  * Properties for the `SearchResult` React component.
  * @param {function} onClick - Function invoked when this `SearchResult` is clicked.
  * @see {@link PropsWithChildren}
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-export interface SearchResultProps extends PropsWithChildren, PropsWithClassName, PropsWithTestId {
+export interface SearchResultProps extends BaseComponentProps, PropsWithChildren {
   onClick: () => void;
 }
 

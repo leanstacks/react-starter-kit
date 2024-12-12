@@ -1,12 +1,12 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
+
+import { BaseComponentProps } from 'common/utils/types';
 
 /**
  * Properties for the `MenuSeparator` component.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface MenuSeparatorProps extends PropsWithClassName, PropsWithTestId {}
+interface MenuSeparatorProps extends BaseComponentProps {}
 
 /**
  * The `MenuSeparator` component renders a separator to deliniate the boundary

@@ -1,13 +1,13 @@
 import { PropsWithChildren } from 'react';
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
+
+import { BaseComponentProps } from 'common/utils/types';
 
 /**
  * Properties for the `TabContent` React  component.
  * @see {@link PropsWithChildren}
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-export interface TabContentProps extends PropsWithChildren, PropsWithClassName, PropsWithTestId {}
+export interface TabContentProps extends BaseComponentProps, PropsWithChildren {}
 
 /**
  * The `TabContent` component renders a single block of tabbed content.

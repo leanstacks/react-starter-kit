@@ -1,15 +1,15 @@
 import { PropsWithChildren } from 'react';
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
+
+import { BaseComponentProps } from 'common/utils/types';
 
 /**
  * Properties for the `DropdownItem` component.
  * @param {function} [onClick] - Optional. A click event handler function.
  * @see {@link PropsWithChildren}
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface DropdownItemProps extends PropsWithChildren, PropsWithClassName, PropsWithTestId {
+interface DropdownItemProps extends BaseComponentProps, PropsWithChildren {
   onClick?: () => void;
 }
 

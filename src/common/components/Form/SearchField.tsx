@@ -1,7 +1,7 @@
 import { ChangeEvent, ReactElement, useEffect, useRef } from 'react';
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
 
+import { BaseComponentProps } from 'common/utils/types';
 import FAIcon from 'common/components/Icon/FAIcon';
 import { SearchResultProps } from './SearchResult';
 
@@ -14,10 +14,9 @@ import { SearchResultProps } from './SearchResult';
  * @param {function} renderSearchResults - A function which returns one or
  * more `SearchResult` components.
  * @param {string} [supportingText] - Optional. Field help text.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface SearchFieldProps extends PropsWithClassName, PropsWithTestId {
+interface SearchFieldProps extends BaseComponentProps {
   errorText?: string;
   isLoading?: boolean;
   onChange: (value: string) => void;

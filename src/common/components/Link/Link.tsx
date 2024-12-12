@@ -1,6 +1,7 @@
 import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom';
-import { PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
+
+import { PropsWithTestId } from 'common/utils/types';
 
 /**
  * Properties for the `Link` component.

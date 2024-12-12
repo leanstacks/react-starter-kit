@@ -1,6 +1,6 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import { createColumnHelper } from '@tanstack/react-table';
 
+import { BaseComponentProps } from 'common/utils/types';
 import avatarPicture from './avatar-picture.png';
 import { ComponentProperty } from '../model/components';
 import Text from 'common/components/Text/Text';
@@ -10,10 +10,9 @@ import Avatar from 'common/components/Icon/Avatar';
 
 /**
  * Properties for the `AvatarComponents` React component.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface AvatarComponentsProps extends PropsWithClassName, PropsWithTestId {}
+interface AvatarComponentsProps extends BaseComponentProps {}
 
 /**
  * The `AvatarComponents` React component renders a set of examples illustrating

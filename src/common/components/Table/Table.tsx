@@ -1,6 +1,7 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import { ColumnDef, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import classNames from 'classnames';
+
+import { BaseComponentProps } from 'common/utils/types';
 
 /**
  * Properties for the `Table` React component.
@@ -8,10 +9,9 @@ import classNames from 'classnames';
  * @param {ColumnDef<TData>[]} columns - An array of `ColumnDef`, column definition, objects.
  * @param {TData[]} data - An array of data objects, of type `TData`,
  * which are used to populate the rows of the table.
+ * @see {@link BaseComponentProps}
  */
-interface TableProps<TData = unknown, TValue = unknown>
-  extends PropsWithClassName,
-    PropsWithTestId {
+interface TableProps<TData = unknown, TValue = unknown> extends BaseComponentProps {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }

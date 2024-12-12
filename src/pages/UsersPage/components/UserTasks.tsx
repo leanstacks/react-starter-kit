@@ -1,6 +1,6 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
 
+import { BaseComponentProps } from 'common/utils/types';
 import { useGetUserTasks } from '../api/useGetUserTasks';
 import FAIcon from 'common/components/Icon/FAIcon';
 import Text from 'common/components/Text/Text';
@@ -11,10 +11,9 @@ import Badge from 'common/components/Badge/Badge';
 /**
  * Properties for the `UserTasks` component.
  * @param {number} userId - A `User` identifier.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface UserTasksProps extends PropsWithClassName, PropsWithTestId {
+interface UserTasksProps extends BaseComponentProps {
   userId: number;
 }
 

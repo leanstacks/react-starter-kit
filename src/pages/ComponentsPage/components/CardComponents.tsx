@@ -1,6 +1,6 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import { createColumnHelper } from '@tanstack/react-table';
 
+import { BaseComponentProps } from 'common/utils/types';
 import { ComponentProperty } from '../model/components';
 import Text from 'common/components/Text/Text';
 import Table from 'common/components/Table/Table';
@@ -10,10 +10,9 @@ import MessageCard from 'common/components/Card/MessageCard';
 
 /**
  * Properties for the `CardComponents` React component.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface CardComponentsProps extends PropsWithClassName, PropsWithTestId {}
+interface CardComponentsProps extends BaseComponentProps {}
 
 /**
  * The `CardComponents` React component renders a set of examples illustrating

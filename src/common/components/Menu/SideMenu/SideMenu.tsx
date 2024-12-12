@@ -1,8 +1,8 @@
 import { PropsWithChildren, ReactNode } from 'react';
 import classNames from 'classnames';
 import { animated, useSpring } from '@react-spring/web';
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 
+import { BaseComponentProps } from 'common/utils/types';
 import { MenuProps } from '../Menu';
 import SideMenuHeader from './SideMenuHeader';
 
@@ -14,14 +14,9 @@ import SideMenuHeader from './SideMenuHeader';
  * menu should display when shown. Default: `left`.
  * @see {@link MenuProps}
  * @see {@link PropsWithChildren}
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-export interface SideMenuProps
-  extends MenuProps,
-    PropsWithChildren,
-    PropsWithClassName,
-    PropsWithTestId {
+export interface SideMenuProps extends BaseComponentProps, MenuProps, PropsWithChildren {
   headerContent?: ReactNode;
   side?: 'left' | 'right';
 }

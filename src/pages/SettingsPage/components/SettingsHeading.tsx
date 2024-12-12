@@ -1,5 +1,6 @@
-import { PropsWithTestId } from '@leanstacks/react-common';
 import { PropsWithChildren } from 'react';
+
+import { PropsWithTestId } from 'common/utils/types';
 
 /**
  * Properties for the `SettingsHeading` component.

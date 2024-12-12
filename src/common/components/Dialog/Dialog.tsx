@@ -1,7 +1,7 @@
 import { PropsWithChildren, useEffect, useState } from 'react';
-import { BaseComponentProps } from '@leanstacks/react-common';
 import classNames from 'classnames';
 
+import { BaseComponentProps } from 'common/utils/types';
 import Backdrop from './Backdrop';
 
 /**

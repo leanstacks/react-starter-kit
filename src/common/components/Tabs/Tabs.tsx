@@ -1,7 +1,7 @@
-import { PropsWithTestId } from '@leanstacks/react-common';
 import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 
+import { PropsWithTestId } from 'common/utils/types';
 import { toNumberBetween } from 'common/utils/numbers';
 import { SearchParam } from 'common/utils/constants';
 import Tab, { TabProps } from './Tab';

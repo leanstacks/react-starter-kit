@@ -1,6 +1,6 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import { createColumnHelper } from '@tanstack/react-table';
 
+import { BaseComponentProps } from 'common/utils/types';
 import { ComponentProperty } from '../model/components';
 import Text from 'common/components/Text/Text';
 import Table from 'common/components/Table/Table';
@@ -9,10 +9,9 @@ import Badge from 'common/components/Badge/Badge';
 
 /**
  * Properties for the `BadgeComponents` React component.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface BadgeComponentsProps extends PropsWithClassName, PropsWithTestId {}
+interface BadgeComponentsProps extends BaseComponentProps {}
 
 /**
  * The `BadgeComponents` React component renders a set of examples illustrating

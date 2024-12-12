@@ -1,7 +1,7 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import { PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
+import { BaseComponentProps } from 'common/utils/types';
 import { useSettings } from 'common/hooks/useSettings';
 
 /**
@@ -10,7 +10,7 @@ import { useSettings } from 'common/hooks/useSettings';
  * @see {@link PropsWithTestId}
  * @see {@link PropsWithChildren}
  */
-interface ThemeProps extends PropsWithChildren, PropsWithClassName, PropsWithTestId {}
+interface ThemeProps extends BaseComponentProps, PropsWithChildren {}
 
 /**
  * The `Theme` component uses the user settings (preferences) and renders the

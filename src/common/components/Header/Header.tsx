@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { PropsWithTestId } from '@leanstacks/react-common';
 
+import { PropsWithTestId } from 'common/utils/types';
 import { useAuth } from 'common/hooks/useAuth';
 import logo from './logo.png';
 import ThemeToggle from 'common/components/Button/ThemeToggle';

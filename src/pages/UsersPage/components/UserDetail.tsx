@@ -1,6 +1,6 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import { useParams } from 'react-router-dom';
 
+import { BaseComponentProps } from 'common/utils/types';
 import { useGetUser } from 'common/api/useGetUser';
 import Text from 'common/components/Text/Text';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
@@ -9,10 +9,9 @@ import UserTasks from './UserTasks';
 
 /**
  * Properties for the `UserDetail` React component.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface UserDetailProps extends PropsWithClassName, PropsWithTestId {}
+interface UserDetailProps extends BaseComponentProps {}
 
 /**
  * The `UserDetail` component renders the detailed attributes of a `User` object.

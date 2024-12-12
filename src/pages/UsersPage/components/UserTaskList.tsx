@@ -1,7 +1,7 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import { useParams } from 'react-router-dom';
 import filter from 'lodash/filter';
 
+import { BaseComponentProps } from 'common/utils/types';
 import { useGetUserTasks } from '../api/useGetUserTasks';
 import FAIcon from 'common/components/Icon/FAIcon';
 import Text from 'common/components/Text/Text';
@@ -11,10 +11,9 @@ import Badge from 'common/components/Badge/Badge';
 
 /**
  * Propeties for the `UserTaskList` React component.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface UserTaskListProps extends PropsWithClassName, PropsWithTestId {}
+interface UserTaskListProps extends BaseComponentProps {}
 
 /**
  * The `UserTaskList` component renders the list of `Task` objects assigned

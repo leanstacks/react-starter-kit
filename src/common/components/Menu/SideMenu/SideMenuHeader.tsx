@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
 
+import { BaseComponentProps } from 'common/utils/types';
 import MenuCloseButton from '../MenuCloseButton';
 
 /**
@@ -9,10 +9,9 @@ import MenuCloseButton from '../MenuCloseButton';
  * @param {function} [close] - Optional. If provided, invoked when the user
  * clicks the close button.
  * @see {@link PropsWithChildren}
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface SideMenuHeaderProps extends PropsWithChildren, PropsWithClassName, PropsWithTestId {
+interface SideMenuHeaderProps extends BaseComponentProps, PropsWithChildren {
   close?: () => void;
 }
 

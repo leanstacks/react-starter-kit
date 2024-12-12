@@ -1,14 +1,14 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
 import { PropsWithChildren } from 'react';
+
+import { BaseComponentProps } from 'common/utils/types';
 
 /**
  * Properties for the `Page` React component.
  * @see {@link PropsWithChildren}
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-export interface PageProps extends PropsWithChildren, PropsWithClassName, PropsWithTestId {}
+export interface PageProps extends BaseComponentProps, PropsWithChildren {}
 
 /**
  * The `Page` component renders a standardized styled page-level block.

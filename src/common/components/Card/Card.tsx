@@ -1,14 +1,14 @@
 import { PropsWithChildren } from 'react';
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
+
+import { BaseComponentProps } from 'common/utils/types';
 
 /**
  * Properties for the `Card` React component.
  * @see {@link PropsWithChildren}
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-export interface CardProps extends PropsWithChildren, PropsWithClassName, PropsWithTestId {}
+export interface CardProps extends BaseComponentProps, PropsWithChildren {}
 
 /**
  * The `Card` component renders a container for grouped, related content.

@@ -1,13 +1,15 @@
-import { PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
+
+import { BaseComponentProps } from 'common/utils/types';
 
 /**
  * Properties for the `Avatar` component.
  * @param {string} [picture] - Optional. An image source. When present, this is used
  * as the Avatar image.
  * @param {string} value - The value, e.g. a name, title, etc.
+ * @see {@link BaseComponentProps}
  */
-interface AvatarProps extends PropsWithClassName, PropsWithTestId {
+interface AvatarProps extends BaseComponentProps {
   picture?: string;
   value: string;
 }

@@ -1,7 +1,8 @@
 import { InputHTMLAttributes, useEffect, useRef, useState } from 'react';
 import { useField } from 'formik';
-import { PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
+
+import { PropsWithTestId } from 'common/utils/types';
 
 /**
  * Properties for the `TextField` component.
