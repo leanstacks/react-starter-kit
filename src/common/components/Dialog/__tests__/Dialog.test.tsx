@@ -1,7 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 
-import { render, screen } from 'test/test-utils';
+import { render, screen, waitFor } from 'test/test-utils';
 
 import Dialog from '../Dialog';
 
@@ -66,7 +66,7 @@ describe('Dialog', () => {
     const closeFn = vi.fn();
     render(<Dialog onClose={closeFn} isOpen={true} />);
     await screen.findByTestId('dialog');
-    expect(screen.getByTestId('dialog')).not.toHaveClass('hidden');
+    waitFor(() => expect(screen.getByTestId('dialog')).not.toHaveClass('hidden'));
 
     // ACT
     await user.click(screen.getByTestId('dialog-backdrop'));
