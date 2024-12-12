@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import { PropsWithTestId } from 'common/utils/types';
 import FAIcon, { FAIconProps } from 'common/components/Icon/FAIcon';
+import { PropsWithChildren } from 'react';
 
 /**
  * Properties for the `MenuNavLink` component.
@@ -15,8 +16,9 @@ import FAIcon, { FAIconProps } from 'common/components/Icon/FAIcon';
  * @see {@link PropsWithTestId}
  */
 interface MenuNavLinkProps
-  extends NavLinkProps,
+  extends Omit<NavLinkProps, 'children'>,
     Partial<Pick<FAIconProps, 'icon'>>,
+    PropsWithChildren,
     PropsWithTestId {
   iconClassName?: string;
   styleActive?: boolean;
