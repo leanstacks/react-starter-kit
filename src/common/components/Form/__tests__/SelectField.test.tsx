@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import userEvent from '@testing-library/user-event';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from 'test/test-utils';
 import * as FormikLibrary from 'formik';
 
 import SelectField, { SelectFieldOption } from '../SelectField';

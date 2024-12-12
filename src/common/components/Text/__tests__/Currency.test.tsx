@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from 'test/test-utils';
 
 import Currency from '../Currency';
 import { CurrencyCode, CurrencyDisplay, CurrencySign } from 'common/utils/constants';
@@ -54,7 +54,7 @@ describe('Currency', () => {
   it('should use default currency display', async () => {
     // ARRANGE
     render(<Currency value={19.99} currency={CurrencyCode.CAD} />);
-    await screen.getByTestId('currency');
+    await screen.findByTestId('currency');
 
     // ASSERT
     expect(screen.getByTestId('currency').textContent).toBe('CA$19.99');
