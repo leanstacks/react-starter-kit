@@ -1,24 +1,19 @@
-import {
-  Button,
-  ButtonVariant,
-  PropsWithClassName,
-  PropsWithTestId,
-} from '@leanstacks/react-common';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
+import { BaseComponentProps } from 'common/utils/types';
 import { Task } from 'pages/UsersPage/api/useGetUserTasks';
 import { useUpdateTask } from '../api/useUpdateTask';
 import { useToasts } from 'common/hooks/useToasts';
 import FAIcon from 'common/components/Icon/FAIcon';
+import Button from 'common/components/Button/Button';
 
 /**
  * Propeties for the `TaskCompleteToggle` component.
  * @param {Task} task - A Task object.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface TaskCompleteToggleProps extends PropsWithClassName, PropsWithTestId {
+interface TaskCompleteToggleProps extends BaseComponentProps {
   task: Task;
 }
 
@@ -68,7 +63,7 @@ const TaskCompleteToggle = ({
   return (
     <Button
       className={classNames('!m-0 contents !border-none !p-0', className)}
-      variant={ButtonVariant.Text}
+      variant="text"
       title={buttonTitle}
       onClick={handleButtonClick}
       disabled={isPending}

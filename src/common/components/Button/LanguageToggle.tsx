@@ -1,6 +1,6 @@
-import { ButtonVariant, PropsWithClassName } from '@leanstacks/react-common';
 import { useTranslation } from 'react-i18next';
 
+import { PropsWithClassName } from 'common/utils/types';
 import { StorageKeys } from 'common/utils/constants';
 import storage from 'common/utils/storage';
 import Dropdown from 'common/components/Dropdown/Dropdown';
@@ -36,24 +36,24 @@ const LanguageToggle = ({ className }: LanguageToggleProps): JSX.Element => {
   return (
     <Dropdown
       toggle={
-        <Button variant={ButtonVariant.Text}>
+        <Button variant="text">
           <FAIcon icon="language" size="2x" />
         </Button>
       }
       content={
         <DropdownContent className="text-sm">
           <DropdownItem onClick={() => setLanguage('en')} testId="dropdown-item-en">
-            <Button variant={ButtonVariant.Text} className="!p-0">
+            <Button variant="text" className="!p-0">
               English
             </Button>
           </DropdownItem>
           <DropdownItem onClick={() => setLanguage('fr')} testId="dropdown-item-fr">
-            <Button variant={ButtonVariant.Text} className="!p-0">
+            <Button variant="text" className="!p-0">
               French
             </Button>
           </DropdownItem>
           <DropdownItem onClick={() => setLanguage('es')} testId="dropdown-item-es">
-            <Button variant={ButtonVariant.Text} className="!p-0">
+            <Button variant="text" className="!p-0">
               Spanish
             </Button>
           </DropdownItem>

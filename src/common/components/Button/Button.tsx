@@ -4,17 +4,13 @@ import classNames from 'classnames';
 import { PropsWithTestId } from 'common/utils/types';
 
 /**
- * The `ButtonVariant` enumerates types of Buttons.
+ * The variations of `Button` components.
  */
-export enum ButtonVariant {
-  Solid = 'Solid',
-  Outline = 'Outline',
-  Text = 'Text',
-}
+export type ButtonVariant = 'solid' | 'outline' | 'text';
 
 /**
  * Properties for the `Button` component.
- * @param {ButtonVariant} [variant] - Optional. The type of Button. Default: `Primary`
+ * @param {ButtonVariant} [variant] - Optional. The type of Button. Default: `solid`
  * @see {@link ButtonHTMLAttributes}
  * @see {@link PropsWithTestId}
  */
@@ -23,7 +19,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, Pr
 }
 
 /**
- * The `Button` React componentformats and renders a styled button.
+ * The `Button` React component formats and renders a styled button.
  * @param {ButtonProps} props - Component properties, `ButtonProps`.
  * @returns {JSX.Element} JSX
  */
@@ -32,17 +28,17 @@ const Button = ({
   className,
   role = 'button',
   type = 'button',
-  variant = ButtonVariant.Solid,
+  variant = 'solid',
   testId = 'button',
   ...props
 }: ButtonProps): JSX.Element => {
   const getVariantClasses = (variant: ButtonVariant): string => {
     switch (variant) {
-      case ButtonVariant.Outline:
+      case 'outline':
         return 'border-neutral-700 dark:border-neutral-300';
-      case ButtonVariant.Text:
+      case 'text':
         return 'border-transparent';
-      case ButtonVariant.Solid:
+      case 'solid':
       default:
         return 'border-neutral-700 bg-neutral-700 text-white dark:border-neutral-300 dark:bg-neutral-300 dark:text-neutral-900';
     }
@@ -64,22 +60,5 @@ const Button = ({
     </button>
   );
 };
-
-
-// /**
-//  * The `Button` React component wraps the `Button` component from `@leanstacks/react-common`
-//  * to refine the base CSS classes.
-//  * @param {ButtonProps} props - Component properties, `ButtonProps`.
-//  * @returns {JSX.Element} JSX
-//  * @see {@link ButtonProps}
-//  */
-// const Button = ({ className, ...props }: ButtonProps): JSX.Element => {
-//   return (
-//     <CommonButton
-//       className={classNames('flex items-center justify-center rounded-md', className)}
-//       {...props}
-//     />
-//   );
-// };
 
 export default Button;

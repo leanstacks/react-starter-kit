@@ -4,7 +4,8 @@ import isTomorrow from 'dayjs/plugin/isTomorrow';
 import isYesterday from 'dayjs/plugin/isYesterday';
 
 import { BaseComponentProps } from 'common/utils/types';
-import Date, { DateFormat } from './Date';
+import { DateFormat } from 'common/utils/constants';
+import Date from './Date';
 
 dayjs.extend(isToday);
 dayjs.extend(isTomorrow);

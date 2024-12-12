@@ -1,6 +1,6 @@
-import { ButtonVariant, PropsWithClassName } from '@leanstacks/react-common';
 import classNames from 'classnames';
 
+import { PropsWithClassName } from 'common/utils/types';
 import { useSetSettings } from 'common/api/useSetSettings';
 import { useSettings } from 'common/hooks/useSettings';
 import Button from './Button';
@@ -26,7 +26,7 @@ const ThemeToggle = ({ className }: ThemeToggleProps): JSX.Element => {
     <>
       {settings?.theme === 'light' ? (
         <Button
-          variant={ButtonVariant.Text}
+          variant="text"
           className={classNames('text-light-text', className)}
           title="Dark Mode"
           onClick={() => setSettings({ theme: 'dark' })}
@@ -36,7 +36,7 @@ const ThemeToggle = ({ className }: ThemeToggleProps): JSX.Element => {
         </Button>
       ) : (
         <Button
-          variant={ButtonVariant.Text}
+          variant="text"
           className={classNames('text-dark-text', className)}
           title="Light Mode"
           onClick={() => setSettings({ theme: 'light' })}

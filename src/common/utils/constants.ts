@@ -69,6 +69,18 @@ export enum CurrencySign {
 }
 
 /**
+ * The `DateFormat` enumerates patterns for formatting dates.
+ */
+export enum DateFormat {
+  DATE = 'MM/DD/YYYY',
+  DAY_OF_WEEK = 'dddd',
+  HOURS_AND_MINUTES = 'H[h] mm[m]',
+  TIME = 'h:mma',
+  TIMESTAMP_SHORT = 'h:mma ddd MMM D',
+  TIMESTAMP = 'dddd MMMM D [at] h:mma',
+}
+
+/**
  * Possible `signDisplay` values to use with `Intl.NumberFormat`. By default,
  * display sign for negative numbers only, including negative zero. Default: `auto`.
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options | NumberFormatOptions}

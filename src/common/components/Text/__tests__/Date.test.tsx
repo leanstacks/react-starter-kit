@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
-import Date, { DateFormat } from '../Date';
+import { DateFormat } from 'common/utils/constants';
+import Date from '../Date';
 
 describe('Date', () => {
   it('should render successfully', async () => {

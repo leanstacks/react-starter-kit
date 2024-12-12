@@ -1,7 +1,7 @@
 import { ComponentType, useState } from 'react';
-import { ButtonVariant, PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
 
+import { BaseComponentProps } from 'common/utils/types';
 import { MenuProps } from './Menu';
 import Button from 'common/components/Button/Button';
 import FAIcon from 'common/components/Icon/FAIcon';
@@ -11,10 +11,9 @@ import FAIcon from 'common/components/Icon/FAIcon';
  * @param {ComponentType<MenuProps>} Menu - The Menu component to be rendered
  * when the button is clicked. Any component whose properties include `MenuProps`.
  * @param {string} [title] - Optional. The button title attribute value.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface MenuButtonProps extends PropsWithClassName, PropsWithTestId {
+interface MenuButtonProps extends BaseComponentProps {
   Menu: ComponentType<MenuProps>;
   title?: string;
 }
@@ -36,7 +35,7 @@ const MenuButton = ({
   return (
     <>
       <Button
-        variant={ButtonVariant.Text}
+        variant="text"
         className={classNames('text-light-text dark:text-dark-text', className)}
         onClick={() => setIsMenuOpen(true)}
         title={title}

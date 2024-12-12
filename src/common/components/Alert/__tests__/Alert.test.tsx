@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
-import Alert, { AlertVariant } from '../Alert';
+import Alert from '../Alert';
 
 describe('Alert', () => {
   it('should render successfully', async () => {
@@ -33,7 +33,7 @@ describe('Alert', () => {
 
   it('should render the Info variant', async () => {
     // ARRANGE
-    render(<Alert variant={AlertVariant.Info} />);
+    render(<Alert variant="info" />);
     await screen.findByTestId('alert');
 
     // ASSERT
@@ -42,7 +42,7 @@ describe('Alert', () => {
 
   it('should render the Warning variant', async () => {
     // ARRANGE
-    render(<Alert variant={AlertVariant.Warning} />);
+    render(<Alert variant="warning" />);
     await screen.findByTestId('alert');
 
     // ASSERT
@@ -51,7 +51,7 @@ describe('Alert', () => {
 
   it('should render the Error variant', async () => {
     // ARRANGE
-    render(<Alert variant={AlertVariant.Error} />);
+    render(<Alert variant="error" />);
     await screen.findByTestId('alert');
 
     // ASSERT
@@ -60,7 +60,7 @@ describe('Alert', () => {
 
   it('should render the Success variant', async () => {
     // ARRANGE
-    render(<Alert variant={AlertVariant.Success} />);
+    render(<Alert variant="success" />);
     await screen.findByTestId('alert');
 
     // ASSERT

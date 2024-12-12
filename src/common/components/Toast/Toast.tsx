@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
-import { ButtonVariant, PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import classNames from 'classnames';
 import dayjs from 'dayjs';
 import { animated, useSpring } from '@react-spring/web';
 
+import { BaseComponentProps } from 'common/utils/types';
 import { ToastDetail } from 'common/providers/ToastsContext';
 import { useConfig } from 'common/hooks/useConfig';
-
 import Button from 'common/components/Button/Button';
 import FAIcon from 'common/components/Icon/FAIcon';
 
@@ -14,10 +13,9 @@ import FAIcon from 'common/components/Icon/FAIcon';
  * Properties for the `Toast` component.
  * @param {function} dismiss - A function called when the `Toast` dismisses.
  * @param {ToastDetail} toast - The `Toast`.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface ToastProps extends PropsWithClassName, PropsWithTestId {
+interface ToastProps extends BaseComponentProps {
   dismiss: () => void;
   toast: ToastDetail;
 }
@@ -74,7 +72,7 @@ const Toast = ({ className, dismiss, testId = 'toast', toast }: ToastProps): JSX
           {toast.text}
         </div>
         <Button
-          variant={ButtonVariant.Text}
+          variant="text"
           className="!p-0"
           onClick={() => doDismiss()}
           data-testid={`${testId}-button-dismiss`}

@@ -1,8 +1,9 @@
 import { describe, expect, it, vi } from 'vitest';
-import { render, screen } from 'test/test-utils';
 import userEvent from '@testing-library/user-event';
 
-import Button, { ButtonVariant } from '../Button';
+import { render, screen } from 'test/test-utils';
+
+import Button from '../Button';
 
 describe('Button', () => {
   it('should render successfully', async () => {
@@ -35,9 +36,8 @@ describe('Button', () => {
 
   it('should render Solid variant', async () => {
     // ARRANGE
-    render(<Button variant={ButtonVariant.Solid} />);
+    render(<Button variant="solid" />);
     await screen.findByTestId('button');
-
 
     // ASSERT
     expect(screen.getByTestId('button').classList).toContain('bg-neutral-700');
@@ -45,7 +45,7 @@ describe('Button', () => {
 
   it('should render Outline variant', async () => {
     // ARRANGE
-    render(<Button variant={ButtonVariant.Outline} />);
+    render(<Button variant="outline" />);
     await screen.findByTestId('button');
 
     // ASSERT
@@ -54,7 +54,7 @@ describe('Button', () => {
 
   it('should render Text variant', async () => {
     // ARRANGE
-    render(<Button variant={ButtonVariant.Text} />);
+    render(<Button variant="text" />);
     await screen.findByTestId('button');
 
     // ASSERT
@@ -162,5 +162,4 @@ describe('Button', () => {
     // ASSERT
     expect(mockClickHandler).not.toHaveBeenCalled();
   });
-
 });

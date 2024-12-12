@@ -1,5 +1,4 @@
-import { ButtonVariant, PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
-
+import { BaseComponentProps } from 'common/utils/types';
 import Button from 'common/components/Button/Button';
 import CodeSnippet from 'common/components/Text/CodeSnippet';
 import Text from 'common/components/Text/Text';
@@ -9,10 +8,9 @@ import Table from 'common/components/Table/Table';
 
 /**
  * Properties for the `ButtonComponents` React component.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface ButtonComponentsProps extends PropsWithClassName, PropsWithTestId {}
+interface ButtonComponentsProps extends BaseComponentProps {}
 
 /**
  * The `ButtonComponents` React component renders a set of examples illustrating
@@ -88,38 +86,29 @@ const ButtonComponents = ({
 
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-          <Button variant={ButtonVariant.Outline}>Outline button</Button>
+          <Button variant="outline">Outline button</Button>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<Button variant={ButtonVariant.Outline}>Outline button</Button>`}
-        />
+        <CodeSnippet className="my-2" code={`<Button variant="outline">Outline button</Button>`} />
       </div>
 
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-          <Button variant={ButtonVariant.Solid}>Solid button</Button>
+          <Button variant="solid">Solid button</Button>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<Button variant={ButtonVariant.Solid}>Solid button</Button>`}
-        />
+        <CodeSnippet className="my-2" code={`<Button variant="solid">Solid button</Button>`} />
       </div>
 
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-          <Button variant={ButtonVariant.Text}>Text button</Button>
+          <Button variant="text">Text button</Button>
         </div>
-        <CodeSnippet
-          className="my-2"
-          code={`<Button variant={ButtonVariant.Text}>Text button</Button>`}
-        />
+        <CodeSnippet className="my-2" code={`<Button variant="text">Text button</Button>`} />
       </div>
 
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Button
-            variant={ButtonVariant.Solid}
+            variant="solid"
             className="!border-blue-600 !bg-blue-600 !text-white"
             onClick={() => alert('Hey! You clicked me!')}
             testId="click-me-button"
@@ -130,7 +119,7 @@ const ButtonComponents = ({
         <CodeSnippet
           className="my-2"
           code={`<Button
-  variant={ButtonVariant.Solid}
+  variant="solid"
   className="!border-blue-600 !bg-blue-600 !text-white"
   onClick={() => alert('Hey! You clicked me!')}
   testId="click-me-button"

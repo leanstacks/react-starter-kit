@@ -1,27 +1,20 @@
-import React from 'react';
+import { PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
-import { PropsWithChildren } from 'react';
-import { PropsWithClassName, PropsWithTestId } from '../../utils/types';
+import { BaseComponentProps } from 'common/utils/types';
 
 /**
- * The `AlertVariant` enumerates types of Alerts.
+ * The variations of `Alert` components.
  */
-export enum AlertVariant {
-  Error = 'Error',
-  Info = 'Info',
-  Success = 'Success',
-  Warning = 'Warning',
-}
+export type AlertVariant = 'error' | 'info' | 'success' | 'warning';
 
 /**
  * Properties for the `Alert` component.
- * @param {AlertVariant} [variant] - Optional. The type of Alert. Default: `Info`
+ * @param {AlertVariant} [variant] - Optional. The type of Alert. Default: `info`
  * @see {@link PropsWithChildren}
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-export interface AlertProps extends PropsWithChildren, PropsWithClassName, PropsWithTestId {
+export interface AlertProps extends PropsWithChildren, BaseComponentProps {
   variant?: AlertVariant;
 }
 
@@ -31,21 +24,21 @@ export interface AlertProps extends PropsWithChildren, PropsWithClassName, Props
  * @param {AlertProps} props - Component properties, `AlertProps`.
  * @returns {JSX.Element} JSX
  */
-const Alert: React.FC<AlertProps> = ({
+const Alert = ({
   children,
   className,
-  variant = AlertVariant.Info,
+  variant = 'info',
   testId = 'alert',
 }: AlertProps): JSX.Element => {
   const getVariantClasses = (variant: AlertVariant): string => {
     switch (variant) {
-      case AlertVariant.Error:
+      case 'error':
         return 'bg-red-800/90 text-white/80';
-      case AlertVariant.Warning:
+      case 'warning':
         return 'bg-amber-400/90 text-slate-900';
-      case AlertVariant.Success:
+      case 'success':
         return 'bg-green-800/90 text-white/80';
-      case AlertVariant.Info:
+      case 'info':
       default:
         return 'bg-blue-800/90 text-white/80';
     }

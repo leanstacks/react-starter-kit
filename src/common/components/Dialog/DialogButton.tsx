@@ -1,8 +1,9 @@
-import { Button, ButtonProps, ButtonVariant } from '@leanstacks/react-common';
 import classNames from 'classnames';
 
+import Button, { ButtonProps } from '../Button/Button';
+
 /**
- * Variations of the `DialogButton`.
+ * The variations of the `DialogButton` components.
  */
 type DialogButtonVariant = 'primary' | 'secondary' | 'danger';
 
@@ -29,7 +30,7 @@ const DialogButton = ({
 }: DialogButtonProps): JSX.Element => {
   return (
     <Button
-      variant={ButtonVariant.Text}
+      variant="text"
       className={classNames(
         'text-sm',
         { 'font-bold text-blue-600 dark:text-blue-400': variant === 'primary' },

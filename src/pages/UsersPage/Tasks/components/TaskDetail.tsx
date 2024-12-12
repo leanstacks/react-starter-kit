@@ -1,13 +1,5 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import {
-  Alert,
-  AlertVariant,
-  Button,
-  ButtonVariant,
-  PropsWithClassName,
-  PropsWithTestId,
-} from '@leanstacks/react-common';
 import classNames from 'classnames';
 
 import { Task } from 'pages/UsersPage/api/useGetUserTasks';
@@ -21,13 +13,15 @@ import LoaderSpinner from 'common/components/Loader/LoaderSpinner';
 import Badge from 'common/components/Badge/Badge';
 import FAIcon from 'common/components/Icon/FAIcon';
 import TaskDeleteDialog from './TaskDeleteDialog';
+import { BaseComponentProps } from 'common/utils/types';
+import Button from 'common/components/Button/Button';
+import Alert from 'common/components/Alert/Alert';
 
 /**
  * Properties for the `TaskDetail` component.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface TaskDetailProps extends PropsWithClassName, PropsWithTestId {}
+interface TaskDetailProps extends BaseComponentProps {}
 
 /**
  * The `TaskDetail` component displays the attributes of a single `Task`.
@@ -81,7 +75,7 @@ const TaskDetail = ({ className, testId = 'task-detail' }: TaskDetailProps): JSX
         <div className="ms-auto flex items-center gap-2">
           <FAIcon icon="pencil" className="px-2 py-1" />
           <Button
-            variant={ButtonVariant.Text}
+            variant="text"
             title="Delete"
             onClick={() => setIsDeleteDialogOpen(true)}
             testId={`${testId}-button-delete`}
@@ -89,7 +83,7 @@ const TaskDetail = ({ className, testId = 'task-detail' }: TaskDetailProps): JSX
             <FAIcon icon="trash" />
           </Button>
           <Button
-            variant={ButtonVariant.Text}
+            variant="text"
             title="Close"
             onClick={() => navigate(-1)}
             testId={`${testId}-button-close`}
@@ -101,7 +95,7 @@ const TaskDetail = ({ className, testId = 'task-detail' }: TaskDetailProps): JSX
 
       {taskError && (
         <Alert
-          variant={AlertVariant.Error}
+          variant="error"
           className="my-4 flex items-center gap-2 rounded-none"
           testId={`${testId}-alert-taskError`}
         >
@@ -112,7 +106,7 @@ const TaskDetail = ({ className, testId = 'task-detail' }: TaskDetailProps): JSX
 
       {userError && (
         <Alert
-          variant={AlertVariant.Error}
+          variant="error"
           className="my-4 flex items-center gap-2 rounded-none"
           testId={`${testId}-alert-userError`}
         >
@@ -123,7 +117,7 @@ const TaskDetail = ({ className, testId = 'task-detail' }: TaskDetailProps): JSX
 
       {deleteError && (
         <Alert
-          variant={AlertVariant.Error}
+          variant="error"
           className="my-4 flex items-center gap-2 rounded-none"
           testId={`${testId}-alert-deleteError`}
         >

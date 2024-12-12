@@ -1,21 +1,21 @@
 import { useState } from 'react';
 import classNames from 'classnames';
-import { Alert, AlertVariant, PropsWithClassName, PropsWithTestId } from '@leanstacks/react-common';
 import { Form, Formik } from 'formik';
 import { object, string } from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@leanstacks/react-common';
 
+import { BaseComponentProps } from 'common/utils/types';
 import { useSignin } from '../api/useSignin';
 import TextField from 'common/components/Form/TextField';
 import FAIcon from 'common/components/Icon/FAIcon';
+import Alert from 'common/components/Alert/Alert';
 
 /**
  * Properties for the `SigninForm` component.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  */
-interface SigninFormProps extends PropsWithClassName, PropsWithTestId {}
+interface SigninFormProps extends BaseComponentProps {}
 
 /**
  * Signin form values.
@@ -53,7 +53,7 @@ const SigninForm = ({ className, testId = 'form-signin' }: SigninFormProps): JSX
     <div className={classNames('lg:w-2/3 xl:w-1/2', className)} data-testid={testId}>
       {error && (
         <Alert
-          variant={AlertVariant.Error}
+          variant="error"
           className="mb-4 flex items-center gap-2 rounded-none"
           testId={`${testId}-alert`}
         >
