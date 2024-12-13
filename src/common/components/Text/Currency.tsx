@@ -10,8 +10,7 @@ import { BaseComponentProps } from 'common/utils/types';
  * @param {CurrencyDisplay} [currencyDisplay]  - Optional. How the currency is displayed. Default: `symbol`.
  * @param {CurrencySign} [currencySign] - Optional. How negative values are displayed. Default: `standard`.
  * @param {number} value - The amount.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options | NumberFormatOptions}
  */
 export interface CurrencyProps extends BaseComponentProps {

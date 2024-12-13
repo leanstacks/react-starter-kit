@@ -6,8 +6,7 @@ import { useSettings } from 'common/hooks/useSettings';
 
 /**
  * Properties for the `Theme` component.
- * @see {@link PropsWithClassName}
- * @see {@link PropsWithTestId}
+ * @see {@link BaseComponentProps}
  * @see {@link PropsWithChildren}
  */
 interface ThemeProps extends BaseComponentProps, PropsWithChildren {}
