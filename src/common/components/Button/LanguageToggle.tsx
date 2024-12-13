@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { PropsWithClassName } from 'common/utils/types';
-import { StorageKeys } from 'common/utils/constants';
+import { StorageKey } from 'common/utils/constants';
 import storage from 'common/utils/storage';
 import Dropdown from 'common/components/Dropdown/Dropdown';
 import FAIcon from 'common/components/Icon/FAIcon';
@@ -29,7 +29,7 @@ const LanguageToggle = ({ className }: LanguageToggleProps): JSX.Element => {
    * @param {string} lng - A langage code, e.g. `en` or `es`.
    */
   const setLanguage = (lng: string) => {
-    storage.setItem(StorageKeys.Language, lng);
+    storage.setItem(StorageKey.Language, lng);
     i18n.changeLanguage(lng);
   };
 

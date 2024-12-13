@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { QueryKeys, StorageKeys } from 'common/utils/constants';
+import { QueryKeys, StorageKey } from 'common/utils/constants';
 import storage from 'common/utils/storage';
 
 /**
@@ -21,8 +21,8 @@ export const useSignout = () => {
 
     return new Promise((resolve, reject) => {
       try {
-        storage.removeItem(StorageKeys.UserTokens);
-        storage.removeItem(StorageKeys.User);
+        storage.removeItem(StorageKey.UserTokens);
+        storage.removeItem(StorageKey.User);
         resolve();
       } catch (err) {
         reject(err);

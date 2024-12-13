@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { renderHook, waitFor } from 'test/test-utils';
 
 import { settingsFixture } from '__fixtures__/settings';
-import { DEFAULT_SETTINGS, StorageKeys } from 'common/utils/constants';
+import { DEFAULT_SETTINGS, StorageKey } from 'common/utils/constants';
 import storage from 'common/utils/storage';
 
 import { useGetSettings } from 'common/api/useGetSettings';
@@ -23,7 +23,7 @@ describe('useGetSettings', () => {
     expect(result.current.data).toBeDefined();
     expect(result.current.data?.theme).toBeDefined();
     expect(getItemSpy).toHaveBeenCalled();
-    expect(getItemSpy).toHaveBeenLastCalledWith(StorageKeys.Settings);
+    expect(getItemSpy).toHaveBeenLastCalledWith(StorageKey.Settings);
   });
 
   it('should return default settings when nothing stored', async () => {

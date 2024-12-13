@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { DEFAULT_SETTINGS, QueryKeys, StorageKeys } from 'common/utils/constants';
+import { DEFAULT_SETTINGS, QueryKeys, StorageKey } from 'common/utils/constants';
 import storage from 'common/utils/storage';
 
 /**
@@ -21,7 +21,7 @@ export const useGetSettings = () => {
   const getSettings = (): Promise<Settings> => {
     return new Promise((resolve, reject) => {
       try {
-        const storedSettings = JSON.parse(storage.getItem(StorageKeys.Settings) || '{}');
+        const storedSettings = storage.getJsonItem<Settings>(StorageKey.Settings, DEFAULT_SETTINGS);
         const settings = {
           ...DEFAULT_SETTINGS,
           ...storedSettings,

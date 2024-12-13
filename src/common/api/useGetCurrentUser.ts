@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import storage from 'common/utils/storage';
 import { User } from './useGetUser';
-import { QueryKeys, StorageKeys } from 'common/utils/constants';
+import { QueryKeys, StorageKey } from 'common/utils/constants';
 
 /**
  * An API hook which fetches the currently authenticated `User`.
@@ -12,10 +12,9 @@ export const useGetCurrentUser = () => {
   const getCurrentUser = (): Promise<User> => {
     return new Promise((resolve, reject) => {
       try {
-        const storedUser = storage.getItem(StorageKeys.User);
+        const storedUser = storage.getJsonItem<User>(StorageKey.User);
         if (storedUser) {
-          const user = JSON.parse(storedUser) as unknown as User;
-          return resolve(user);
+          return resolve(storedUser);
         }
         return reject(new Error('Not found'));
       } catch (err) {

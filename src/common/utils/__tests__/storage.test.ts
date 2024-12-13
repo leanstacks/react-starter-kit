@@ -1,50 +1,82 @@
-import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
-import storage from 'common/utils/storage';
+import { afterEach, describe, expect, it } from 'vitest';
+
+import { StorageKey } from '../constants';
+
+import storage from '../storage';
 
 describe('storage', () => {
-  const originalLocalStorage = global.localStorage;
-  const mockGetItem = vi.fn();
-  const mockSetItem = vi.fn();
-  const mockRemoveItem = vi.fn();
-
-  beforeAll(() => {
-    Object.defineProperty(global, 'localStorage', {
-      value: { getItem: mockGetItem, removeItem: mockRemoveItem, setItem: mockSetItem },
-    });
+  afterEach(() => {
+    localStorage.clear();
   });
 
-  afterAll(() => {
-    Object.defineProperty(global, 'localStorage', { value: originalLocalStorage });
-  });
-
-  it('should get an item', () => {
+  it('should get item', () => {
     // ARRANGE
-    mockGetItem.mockReturnValueOnce('value');
-
-    // ACT
-    const value = storage.getItem('key');
+    const value = '1024';
+    localStorage.setItem(StorageKey.Language, value);
 
     // ASSERT
-    expect(value).toBe('value');
-    expect(mockGetItem).toHaveBeenCalledTimes(1);
-    expect(mockGetItem).toHaveBeenCalledWith('key');
+    expect(storage.getItem(StorageKey.Language)).toBe(value);
   });
 
-  it('should set an item', () => {
-    // ACT
-    storage.setItem('key', 'value');
+  it('should set item', () => {
+    // ARRANGE
+    const value = '2048';
+    storage.setItem(StorageKey.Language, value);
 
     // ASSERT
-    expect(mockSetItem).toHaveBeenCalledTimes(1);
-    expect(mockSetItem).toHaveBeenCalledWith('key', 'value');
+    expect(localStorage.getItem(StorageKey.Language)).toBe(value);
   });
 
-  it('should remove an item', () => {
+  it('should remove item', () => {
+    // ARRANGE
+    const value = '3072';
+    storage.setItem(StorageKey.Language, value);
+    expect(localStorage.getItem(StorageKey.Language)).toBe(value);
+
     // ACT
-    storage.removeItem('key');
+    storage.removeItem(StorageKey.Language);
 
     // ASSERT
-    expect(mockRemoveItem).toHaveBeenCalledTimes(1);
-    expect(mockRemoveItem).toHaveBeenCalledWith('key');
+    expect(localStorage.getItem(StorageKey.Language)).toBeNull();
+  });
+
+  it('should get JSON', () => {
+    // ARRANGE
+    const value = { id: 10, value: 'hello' };
+    localStorage.setItem(StorageKey.Language, JSON.stringify(value));
+
+    // ASSERT
+    expect(storage.getJsonItem(StorageKey.Language)).toEqual(value);
+  });
+
+  it('should use fallback when cannot find JSON item', () => {
+    // ARRANGE
+    const value = { id: 10, value: 'hello' };
+    const fallback = { id: 20, value: 'goodbye' };
+
+    localStorage.setItem(StorageKey.Language, JSON.stringify(value));
+
+    // ASSERT
+    expect(storage.getJsonItem(StorageKey.Settings, fallback)).not.toEqual(value);
+    expect(storage.getJsonItem(StorageKey.Settings, fallback)).toEqual(fallback);
+  });
+
+  it('should return null when cannot find JSON item and no fallback', () => {
+    // ARRANGE
+    const value = { id: 10, value: 'hello' };
+
+    localStorage.setItem(StorageKey.Language, JSON.stringify(value));
+
+    // ASSERT
+    expect(storage.getJsonItem(StorageKey.Settings)).toBeNull();
+  });
+
+  it('should set JSON', () => {
+    // ARRANGE
+    const value = { id: 30, value: 'hola' };
+    storage.setJsonItem(StorageKey.Language, value);
+
+    // ASSERT
+    expect(JSON.parse(localStorage.getItem(StorageKey.Language) || '{}')).toEqual(value);
   });
 });

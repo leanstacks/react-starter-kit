@@ -1,7 +1,7 @@
 import { UseQueryOptions, UseQueryResult, useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 
-import { QueryKeys, StorageKeys } from 'common/utils/constants';
+import { QueryKeys, StorageKey } from 'common/utils/constants';
 import storage from 'common/utils/storage';
 
 /**
@@ -33,15 +33,14 @@ export const useGetUserTokens = (
   const getUserTokens = async (): Promise<UserTokens> => {
     // REPLACE: fetch tokens from your IdP
     return new Promise((resolve, reject) => {
-      const storedTokens = storage.getItem(StorageKeys.UserTokens);
+      const storedTokens = storage.getJsonItem<UserTokens>(StorageKey.UserTokens);
 
       if (storedTokens) {
         // tokens found
-        const tokens = JSON.parse(storedTokens) as unknown as UserTokens;
         const now = dayjs();
-        if (now.isBefore(tokens.expires_at)) {
+        if (now.isBefore(storedTokens.expires_at)) {
           // tokens not expired
-          return resolve(tokens);
+          return resolve(storedTokens);
         } else {
           // tokens expired
           return reject(new Error('Tokens expired.'));

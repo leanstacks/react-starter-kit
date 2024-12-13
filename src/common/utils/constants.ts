@@ -11,9 +11,9 @@ export enum QueryKeys {
 }
 
 /**
- * Keys used for browser local storage.
+ * Keys used for browser storage.
  */
-export enum StorageKeys {
+export enum StorageKey {
   Language = 'react-starter.language',
   Settings = 'react-starter.settings',
   User = 'react-starter.user',

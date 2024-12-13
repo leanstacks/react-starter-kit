@@ -1,7 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 
-import { StorageKeys } from 'common/utils/constants';
+import { StorageKey } from 'common/utils/constants';
 import { render, screen } from 'test/test-utils';
 import storage from 'common/utils/storage';
 
@@ -48,7 +48,7 @@ describe('LanguageToggle', () => {
 
     // ASSERT
     expect(mockChangeLanguage).toHaveBeenCalledWith('en');
-    expect(setItemSpy).toHaveBeenCalledWith(StorageKeys.Language, 'en');
+    expect(setItemSpy).toHaveBeenCalledWith(StorageKey.Language, 'en');
   });
 
   it('should set language to French', async () => {
@@ -61,7 +61,7 @@ describe('LanguageToggle', () => {
 
     // ASSERT
     expect(mockChangeLanguage).toHaveBeenCalledWith('fr');
-    expect(setItemSpy).toHaveBeenCalledWith(StorageKeys.Language, 'fr');
+    expect(setItemSpy).toHaveBeenCalledWith(StorageKey.Language, 'fr');
   });
 
   it('should set language to Spanish', async () => {
@@ -74,6 +74,6 @@ describe('LanguageToggle', () => {
 
     // ASSERT
     expect(mockChangeLanguage).toHaveBeenCalledWith('es');
-    expect(setItemSpy).toHaveBeenCalledWith(StorageKeys.Language, 'es');
+    expect(setItemSpy).toHaveBeenCalledWith(StorageKey.Language, 'es');
   });
 });

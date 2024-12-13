@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import storage from 'common/utils/storage';
-import { DEFAULT_SETTINGS, QueryKeys, StorageKeys } from 'common/utils/constants';
+import { DEFAULT_SETTINGS, QueryKeys, StorageKey } from 'common/utils/constants';
 import { Settings } from './useGetSettings';
 
 /**
@@ -26,14 +26,14 @@ export const useSetSettings = () => {
     return new Promise((resolve, reject) => {
       try {
         // create or update user settings
-        const storedSettings = JSON.parse(storage.getItem(StorageKeys.Settings) || '{}');
+        const storedSettings = storage.getJsonItem<Settings>(StorageKey.Settings, DEFAULT_SETTINGS);
         const updatedSettings = {
           ...DEFAULT_SETTINGS,
           ...storedSettings,
           ...settings,
           updatedAt: new Date().toISOString(),
         };
-        storage.setItem(StorageKeys.Settings, JSON.stringify(updatedSettings));
+        storage.setJsonItem(StorageKey.Settings, updatedSettings);
 
         return resolve(updatedSettings);
       } catch (err) {

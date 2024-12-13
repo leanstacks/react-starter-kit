@@ -2,7 +2,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
-import { StorageKeys } from 'common/utils/constants';
+import { StorageKey } from 'common/utils/constants';
 
 // translation resources
 import en from './locales/en';
@@ -34,7 +34,7 @@ i18n
 
     // plugin - language detector
     detection: {
-      lookupLocalStorage: StorageKeys.Language,
+      lookupLocalStorage: StorageKey.Language,
     },
   });
 

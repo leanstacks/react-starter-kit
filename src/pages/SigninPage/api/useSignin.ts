@@ -7,7 +7,7 @@ import { UserTokens } from 'common/api/useGetUserTokens';
 import { useAxios } from 'common/hooks/useAxios';
 import { useConfig } from 'common/hooks/useConfig';
 import storage from 'common/utils/storage';
-import { QueryKeys, StorageKeys } from 'common/utils/constants';
+import { QueryKeys, StorageKey } from 'common/utils/constants';
 
 /**
  * An API hook which performs user authentication.
@@ -38,7 +38,7 @@ export const useSignin = () => {
     const user = find<User>(response.data, { username });
     if (user) {
       // store current user in localstorage
-      storage.setItem(StorageKeys.User, JSON.stringify(user));
+      storage.setJsonItem(StorageKey.User, user);
 
       // simlate the creation of authentication tokens
       const expires_at = dayjs().add(1, 'hour').toISOString();
@@ -50,7 +50,7 @@ export const useSignin = () => {
         expires_in: 3600,
         expires_at,
       };
-      storage.setItem(StorageKeys.UserTokens, JSON.stringify(tokens));
+      storage.setJsonItem(StorageKey.UserTokens, tokens);
 
       return user;
     } else {
