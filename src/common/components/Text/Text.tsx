@@ -25,21 +25,18 @@ export interface TextProps extends BaseComponentProps, PropsWithChildren {
  * @returns {JSX.Element} JSX
  */
 const Text = ({ children, className, testId = 'text', variant }: TextProps): JSX.Element => {
-  const getVariantClasses = (variant?: TextVariant): string => {
-    switch (variant) {
-      case 'heading1':
-        return 'text-4xl';
-      case 'heading2':
-        return 'text-2xl';
-      case 'heading3':
-        return 'text-xl font-bold';
-      default:
-        return '';
-    }
-  };
-
   return (
-    <div className={classNames(getVariantClasses(variant), className)} data-testid={testId}>
+    <div
+      className={classNames(
+        {
+          'text-4xl': variant === 'heading1',
+          'text-2xl': variant === 'heading2',
+          'text-xl font-bold': variant === 'heading3',
+        },
+        className,
+      )}
+      data-testid={testId}
+    >
       {children}
     </div>
   );

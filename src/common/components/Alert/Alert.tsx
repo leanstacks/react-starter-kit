@@ -30,23 +30,18 @@ const Alert = ({
   variant = 'info',
   testId = 'alert',
 }: AlertProps): JSX.Element => {
-  const getVariantClasses = (variant: AlertVariant): string => {
-    switch (variant) {
-      case 'error':
-        return 'bg-red-800/90 text-white/80';
-      case 'warning':
-        return 'bg-amber-400/90 text-slate-900';
-      case 'success':
-        return 'bg-green-800/90 text-white/80';
-      case 'info':
-      default:
-        return 'bg-blue-800/90 text-white/80';
-    }
-  };
-
   return (
     <div
-      className={classNames('rounded-lg p-3', getVariantClasses(variant), className)}
+      className={classNames(
+        'rounded-lg p-3',
+        {
+          'bg-red-800/90 text-white/80': variant === 'error',
+          'bg-amber-400/90 text-slate-900': variant === 'warning',
+          'bg-green-800/90 text-white/80': variant === 'success',
+          'bg-blue-800/90 text-white/80': variant === 'info',
+        },
+        className,
+      )}
       role="alert"
       data-testid={testId}
     >

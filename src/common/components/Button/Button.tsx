@@ -32,23 +32,16 @@ const Button = ({
   testId = 'button',
   ...props
 }: ButtonProps): JSX.Element => {
-  const getVariantClasses = (variant: ButtonVariant): string => {
-    switch (variant) {
-      case 'outline':
-        return 'border-neutral-700 dark:border-neutral-300';
-      case 'text':
-        return 'border-transparent';
-      case 'solid':
-      default:
-        return 'border-neutral-700 bg-neutral-700 text-white dark:border-neutral-300 dark:bg-neutral-300 dark:text-neutral-900';
-    }
-  };
-
   return (
     <button
       className={classNames(
         'flex items-center justify-center rounded-md border px-2 py-1 enabled:hover:opacity-80 disabled:opacity-50',
-        getVariantClasses(variant),
+        {
+          'border-neutral-700 bg-neutral-700 text-white dark:border-neutral-300 dark:bg-neutral-300 dark:text-neutral-900':
+            variant === 'solid',
+          'border-neutral-700 dark:border-neutral-300': variant === 'outline',
+          'border-transparent': variant === 'text',
+        },
         className,
       )}
       data-testid={testId}
