@@ -11,7 +11,7 @@ import { BaseComponentProps } from 'common/utils/types';
  * which are used to populate the rows of the table.
  * @see {@link BaseComponentProps}
  */
-interface TableProps<TData = unknown, TValue = unknown> extends BaseComponentProps {
+export interface TableProps<TData = unknown, TValue = unknown> extends BaseComponentProps {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }

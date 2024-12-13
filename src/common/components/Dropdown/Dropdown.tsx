@@ -9,7 +9,7 @@ import { BaseComponentProps } from 'common/utils/types';
  * @param {ReactNode} content - The dropdown content.
  * @see {@link BaseComponentProps}
  */
-interface DropdownProps extends BaseComponentProps {
+export interface DropdownProps extends BaseComponentProps {
   toggle: ReactNode;
   content: ReactNode;
 }

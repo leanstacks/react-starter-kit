@@ -9,7 +9,7 @@ import { useSettings } from 'common/hooks/useSettings';
  * @see {@link BaseComponentProps}
  * @see {@link PropsWithChildren}
  */
-interface ThemeProps extends BaseComponentProps, PropsWithChildren {}
+export interface ThemeProps extends BaseComponentProps, PropsWithChildren {}
 
 /**
  * The `Theme` component uses the user settings (preferences) and renders the

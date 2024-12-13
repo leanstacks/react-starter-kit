@@ -8,7 +8,7 @@ import { BaseComponentProps } from 'common/utils/types';
  * @see {@link BaseComponentProps}
  * @see {@link PropsWithChildren}
  */
-interface BadgeProps extends BaseComponentProps, PropsWithChildren {}
+export interface BadgeProps extends BaseComponentProps, PropsWithChildren {}
 
 /**
  * The `Badge` component highlights a notification, a count, or a piece status

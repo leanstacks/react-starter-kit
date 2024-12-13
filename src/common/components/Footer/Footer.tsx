@@ -9,7 +9,7 @@ import Link from 'common/components/Link/Link';
  * Properties for the `Footer` component.
  * @see {@link BaseComponentProps}
  */
-interface FooterProps extends BaseComponentProps {}
+export interface FooterProps extends BaseComponentProps {}
 
 /**
  * The `Footer` React component renders the standard page footer content used

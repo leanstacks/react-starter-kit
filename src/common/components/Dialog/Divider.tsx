@@ -6,7 +6,7 @@ import { BaseComponentProps } from 'common/utils/types';
  * Properties for the `Divider` component.
  * @see {@link BaseComponentProps}
  */
-interface DividerProps extends BaseComponentProps {}
+export interface DividerProps extends BaseComponentProps {}
 
 /**
  * The `Divider` component renders a horizontal line which visually separates

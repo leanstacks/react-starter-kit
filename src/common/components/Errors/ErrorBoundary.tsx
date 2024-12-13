@@ -4,14 +4,14 @@ import React, { PropsWithChildren, ReactNode } from 'react';
  * Properties for the `ErrorBoundary` component.
  * @see {@link PropsWithChildren}
  */
-interface ErrorBoundaryProps extends PropsWithChildren {
+export interface ErrorBoundaryProps extends PropsWithChildren {
   fallback: ReactNode;
 }
 
 /**
  * State for the `ErrorBoundary` component.
  */
-interface ErrorBoundaryState {
+export interface ErrorBoundaryState {
   error?: Error | string;
   hasError: boolean;
 }

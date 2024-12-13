@@ -1,5 +1,6 @@
-import { useAuth } from 'common/hooks/useAuth';
 import { Navigate, Outlet } from 'react-router-dom';
+
+import { useAuth } from 'common/hooks/useAuth';
 
 /**
  * The `PrivateOutlet` determines if the user is authenticated. It is typically

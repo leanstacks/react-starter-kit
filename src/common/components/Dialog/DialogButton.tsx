@@ -5,14 +5,14 @@ import Button, { ButtonProps } from '../Button/Button';
 /**
  * The variations of the `DialogButton` components.
  */
-type DialogButtonVariant = 'primary' | 'secondary' | 'danger';
+export type DialogButtonVariant = 'primary' | 'secondary' | 'danger';
 
 /**
  * Properties for the `DialogButton` component.
  * @param {DialogButtonVariant} variant - The variant.
  * @see {@link ButtonProps}
  */
-interface DialogButtonProps extends Omit<ButtonProps, 'variant'> {
+export interface DialogButtonProps extends Omit<ButtonProps, 'variant'> {
   variant?: DialogButtonVariant;
 }
 

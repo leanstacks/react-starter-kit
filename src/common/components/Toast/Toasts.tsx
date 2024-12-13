@@ -6,7 +6,7 @@ import Toast from './Toast';
  * Properties for the `Toasts` component.
  * @see {@link PropsWithTestId}
  */
-interface ToastsProps extends PropsWithTestId {}
+export interface ToastsProps extends PropsWithTestId {}
 
 /**
  * The `Toasts` component renders a container for a list of `Toast`

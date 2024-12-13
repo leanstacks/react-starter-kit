@@ -9,7 +9,7 @@ import { BaseComponentProps } from 'common/utils/types';
  * @see {@link BaseComponentProps}
  * @see {@link PropsWithChildren}
  */
-interface BackdropProps extends BaseComponentProps, PropsWithChildren {
+export interface BackdropProps extends BaseComponentProps, PropsWithChildren {
   onClick?: (e: React.MouseEvent) => void | Promise<void>;
 }
 

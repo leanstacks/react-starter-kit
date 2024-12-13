@@ -16,7 +16,7 @@ import { SearchResultProps } from './SearchResult';
  * @param {string} [supportingText] - Optional. Field help text.
  * @see {@link BaseComponentProps}
  */
-interface SearchFieldProps extends BaseComponentProps {
+export interface SearchFieldProps extends BaseComponentProps {
   errorText?: string;
   isLoading?: boolean;
   onChange: (value: string) => void;

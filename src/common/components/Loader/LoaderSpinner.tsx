@@ -11,7 +11,7 @@ import FAIcon, { FAIconProps } from 'common/components/Icon/FAIcon';
  * @param {string} [textClassName] - Optional. CSS class names for the text.
  * @see {@link BaseComponentProps}
  */
-interface LoaderSpinnerProps extends BaseComponentProps, Partial<Pick<FAIconProps, 'icon'>> {
+export interface LoaderSpinnerProps extends BaseComponentProps, Partial<Pick<FAIconProps, 'icon'>> {
   iconClassName?: string;
   text?: string;
   textClassName?: string;

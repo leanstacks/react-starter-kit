@@ -15,7 +15,7 @@ import { PropsWithChildren } from 'react';
  * @see {@link FAIconProps}
  * @see {@link PropsWithTestId}
  */
-interface MenuNavLinkProps
+export interface MenuNavLinkProps
   extends Omit<NavLinkProps, 'children'>,
     Partial<Pick<FAIconProps, 'icon'>>,
     PropsWithChildren,

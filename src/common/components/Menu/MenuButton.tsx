@@ -13,7 +13,7 @@ import FAIcon from 'common/components/Icon/FAIcon';
  * @param {string} [title] - Optional. The button title attribute value.
  * @see {@link BaseComponentProps}
  */
-interface MenuButtonProps extends BaseComponentProps {
+export interface MenuButtonProps extends BaseComponentProps {
   Menu: ComponentType<MenuProps>;
   title?: string;
 }

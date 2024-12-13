@@ -9,7 +9,7 @@ import { BaseComponentProps } from 'common/utils/types';
  * @param {string} value - The value, e.g. a name, title, etc.
  * @see {@link BaseComponentProps}
  */
-interface AvatarProps extends BaseComponentProps {
+export interface AvatarProps extends BaseComponentProps {
   picture?: string;
   value: string;
 }

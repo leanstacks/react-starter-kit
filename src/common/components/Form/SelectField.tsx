@@ -26,7 +26,7 @@ export interface SelectFieldOption {
  * @see {@link InputHTMLAttributes}
  * @see {@link PropsWithTestId}
  */
-interface SelectFieldProps extends InputHTMLAttributes<HTMLSelectElement>, PropsWithTestId {
+export interface SelectFieldProps extends InputHTMLAttributes<HTMLSelectElement>, PropsWithTestId {
   label?: string;
   name: string;
   onChange?: () => void;

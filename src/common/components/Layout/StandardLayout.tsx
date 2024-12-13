@@ -9,7 +9,7 @@ import Toasts from 'common/components/Toast/Toasts';
  * Properties for the `StandardLayout` component.
  * @see {@link BaseComponentProps}
  */
-interface StandardLayoutProps extends BaseComponentProps {}
+export interface StandardLayoutProps extends BaseComponentProps {}
 
 /**
  * The `StandardLayout` React component renders the standard page layout. It

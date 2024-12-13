@@ -10,7 +10,7 @@ import FAIcon, { FAIconProps } from 'common/components/Icon/FAIcon';
  * @param {string} message - A card message.
  * @see {@link CardProps}
  */
-interface MessageCardProps extends CardProps {
+export interface MessageCardProps extends CardProps {
   iconProps?: FAIconProps;
   title?: string;
   message: string;

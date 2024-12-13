@@ -8,7 +8,7 @@ import { BaseComponentProps } from 'common/utils/types';
  * @see {@link BaseComponentProps}
  * @see {@link PropsWithChildren}
  */
-interface DialogHeadingProps extends BaseComponentProps, PropsWithChildren {}
+export interface DialogHeadingProps extends BaseComponentProps, PropsWithChildren {}
 
 /**
  * The `DialogHeading` component serves as the container for the heading content

@@ -6,7 +6,7 @@ import { BaseComponentProps } from 'common/utils/types';
  * Properties for the `LoaderSkeleton` component.
  * @see {@link BaseComponentProps}
  */
-interface LoaderSkeletonProps extends BaseComponentProps {}
+export interface LoaderSkeletonProps extends BaseComponentProps {}
 
 /**
  * The `LoaderSkeleton` component renders an animated loader which pulses

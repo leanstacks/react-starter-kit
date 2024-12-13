@@ -9,7 +9,7 @@ import FAIcon from 'common/components/Icon/FAIcon';
 /**
  * Properties for the `ThemeToggle` component.
  */
-interface ThemeToggleProps extends PropsWithClassName {}
+export interface ThemeToggleProps extends PropsWithClassName {}
 
 /**
  * The `ThemeToggle` React component renders a `Button` which allows users

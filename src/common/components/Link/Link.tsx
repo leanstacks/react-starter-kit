@@ -8,7 +8,7 @@ import { PropsWithTestId } from 'common/utils/types';
  * @see {@link https://reactrouter.com/en/main/components/link | LinkProps}
  * @see {@link PropsWithTestId}
  */
-interface LinkProps extends RouterLinkProps, PropsWithTestId {}
+export interface LinkProps extends RouterLinkProps, PropsWithTestId {}
 
 /**
  * The `Link` React component formats and renders an `<a />` anchor HTML element using

@@ -7,7 +7,7 @@ import { PropsWithTestId } from 'common/utils/types';
 /**
  * Properties for the `TextField` component.
  */
-interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement>, PropsWithTestId {
+export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement>, PropsWithTestId {
   label?: string;
   name: string;
   supportingText?: string;

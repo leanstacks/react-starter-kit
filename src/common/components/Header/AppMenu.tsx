@@ -11,7 +11,7 @@ import MenuSeparator from 'common/components/Menu/MenuSeparator';
  * Properties fro the `AppMenu` component.
  * @see {@see SideMenuProps}
  */
-interface AppMenuProps extends Omit<SideMenuProps, 'headerContent'> {}
+export interface AppMenuProps extends Omit<SideMenuProps, 'headerContent'> {}
 
 /**
  * The `AppMenu` component a `SideMenu` which contains application menu

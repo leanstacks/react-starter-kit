@@ -10,7 +10,7 @@ import TabContent, { TabContentProps } from './TabContent';
 /**
  * The `TabVariant` describes variations of display behavior for `Tabs`.
  */
-type TabVariant = 'fullWidth' | 'standard';
+export type TabVariant = 'fullWidth' | 'standard';
 
 /**
  * Properties for the `Tabs` React component.
@@ -20,7 +20,7 @@ type TabVariant = 'fullWidth' | 'standard';
  * Default: `standard`.
  * @see {@link PropsWithTestId}
  */
-interface TabsProps extends PropsWithTestId {
+export interface TabsProps extends PropsWithTestId {
   tabs: Omit<TabProps, 'isActive' | 'onClick'>[];
   tabContents: TabContentProps[];
   variant?: TabVariant;

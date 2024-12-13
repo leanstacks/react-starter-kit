@@ -8,7 +8,7 @@ import { BaseComponentProps } from 'common/utils/types';
  * @see {@link BaseComponentProps}
  * @see {@link PropsWithChildren}
  */
-interface DialogContentProps extends BaseComponentProps, PropsWithChildren {}
+export interface DialogContentProps extends BaseComponentProps, PropsWithChildren {}
 
 /**
  * The `DialogContent` component serves as the container for the main content

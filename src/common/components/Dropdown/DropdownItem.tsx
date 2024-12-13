@@ -9,7 +9,7 @@ import { BaseComponentProps } from 'common/utils/types';
  * @see {@link PropsWithChildren}
  * @see {@link BaseComponentProps}
  */
-interface DropdownItemProps extends BaseComponentProps, PropsWithChildren {
+export interface DropdownItemProps extends BaseComponentProps, PropsWithChildren {
   onClick?: () => void;
 }
 

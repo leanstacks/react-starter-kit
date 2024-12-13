@@ -38,7 +38,7 @@ const themeLight = {
  * @param {string} code - The code snippet.
  * @see {@link BaseComponentProps}
  */
-interface CodeSnippetProps extends BaseComponentProps {
+export interface CodeSnippetProps extends BaseComponentProps {
   code: string;
 }
 

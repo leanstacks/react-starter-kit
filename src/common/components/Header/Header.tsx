@@ -12,7 +12,7 @@ import LanguageToggle from 'common/components/Button/LanguageToggle';
  * Properties for the `Header` component.
  * @see {@link PropsWithTestId}
  */
-interface HeaderProps extends PropsWithTestId {}
+export interface HeaderProps extends PropsWithTestId {}
 
 /**
  * The `Header` React component renders a top navigation bar for pages.

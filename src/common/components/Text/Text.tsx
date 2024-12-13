@@ -14,7 +14,7 @@ export type TextVariant = 'heading1' | 'heading2' | 'heading3';
  * @see {@link BaseComponentProps}
  * @see {@link PropsWithChildren}
  */
-interface TextProps extends BaseComponentProps, PropsWithChildren {
+export interface TextProps extends BaseComponentProps, PropsWithChildren {
   variant?: TextVariant;
 }
 

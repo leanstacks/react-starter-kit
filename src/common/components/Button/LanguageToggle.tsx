@@ -13,7 +13,7 @@ import Button from './Button';
  * Properties for the `LanguageToggle` component.
  * @see {@link PropsWithClassName}
  */
-interface LanguageToggleProps extends PropsWithClassName {}
+export interface LanguageToggleProps extends PropsWithClassName {}
 
 /**
  * The `LanguageToggle` component renders a `Dropdown` which allows users

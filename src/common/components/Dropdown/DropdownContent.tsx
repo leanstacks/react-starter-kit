@@ -8,7 +8,7 @@ import { BaseComponentProps } from 'common/utils/types';
  * @see {@link PropsWithChildren}
  * @see {@link BaseComponentProps}
  */
-interface DropdownContentProps extends BaseComponentProps, PropsWithChildren {}
+export interface DropdownContentProps extends BaseComponentProps, PropsWithChildren {}
 
 /**
  * The `DropdownContent` component renders a wrapper for the content displayed

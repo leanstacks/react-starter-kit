@@ -15,7 +15,7 @@ import FAIcon from 'common/components/Icon/FAIcon';
  * @param {ToastDetail} toast - The `Toast`.
  * @see {@link BaseComponentProps}
  */
-interface ToastProps extends BaseComponentProps {
+export interface ToastProps extends BaseComponentProps {
   dismiss: () => void;
   toast: ToastDetail;
 }

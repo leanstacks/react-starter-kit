@@ -10,7 +10,7 @@ import FAIcon from 'common/components/Icon/FAIcon';
  * clicks the close button.
  * @see {@link BaseComponentProps}
  */
-interface MenuCloseButtonProps extends BaseComponentProps {
+export interface MenuCloseButtonProps extends BaseComponentProps {
   close?: () => void;
 }
 

@@ -11,7 +11,7 @@ import MenuCloseButton from '../MenuCloseButton';
  * @see {@link PropsWithChildren}
  * @see {@link BaseComponentProps}
  */
-interface SideMenuHeaderProps extends BaseComponentProps, PropsWithChildren {
+export interface SideMenuHeaderProps extends BaseComponentProps, PropsWithChildren {
   close?: () => void;
 }
 
