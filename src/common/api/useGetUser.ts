@@ -2,7 +2,7 @@ import { UseQueryResult, useQuery } from '@tanstack/react-query';
 
 import { useAxios } from 'common/hooks/useAxios';
 import { useConfig } from 'common/hooks/useConfig';
-import { QueryKeys } from 'common/utils/constants';
+import { QueryKey } from 'common/utils/constants';
 
 /**
  * The `Address` type.
@@ -66,7 +66,7 @@ export const useGetUser = ({ userId }: UseGetUserProps): UseQueryResult<User, Er
   };
 
   return useQuery({
-    queryKey: [QueryKeys.Users, userId],
+    queryKey: [QueryKey.Users, userId],
     queryFn: () => getUser(),
     enabled: !!userId,
   });

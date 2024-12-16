@@ -3,7 +3,7 @@ import { UseQueryResult, useQuery } from '@tanstack/react-query';
 import { useAxios } from 'common/hooks/useAxios';
 import { useConfig } from 'common/hooks/useConfig';
 import { Task } from 'pages/UsersPage/api/useGetUserTasks';
-import { QueryKeys } from 'common/utils/constants';
+import { QueryKey } from 'common/utils/constants';
 
 /**
  * Properties for the `useGetTask` hook.
@@ -31,7 +31,7 @@ export const useGetTask = ({ taskId }: UseGetTaskProps): UseQueryResult<Task> =>
   };
 
   return useQuery({
-    queryKey: [QueryKeys.Tasks, taskId],
+    queryKey: [QueryKey.Tasks, taskId],
     queryFn: () => getTask(),
     enabled: !!taskId,
   });

@@ -7,7 +7,7 @@ import { UserTokens } from 'common/api/useGetUserTokens';
 import { useAxios } from 'common/hooks/useAxios';
 import { useConfig } from 'common/hooks/useConfig';
 import storage from 'common/utils/storage';
-import { QueryKeys, StorageKey } from 'common/utils/constants';
+import { QueryKey, StorageKey } from 'common/utils/constants';
 
 /**
  * An API hook which performs user authentication.
@@ -61,8 +61,8 @@ export const useSignin = () => {
   return useMutation({
     mutationFn: signin,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QueryKeys.UserTokens] });
-      queryClient.invalidateQueries({ queryKey: [QueryKeys.Users, 'current'] });
+      queryClient.invalidateQueries({ queryKey: [QueryKey.UserTokens] });
+      queryClient.invalidateQueries({ queryKey: [QueryKey.Users, 'current'] });
     },
   });
 };

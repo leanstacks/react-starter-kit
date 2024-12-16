@@ -3,7 +3,7 @@ import { Settings } from 'common/api/useGetSettings';
 /**
  * Keys used with React Query cache.
  */
-export enum QueryKeys {
+export enum QueryKey {
   Settings = 'Settings',
   Tasks = 'Tasks',
   Users = 'Users',

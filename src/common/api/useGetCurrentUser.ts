@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import storage from 'common/utils/storage';
 import { User } from './useGetUser';
-import { QueryKeys, StorageKey } from 'common/utils/constants';
+import { QueryKey, StorageKey } from 'common/utils/constants';
 
 /**
  * An API hook which fetches the currently authenticated `User`.
@@ -24,7 +24,7 @@ export const useGetCurrentUser = () => {
   };
 
   return useQuery({
-    queryKey: [QueryKeys.Users, 'current'],
+    queryKey: [QueryKey.Users, 'current'],
     queryFn: getCurrentUser,
   });
 };

@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import reject from 'lodash/reject';
 
-import { QueryKeys } from 'common/utils/constants';
+import { QueryKey } from 'common/utils/constants';
 import { Task } from 'pages/UsersPage/api/useGetUserTasks';
 import { useConfig } from 'common/hooks/useConfig';
 import { useAxios } from 'common/hooks/useAxios';
@@ -44,7 +44,7 @@ export const useUpdateTask = () => {
     onSuccess: (data, variables) => {
       // update cached query data
       queryClient.setQueryData<Task[]>(
-        [QueryKeys.Tasks, { userId: variables.task.userId }],
+        [QueryKey.Tasks, { userId: variables.task.userId }],
         (cachedTasks) => (cachedTasks ? [...reject(cachedTasks, { id: data.id }), data] : [data]),
       );
     },

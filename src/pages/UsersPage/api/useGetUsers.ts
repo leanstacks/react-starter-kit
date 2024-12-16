@@ -3,7 +3,7 @@ import { User } from 'common/api/useGetUser';
 
 import { useAxios } from 'common/hooks/useAxios';
 import { useConfig } from 'common/hooks/useConfig';
-import { QueryKeys } from 'common/utils/constants';
+import { QueryKey } from 'common/utils/constants';
 
 /**
  * An API hook which fetches a collection of `User` objects.
@@ -21,7 +21,7 @@ export const useGetUsers = (): UseQueryResult<User[], Error> => {
   };
 
   return useQuery({
-    queryKey: [QueryKeys.Users],
+    queryKey: [QueryKey.Users],
     queryFn: () => getUsers(),
   });
 };

@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { DEFAULT_SETTINGS, QueryKeys, StorageKey } from 'common/utils/constants';
+import { DEFAULT_SETTINGS, QueryKey, StorageKey } from 'common/utils/constants';
 import storage from 'common/utils/storage';
 
 /**
@@ -34,7 +34,7 @@ export const useGetSettings = () => {
   };
 
   return useQuery({
-    queryKey: [QueryKeys.Settings],
+    queryKey: [QueryKey.Settings],
     queryFn: getSettings,
   });
 };

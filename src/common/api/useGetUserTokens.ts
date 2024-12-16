@@ -1,7 +1,7 @@
 import { UseQueryOptions, UseQueryResult, useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 
-import { QueryKeys, StorageKey } from 'common/utils/constants';
+import { QueryKey, StorageKey } from 'common/utils/constants';
 import storage from 'common/utils/storage';
 
 /**
@@ -53,7 +53,7 @@ export const useGetUserTokens = (
   };
 
   return useQuery({
-    queryKey: [QueryKeys.UserTokens],
+    queryKey: [QueryKey.UserTokens],
     queryFn: () => getUserTokens(),
     retry: 0,
     ...options,

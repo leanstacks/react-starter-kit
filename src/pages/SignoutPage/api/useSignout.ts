@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { QueryKeys, StorageKey } from 'common/utils/constants';
+import { QueryKey, StorageKey } from 'common/utils/constants';
 import storage from 'common/utils/storage';
 
 /**
@@ -33,8 +33,8 @@ export const useSignout = () => {
   return useMutation({
     mutationFn: signout,
     onSuccess: () => {
-      queryClient.resetQueries({ queryKey: [QueryKeys.UserTokens] });
-      queryClient.resetQueries({ queryKey: [QueryKeys.Users] });
+      queryClient.resetQueries({ queryKey: [QueryKey.UserTokens] });
+      queryClient.resetQueries({ queryKey: [QueryKey.Users] });
     },
   });
 };

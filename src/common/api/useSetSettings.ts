@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import storage from 'common/utils/storage';
-import { DEFAULT_SETTINGS, QueryKeys, StorageKey } from 'common/utils/constants';
+import { DEFAULT_SETTINGS, QueryKey, StorageKey } from 'common/utils/constants';
 import { Settings } from './useGetSettings';
 
 /**
@@ -45,7 +45,7 @@ export const useSetSettings = () => {
   return useMutation({
     mutationFn: setSettings,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QueryKeys.Settings] });
+      queryClient.invalidateQueries({ queryKey: [QueryKey.Settings] });
     },
   });
 };
