@@ -8,10 +8,10 @@ import storage from 'common/utils/storage';
 import { useGetSettings } from 'common/api/useGetSettings';
 
 describe('useGetSettings', () => {
-  const getItemSpy = vi.spyOn(storage, 'getItem');
+  const getItemSpy = vi.spyOn(storage, 'getJsonItem');
 
   beforeEach(() => {
-    getItemSpy.mockReturnValue(JSON.stringify(settingsFixture));
+    getItemSpy.mockReturnValue(settingsFixture);
   });
 
   it('should get settings', async () => {
@@ -23,7 +23,7 @@ describe('useGetSettings', () => {
     expect(result.current.data).toBeDefined();
     expect(result.current.data?.theme).toBeDefined();
     expect(getItemSpy).toHaveBeenCalled();
-    expect(getItemSpy).toHaveBeenLastCalledWith(StorageKey.Settings);
+    expect(getItemSpy).toHaveBeenLastCalledWith(StorageKey.Settings, DEFAULT_SETTINGS);
   });
 
   it('should return default settings when nothing stored', async () => {
@@ -39,7 +39,9 @@ describe('useGetSettings', () => {
 
   it('should error on failure to get settings', async () => {
     // ARRANGE
-    getItemSpy.mockReturnValue('{invalid-json}}');
+    getItemSpy.mockImplementation(() => {
+      throw new Error();
+    });
     const { result } = renderHook(() => useGetSettings());
     await waitFor(() => expect(result.current.isError).toBe(true));
 

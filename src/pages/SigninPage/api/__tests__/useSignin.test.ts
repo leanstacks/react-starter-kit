@@ -6,7 +6,7 @@ import storage from 'common/utils/storage';
 import { useSignin } from '../useSignin';
 
 describe('useSignin', () => {
-  const setItemSpy = vi.spyOn(storage, 'setItem');
+  const setItemSpy = vi.spyOn(storage, 'setJsonItem');
 
   it('should signin successfully', async () => {
     // ARRANGE

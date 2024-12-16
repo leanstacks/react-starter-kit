@@ -7,7 +7,7 @@ import { Settings } from 'common/api/useGetSettings';
 import { useSetSettings } from 'common/api/useSetSettings';
 
 describe('useSetSettings', () => {
-  const setItemSpy = vi.spyOn(storage, 'setItem');
+  const setItemSpy = vi.spyOn(storage, 'setJsonItem');
 
   it('should update settings', async () => {
     // ARRANGE

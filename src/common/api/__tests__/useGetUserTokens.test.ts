@@ -9,14 +9,14 @@ import { userTokensFixture } from '__fixtures__/tokens';
 import { UserTokens, useGetUserTokens } from 'common/api/useGetUserTokens';
 
 describe('useGetTokens', () => {
-  const getItemSpy = vi.spyOn(storage, 'getItem');
+  const getItemSpy = vi.spyOn(storage, 'getJsonItem');
 
   beforeEach(() => {
     const token: UserTokens = {
       ...userTokensFixture,
       expires_at: dayjs().add(1, 'hours').toISOString(),
     };
-    getItemSpy.mockReturnValue(JSON.stringify(token));
+    getItemSpy.mockReturnValue(token);
   });
 
   it('should get user tokens', async () => {

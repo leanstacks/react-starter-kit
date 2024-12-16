@@ -7,10 +7,10 @@ import storage from 'common/utils/storage';
 import { useGetCurrentUser } from 'common/api/useGetCurrentUser';
 
 describe('useGetCurrentUser', () => {
-  const getItemSpy = vi.spyOn(storage, 'getItem');
+  const getItemSpy = vi.spyOn(storage, 'getJsonItem');
 
   beforeEach(() => {
-    getItemSpy.mockReturnValue(JSON.stringify(userFixture1));
+    getItemSpy.mockReturnValue(userFixture1);
   });
 
   it('should get current user', async () => {
@@ -38,7 +38,7 @@ describe('useGetCurrentUser', () => {
 
   it('should error on failure to get current user', async () => {
     // ARRANGE
-    getItemSpy.mockReturnValue('{invalid-json}}');
+    getItemSpy.mockRejectedValue(new Error());
     const { result } = renderHook(() => useGetCurrentUser());
     await waitFor(() => expect(result.current.isError).toBe(true));
 
