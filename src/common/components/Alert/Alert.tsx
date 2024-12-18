@@ -33,7 +33,7 @@ const Alert = ({
   return (
     <div
       className={classNames(
-        'rounded-lg p-3',
+        'flex items-center gap-2 rounded-lg p-3',
         {
           'bg-red-800/90 text-white/80': variant === 'error',
           'bg-amber-400/90 text-slate-900': variant === 'warning',

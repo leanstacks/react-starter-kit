@@ -94,33 +94,21 @@ const TaskDetail = ({ className, testId = 'task-detail' }: TaskDetailProps): JSX
       </div>
 
       {taskError && (
-        <Alert
-          variant="error"
-          className="my-4 flex items-center gap-2 rounded-none"
-          testId={`${testId}-alert-taskError`}
-        >
+        <Alert variant="error" className="my-4 rounded-none" testId={`${testId}-alert-taskError`}>
           <FAIcon icon="circleExclamation" />
           {`Unable to retrieve task. Detail: ${taskError.message}`}
         </Alert>
       )}
 
       {userError && (
-        <Alert
-          variant="error"
-          className="my-4 flex items-center gap-2 rounded-none"
-          testId={`${testId}-alert-userError`}
-        >
+        <Alert variant="error" className="my-4 rounded-none" testId={`${testId}-alert-userError`}>
           <FAIcon icon="circleExclamation" />
           {`Unable to retrieve user. Detail: ${userError.message}`}
         </Alert>
       )}
 
       {deleteError && (
-        <Alert
-          variant="error"
-          className="my-4 flex items-center gap-2 rounded-none"
-          testId={`${testId}-alert-deleteError`}
-        >
+        <Alert variant="error" className="my-4 rounded-none" testId={`${testId}-alert-deleteError`}>
           <FAIcon icon="circleExclamation" />
           {`Unable to delete task. Detail: ${deleteError.message}`}
         </Alert>
