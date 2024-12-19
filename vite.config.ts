@@ -24,6 +24,7 @@ export default defineConfig({
         'src/test',
         '**/postcss.config.js',
         '**/tailwind.config.js',
+        '**/*.stories.*',
         ...coverageConfigDefaults.exclude,
       ],
     },
