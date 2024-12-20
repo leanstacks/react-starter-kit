@@ -27,7 +27,7 @@ const meta = {
       },
     },
     className: { description: 'Additional CSS classes.' },
-    variant: { description: 'The Alert variant.' },
+    variant: { description: 'The variant.' },
     testId: { description: 'The test identifier.' },
   },
   args: {

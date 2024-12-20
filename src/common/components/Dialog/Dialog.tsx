@@ -2,7 +2,7 @@ import { PropsWithChildren, useEffect, useState } from 'react';
 import classNames from 'classnames';
 
 import { BaseComponentProps } from 'common/utils/types';
-import Backdrop from './Backdrop';
+import Backdrop from '../Backdrop/Backdrop';
 
 /**
  * Properties for the `Dialog` component.
