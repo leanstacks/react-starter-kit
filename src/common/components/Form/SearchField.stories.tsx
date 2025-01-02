@@ -12,6 +12,13 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     className: { description: 'Additional CSS classes.' },
+    errorText: { description: 'Optional. Field error message.' },
+    isLoading: { description: 'Indicates if the results are loading.' },
+    onChange: { description: 'A function called when the value changes.' },
+    renderSearchResults: {
+      description: 'A render function which returns one or more `SearchResult` components.',
+    },
+    supportingText: { description: 'Additional field instructions.' },
     testId: { description: 'The test identifier.' },
   },
   args: {},
