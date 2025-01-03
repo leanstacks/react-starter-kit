@@ -15,7 +15,7 @@ export type TabVariant = 'fullWidth' | 'standard';
 /**
  * Properties for the `Tabs` React component.
  * @param {TabProps[]} tabs - An array of `Tab` component properties.
- * @param {TabConent[]} tabContents - An array of `TabContent` component properties.
+ * @param {TabContent[]} tabContents - An array of `TabContent` component properties.
  * @param {TabVariant} [variant='standard'] -  Optional. The tab display behavior.
  * Default: `standard`.
  * @see {@link PropsWithTestId}

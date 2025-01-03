@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import dayjs from 'dayjs';
 
+import ConfigContextProvider from 'common/providers/ConfigProvider';
 import { ToastDetail } from 'common/providers/ToastsContext';
 
 import Toast from './Toast';
-import ConfigContextProvider from 'common/providers/ConfigProvider';
 
 const meta = {
   title: 'Common/Toast',
