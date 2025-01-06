@@ -23,7 +23,7 @@ export interface DropdownProps extends BaseComponentProps {
  * creation of a dropdown component content.
  * 
  * *Example:*
- * ```jsx
+ * ```
   <Dropdown
     toggle={<FAIcon icon='bars' className="px-2 py-1" />}
     content={

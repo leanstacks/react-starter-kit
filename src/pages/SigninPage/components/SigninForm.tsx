@@ -52,11 +52,7 @@ const SigninForm = ({ className, testId = 'form-signin' }: SigninFormProps): JSX
   return (
     <div className={classNames('lg:w-2/3 xl:w-1/2', className)} data-testid={testId}>
       {error && (
-        <Alert
-          variant="error"
-          className="mb-4 flex items-center gap-2 rounded-none"
-          testId={`${testId}-alert`}
-        >
+        <Alert variant="error" className="mb-4 rounded-none" testId={`${testId}-alert`}>
           <FAIcon icon="circleExclamation" size="lg" />
           {error}
         </Alert>

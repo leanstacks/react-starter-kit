@@ -6,7 +6,7 @@ import FAIcon, { FAIconProps } from 'common/components/Icon/FAIcon';
 /**
  * Properties for the `LoaderSpinner` component.
  * @param {string} [iconClassName] - Optional. CSS class names for the icon.
- * @param {string} [iconName] - Optional. The icon name. Default: "Progress Activity".
+ * @param {string} [icon] - Optional. The icon name. Default: "circleNotch".
  * @param {string} [text] - Optional. The loader text.
  * @param {string} [textClassName] - Optional. CSS class names for the text.
  * @see {@link BaseComponentProps}

@@ -6,6 +6,7 @@ import tseslint from 'typescript-eslint';
 
 import pluginReactHooks from 'eslint-plugin-react-hooks';
 import pluginReactRefresh from 'eslint-plugin-react-refresh';
+import pluginStorybook from 'eslint-plugin-storybook';
 
 /**
  * The ESLint configuration in "flat config" format.
@@ -32,6 +33,7 @@ export default tseslint.config(
     plugins: {
       'react-hooks': pluginReactHooks,
       'react-refresh': pluginReactRefresh,
+      storybook: pluginStorybook,
     },
     rules: {
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],

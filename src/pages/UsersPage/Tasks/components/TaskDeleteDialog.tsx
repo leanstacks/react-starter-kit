@@ -4,7 +4,7 @@ import { Task } from 'pages/UsersPage/api/useGetUserTasks';
 import Dialog from 'common/components/Dialog/Dialog';
 import DialogHeading from 'common/components/Dialog/DialogHeading';
 import DialogContent from 'common/components/Dialog/DialogContent';
-import Divider from 'common/components/Dialog/Divider';
+import Divider from 'common/components/Divider/Divider';
 import DialogButtons from 'common/components/Dialog/DialogButtons';
 import DialogButton from 'common/components/Dialog/DialogButton';
 

@@ -35,7 +35,7 @@ const Button = ({
   return (
     <button
       className={classNames(
-        'flex items-center justify-center rounded-md border px-2 py-1 enabled:hover:opacity-80 disabled:opacity-50',
+        'flex items-center justify-center gap-2 rounded-md border px-2 py-1 enabled:hover:opacity-80 disabled:opacity-50',
         {
           'border-neutral-700 bg-neutral-700 text-white dark:border-neutral-300 dark:bg-neutral-300 dark:text-neutral-900':
             variant === 'solid',

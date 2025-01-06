@@ -36,10 +36,12 @@ The production technology stack includes:
 - TanStack React Table - advanced tables and datagrids
 
 The development technology stack includes:
+
 - Vite - front end build tooling
 - Vitest - core unit test framework
 - React Testing Library - user-centric UI component testing
 - Mock Service Worker - API mocking
+- Storybook - UI component visualization and documentation
 - TypeScript - the TypeScript language
 
 ### Repository
@@ -213,6 +215,10 @@ See the official guide for more information about [building for production](http
 
 Runs the eslint static code analysis and prints the results to the console.
 
+## `npm run storybook`
+
+Starts the [Storybook][storybook] UI. Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
+
 ## DevOps
 
 ### Cloud Resources
@@ -253,8 +259,9 @@ This project uses GitHub Actions to perform DevOps automation activities such as
 - [Tailwind CSS][tailwind]
 - [Font Awesome][fontawesome]
 - [React Spring][reactspring]
-- [React i18next][reacti18next]  
+- [React i18next][reacti18next]
 - [React Testing Library][testing-library]
+- [Storybook][storybook]
 - [GitHub Actions][ghactions]
 
 [repo]: https://github.com/leanstacks/react-starter-kit 'GitHub Repository'
@@ -272,3 +279,4 @@ This project uses GitHub Actions to perform DevOps automation activities such as
 [ghactions]: https://docs.github.com/en/actions 'GitHub Actions'
 [reacti18next]: https://react.i18next.com/ 'React i18next'
 [reactspring]: https://www.react-spring.dev/ 'React Spring'
+[storybook]: https://storybook.js.org/ 'Storybook'
