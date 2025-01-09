@@ -18,13 +18,14 @@ export default defineConfig({
   test: {
     coverage: {
       exclude: [
+        'storybook-static/**',
         '**/__fixtures__/**',
         '**/__mocks__/**',
+        '**/*.stories.*',
         'src/main.tsx',
         'src/test',
         '**/postcss.config.js',
         '**/tailwind.config.js',
-        '**/*.stories.*',
         ...coverageConfigDefaults.exclude,
       ],
     },
