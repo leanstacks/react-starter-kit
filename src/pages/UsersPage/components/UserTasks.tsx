@@ -7,6 +7,7 @@ import Text from 'common/components/Text/Text';
 import Link from 'common/components/Link/Link';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import Badge from 'common/components/Badge/Badge';
+import TaskStatusDonutChart from '../Tasks/TaskStatusDonutChart';
 
 /**
  * Properties for the `UserTasks` component.
@@ -47,6 +48,9 @@ const UserTasks = ({ className, testId = 'user-tasks', userId }: UserTasksProps)
             <LoaderSkeleton className="my-3 h-4 w-80" />
           </>
         )}
+
+        {!!tasks && <TaskStatusDonutChart tasks={tasks} />}
+
         {!!tasks &&
           tasks.slice(0, 3).map((task) => (
             <div key={task.id} className="flex items-center gap-4 py-0.5">
@@ -57,6 +61,7 @@ const UserTasks = ({ className, testId = 'user-tasks', userId }: UserTasksProps)
               <div>{task.title}</div>
             </div>
           ))}
+
         {!!error && (
           <div className="text-red-600" data-testid={`${testId}-error`}>
             {error.message}
