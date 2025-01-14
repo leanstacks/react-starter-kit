@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import classNames from 'classnames';
 import { filter, reject } from 'lodash';
+import colors from 'tailwindcss/colors';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { Task } from '../api/useGetUserTasks';
@@ -42,9 +43,9 @@ const TaskStatusDonutChart = ({
         {
           name: 'Complete',
           value: filter(tasks, 'completed').length,
-          fill: '#16a34a',
+          fill: colors.green[600],
         },
-        { name: 'Incomplete', value: reject(tasks, 'completed').length, fill: '#dc2626' },
+        { name: 'Incomplete', value: reject(tasks, 'completed').length, fill: colors.red[600] },
       ];
     }, [tasks]);
 
