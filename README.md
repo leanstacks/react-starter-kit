@@ -34,6 +34,7 @@ The production technology stack includes:
 - Lodash - utility functions
 - DayJS - date and time utility functions
 - TanStack React Table - advanced tables and datagrids
+- Recharts - composable charting library for React
 
 The development technology stack includes:
 
@@ -260,6 +261,7 @@ This project uses GitHub Actions to perform DevOps automation activities such as
 - [Font Awesome][fontawesome]
 - [React Spring][reactspring]
 - [React i18next][reacti18next]
+- [Recharts][recharts]
 - [React Testing Library][testing-library]
 - [Storybook][storybook]
 - [GitHub Actions][ghactions]
@@ -280,3 +282,4 @@ This project uses GitHub Actions to perform DevOps automation activities such as
 [reacti18next]: https://react.i18next.com/ 'React i18next'
 [reactspring]: https://www.react-spring.dev/ 'React Spring'
 [storybook]: https://storybook.js.org/ 'Storybook'
+[recharts]: https://recharts.org/ 'Recharts'
