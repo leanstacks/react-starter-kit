@@ -43,27 +43,29 @@ const DonutChart = ({
   testId = 'chart-donut',
 }: DonutChartProps): JSX.Element => {
   return (
-    <PieChart height={height} width={width} className={className} data-testid={testId}>
-      <Pie
-        data={data}
-        dataKey="value"
-        innerRadius={innerRadius}
-        outerRadius={outerRadius}
-        paddingAngle={paddingAngle}
-        fill="#737373"
-      >
-        {data.map((cell, index) => (
-          <Cell key={`cell-${index}`} fill={cell.fill} strokeWidth={0} />
-        ))}
-      </Pie>
-      <Legend
-        iconSize={8}
-        iconType="circle"
-        layout="vertical"
-        align="right"
-        verticalAlign="middle"
-      />
-    </PieChart>
+    <div className={className} data-testid={testId}>
+      <PieChart height={height} width={width}>
+        <Pie
+          data={data}
+          dataKey="value"
+          innerRadius={innerRadius}
+          outerRadius={outerRadius}
+          paddingAngle={paddingAngle}
+          fill="#737373"
+        >
+          {data.map((cell, index) => (
+            <Cell key={`cell-${index}`} fill={cell.fill} strokeWidth={0} />
+          ))}
+        </Pie>
+        <Legend
+          iconSize={8}
+          iconType="circle"
+          layout="vertical"
+          align="right"
+          verticalAlign="middle"
+        />
+      </PieChart>
+    </div>
   );
 };
 

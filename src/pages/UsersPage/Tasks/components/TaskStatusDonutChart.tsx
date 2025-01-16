@@ -4,7 +4,7 @@ import { filter, reject } from 'lodash';
 import colors from 'tailwindcss/colors';
 
 import { BaseComponentProps } from 'common/utils/types';
-import { Task } from '../api/useGetUserTasks';
+import { Task } from '../../api/useGetUserTasks';
 import DonutChart, { DonutChartData, DonutChartProps } from 'common/components/Chart/DonutChart';
 
 /**
@@ -36,7 +36,7 @@ const TaskStatusDonutChart = ({
   testId = 'chart-donut-task-status',
   ...chartProps
 }: TaskStatusDonutChartProps): JSX.Element | false => {
-  if (tasks && tasks.length > 0) {
+  if (tasks.length > 0) {
     // format the chart data
     const chartData: DonutChartData[] = useMemo(() => {
       return [
