@@ -37,12 +37,18 @@ export const routes: RouteObject[] = [
         element: <LandingPage />,
       },
       {
-        path: 'auth/signin',
-        element: <SigninPage />,
-      },
-      {
-        path: 'auth/signout',
-        element: <SignoutPage />,
+        path: 'auth',
+        children: [
+          { index: true, element: <Navigate to="signin" /> },
+          {
+            path: 'signin',
+            element: <SigninPage />,
+          },
+          {
+            path: 'signout',
+            element: <SignoutPage />,
+          },
+        ],
       },
       {
         path: 'app',
