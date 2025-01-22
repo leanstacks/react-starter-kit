@@ -2,7 +2,7 @@ import { UseQueryResult, useQuery } from '@tanstack/react-query';
 
 import { useAxios } from 'common/hooks/useAxios';
 import { useConfig } from 'common/hooks/useConfig';
-import { Task } from 'pages/UsersPage/api/useGetUserTasks';
+import { Task } from 'pages/Users/api/useGetUserTasks';
 import { QueryKey } from 'common/utils/constants';
 
 /**

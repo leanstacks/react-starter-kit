@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef } from 'react';
 
-import { Task } from 'pages/UsersPage/api/useGetUserTasks';
+import { Task } from 'pages/Users/api/useGetUserTasks';
 import Dialog from 'common/components/Dialog/Dialog';
 import DialogHeading from 'common/components/Dialog/DialogHeading';
 import DialogContent from 'common/components/Dialog/DialogContent';

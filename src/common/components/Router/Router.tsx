@@ -1,26 +1,26 @@
 import { Navigate, RouteObject, createBrowserRouter } from 'react-router-dom';
 
 import StandardLayout from 'common/components/Layout/StandardLayout';
-import ErrorPage from 'pages/ErrorPage/ErrorPage';
+import ErrorPage from 'pages/Error/ErrorPage';
 import PrivateOutlet from './PrivateOutlet';
-import LandingPage from 'pages/LandingPage/LandingPage';
+import LandingPage from 'pages/Landing/LandingPage';
 import SigninPage from 'pages/Auth/Signin/SigninPage';
 import SignoutPage from 'pages/Auth/Signout/SignoutPage';
-import DashboardPage from 'pages/DashboardPage/DashboardPage';
-import SettingsPage from 'pages/SettingsPage/SettingsPage';
-import AppearanceSettings from 'pages/SettingsPage/components/AppearanceSettings';
-import ComponentsPage from 'pages/ComponentsPage/ComponentsPage';
-import AvatarComponents from 'pages/ComponentsPage/components/AvatarComponents';
-import TextComponents from 'pages/ComponentsPage/components/TextComponents';
-import ButtonComponents from 'pages/ComponentsPage/components/ButtonComponents';
-import BadgeComponents from 'pages/ComponentsPage/components/BadgeComponents';
-import CardComponents from 'pages/ComponentsPage/components/CardComponents';
-import UsersPage from 'pages/UsersPage/UsersPage';
-import UserDetailLayout from 'pages/UsersPage/components/UserDetailLayout';
-import UserDetail from 'pages/UsersPage/components/UserDetail';
-import UserDetailEmpty from 'pages/UsersPage/components/UserDetailEmpty';
-import UserTaskList from 'pages/UsersPage/components/UserTaskList';
-import TaskDetail from 'pages/UsersPage/Tasks/components/TaskDetail';
+import DashboardPage from 'pages/Dashboard/DashboardPage';
+import SettingsPage from 'pages/Settings/SettingsPage';
+import AppearanceSettings from 'pages/Settings/components/AppearanceSettings';
+import ComponentsPage from 'pages/Components/ComponentsPage';
+import AvatarComponents from 'pages/Components/components/AvatarComponents';
+import TextComponents from 'pages/Components/components/TextComponents';
+import ButtonComponents from 'pages/Components/components/ButtonComponents';
+import BadgeComponents from 'pages/Components/components/BadgeComponents';
+import CardComponents from 'pages/Components/components/CardComponents';
+import UsersPage from 'pages/Users/UsersPage';
+import UserDetailLayout from 'pages/Users/components/UserDetailLayout';
+import UserDetail from 'pages/Users/components/UserDetail';
+import UserDetailEmpty from 'pages/Users/components/UserDetailEmpty';
+import UserTaskList from 'pages/Users/components/UserTaskList';
+import TaskDetail from 'pages/Users/Tasks/components/TaskDetail';
 
 /**
  * The React Router configuration. An array of `RouteObject`.

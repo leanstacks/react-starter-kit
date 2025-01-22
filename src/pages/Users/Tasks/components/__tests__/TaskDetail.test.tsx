@@ -3,10 +3,10 @@ import userEvent from '@testing-library/user-event';
 import { UseMutationResult, UseQueryResult } from '@tanstack/react-query';
 
 import { render, screen } from 'test/test-utils';
-import * as UseDeleteTask from 'pages/UsersPage/Tasks/api/useDeleteTask';
-import * as UseGetTask from 'pages/UsersPage/Tasks/api/useGetTask';
+import * as UseDeleteTask from 'pages/Users/Tasks/api/useDeleteTask';
+import * as UseGetTask from 'pages/Users/Tasks/api/useGetTask';
 import * as UseGetUser from 'common/api/useGetUser';
-import { Task } from 'pages/UsersPage/api/useGetUserTasks';
+import { Task } from 'pages/Users/api/useGetUserTasks';
 import { userFixture1 } from '__fixtures__/users';
 import { todosFixture } from '__fixtures__/todos';
 

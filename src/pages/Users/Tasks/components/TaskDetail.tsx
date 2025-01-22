@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { Task } from 'pages/UsersPage/api/useGetUserTasks';
+import { Task } from 'pages/Users/api/useGetUserTasks';
 import Text from 'common/components/Text/Text';
 import { useGetTask } from '../api/useGetTask';
 import { useDeleteTask } from '../api/useDeleteTask';

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import { QueryKey } from 'common/utils/constants';
-import { Task } from 'pages/UsersPage/api/useGetUserTasks';
+import { Task } from 'pages/Users/api/useGetUserTasks';
 import { todosFixture } from '__fixtures__/todos';
 import { queryClient } from 'test/query-client';
 import { renderHook, waitFor } from 'test/test-utils';
