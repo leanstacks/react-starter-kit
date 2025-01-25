@@ -1,0 +1,8 @@
+{
+  "status": {
+    "complete": "Complete",
+    "incomplete": "Incomplete"
+  },
+  "tasks": "Tasks",
+  "tasks-empty": "Nothing to do. Create a task to get started."
+}

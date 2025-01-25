@@ -19,7 +19,7 @@ i18n
     // languages, namespaces, and resources
     supportedLngs: ['en', 'es', 'fr'],
     fallbackLng: 'en',
-    ns: ['common', 'users'],
+    ns: ['common', 'tasks', 'users'],
     defaultNS: 'common',
     resources: {
       en,

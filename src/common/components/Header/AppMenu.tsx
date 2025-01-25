@@ -53,6 +53,9 @@ const AppMenu = ({ side = 'right', testId = 'menu-app', ...props }: AppMenuProps
           <MenuNavLink to="/app/users" title="Users" icon="users">
             Users
           </MenuNavLink>
+          <MenuNavLink to="/app/tasks" title="Tasks" icon="listCheck">
+            Tasks
+          </MenuNavLink>
         </>
       ) : (
         <>

@@ -22,6 +22,10 @@ import UserDetailEmpty from 'pages/Users/components/UserDetailEmpty';
 import UserTaskList from 'pages/Users/components/UserTaskList';
 import TaskDetail from 'pages/Users/Tasks/components/TaskDetail';
 
+// Tasks
+import TasksPage from 'pages/Tasks/TasksPage';
+import TaskListLayout from 'pages/Tasks/components/TaskListLayout';
+
 /**
  * The React Router configuration. An array of `RouteObject`.
  * @see {@link RouteObject}
@@ -96,6 +100,20 @@ export const routes: RouteObject[] = [
               {
                 path: 'text',
                 element: <TextComponents />,
+              },
+            ],
+          },
+          {
+            path: 'tasks',
+            element: <TasksPage />,
+            children: [
+              {
+                index: true,
+                element: <TaskListLayout />,
+              },
+              {
+                path: ':taskId',
+                element: <TaskDetail />,
               },
             ],
           },
