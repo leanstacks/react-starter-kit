@@ -10,7 +10,7 @@ import { Task } from 'pages/Users/api/useGetUserTasks';
 import { userFixture1 } from '__fixtures__/users';
 import { todosFixture } from '__fixtures__/todos';
 
-import TaskDetail from '../TaskDetail';
+import TaskDetailLayout from '../TaskDetailLayout';
 
 // mock select functions from react-router-dom
 const mockNavigate = vi.fn();
@@ -32,16 +32,16 @@ describe('TaskDetail', () => {
 
   it('should render successfully', async () => {
     // ARRANGE
-    render(<TaskDetail />);
-    await screen.findByTestId('task-detail');
+    render(<TaskDetailLayout />);
+    await screen.findByTestId('task-detail-layout');
 
     // ASSERT
-    expect(screen.getByTestId('task-detail')).toBeDefined();
+    expect(screen.getByTestId('task-detail-layout')).toBeDefined();
   });
 
   it('should display a task', async () => {
     // ARRANGE
-    render(<TaskDetail />);
+    render(<TaskDetailLayout />);
     await screen.findByTestId('task-detail-task');
 
     // ASSERT
@@ -52,7 +52,7 @@ describe('TaskDetail', () => {
 
   it('should display a task user', async () => {
     // ARRANGE
-    render(<TaskDetail />);
+    render(<TaskDetailLayout />);
     await screen.findByTestId('task-detail-task-user-name');
 
     // ASSERT
@@ -70,7 +70,7 @@ describe('TaskDetail', () => {
       error: undefined,
       isLoading: false,
     } as unknown as UseQueryResult<Task, Error>);
-    render(<TaskDetail />);
+    render(<TaskDetailLayout />);
     await screen.findByTestId('task-detail-task-status');
 
     // ASSERT
@@ -87,7 +87,7 @@ describe('TaskDetail', () => {
       error: undefined,
       isLoading: false,
     } as unknown as UseQueryResult<Task, Error>);
-    render(<TaskDetail />);
+    render(<TaskDetailLayout />);
     await screen.findByTestId('task-detail-task-status');
 
     // ASSERT
@@ -102,7 +102,7 @@ describe('TaskDetail', () => {
       error: new Error(),
       isLoading: false,
     } as unknown as UseQueryResult<Task, Error>);
-    render(<TaskDetail />);
+    render(<TaskDetailLayout />);
     await screen.findByTestId('task-detail-alert-taskError');
 
     // ASSERT
@@ -117,7 +117,7 @@ describe('TaskDetail', () => {
       error: new Error(),
       isLoading: false,
     } as unknown as UseQueryResult<UseGetUser.User, Error>);
-    render(<TaskDetail />);
+    render(<TaskDetailLayout />);
     await screen.findByTestId('task-detail-alert-userError');
 
     // ASSERT
@@ -132,7 +132,7 @@ describe('TaskDetail', () => {
       error: undefined,
       isLoading: true,
     } as unknown as UseQueryResult<Task, Error>);
-    render(<TaskDetail />);
+    render(<TaskDetailLayout />);
     await screen.findByTestId('task-detail-loader');
 
     // ASSERT
@@ -142,7 +142,7 @@ describe('TaskDetail', () => {
   it('should navigate back using close button', async () => {
     // ARRANGE
     const user = userEvent.setup();
-    render(<TaskDetail />);
+    render(<TaskDetailLayout />);
     await screen.findByTestId('task-detail-button-close');
 
     // ACT
@@ -161,7 +161,7 @@ describe('TaskDetail', () => {
       error: new Error(),
       isLoading: false,
     } as unknown as UseMutationResult<void, Error, UseDeleteTask.DeleteTaskVariables>);
-    render(<TaskDetail />);
+    render(<TaskDetailLayout />);
     await screen.findByTestId('task-detail-alert-deleteError');
 
     // ASSERT
@@ -171,7 +171,7 @@ describe('TaskDetail', () => {
   it('should show the delete dialog', async () => {
     // ARRANGE
     const user = userEvent.setup();
-    render(<TaskDetail />);
+    render(<TaskDetailLayout />);
     await screen.findByTestId('dialog-task-delete');
     expect(screen.getByTestId('dialog-task-delete')).toHaveClass('hidden');
 
@@ -185,7 +185,7 @@ describe('TaskDetail', () => {
   it('should hide the delete dialog when cancel clicked', async () => {
     // ARRANGE
     const user = userEvent.setup();
-    render(<TaskDetail />);
+    render(<TaskDetailLayout />);
     await screen.findByTestId('dialog-task-delete');
     expect(screen.getByTestId('dialog-task-delete')).toHaveClass('hidden');
 
@@ -202,7 +202,7 @@ describe('TaskDetail', () => {
   it('should hide the delete dialog when backdrop clicked', async () => {
     // ARRANGE
     const user = userEvent.setup();
-    render(<TaskDetail />);
+    render(<TaskDetailLayout />);
     await screen.findByTestId('dialog-task-delete');
     expect(screen.getByTestId('dialog-task-delete')).toHaveClass('hidden');
 
@@ -219,7 +219,7 @@ describe('TaskDetail', () => {
   it('should delete a task', async () => {
     // ARRANGE
     const user = userEvent.setup();
-    render(<TaskDetail />);
+    render(<TaskDetailLayout />);
     await screen.findByTestId('task-detail-button-delete');
 
     // ACT

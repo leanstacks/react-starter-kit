@@ -6,14 +6,14 @@ import TaskList from './TaskList';
 
 const TaskListLayout = ({
   className,
-  testId = 'layout-list-task',
+  testId = 'layout-task-list',
 }: BaseComponentProps): JSX.Element => {
   const { t } = useTranslation();
   const { data: currentUser } = useGetCurrentUser();
 
   return (
     <div className={className} data-testid={testId}>
-      {currentUser && (
+      {!!currentUser && (
         <>
           <h2 className="text-lg font-bold">{t('status.incomplete', { ns: 'tasks' })}</h2>
           <TaskList

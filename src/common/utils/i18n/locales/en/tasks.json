@@ -3,6 +3,7 @@
     "complete": "Complete",
     "incomplete": "Incomplete"
   },
+  "task": "Task",
   "tasks": "Tasks",
   "tasks-empty": "Nothing to do. Create a task to get started."
 }
