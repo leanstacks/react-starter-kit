@@ -6,7 +6,6 @@ import PrivateOutlet from './PrivateOutlet';
 import LandingPage from 'pages/Landing/LandingPage';
 import SigninPage from 'pages/Auth/Signin/SigninPage';
 import SignoutPage from 'pages/Auth/Signout/SignoutPage';
-import DashboardPage from 'pages/Dashboard/DashboardPage';
 import SettingsPage from 'pages/Settings/SettingsPage';
 import AppearanceSettings from 'pages/Settings/components/AppearanceSettings';
 import ComponentsPage from 'pages/Components/ComponentsPage';
@@ -58,7 +57,7 @@ export const routes: RouteObject[] = [
         path: 'app',
         element: <PrivateOutlet />,
         children: [
-          { index: true, element: <DashboardPage /> },
+          { index: true, element: <Navigate to="tasks" /> },
           {
             path: 'settings',
             element: <SettingsPage />,
