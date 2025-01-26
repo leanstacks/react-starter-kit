@@ -3,7 +3,7 @@ import Link from 'common/components/Link/Link';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { Task } from 'pages/Users/api/useGetUserTasks';
-import TaskCompleteToggle from 'pages/Users/Tasks/components/TaskCompleteToggle';
+import TaskCompleteToggle from 'pages/Tasks/components/Edit/TaskCompleteToggle';
 
 interface TaskListItemProps extends BaseComponentProps {
   task: Task;

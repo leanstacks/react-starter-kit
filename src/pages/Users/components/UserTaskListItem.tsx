@@ -1,6 +1,6 @@
 import { BaseComponentProps } from 'common/utils/types';
 import { Task } from '../api/useGetUserTasks';
-import TaskCompleteToggle from '../Tasks/components/TaskCompleteToggle';
+import TaskCompleteToggle from '../../Tasks/components/Edit/TaskCompleteToggle';
 import Link from 'common/components/Link/Link';
 
 /**

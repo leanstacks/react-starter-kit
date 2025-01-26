@@ -1,20 +1,18 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import classNames from 'classnames';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { Task } from 'pages/Users/api/useGetUserTasks';
-import { useGetTask } from '../../Users/Tasks/api/useGetTask';
-import { useDeleteTask } from '../../Users/Tasks/api/useDeleteTask';
-import { useGetUser } from 'common/api/useGetUser';
+import { useGetTask } from '../api/useGetTask';
+import { useDeleteTask } from '../api/useDeleteTask';
 import { useToasts } from 'common/hooks/useToasts';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
-import Badge from 'common/components/Badge/Badge';
 import FAIcon from 'common/components/Icon/FAIcon';
-import TaskDeleteDialog from '../../Users/Tasks/components/TaskDeleteDialog';
+import TaskDeleteDialog from './Delete/TaskDeleteDialog';
 import Button from 'common/components/Button/Button';
 import Alert from 'common/components/Alert/Alert';
+import TaskView from './View/TaskView';
 
 /**
  * Properties for the `TaskDetailLayout` component.
@@ -43,12 +41,6 @@ const TaskDetailLayout = ({
     error: taskError,
     isLoading: isLoadingTask,
   } = useGetTask({ taskId: Number(taskId) });
-
-  const {
-    data: user,
-    error: userError,
-    isLoading: isLoadingUser,
-  } = useGetUser({ userId: Number(task?.userId) });
 
   const { mutate: deleteTask, isPending: isDeletePending, error: deleteError } = useDeleteTask();
 
@@ -111,13 +103,6 @@ const TaskDetailLayout = ({
         </Alert>
       )}
 
-      {userError && (
-        <Alert variant="error" className="my-4 rounded-none" testId={`${testId}-alert-userError`}>
-          <FAIcon icon="circleExclamation" />
-          {`Unable to retrieve user. Detail: ${userError.message}`}
-        </Alert>
-      )}
-
       {deleteError && (
         <Alert variant="error" className="my-4 rounded-none" testId={`${testId}-alert-deleteError`}>
           <FAIcon icon="circleExclamation" />
@@ -144,30 +129,7 @@ const TaskDetailLayout = ({
 
       {task && !isDeletePending && (
         <div data-testid={`${testId}-task`}>
-          <div className="mt-4">
-            <div className="text-xs font-bold uppercase">Title</div>
-            <div className="text-lg" data-testid={`${testId}-task-title`}>
-              {task.title}
-            </div>
-          </div>
-
-          <div className="mt-4">
-            <div className="text-xs font-bold uppercase">Assignee</div>
-            <div>
-              {isLoadingUser && <LoaderSkeleton className="h-4 w-40" testId="loader-user" />}
-              {user && <span data-testid={`${testId}-task-user-name`}>{user.name}</span>}
-            </div>
-          </div>
-
-          <div className="mt-4">
-            <div className="text-xs font-bold uppercase">Status</div>
-            <Badge
-              className={classNames('inline', { '!bg-blue-600': task.completed })}
-              testId={`${testId}-task-status`}
-            >
-              {task.completed ? 'COMPLETE' : 'INCOMPLETE'}
-            </Badge>
-          </div>
+          <TaskView task={task} />
 
           <TaskDeleteDialog
             isOpen={isDeleteDialogOpen}

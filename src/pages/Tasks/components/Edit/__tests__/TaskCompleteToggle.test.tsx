@@ -5,7 +5,7 @@ import { render, screen } from 'test/test-utils';
 import { todosFixture } from '__fixtures__/todos';
 import * as UseToasts from 'common/hooks/useToasts';
 
-import TaskCompleteToggle from '../TaskCompleteToggle';
+import TaskCompleteToggle from '../../../../Tasks/components/Edit/TaskCompleteToggle';
 
 describe('TaskCompleteToggle', () => {
   const incompleteTask = todosFixture[0];

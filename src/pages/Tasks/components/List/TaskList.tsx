@@ -31,7 +31,7 @@ const TaskList = ({
 }: TaskListProps): JSX.Element => {
   const { t } = useTranslation();
   const { data: tasks, isLoading, isError } = useGetUserTasks({ userId });
-  const isEmpty = !tasks || tasks.length === 0;
+  const isEmpty = !isLoading && (!tasks || tasks?.length === 0);
 
   const filteredTasks = filter(tasks, filterBy);
 

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { Task } from 'pages/Users/api/useGetUserTasks';
-import { useUpdateTask } from '../api/useUpdateTask';
+import { useUpdateTask } from 'pages/Tasks/api/useUpdateTask';
 import { useToasts } from 'common/hooks/useToasts';
 import FAIcon from 'common/components/Icon/FAIcon';
 import Button from 'common/components/Button/Button';

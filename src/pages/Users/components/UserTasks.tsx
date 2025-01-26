@@ -7,7 +7,7 @@ import Text from 'common/components/Text/Text';
 import Link from 'common/components/Link/Link';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import Badge from 'common/components/Badge/Badge';
-import TaskStatusDonutChart from '../Tasks/components/TaskStatusDonutChart';
+import TaskStatusDonutChart from 'pages/Tasks/components/Chart/TaskStatusDonutChart';
 
 /**
  * Properties for the `UserTasks` component.

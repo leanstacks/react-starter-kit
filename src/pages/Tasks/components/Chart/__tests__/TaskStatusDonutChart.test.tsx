@@ -1,6 +1,6 @@
 import { render, screen } from 'test/test-utils';
 import { describe, expect, it } from 'vitest';
-import TaskStatusDonutChart from '../TaskStatusDonutChart';
+import TaskStatusDonutChart from '../Chart/TaskStatusDonutChart';
 import { todosFixture } from '__fixtures__/todos';
 
 describe('TaskStatusDonutChart', () => {

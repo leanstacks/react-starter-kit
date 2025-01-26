@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { render, screen } from 'test/test-utils';
 import { todosFixture } from '__fixtures__/todos';
 
-import TaskDeleteDialog from '../TaskDeleteDialog';
+import TaskDeleteDialog from '../../../../Tasks/components/Delete/TaskDeleteDialog';
 
 describe('TaskDeleteDialog', () => {
   it('should render successfully', async () => {
