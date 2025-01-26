@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import { useGetCurrentUser } from 'common/api/useGetCurrentUser';
 import { BaseComponentProps } from 'common/utils/types';
-import TaskList from './TaskList';
+import TaskList from './List/TaskList';
 
 const TaskListLayout = ({
   className,
