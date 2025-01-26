@@ -9,15 +9,18 @@ import Alert from 'common/components/Alert/Alert';
 import FAIcon from 'common/components/Icon/FAIcon';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import TaskListItem from './TaskListItem';
+import Badge from 'common/components/Badge/Badge';
 
 type OrderDir = 'asc' | 'desc';
 
-type TaskKeys = keyof Task;
+type TaskKey = keyof Task;
 
 interface TaskListProps extends BaseComponentProps {
   filterBy?: Partial<Task>;
-  orderBy?: TaskKeys[];
+  orderBy?: TaskKey[];
   orderDir?: OrderDir[];
+  showBadge?: boolean;
+  title?: string;
   userId: number;
 }
 
@@ -26,7 +29,9 @@ const TaskList = ({
   filterBy = {},
   orderBy = [],
   orderDir = [],
+  showBadge = false,
   testId = 'list-task',
+  title,
   userId,
 }: TaskListProps): JSX.Element => {
   const { t } = useTranslation();
@@ -39,6 +44,15 @@ const TaskList = ({
 
   return (
     <div className={className} data-testid={testId}>
+      {!!title && (
+        <div className="flex items-center gap-2">
+          <h2 className="text-lg font-bold">{title}</h2>
+          {showBadge && !!orderedTasks && (
+            <Badge className="self-start">{orderedTasks.length}</Badge>
+          )}
+        </div>
+      )}
+
       {isError && (
         <Alert variant="error" className="mb-4 rounded-none" testId={`${testId}-error`}>
           <FAIcon icon="circleExclamation" size="lg" />

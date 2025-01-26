@@ -15,16 +15,22 @@ const TaskListLayout = ({
     <div className={className} data-testid={testId}>
       {!!currentUser && (
         <>
-          <h2 className="text-lg font-bold">{t('status.incomplete', { ns: 'tasks' })}</h2>
           <TaskList
             className="mb-4"
             userId={currentUser.id}
             filterBy={{ completed: false }}
             orderBy={['title']}
+            showBadge
+            title={t('status.incomplete', { ns: 'tasks' })}
           />
 
-          <h2 className="text-lg font-bold">{t('status.complete', { ns: 'tasks' })}</h2>
-          <TaskList userId={currentUser.id} filterBy={{ completed: true }} orderBy={['title']} />
+          <TaskList
+            userId={currentUser.id}
+            filterBy={{ completed: true }}
+            orderBy={['title']}
+            showBadge
+            title={t('status.complete', { ns: 'tasks' })}
+          />
         </>
       )}
     </div>
