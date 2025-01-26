@@ -47,9 +47,7 @@ const TaskList = ({
       {!!title && (
         <div className="flex items-center gap-2">
           <h2 className="text-lg font-bold">{title}</h2>
-          {showBadge && !!orderedTasks && (
-            <Badge className="self-start">{orderedTasks.length}</Badge>
-          )}
+          {showBadge && !isLoading && <Badge className="self-start">{orderedTasks.length}</Badge>}
         </div>
       )}
 
