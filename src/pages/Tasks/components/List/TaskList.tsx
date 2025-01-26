@@ -3,7 +3,7 @@ import { filter } from 'lodash';
 import { orderBy as order } from 'lodash';
 import { times } from 'lodash';
 
-import { Task, useGetUserTasks } from 'pages/Users/api/useGetUserTasks';
+import { Task, useGetUserTasks } from 'pages/Tasks/api/useGetUserTasks';
 import { BaseComponentProps } from 'common/utils/types';
 import Alert from 'common/components/Alert/Alert';
 import FAIcon from 'common/components/Icon/FAIcon';

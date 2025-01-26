@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from 'test/test-utils';
 
-import * as UseGetUserTasks from '../../api/useGetUserTasks';
+import * as UseGetUserTasks from '../../../Tasks/api/useGetUserTasks';
 import UserTasks from '../UserTasks';
 import { UseQueryResult } from '@tanstack/react-query';
 import { AxiosError } from 'axios';

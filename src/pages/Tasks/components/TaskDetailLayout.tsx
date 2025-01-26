@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { BaseComponentProps } from 'common/utils/types';
-import { Task } from 'pages/Users/api/useGetUserTasks';
+import { Task } from 'pages/Tasks/api/useGetUserTasks';
 import { useGetTask } from '../api/useGetTask';
 import { useDeleteTask } from '../api/useDeleteTask';
 import { useToasts } from 'common/hooks/useToasts';

@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
 import { BaseComponentProps } from 'common/utils/types';
-import { Task } from 'pages/Users/api/useGetUserTasks';
+import { Task } from 'pages/Tasks/api/useGetUserTasks';
 import { useGetUser } from 'common/api/useGetUser';
 import Badge from 'common/components/Badge/Badge';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';

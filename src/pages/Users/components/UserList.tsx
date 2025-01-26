@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import classNames from 'classnames';
 
 import { BaseComponentProps } from 'common/utils/types';
-import { useGetUsers } from '../api/useGetUsers';
+import { useGetUsers } from '../../Tasks/api/useGetUsers';
 import UserListItem from './UserListItem';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 

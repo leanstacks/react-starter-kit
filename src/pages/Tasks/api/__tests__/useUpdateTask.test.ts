@@ -4,7 +4,7 @@ import { renderHook, waitFor } from 'test/test-utils';
 import { queryClient } from 'test/query-client';
 import { todosFixture } from '__fixtures__/todos';
 import { QueryKey } from 'common/utils/constants';
-import { Task } from '../../../api/useGetUserTasks';
+import { Task } from '../useGetUserTasks';
 
 import { useUpdateTask } from '../useUpdateTask';
 

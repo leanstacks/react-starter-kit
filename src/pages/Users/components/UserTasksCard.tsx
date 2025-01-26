@@ -4,7 +4,7 @@ import filter from 'lodash/filter';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import { useGetUserTasks } from '../api/useGetUserTasks';
+import { useGetUserTasks } from '../../Tasks/api/useGetUserTasks';
 import Card, { CardProps } from 'common/components/Card/Card';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 

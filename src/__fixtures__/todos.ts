@@ -1,4 +1,4 @@
-import { Task } from 'pages/Users/api/useGetUserTasks';
+import { Task } from 'pages/Tasks/api/useGetUserTasks';
 
 export const todosFixture: Task[] = [
   {

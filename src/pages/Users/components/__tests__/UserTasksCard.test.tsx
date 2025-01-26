@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { UseQueryResult } from '@tanstack/react-query';
 import userEvent from '@testing-library/user-event';
 
-import * as UseGetUserTasks from '../../api/useGetUserTasks';
+import * as UseGetUserTasks from '../../../Tasks/api/useGetUserTasks';
 import { todosFixture } from '__fixtures__/todos';
 
 import UserTasksCard from '../UserTasksCard';

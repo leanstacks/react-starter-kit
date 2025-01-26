@@ -1,7 +1,9 @@
-import { render, screen } from 'test/test-utils';
 import { describe, expect, it } from 'vitest';
-import TaskStatusDonutChart from '../Chart/TaskStatusDonutChart';
+import { render, screen } from 'test/test-utils';
+
 import { todosFixture } from '__fixtures__/todos';
+
+import TaskStatusDonutChart from '../TaskStatusDonutChart';
 
 describe('TaskStatusDonutChart', () => {
   it('should render successfully', async () => {

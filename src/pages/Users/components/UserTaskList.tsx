@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import filter from 'lodash/filter';
 
 import { BaseComponentProps } from 'common/utils/types';
-import { useGetUserTasks } from '../api/useGetUserTasks';
+import { useGetUserTasks } from '../../Tasks/api/useGetUserTasks';
 import FAIcon from 'common/components/Icon/FAIcon';
 import Text from 'common/components/Text/Text';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';

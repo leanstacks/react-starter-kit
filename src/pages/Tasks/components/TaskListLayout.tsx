@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { useGetCurrentUser } from 'common/api/useGetCurrentUser';
-import { useGetUserTasks } from 'pages/Users/api/useGetUserTasks';
+import { useGetUserTasks } from 'pages/Tasks/api/useGetUserTasks';
 import { BaseComponentProps } from 'common/utils/types';
 import TaskList from './List/TaskList';
 import TaskStatusDonutChart from './Chart/TaskStatusDonutChart';

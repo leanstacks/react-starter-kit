@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 import { BaseComponentProps } from 'common/utils/types';
-import { useGetUserTasks } from '../api/useGetUserTasks';
+import { useGetUserTasks } from '../../Tasks/api/useGetUserTasks';
 import FAIcon from 'common/components/Icon/FAIcon';
 import Text from 'common/components/Text/Text';
 import Link from 'common/components/Link/Link';

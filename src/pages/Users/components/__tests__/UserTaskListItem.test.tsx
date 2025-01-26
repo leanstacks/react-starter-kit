@@ -3,7 +3,7 @@ import { render, screen } from 'test/test-utils';
 
 import { todosFixture } from '__fixtures__/todos';
 import UserTaskListItem from '../UserTaskListItem';
-import { Task } from 'pages/Users/api/useGetUserTasks';
+import { Task } from 'pages/Tasks/api/useGetUserTasks';
 
 describe('UserTaskListItem', () => {
   it('should render successfully', async () => {

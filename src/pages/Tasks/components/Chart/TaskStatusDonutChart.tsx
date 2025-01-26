@@ -4,7 +4,7 @@ import { filter, reject } from 'lodash';
 import colors from 'tailwindcss/colors';
 
 import { BaseComponentProps } from 'common/utils/types';
-import { Task } from 'pages/Users/api/useGetUserTasks';
+import { Task } from 'pages/Tasks/api/useGetUserTasks';
 import DonutChart, { DonutChartData, DonutChartProps } from 'common/components/Chart/DonutChart';
 
 /**
