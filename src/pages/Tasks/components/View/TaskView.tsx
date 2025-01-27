@@ -7,10 +7,21 @@ import { useGetUser } from 'common/api/useGetUser';
 import Badge from 'common/components/Badge/Badge';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 
+/**
+ * Properties for the `TaskView` component.
+ * @param task - A `Task` object.
+ * @see {@link BaseComponentProps}
+ */
 interface TaskViewProps extends BaseComponentProps {
   task: Task;
 }
 
+/**
+ * The `TaskView` component renders the attributes of a `Task` in view mode.
+ * This component is for the read-only display of a single Task.
+ * @param {TaskViewProps} props - Component properties.
+ * @returns JSX
+ */
 const TaskView = ({ className, task, testId = 'task-view' }: TaskViewProps): JSX.Element => {
   const { t } = useTranslation();
   const {

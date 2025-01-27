@@ -5,10 +5,20 @@ import { BaseComponentProps } from 'common/utils/types';
 import { Task } from 'pages/Tasks/api/useGetUserTasks';
 import TaskCompleteToggle from 'pages/Tasks/components/Edit/TaskCompleteToggle';
 
+/**
+ * Properties for the `TaskListItem` component.
+ * @param task - A `Task` object.
+ * @see {@link BaseComponentProps}
+ */
 interface TaskListItemProps extends BaseComponentProps {
   task: Task;
 }
 
+/**
+ * The `TaskListItem` component renders a single `Task` within a `TaskList`.
+ * @param {TaskListItemProps} props - Component properties.
+ * @returns JSX
+ */
 const TaskListItem = ({
   className,
   task,

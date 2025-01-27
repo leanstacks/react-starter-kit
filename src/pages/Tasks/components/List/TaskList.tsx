@@ -11,10 +11,26 @@ import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import TaskListItem from './TaskListItem';
 import Badge from 'common/components/Badge/Badge';
 
+/**
+ * Type describes the possible sort order directions.
+ */
 type OrderDir = 'asc' | 'desc';
 
+/**
+ * Type describing all possible keys of a `Task` object.
+ */
 type TaskKey = keyof Task;
 
+/**
+ * Properties for the `TaskList` component.
+ * @param filterBy - Optional. Object containing criteria to filter the displayed Tasks.
+ * @param orderBy - Optional. Array of Task attributes to sort the displayed Tasks.
+ * @param orderDir - Optional. Array of order directions to apply to the `orderBy`.
+ * @param showBadge - Optional. Indicates if task count badge should be shown.
+ * @param title - Optional. List title text.
+ * @param userId - A `User` identifier whose tasks are to be shown.
+ * @see {@link BaseComponentProps}
+ */
 interface TaskListProps extends BaseComponentProps {
   filterBy?: Partial<Task>;
   orderBy?: TaskKey[];
@@ -24,6 +40,12 @@ interface TaskListProps extends BaseComponentProps {
   userId: number;
 }
 
+/**
+ * The `TaskList` component renders a list of `Task` items.  The list may be filtered
+ * and ordered using properties.
+ * @param {TaskListProps} props - Component properties.
+ * @returns JSX
+ */
 const TaskList = ({
   className,
   filterBy = {},

@@ -7,6 +7,12 @@ import TaskList from './List/TaskList';
 import TaskStatusDonutChart from './Chart/TaskStatusDonutChart';
 import Card from 'common/components/Card/Card';
 
+/**
+ * The `TaskListLayout` component renders the layout for all tasks for a
+ * single `User`.
+ * @param {BaseComponentProps} props - Component properties.
+ * @returns JSX
+ */
 const TaskListLayout = ({
   className,
   testId = 'layout-task-list',

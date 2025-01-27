@@ -4,10 +4,21 @@ import Avatar from 'common/components/Icon/Avatar';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import FAIcon from 'common/components/Icon/FAIcon';
 
+/**
+ * Properties for the `UserInfo` component.
+ * @param userId - A `User` identifier.
+ * @see {@link BaseComponentProps}
+ */
 interface UserInfoProps extends BaseComponentProps {
   userId: number;
 }
 
+/**
+ * The `UserInfo` component renders a block containing summary attributes
+ * about a user such as their name, email address, phone number, and website.
+ * @param {UserInfoProps} props - Component properties.
+ * @returns JSX
+ */
 const UserInfo = ({
   className,
   testId = 'user-info',
