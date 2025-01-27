@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { Task } from 'pages/Tasks/api/useGetUserTasks';
@@ -28,6 +29,7 @@ const TaskCompleteToggle = ({
   task,
   testId = 'toggle-task-complete',
 }: TaskCompleteToggleProps): JSX.Element => {
+  const [isHovering, setIsHovering] = useState(false);
   const { t } = useTranslation();
   const { mutate: updateTask, isPending } = useUpdateTask();
   const { createToast } = useToasts();
@@ -35,6 +37,8 @@ const TaskCompleteToggle = ({
   const buttonTitle = task.completed
     ? t('task.markIncomplete', { ns: 'users' })
     : t('task.markComplete', { ns: 'users' });
+
+  const showCompleted = (task.completed && !isHovering) || (!task.completed && isHovering);
 
   /**
    * Actions to perform when the task complete toggle button is clicked.
@@ -66,12 +70,14 @@ const TaskCompleteToggle = ({
       variant="text"
       title={buttonTitle}
       onClick={handleButtonClick}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
       disabled={isPending}
       data-testid={testId}
     >
       <FAIcon
-        icon={task.completed ? 'circleCheck' : 'circleRegular'}
-        className={classNames({ 'text-green-600': task.completed })}
+        icon={showCompleted ? 'circleCheck' : 'circleRegular'}
+        className={classNames({ 'text-green-600': showCompleted })}
         testId={`${testId}-icon`}
       />
     </Button>
