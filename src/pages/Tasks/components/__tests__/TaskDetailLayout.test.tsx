@@ -5,10 +5,7 @@ import { UseMutationResult, UseQueryResult } from '@tanstack/react-query';
 import { render, screen } from 'test/test-utils';
 import * as UseDeleteTask from 'pages/Tasks/api/useDeleteTask';
 import * as UseGetTask from 'pages/Tasks/api/useGetTask';
-import * as UseGetUser from 'common/api/useGetUser';
 import { Task } from 'pages/Tasks/api/useGetUserTasks';
-import { userFixture1 } from '__fixtures__/users';
-import { todosFixture } from '__fixtures__/todos';
 
 import TaskDetailLayout from '../TaskDetailLayout';
 
@@ -33,65 +30,19 @@ describe('TaskDetail', () => {
   it('should render successfully', async () => {
     // ARRANGE
     render(<TaskDetailLayout />);
-    await screen.findByTestId('task-detail-layout');
+    await screen.findByTestId('layout-task-detail');
 
     // ASSERT
-    expect(screen.getByTestId('task-detail-layout')).toBeDefined();
+    expect(screen.getByTestId('layout-task-detail')).toBeDefined();
   });
 
   it('should display a task', async () => {
     // ARRANGE
-    render(<TaskDetailLayout />);
-    await screen.findByTestId('task-detail-task');
+    render(<TaskDetailLayout testId="component" />);
+    await screen.findByTestId('component-task-view');
 
     // ASSERT
-    expect(screen.getByTestId('task-detail-task')).toBeDefined();
-    expect(screen.getByTestId('task-detail-task-title').textContent).toBe(todosFixture[0].title);
-    expect(screen.getByTestId('task-detail-task-status').textContent).toBe('INCOMPLETE');
-  });
-
-  it('should display a task user', async () => {
-    // ARRANGE
-    render(<TaskDetailLayout />);
-    await screen.findByTestId('task-detail-task-user-name');
-
-    // ASSERT
-    expect(screen.getByTestId('task-detail-task-user-name')).toBeDefined();
-    expect(screen.getByTestId('task-detail-task-user-name').textContent).toBe(userFixture1.name);
-  });
-
-  it('should display task status incomplete', async () => {
-    // ARRANGE
-    const task = todosFixture[0];
-    task.completed = false;
-    const useGetTaskSpy = vi.spyOn(UseGetTask, 'useGetTask');
-    useGetTaskSpy.mockReturnValue({
-      data: task,
-      error: undefined,
-      isLoading: false,
-    } as unknown as UseQueryResult<Task, Error>);
-    render(<TaskDetailLayout />);
-    await screen.findByTestId('task-detail-task-status');
-
-    // ASSERT
-    expect(screen.getByTestId('task-detail-task-status').textContent).toBe('INCOMPLETE');
-  });
-
-  it('should display task status complete', async () => {
-    // ARRANGE
-    const task = todosFixture[0];
-    task.completed = true;
-    const useGetTaskSpy = vi.spyOn(UseGetTask, 'useGetTask');
-    useGetTaskSpy.mockReturnValue({
-      data: task,
-      error: undefined,
-      isLoading: false,
-    } as unknown as UseQueryResult<Task, Error>);
-    render(<TaskDetailLayout />);
-    await screen.findByTestId('task-detail-task-status');
-
-    // ASSERT
-    expect(screen.getByTestId('task-detail-task-status').textContent).toBe('COMPLETE');
+    expect(screen.getByTestId('component-task-view')).toBeDefined();
   });
 
   it('should display task error', async () => {
@@ -102,26 +53,11 @@ describe('TaskDetail', () => {
       error: new Error(),
       isLoading: false,
     } as unknown as UseQueryResult<Task, Error>);
-    render(<TaskDetailLayout />);
-    await screen.findByTestId('task-detail-alert-taskError');
+    render(<TaskDetailLayout testId="component" />);
+    await screen.findByTestId('component-error-task');
 
     // ASSERT
-    expect(screen.getByTestId('task-detail-alert-taskError')).toBeDefined();
-  });
-
-  it('should display user error', async () => {
-    // ARRANGE
-    const useGetUserSpy = vi.spyOn(UseGetUser, 'useGetUser');
-    useGetUserSpy.mockReturnValue({
-      data: undefined,
-      error: new Error(),
-      isLoading: false,
-    } as unknown as UseQueryResult<UseGetUser.User, Error>);
-    render(<TaskDetailLayout />);
-    await screen.findByTestId('task-detail-alert-userError');
-
-    // ASSERT
-    expect(screen.getByTestId('task-detail-alert-userError')).toBeDefined();
+    expect(screen.getByTestId('component-error-task')).toBeDefined();
   });
 
   it('should render loading state', async () => {
@@ -132,21 +68,21 @@ describe('TaskDetail', () => {
       error: undefined,
       isLoading: true,
     } as unknown as UseQueryResult<Task, Error>);
-    render(<TaskDetailLayout />);
-    await screen.findByTestId('task-detail-loader');
+    render(<TaskDetailLayout testId="component" />);
+    await screen.findByTestId('component-loading');
 
     // ASSERT
-    expect(screen.getByTestId('task-detail-loader')).toBeDefined();
+    expect(screen.getByTestId('component-loading')).toBeDefined();
   });
 
   it('should navigate back using close button', async () => {
     // ARRANGE
     const user = userEvent.setup();
-    render(<TaskDetailLayout />);
-    await screen.findByTestId('task-detail-button-close');
+    render(<TaskDetailLayout testId="component" />);
+    await screen.findByTestId('component-button-close');
 
     // ACT
-    await user.click(screen.getByTestId('task-detail-button-close'));
+    await user.click(screen.getByTestId('component-button-close'));
 
     // ASSERT
     expect(mockNavigate).toHaveBeenCalledTimes(1);
@@ -161,22 +97,22 @@ describe('TaskDetail', () => {
       error: new Error(),
       isLoading: false,
     } as unknown as UseMutationResult<void, Error, UseDeleteTask.DeleteTaskVariables>);
-    render(<TaskDetailLayout />);
-    await screen.findByTestId('task-detail-alert-deleteError');
+    render(<TaskDetailLayout testId="component" />);
+    await screen.findByTestId('component-error-delete');
 
     // ASSERT
-    expect(screen.getByTestId('task-detail-alert-deleteError')).toBeDefined();
+    expect(screen.getByTestId('component-error-delete')).toBeDefined();
   });
 
   it('should show the delete dialog', async () => {
     // ARRANGE
     const user = userEvent.setup();
-    render(<TaskDetailLayout />);
+    render(<TaskDetailLayout testId="component" />);
     await screen.findByTestId('dialog-task-delete');
     expect(screen.getByTestId('dialog-task-delete')).toHaveClass('hidden');
 
     // ACT
-    await user.click(screen.getByTestId('task-detail-button-delete'));
+    await user.click(screen.getByTestId('component-button-delete'));
 
     // ASSERT
     expect(screen.getByTestId('dialog-task-delete')).not.toHaveClass('hidden');
@@ -185,12 +121,12 @@ describe('TaskDetail', () => {
   it('should hide the delete dialog when cancel clicked', async () => {
     // ARRANGE
     const user = userEvent.setup();
-    render(<TaskDetailLayout />);
+    render(<TaskDetailLayout testId="component" />);
     await screen.findByTestId('dialog-task-delete');
     expect(screen.getByTestId('dialog-task-delete')).toHaveClass('hidden');
 
     // ACT
-    await user.click(screen.getByTestId('task-detail-button-delete'));
+    await user.click(screen.getByTestId('component-button-delete'));
     expect(screen.getByTestId('dialog-task-delete')).not.toHaveClass('hidden');
 
     await user.click(screen.getByTestId('dialog-task-delete-button-cancel'));
@@ -202,12 +138,12 @@ describe('TaskDetail', () => {
   it('should hide the delete dialog when backdrop clicked', async () => {
     // ARRANGE
     const user = userEvent.setup();
-    render(<TaskDetailLayout />);
+    render(<TaskDetailLayout testId="component" />);
     await screen.findByTestId('dialog-task-delete');
     expect(screen.getByTestId('dialog-task-delete')).toHaveClass('hidden');
 
     // ACT
-    await user.click(screen.getByTestId('task-detail-button-delete'));
+    await user.click(screen.getByTestId('component-button-delete'));
     expect(screen.getByTestId('dialog-task-delete')).not.toHaveClass('hidden');
 
     await user.click(screen.getByTestId('dialog-task-delete-backdrop'));
@@ -219,11 +155,11 @@ describe('TaskDetail', () => {
   it('should delete a task', async () => {
     // ARRANGE
     const user = userEvent.setup();
-    render(<TaskDetailLayout />);
-    await screen.findByTestId('task-detail-button-delete');
+    render(<TaskDetailLayout testId="component" />);
+    await screen.findByTestId('component-button-delete');
 
     // ACT
-    await user.click(screen.getByTestId('task-detail-button-delete'));
+    await user.click(screen.getByTestId('component-button-delete'));
     await user.click(screen.getByTestId('dialog-task-delete-button-delete'));
 
     // ASSERT

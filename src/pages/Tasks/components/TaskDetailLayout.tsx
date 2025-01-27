@@ -97,21 +97,21 @@ const TaskDetailLayout = ({
       </div>
 
       {taskError && (
-        <Alert variant="error" className="my-4 rounded-none" testId={`${testId}-alert-taskError`}>
+        <Alert variant="error" className="my-4 rounded-none" testId={`${testId}-error-task`}>
           <FAIcon icon="circleExclamation" />
           {`Unable to retrieve task. Detail: ${taskError.message}`}
         </Alert>
       )}
 
       {deleteError && (
-        <Alert variant="error" className="my-4 rounded-none" testId={`${testId}-alert-deleteError`}>
+        <Alert variant="error" className="my-4 rounded-none" testId={`${testId}-error-delete`}>
           <FAIcon icon="circleExclamation" />
           {`Unable to delete task. Detail: ${deleteError.message}`}
         </Alert>
       )}
 
       {(isLoadingTask || isDeletePending) && (
-        <div data-testid={`${testId}-loader`}>
+        <div data-testid={`${testId}-loading`}>
           <div className="mt-4">
             <LoaderSkeleton className="mb-2 h-4 w-12" />
             <LoaderSkeleton className="h-5 w-80" />
@@ -129,7 +129,7 @@ const TaskDetailLayout = ({
 
       {task && !isDeletePending && (
         <div data-testid={`${testId}-task`}>
-          <TaskView task={task} />
+          <TaskView task={task} testId={`${testId}-task-view`} />
 
           <TaskDeleteDialog
             isOpen={isDeleteDialogOpen}
