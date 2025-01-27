@@ -4,23 +4,24 @@ import StandardLayout from 'common/components/Layout/StandardLayout';
 import ErrorPage from 'pages/Error/ErrorPage';
 import PrivateOutlet from './PrivateOutlet';
 import LandingPage from 'pages/Landing/LandingPage';
+
+// Auth Page Family
 import SigninPage from 'pages/Auth/Signin/SigninPage';
 import SignoutPage from 'pages/Auth/Signout/SignoutPage';
+
+// Settings Page Family
 import SettingsPage from 'pages/Settings/SettingsPage';
 import AppearanceSettings from 'pages/Settings/components/AppearanceSettings';
+
+// Components Page Family
 import ComponentsPage from 'pages/Components/ComponentsPage';
 import AvatarComponents from 'pages/Components/components/AvatarComponents';
 import TextComponents from 'pages/Components/components/TextComponents';
 import ButtonComponents from 'pages/Components/components/ButtonComponents';
 import BadgeComponents from 'pages/Components/components/BadgeComponents';
 import CardComponents from 'pages/Components/components/CardComponents';
-import UsersPage from 'pages/Users/UsersPage';
-import UserDetailLayout from 'pages/Users/components/UserDetailLayout';
-import UserDetail from 'pages/Users/components/UserDetail';
-import UserDetailEmpty from 'pages/Users/components/UserDetailEmpty';
-import UserTaskList from 'pages/Users/components/UserTaskList';
 
-// Tasks
+// Tasks Page Family
 import TasksPage from 'pages/Tasks/TasksPage';
 import TaskListLayout from 'pages/Tasks/components/TaskListLayout';
 import TaskDetailLayout from 'pages/Tasks/components/TaskDetailLayout';
@@ -113,31 +114,6 @@ export const routes: RouteObject[] = [
               {
                 path: ':taskId',
                 element: <TaskDetailLayout />,
-              },
-            ],
-          },
-          {
-            path: 'users',
-            element: <UsersPage />,
-            children: [
-              {
-                index: true,
-                element: <UserDetailEmpty />,
-              },
-              {
-                path: ':userId',
-                element: <UserDetailLayout />,
-                children: [
-                  { index: true, element: <UserDetail /> },
-                  {
-                    path: 'tasks',
-                    element: <UserTaskList />,
-                  },
-                  {
-                    path: 'tasks/:taskId',
-                    element: <TaskDetailLayout />,
-                  },
-                ],
               },
             ],
           },
