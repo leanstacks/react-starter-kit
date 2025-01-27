@@ -36,11 +36,12 @@ const TaskList = ({
 }: TaskListProps): JSX.Element => {
   const { t } = useTranslation();
   const { data: tasks, isLoading, isError } = useGetUserTasks({ userId });
-  const isEmpty = !isLoading && (!tasks || tasks?.length === 0);
 
   const filteredTasks = filter(tasks, filterBy);
 
   const orderedTasks = order(filteredTasks, orderBy, orderDir);
+
+  const isEmpty = !isLoading && (!orderedTasks || orderedTasks?.length === 0);
 
   return (
     <div className={className} data-testid={testId}>

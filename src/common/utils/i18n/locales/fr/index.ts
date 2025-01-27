@@ -1,4 +1,4 @@
 import common from './common.json';
-import users from './users.json';
+import tasks from './tasks.json';
 
-export default { common, users };
+export default { common, tasks };

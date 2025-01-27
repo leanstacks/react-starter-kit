@@ -1,0 +1,13 @@
+{
+  "markComplete": "Marquez-le comme terminé",
+  "markIncomplete": "Marquez-le comme incomplet",
+  "markedComplete": "Tâche marquée terminée",
+  "markedIncomplete": "Tâche marquée incomplète",
+  "status": {
+    "complete": "Complet",
+    "incomplete": "Incomplet"
+  },
+  "task": "Tâche",
+  "tasks": "Tâches",
+  "tasks-empty": "Rien à faire. Créez une tâche pour commencer."
+}

@@ -1,4 +1,8 @@
 {
+  "markComplete": "Mark complete",
+  "markIncomplete": "Mark incomplete",
+  "markedComplete": "Marked task complete",
+  "markedIncomplete": "Marked task incomplete",
   "status": {
     "complete": "Complete",
     "incomplete": "Incomplete"
