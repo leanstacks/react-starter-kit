@@ -6,6 +6,7 @@ import colors from 'tailwindcss/colors';
 import { BaseComponentProps } from 'common/utils/types';
 import { Task } from 'pages/Tasks/api/useGetUserTasks';
 import DonutChart, { DonutChartData, DonutChartProps } from 'common/components/Chart/DonutChart';
+import { useTranslation } from 'react-i18next';
 
 /**
  * Properties for the `TaskStatusDonutChart` component.
@@ -36,16 +37,22 @@ const TaskStatusDonutChart = ({
   testId = 'chart-donut-task-status',
   ...chartProps
 }: TaskStatusDonutChartProps): JSX.Element | false => {
+  const { t } = useTranslation();
+
   if (tasks.length > 0) {
     // format the chart data
     const chartData: DonutChartData[] = useMemo(() => {
       return [
         {
-          name: 'Complete',
+          name: t('status.complete', { ns: 'tasks' }),
           value: filter(tasks, 'completed').length,
           fill: colors.green[600],
         },
-        { name: 'Incomplete', value: reject(tasks, 'completed').length, fill: colors.red[600] },
+        {
+          name: t('status.incomplete', { ns: 'tasks' }),
+          value: reject(tasks, 'completed').length,
+          fill: colors.red[600],
+        },
       ];
     }, [tasks]);
 

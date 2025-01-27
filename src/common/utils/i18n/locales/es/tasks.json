@@ -7,6 +7,7 @@
     "complete": "Completo",
     "incomplete": "Incompleto"
   },
+  "status-of-tasks": "Estado de las Tareas",
   "task": "Tarea",
   "tasks": "Tareas",
   "tasks-empty": "No hay nada que hacer. Haz una tarea para empezar."
