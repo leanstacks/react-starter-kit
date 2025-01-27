@@ -41,7 +41,7 @@ describe('LandingPage', () => {
     render(
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/app" element={<div data-testid="success"></div>} />
+        <Route path="/app/tasks" element={<div data-testid="success"></div>} />
       </Routes>,
     );
     await screen.findByTestId('success');
