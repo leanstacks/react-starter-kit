@@ -220,6 +220,10 @@ Runs the eslint static code analysis and prints the results to the console.
 
 Starts the [Storybook][storybook] UI. Open [http://localhost:6006](http://localhost:6006) to view it in the browser.
 
+## `npm run build:storybook`
+
+Build a static version the [Storybook][storybook] UI which may be deployed to a CDN or HTTP server.
+
 ## DevOps
 
 ### Cloud Resources
@@ -241,12 +245,12 @@ The resources provisioned are:
 
 This project uses GitHub Actions to perform DevOps automation activities such as Continuous Integration and Continous Deployment. See all project [GitHub Actions workflow runs](https://github.com/leanstacks/react-starter-kit/actions).
 
-| Workflow              | Trigger                        | Description                                                                          |
-| --------------------- | ------------------------------ | ------------------------------------------------------------------------------------ |
-| CI                    | Pull Request for `main` branch | Builds, lints, and tests the application. Validates the AWS CloudFormation template. |
-| Deploy to Development | Push to `main` branch          | Deploys AWS CloudFormation stack. Builds and deploys the application.                |
-| Deploy to QA          | Push to `release/*` branch     | Deploys AWS CloudFormation stack. Builds and deploys the application.                |
-| Deploy to Production  | Publish a Release              | Deploys AWS CloudFormation stack. Builds and deploys the application.                |
+| Workflow              | Trigger                        | Description                                                                                            |
+| --------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| CI                    | Pull Request for `main` branch | Builds, lints, and tests the application. Builds Storybook. Validates the AWS CloudFormation template. |
+| Deploy to Development | Push to `main` branch          | Deploys AWS CloudFormation stack. Builds and deploys the application.                                  |
+| Deploy to QA          | Push to `release/*` branch     | Deploys AWS CloudFormation stack. Builds and deploys the application.                                  |
+| Deploy to Production  | Publish a Release              | Deploys AWS CloudFormation stack. Builds and deploys the application.                                  |
 
 ## Related Information
 
