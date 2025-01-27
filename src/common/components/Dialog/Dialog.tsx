@@ -29,7 +29,7 @@ const Dialog = ({
   onClose,
   testId = 'dialog',
 }: DialogProps): JSX.Element => {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(isOpen);
 
   useEffect(() => {
     setIsDialogOpen(isOpen);

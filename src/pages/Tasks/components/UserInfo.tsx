@@ -26,8 +26,12 @@ const UserInfo = ({
 
       {user && (
         <div data-testid={`${testId}-content`}>
-          <div className="flex items-center gap-2" data-testid={`${testId}-heading`}>
-            <Avatar value={user.name} className="flex-shrink-0 rounded-full" />
+          <div className="flex items-center gap-2">
+            <Avatar
+              value={user.name}
+              className="flex-shrink-0 rounded-full"
+              testId={`${testId}-avatar`}
+            />
 
             <div className="flex flex-col gap-1">
               <div className="font-bold">{user.name}</div>

@@ -45,9 +45,15 @@ const TaskList = ({
   return (
     <div className={className} data-testid={testId}>
       {!!title && (
-        <div className="flex items-center gap-2">
-          <h2 className="text-lg font-bold">{title}</h2>
-          {showBadge && !isLoading && <Badge className="self-start">{orderedTasks.length}</Badge>}
+        <div className="flex items-center gap-2" data-testid={`${testId}-heading`}>
+          <h2 className="text-lg font-bold" data-testid={`${testId}-heading-title`}>
+            {title}
+          </h2>
+          {showBadge && !isLoading && (
+            <Badge className="self-start" testId={`${testId}-heading-badge`}>
+              {orderedTasks.length}
+            </Badge>
+          )}
         </div>
       )}
 

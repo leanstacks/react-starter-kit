@@ -21,7 +21,7 @@ const TaskListLayout = ({
         <>
           <div className="mb-4 grid md:grid-cols-2 lg:grid-cols-3">
             {!!tasks && (
-              <Card>
+              <Card testId={`${testId}-chart-status`}>
                 <div className="text-sm font-bold">Status of Tasks</div>
                 <TaskStatusDonutChart tasks={tasks} width={160} />
               </Card>
@@ -35,6 +35,7 @@ const TaskListLayout = ({
             orderBy={['title']}
             showBadge
             title={t('status.incomplete', { ns: 'tasks' })}
+            testId={`${testId}-list-incomplete`}
           />
 
           <TaskList
@@ -43,6 +44,7 @@ const TaskListLayout = ({
             orderBy={['title']}
             showBadge
             title={t('status.complete', { ns: 'tasks' })}
+            testId={`${testId}-list-complete`}
           />
         </>
       )}

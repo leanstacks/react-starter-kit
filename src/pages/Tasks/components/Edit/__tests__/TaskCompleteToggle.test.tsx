@@ -2,14 +2,15 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import userEvent from '@testing-library/user-event';
 
 import { render, screen } from 'test/test-utils';
+import { Task } from 'pages/Tasks/api/useGetUserTasks';
 import { todosFixture } from '__fixtures__/todos';
 import * as UseToasts from 'common/hooks/useToasts';
 
 import TaskCompleteToggle from '../../../../Tasks/components/Edit/TaskCompleteToggle';
 
 describe('TaskCompleteToggle', () => {
-  const incompleteTask = todosFixture[0];
-  const completeTask = todosFixture[1];
+  const incompleteTask: Task = { ...todosFixture[0], completed: false };
+  const completeTask: Task = { ...todosFixture[0], completed: true };
 
   const useToastsSpy = vi.spyOn(UseToasts, 'useToasts');
   const mockCreateToast = vi.fn();
@@ -76,13 +77,14 @@ describe('TaskCompleteToggle', () => {
 
   it('should toggle task complete when clicked', async () => {
     // ARRANGE
+    const user = userEvent.setup();
     render(<TaskCompleteToggle task={incompleteTask} />);
     await screen.findByTestId('toggle-task-complete');
     expect(screen.getByTestId('toggle-task-complete').title).toBe('Mark complete');
     expect(screen.getByTestId('toggle-task-complete-icon')).toHaveAttribute('data-icon', 'circle');
 
     // ACT
-    await userEvent.click(screen.getByTestId('toggle-task-complete'));
+    await user.click(screen.getByTestId('toggle-task-complete'));
 
     // ASSERT
     expect(mockCreateToast).toHaveBeenCalledOnce();
@@ -94,6 +96,7 @@ describe('TaskCompleteToggle', () => {
 
   it('should toggle task incomplete when clicked', async () => {
     // ARRANGE
+    const user = userEvent.setup();
     render(<TaskCompleteToggle task={completeTask} />);
     await screen.findByTestId('toggle-task-complete');
     expect(screen.getByTestId('toggle-task-complete').title).toBe('Mark incomplete');
@@ -103,7 +106,7 @@ describe('TaskCompleteToggle', () => {
     );
 
     // ACT
-    await userEvent.click(screen.getByTestId('toggle-task-complete'));
+    await user.click(screen.getByTestId('toggle-task-complete'));
 
     // ASSERT
     expect(mockCreateToast).toHaveBeenCalledOnce();
@@ -111,5 +114,27 @@ describe('TaskCompleteToggle', () => {
       text: 'Marked task incomplete',
       isAutoDismiss: true,
     });
+  });
+
+  it('should toggle icon on hover', async () => {
+    // ARRANGE
+    const user = userEvent.setup();
+    render(
+      <div data-testid="wrapper">
+        <TaskCompleteToggle task={incompleteTask} testId="component" />
+      </div>,
+    );
+    await screen.findByTestId('component');
+    expect(screen.getByTestId('component-icon')).toHaveAttribute('data-icon', 'circle');
+
+    // ACT
+    await user.hover(screen.getByTestId('component'));
+
+    // ASSERT
+    expect(screen.getByTestId('component-icon')).toHaveAttribute('data-icon', 'circle-check');
+
+    // ACT
+    await user.hover(screen.getByTestId('wrapper'));
+    expect(screen.getByTestId('component-icon')).toHaveAttribute('data-icon', 'circle');
   });
 });
