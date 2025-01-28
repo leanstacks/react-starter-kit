@@ -1,5 +1,6 @@
 import { useAuth } from 'common/hooks/useAuth';
 import { useGetCurrentUser } from 'common/api/useGetCurrentUser';
+import { useTranslation } from 'react-i18next';
 
 import logo from './logo.png';
 import SideMenu, { SideMenuProps } from 'common/components/Menu/SideMenu/SideMenu';
@@ -20,6 +21,7 @@ export interface AppMenuProps extends Omit<SideMenuProps, 'headerContent'> {}
  * @returns {JSX.Element} JSX
  */
 const AppMenu = ({ side = 'right', testId = 'menu-app', ...props }: AppMenuProps): JSX.Element => {
+  const { t } = useTranslation();
   const { isAuthenticated } = useAuth();
   const { data: user } = useGetCurrentUser();
 
@@ -50,8 +52,8 @@ const AppMenu = ({ side = 'right', testId = 'menu-app', ...props }: AppMenuProps
           <MenuNavLink to="/app/components" title="Components" icon="puzzlePiece">
             Components
           </MenuNavLink>
-          <MenuNavLink to="/app/users" title="Users" icon="users">
-            Users
+          <MenuNavLink to="/app/tasks" title={t('tasks', { ns: 'tasks' })} icon="listCheck">
+            {t('tasks', { ns: 'tasks' })}
           </MenuNavLink>
         </>
       ) : (

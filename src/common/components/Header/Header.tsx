@@ -29,7 +29,7 @@ const Header = ({ testId = 'header' }: HeaderProps): JSX.Element => {
       data-testid={testId}
     >
       <div className="flex items-center">
-        <Link to={isAuthenticated ? '/app' : '/'}>
+        <Link to={isAuthenticated ? '/app/tasks' : '/'}>
           <img src={logo} alt="Logo" height="32" width="32" />
         </Link>
       </div>

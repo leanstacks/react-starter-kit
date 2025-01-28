@@ -1,0 +1,14 @@
+{
+  "markComplete": "Márcalo completo",
+  "markIncomplete": "Márcalo como incompleto",
+  "markedComplete": "Tarea marcada completada",
+  "markedIncomplete": "Tarea marcada como incompleta",
+  "status": {
+    "complete": "Completo",
+    "incomplete": "Incompleto"
+  },
+  "status-of-tasks": "Estado de las Tareas",
+  "task": "Tarea",
+  "tasks": "Tareas",
+  "tasks-empty": "No hay nada que hacer. Haz una tarea para empezar."
+}

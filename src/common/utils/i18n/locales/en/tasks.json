@@ -1,0 +1,14 @@
+{
+  "markComplete": "Mark complete",
+  "markIncomplete": "Mark incomplete",
+  "markedComplete": "Marked task complete",
+  "markedIncomplete": "Marked task incomplete",
+  "status": {
+    "complete": "Complete",
+    "incomplete": "Incomplete"
+  },
+  "status-of-tasks": "Status of Tasks",
+  "task": "Task",
+  "tasks": "Tasks",
+  "tasks-empty": "Nothing to do. Create a task to get started."
+}

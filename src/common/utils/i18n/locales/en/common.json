@@ -1,5 +1,12 @@
 {
   "creatingReactApps": "Creating React apps just got a lot simpler",
+  "errors": {
+    "generic": "Uh oh",
+    "unable-to-find-short": "Not found",
+    "unable-to-find": "We are unable to find information matching your request.",
+    "unable-to-process": "We are experiencing problems processing your request.",
+    "unable-to-retrieve": "We are unable to retrieve the requested information at this time."
+  },
   "letsGetStarted": "Let's get started",
   "privacy": "Privacy",
   "privacyPolicy": "Privacy policy",

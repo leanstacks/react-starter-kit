@@ -1,26 +1,30 @@
 import { Navigate, RouteObject, createBrowserRouter } from 'react-router-dom';
 
 import StandardLayout from 'common/components/Layout/StandardLayout';
-import ErrorPage from 'pages/ErrorPage/ErrorPage';
+import ErrorPage from 'pages/Error/ErrorPage';
 import PrivateOutlet from './PrivateOutlet';
-import LandingPage from 'pages/LandingPage/LandingPage';
-import SigninPage from 'pages/SigninPage/SigninPage';
-import SignoutPage from 'pages/SignoutPage/SignoutPage';
-import DashboardPage from 'pages/DashboardPage/DashboardPage';
-import SettingsPage from 'pages/SettingsPage/SettingsPage';
-import AppearanceSettings from 'pages/SettingsPage/components/AppearanceSettings';
-import ComponentsPage from 'pages/ComponentsPage/ComponentsPage';
-import AvatarComponents from 'pages/ComponentsPage/components/AvatarComponents';
-import TextComponents from 'pages/ComponentsPage/components/TextComponents';
-import ButtonComponents from 'pages/ComponentsPage/components/ButtonComponents';
-import BadgeComponents from 'pages/ComponentsPage/components/BadgeComponents';
-import CardComponents from 'pages/ComponentsPage/components/CardComponents';
-import UsersPage from 'pages/UsersPage/UsersPage';
-import UserDetailLayout from 'pages/UsersPage/components/UserDetailLayout';
-import UserDetail from 'pages/UsersPage/components/UserDetail';
-import UserDetailEmpty from 'pages/UsersPage/components/UserDetailEmpty';
-import UserTaskList from 'pages/UsersPage/components/UserTaskList';
-import TaskDetail from 'pages/UsersPage/Tasks/components/TaskDetail';
+import LandingPage from 'pages/Landing/LandingPage';
+
+// Auth Page Family
+import SigninPage from 'pages/Auth/Signin/SigninPage';
+import SignoutPage from 'pages/Auth/Signout/SignoutPage';
+
+// Settings Page Family
+import SettingsPage from 'pages/Settings/SettingsPage';
+import AppearanceSettings from 'pages/Settings/components/AppearanceSettings';
+
+// Components Page Family
+import ComponentsPage from 'pages/Components/ComponentsPage';
+import AvatarComponents from 'pages/Components/components/AvatarComponents';
+import TextComponents from 'pages/Components/components/TextComponents';
+import ButtonComponents from 'pages/Components/components/ButtonComponents';
+import BadgeComponents from 'pages/Components/components/BadgeComponents';
+import CardComponents from 'pages/Components/components/CardComponents';
+
+// Tasks Page Family
+import TasksPage from 'pages/Tasks/TasksPage';
+import TaskListLayout from 'pages/Tasks/components/TaskListLayout';
+import TaskDetailLayout from 'pages/Tasks/components/TaskDetailLayout';
 
 /**
  * The React Router configuration. An array of `RouteObject`.
@@ -37,18 +41,24 @@ export const routes: RouteObject[] = [
         element: <LandingPage />,
       },
       {
-        path: 'auth/signin',
-        element: <SigninPage />,
-      },
-      {
-        path: 'auth/signout',
-        element: <SignoutPage />,
+        path: 'auth',
+        children: [
+          { index: true, element: <Navigate to="signin" /> },
+          {
+            path: 'signin',
+            element: <SigninPage />,
+          },
+          {
+            path: 'signout',
+            element: <SignoutPage />,
+          },
+        ],
       },
       {
         path: 'app',
         element: <PrivateOutlet />,
         children: [
-          { index: true, element: <DashboardPage /> },
+          { index: true, element: <Navigate to="tasks" /> },
           {
             path: 'settings',
             element: <SettingsPage />,
@@ -94,27 +104,16 @@ export const routes: RouteObject[] = [
             ],
           },
           {
-            path: 'users',
-            element: <UsersPage />,
+            path: 'tasks',
+            element: <TasksPage />,
             children: [
               {
                 index: true,
-                element: <UserDetailEmpty />,
+                element: <TaskListLayout />,
               },
               {
-                path: ':userId',
-                element: <UserDetailLayout />,
-                children: [
-                  { index: true, element: <UserDetail /> },
-                  {
-                    path: 'tasks',
-                    element: <UserTaskList />,
-                  },
-                  {
-                    path: 'tasks/:taskId',
-                    element: <TaskDetail />,
-                  },
-                ],
+                path: ':taskId',
+                element: <TaskDetailLayout />,
               },
             ],
           },
