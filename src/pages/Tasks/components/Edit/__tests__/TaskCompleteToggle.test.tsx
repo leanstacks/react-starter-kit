@@ -6,7 +6,7 @@ import { Task } from 'pages/Tasks/api/useGetUserTasks';
 import { todosFixture } from '__fixtures__/todos';
 import * as UseToasts from 'common/hooks/useToasts';
 
-import TaskCompleteToggle from '../../../../Tasks/components/Edit/TaskCompleteToggle';
+import TaskCompleteToggle from '../TaskCompleteToggle';
 
 describe('TaskCompleteToggle', () => {
   const incompleteTask: Task = { ...todosFixture[0], completed: false };
@@ -135,6 +135,8 @@ describe('TaskCompleteToggle', () => {
 
     // ACT
     await user.hover(screen.getByTestId('wrapper'));
+
+    // ASSERT
     expect(screen.getByTestId('component-icon')).toHaveAttribute('data-icon', 'circle');
   });
 });

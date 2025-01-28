@@ -1,12 +1,12 @@
 import { render, screen } from 'test/test-utils';
 import { describe, expect, it, vi } from 'vitest';
+import { UseQueryResult } from '@tanstack/react-query';
 
 import { todosFixture } from '__fixtures__/todos';
+import { userFixture1 } from '__fixtures__/users';
 import * as UseGetUser from 'common/api/useGetUser';
 
 import TaskView from '../TaskView';
-import { UseQueryResult } from '@tanstack/react-query';
-import { userFixture1 } from '__fixtures__/users';
 
 describe('TaskView', () => {
   it('should render successfully', async () => {

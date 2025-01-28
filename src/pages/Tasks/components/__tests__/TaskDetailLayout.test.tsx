@@ -22,7 +22,7 @@ vi.mock('react-router-dom', async () => {
   };
 });
 
-describe('TaskDetail', () => {
+describe('TaskDetailLayout', () => {
   afterEach(() => {
     vi.restoreAllMocks();
   });
