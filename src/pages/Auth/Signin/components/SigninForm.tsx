@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import classNames from 'classnames';
-import { Form, Formik } from 'formik';
 import { object, string } from 'yup';
 import { useNavigate } from 'react-router-dom';
+import { FormProvider, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { useSignin } from '../api/useSignin';
@@ -28,7 +29,7 @@ interface SigninFormValues {
 /**
  * Signin form validation schema.
  */
-const validationSchema = object<SigninFormValues>({
+const validationSchema = object({
   password: string().required('Required. '),
   username: string().required('Required. '),
 });
@@ -48,6 +49,26 @@ const SigninForm = ({ className, testId = 'form-signin' }: SigninFormProps): JSX
   const [error, setError] = useState<string>('');
   const { mutate: signin } = useSignin();
   const navigate = useNavigate();
+  const formMethods = useForm<SigninFormValues>({
+    defaultValues: { username: '', password: '' },
+    resolver: yupResolver(validationSchema),
+  });
+
+  /**
+   * Handles the form submission.
+   */
+  const handleFormSubmit = formMethods.handleSubmit((data: SigninFormValues) => {
+    console.log(`handleFormSubmit::${JSON.stringify(data)}`);
+    setError('');
+    signin(data.username, {
+      onSuccess: () => {
+        navigate('/');
+      },
+      onError: (err: Error) => {
+        setError(err.message);
+      },
+    });
+  });
 
   return (
     <div className={classNames('lg:w-2/3 xl:w-1/2', className)} data-testid={testId}>
@@ -57,55 +78,42 @@ const SigninForm = ({ className, testId = 'form-signin' }: SigninFormProps): JSX
           {error}
         </Alert>
       )}
-      <Formik<SigninFormValues>
-        initialValues={{ username: '', password: '' }}
-        validationSchema={validationSchema}
-        onSubmit={(values, { setSubmitting }) => {
-          setError('');
-          signin(values.username, {
-            onSuccess: () => {
-              setSubmitting(false);
-              navigate('/');
-            },
-            onError: (err: Error) => {
-              setError(err.message);
-              setSubmitting(false);
-            },
-          });
-        }}
-      >
-        {({ dirty, isSubmitting }) => (
-          <Form data-testid={`${testId}-form`}>
-            <TextField
-              name="username"
-              label="Username"
-              className="mb-4"
-              autoComplete="off"
-              maxLength={30}
-              disabled={isSubmitting}
-              testId={`${testId}-text-field-username`}
-            />
-            <TextField
-              type="password"
-              name="password"
-              label="Password"
-              className="mb-4"
-              autoComplete="off"
-              maxLength={30}
-              disabled={isSubmitting}
-              testId={`${testId}-text-field-password`}
-            />
-            <Button
-              type="submit"
-              className="w-full sm:w-40"
-              disabled={isSubmitting || !dirty}
-              testId={`${testId}-button-submit`}
-            >
-              Sign In
-            </Button>
-          </Form>
-        )}
-      </Formik>
+
+      <FormProvider {...formMethods}>
+        <form onSubmit={handleFormSubmit}>
+          <TextField
+            name="username"
+            label="Username"
+            className="mb-4"
+            autoFocus
+            autoComplete="off"
+            maxLength={30}
+            disabled={formMethods.formState.isSubmitting}
+            supportingText="Use any username from {JSON}Placeholder, e.g. Bret or Samantha."
+            testId={`${testId}-text-field-username`}
+          />
+
+          <TextField
+            type="password"
+            name="password"
+            label="Password"
+            className="mb-4"
+            autoComplete="off"
+            maxLength={30}
+            disabled={formMethods.formState.isSubmitting}
+            testId={`${testId}-text-field-password`}
+          />
+
+          <Button
+            type="submit"
+            className="w-full sm:w-40"
+            disabled={formMethods.formState.isSubmitting || !formMethods.formState.isDirty}
+            testId={`${testId}-button-submit`}
+          >
+            Sign In
+          </Button>
+        </form>
+      </FormProvider>
     </div>
   );
 };
