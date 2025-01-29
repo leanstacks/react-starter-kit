@@ -1,5 +1,5 @@
-import { InputHTMLAttributes, useEffect, useRef, useState } from 'react';
-import { useField } from 'formik';
+import { InputHTMLAttributes, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
 import classNames from 'classnames';
 
 import { PropsWithTestId } from 'common/utils/types';
@@ -26,15 +26,11 @@ const TextField = ({
   testId = 'field-text',
   ...props
 }: TextFieldProps): JSX.Element => {
-  const inputRef = useRef<HTMLInputElement>(null);
-  const [field, meta] = useField(props);
-  const [showInput, setShowInput] = useState(!!field.value || !!props.autoFocus);
-  const showError = meta.touched && meta.error;
+  const { formState, register, setFocus, watch } = useFormContext();
+  const fieldValue = watch(props.name);
+  const [showInput, setShowInput] = useState(!!fieldValue || !!props.autoFocus);
   const isDisabled = !!props.disabled || !!props.readOnly;
-
-  useEffect(() => {
-    setShowInput(!!field.value || !!props.autoFocus);
-  }, [field.value, props.autoFocus]);
+  const error = formState.errors[props.name];
 
   /**
    * Performed when the component is focused, e.g. clicked, tapped, or
@@ -43,7 +39,7 @@ const TextField = ({
   const doFocus = () => {
     if (!isDisabled) {
       setShowInput(true);
-      inputRef.current?.focus();
+      setFocus(props.name);
     }
   };
 
@@ -51,7 +47,8 @@ const TextField = ({
     <div
       className={className}
       onClick={doFocus}
-      onBlur={() => setShowInput(!!field.value)}
+      onFocus={doFocus}
+      onBlur={() => setShowInput(!!fieldValue)}
       data-testid={testId}
     >
       <div
@@ -60,7 +57,7 @@ const TextField = ({
           { 'justify-between': showInput },
           { 'justify-center': !showInput },
           {
-            'border-red-600 has-[:focus]:border-red-600': showError,
+            'border-red-600 has-[:focus]:border-red-600': !!error,
           },
           {
             'opacity-50 hover:bg-neutral-500/10': isDisabled,
@@ -80,13 +77,11 @@ const TextField = ({
           </label>
         )}
         <input
-          id={props.id ?? props.name}
           className={classNames('bg-transparent focus-visible:outline-none', {
             'size-0': !showInput,
           })}
-          {...field}
           {...props}
-          ref={inputRef}
+          {...register(props.name)}
           data-testid={`${testId}-input`}
         />
       </div>
@@ -95,9 +90,9 @@ const TextField = ({
           {supportingText}
         </div>
       )}
-      {showError && (
+      {!!error && (
         <div className="ms-4 text-sm text-red-600" data-testid={`${testId}-error`}>
-          {meta.error}
+          {error.message as string}
         </div>
       )}
     </div>
