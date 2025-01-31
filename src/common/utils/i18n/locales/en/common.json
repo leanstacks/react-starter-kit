@@ -12,5 +12,10 @@
   "privacyPolicy": "Privacy policy",
   "terms": "Terms",
   "termsAndConditions": "Terms and conditions",
+  "validation": {
+    "max_one": "Must be at most {{count}} character. ",
+    "max_other": "Must be at most {{count}} characters. ",
+    "required": "Required. "
+  },
   "welcome": "Welcome"
 }

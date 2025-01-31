@@ -5,5 +5,10 @@
   "privacyPolicy": "Política de privacidad",
   "terms": "Términos",
   "termsAndConditions": "Términos y condiciones",
+  "validation": {
+    "max_one": "Debe tener como máximo {{count}} caracter. ",
+    "max_other": "Debe tener como máximo {{count}} caracteres. ",
+    "required": "Requerido. "
+  },
   "welcome": "Bienvenido"
 }
