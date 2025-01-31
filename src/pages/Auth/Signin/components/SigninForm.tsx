@@ -60,7 +60,6 @@ const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): 
    * Handles the form submission.
    */
   const handleFormSubmit = formMethods.handleSubmit((data: SigninFormValues) => {
-    console.log(`handleFormSubmit::${JSON.stringify(data)}`);
     setError('');
     signin(data.username, {
       onSuccess: () => {
