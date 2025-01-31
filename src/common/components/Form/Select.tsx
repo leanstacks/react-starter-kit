@@ -6,6 +6,10 @@ import { PropsWithTestId } from 'common/utils/types';
 
 /**
  * Properties for the `Select` component.
+ * @param {string} [label] - Optional. The text to display. If omitted, the
+ * `value` is displayed.
+ * @param {string} name - Name of the form control.
+ * @param {string} [supportingText] - Optional. Help text or instructions.
  * @see {@link BaseComponentProps}
  * @see {@link PropsWithChildren}
  * @see {@link InputHTMLAttributes}
