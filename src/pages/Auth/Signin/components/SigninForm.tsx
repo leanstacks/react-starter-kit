@@ -1,21 +1,17 @@
 import { useState } from 'react';
 import classNames from 'classnames';
-import { Form, Formik } from 'formik';
 import { object, string } from 'yup';
 import { useNavigate } from 'react-router-dom';
+import { FormProvider, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useTranslation } from 'react-i18next';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { useSignin } from '../api/useSignin';
-import TextField from 'common/components/Form/TextField';
+import Input from 'common/components/Form/Input';
 import FAIcon from 'common/components/Icon/FAIcon';
 import Alert from 'common/components/Alert/Alert';
 import Button from 'common/components/Button/Button';
-
-/**
- * Properties for the `SigninForm` component.
- * @see {@link BaseComponentProps}
- */
-interface SigninFormProps extends BaseComponentProps {}
 
 /**
  * Signin form values.
@@ -26,14 +22,6 @@ interface SigninFormValues {
 }
 
 /**
- * Signin form validation schema.
- */
-const validationSchema = object<SigninFormValues>({
-  password: string().required('Required. '),
-  username: string().required('Required. '),
-});
-
-/**
  * The `SigninForm` component renders a form for user authentication.
  *
  * Upon successful authentication, navigates the user to the authenticated
@@ -41,13 +29,47 @@ const validationSchema = object<SigninFormValues>({
  *
  * Upon error, displays messages.
  *
- * @param {SigninFormProps} props - Component properties.
+ * @param {BaseComponentProps} props - Component properties.
  * @returns {JSX.Element} JSX
  */
-const SigninForm = ({ className, testId = 'form-signin' }: SigninFormProps): JSX.Element => {
+const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): JSX.Element => {
+  const { t } = useTranslation();
   const [error, setError] = useState<string>('');
   const { mutate: signin } = useSignin();
   const navigate = useNavigate();
+
+  /**
+   * Signin form validation schema.
+   */
+  const validationSchema = object({
+    password: string().required(t('validation.required')),
+    username: string()
+      .required(t('validation.required'))
+      .max(30, t('validation.max', { count: 30 })),
+  });
+
+  /**
+   * Initialize management of the form.
+   */
+  const formMethods = useForm<SigninFormValues>({
+    defaultValues: { username: '', password: '' },
+    resolver: yupResolver(validationSchema),
+  });
+
+  /**
+   * Handles the form submission.
+   */
+  const handleFormSubmit = formMethods.handleSubmit((data: SigninFormValues) => {
+    setError('');
+    signin(data.username, {
+      onSuccess: () => {
+        navigate('/');
+      },
+      onError: (err: Error) => {
+        setError(err.message);
+      },
+    });
+  });
 
   return (
     <div className={classNames('lg:w-2/3 xl:w-1/2', className)} data-testid={testId}>
@@ -57,55 +79,42 @@ const SigninForm = ({ className, testId = 'form-signin' }: SigninFormProps): JSX
           {error}
         </Alert>
       )}
-      <Formik<SigninFormValues>
-        initialValues={{ username: '', password: '' }}
-        validationSchema={validationSchema}
-        onSubmit={(values, { setSubmitting }) => {
-          setError('');
-          signin(values.username, {
-            onSuccess: () => {
-              setSubmitting(false);
-              navigate('/');
-            },
-            onError: (err: Error) => {
-              setError(err.message);
-              setSubmitting(false);
-            },
-          });
-        }}
-      >
-        {({ dirty, isSubmitting }) => (
-          <Form data-testid={`${testId}-form`}>
-            <TextField
-              name="username"
-              label="Username"
-              className="mb-4"
-              autoComplete="off"
-              maxLength={30}
-              disabled={isSubmitting}
-              testId={`${testId}-text-field-username`}
-            />
-            <TextField
-              type="password"
-              name="password"
-              label="Password"
-              className="mb-4"
-              autoComplete="off"
-              maxLength={30}
-              disabled={isSubmitting}
-              testId={`${testId}-text-field-password`}
-            />
-            <Button
-              type="submit"
-              className="w-full sm:w-40"
-              disabled={isSubmitting || !dirty}
-              testId={`${testId}-button-submit`}
-            >
-              Sign In
-            </Button>
-          </Form>
-        )}
-      </Formik>
+
+      <FormProvider {...formMethods}>
+        <form onSubmit={handleFormSubmit}>
+          <Input
+            name="username"
+            label="Username"
+            supportingText="Use any username from {JSON}Placeholder, e.g. Bret or Samantha."
+            className="mb-4"
+            autoFocus
+            autoComplete="off"
+            maxLength={30}
+            disabled={formMethods.formState.isSubmitting}
+            testId={`${testId}-input-username`}
+          />
+
+          <Input
+            type="password"
+            name="password"
+            label="Password"
+            className="mb-4"
+            autoComplete="off"
+            maxLength={30}
+            disabled={formMethods.formState.isSubmitting}
+            testId={`${testId}-input-password`}
+          />
+
+          <Button
+            type="submit"
+            className="w-full sm:w-40"
+            disabled={formMethods.formState.isSubmitting || !formMethods.formState.isDirty}
+            testId={`${testId}-button-submit`}
+          >
+            Sign In
+          </Button>
+        </form>
+      </FormProvider>
     </div>
   );
 };

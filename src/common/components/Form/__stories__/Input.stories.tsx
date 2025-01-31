@@ -1,21 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Form, Formik } from 'formik';
+import { FormProvider, useForm } from 'react-hook-form';
 
-import TextField from '../TextField';
+import Input from '../Input';
 
 const meta = {
-  title: 'Common/Form/TextField',
-  component: TextField,
+  title: 'Common/Form/Input',
+  component: Input,
   decorators: [
-    (Story) => (
-      <Formik initialValues={{ myField: '' }} onSubmit={() => {}}>
-        {() => (
-          <Form className="w-72">
+    (Story) => {
+      const formMethods = useForm({ defaultValues: { color: '' } });
+      return (
+        <FormProvider {...formMethods}>
+          <form className="w-80">
             <Story />
-          </Form>
-        )}
-      </Formik>
-    ),
+          </form>
+        </FormProvider>
+      );
+    },
   ],
   parameters: {
     layout: 'centered',
@@ -29,7 +30,7 @@ const meta = {
     testId: { description: 'The test identifier.' },
   },
   args: {},
-} satisfies Meta<typeof TextField>;
+} satisfies Meta<typeof Input>;
 
 export default meta;
 
@@ -37,15 +38,15 @@ type Story = StoryObj<typeof meta>;
 
 export const WithSupportingText: Story = {
   args: {
-    name: 'myField',
-    label: 'Name',
-    supportingText: 'Enter your full name.',
+    name: 'color',
+    label: 'Color',
+    supportingText: 'Enter your favorite color.',
   },
 };
 
 export const WithLabel: Story = {
   args: {
-    name: 'myField',
-    label: 'Name',
+    name: 'color',
+    label: 'Color',
   },
 };
