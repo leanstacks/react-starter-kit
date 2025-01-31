@@ -24,7 +24,7 @@ The production technology stack includes:
 - React Router Dom - declarative component routing
 - TanStack Query - asynchronous state management, caching, and data fetching
 - Axios - http client
-- Formik - form input validation, formatting, masking, and error handling
+- React Hook Form - form management, validation, error handling, custom fields, etc.
 - TailwindCSS - utility first CSS framework
 - React Spring - animations
 - Font Awesome - iconography
@@ -259,7 +259,7 @@ This project uses GitHub Actions to perform DevOps automation activities such as
 - [React Router][reactrouter]
 - [TanStack][tanstack]
 - [Axios][axios]
-- [Formik][formik]
+- [React Hook Form][reacthookform]
 - [Yup][yup]
 - [Tailwind CSS][tailwind]
 - [Font Awesome][fontawesome]
@@ -276,7 +276,7 @@ This project uses GitHub Actions to perform DevOps automation activities such as
 [reactrouter]: https://reactrouter.com/ 'React Router'
 [vite]: https://vitejs.dev/ 'Vite'
 [axios]: https://axios-http.com/ 'Axios'
-[formik]: https://formik.org/ 'Formik'
+[reacthookform]: https://www.react-hook-form.com/ 'React Hook Form'
 [yup]: https://github.com/jquense/yup 'Yup'
 [tailwind]: https://tailwindcss.com/ 'Tailwind CSS'
 [fontawesome]: https://fontawesome.com/ 'Font Awesome'
