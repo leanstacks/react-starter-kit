@@ -45,13 +45,14 @@ describe('SigninForm', () => {
 
   it('should navigate upon successful signin', async () => {
     // ARRANGE
+    const user = userEvent.setup();
     render(<SigninForm />);
     await screen.findByTestId('form-signin');
 
     // ACT
-    await userEvent.type(screen.getByLabelText('Username'), 'Bret');
-    await userEvent.type(screen.getByLabelText('Password'), 'aB1!12345678');
-    await userEvent.click(screen.getByTestId('form-signin-button-submit'));
+    await user.type(screen.getByLabelText('Username'), 'Bret');
+    await user.type(screen.getByLabelText('Password'), 'aB1!12345678');
+    await user.click(screen.getByTestId('form-signin-button-submit'));
 
     // ASSERT
     expect(mockNavigate).toHaveBeenCalledWith('/');
@@ -59,13 +60,14 @@ describe('SigninForm', () => {
 
   it('should display alert on error', async () => {
     // ARRANGE
+    const user = userEvent.setup();
     render(<SigninForm />);
     await screen.findByTestId('form-signin');
 
     // ACT
-    await userEvent.type(screen.getByLabelText('Username'), 'NotAUser');
-    await userEvent.type(screen.getByLabelText('Password'), 'aB1!12345678');
-    await userEvent.click(screen.getByTestId('form-signin-button-submit'));
+    await user.type(screen.getByLabelText('Username'), 'NotAUser');
+    await user.type(screen.getByLabelText('Password'), 'aB1!12345678');
+    await user.click(screen.getByTestId('form-signin-button-submit'));
     await screen.findByTestId('form-signin-alert');
 
     // ASSERT
