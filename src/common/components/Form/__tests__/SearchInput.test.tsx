@@ -1,37 +1,31 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from 'test/test-utils';
 import userEvent from '@testing-library/user-event';
 
-import SearchField from '../SearchField';
+import SearchInput from '../SearchInput';
 import SearchResult from '../SearchResult';
 
-describe('SearchField', () => {
+describe('SearchInput', () => {
   const mockOnChange = vi.fn();
-  const mockRenderSearchResults = vi.fn();
-
-  beforeEach(() => {
-    mockRenderSearchResults.mockImplementation(() => {
-      return [<SearchResult onClick={vi.fn()} key="1" />];
-    });
-  });
+  const searchResults = [
+    <SearchResult onClick={() => {}} key="1">
+      Apples
+    </SearchResult>,
+  ];
 
   it('should render successfully', async () => {
     // ARRANGE
-    render(<SearchField onChange={mockOnChange} renderSearchResults={mockRenderSearchResults} />);
-    await screen.findByTestId('field-search');
+    render(<SearchInput onChange={mockOnChange} searchResults={searchResults} />);
+    await screen.findByTestId('input-search');
 
     // ASSERT
-    expect(screen.getByTestId('field-search')).toBeDefined();
+    expect(screen.getByTestId('input-search')).toBeDefined();
   });
 
   it('should use custom testId', async () => {
     // ARRANGE
     render(
-      <SearchField
-        onChange={mockOnChange}
-        renderSearchResults={mockRenderSearchResults}
-        testId="custom-testId"
-      />,
+      <SearchInput onChange={mockOnChange} searchResults={searchResults} testId="custom-testId" />,
     );
     await screen.findByTestId('custom-testId');
 
@@ -42,25 +36,25 @@ describe('SearchField', () => {
   it('should use custom className', async () => {
     // ARRANGE
     render(
-      <SearchField
+      <SearchInput
         className="custom-className"
         onChange={mockOnChange}
-        renderSearchResults={mockRenderSearchResults}
+        searchResults={searchResults}
       />,
     );
-    await screen.findByTestId('field-search');
+    await screen.findByTestId('input-search');
 
     // ASSERT
-    expect(screen.getByTestId('field-search').classList).toContain('custom-className');
+    expect(screen.getByTestId('input-search').classList).toContain('custom-className');
   });
 
   it('should display supporting text', async () => {
     // ARRANGE
     render(
-      <SearchField
+      <SearchInput
         supportingText="supporting"
         onChange={mockOnChange}
-        renderSearchResults={mockRenderSearchResults}
+        searchResults={searchResults}
       />,
     );
     await screen.findByTestId('field-search-supporting-text');
@@ -71,13 +65,7 @@ describe('SearchField', () => {
 
   it('should display error text', async () => {
     // ARRANGE
-    render(
-      <SearchField
-        errorText="error"
-        onChange={mockOnChange}
-        renderSearchResults={mockRenderSearchResults}
-      />,
-    );
+    render(<SearchInput errorText="error" onChange={mockOnChange} searchResults={searchResults} />);
     await screen.findByTestId('field-search-error');
 
     // ASSERT
@@ -86,8 +74,8 @@ describe('SearchField', () => {
 
   it('should call onChange when input changes', async () => {
     // ARRANGE
-    render(<SearchField onChange={mockOnChange} renderSearchResults={mockRenderSearchResults} />);
-    await screen.findByTestId('field-search');
+    render(<SearchInput onChange={mockOnChange} searchResults={searchResults} />);
+    await screen.findByTestId('input-search');
 
     // ACT
     await userEvent.type(screen.getByTestId('field-search-input'), 'test');
