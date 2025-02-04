@@ -99,7 +99,7 @@ export const routes: RouteObject[] = [
                 element: <CardComponents />,
               },
               {
-                path: 'searchfield',
+                path: 'searchinput',
                 element: <SearchInputComponents />,
               },
               {

@@ -36,7 +36,7 @@ const SearchInputComponents = ({
     },
     {
       name: 'errorText',
-      description: 'Optional. Field error text.',
+      description: 'Optional. Error text.',
     },
     {
       name: 'isLoading',
@@ -52,7 +52,7 @@ const SearchInputComponents = ({
     },
     {
       name: 'supportingText',
-      description: 'Optional. Field help text.',
+      description: 'Optional. Help text.',
     },
     {
       name: 'testId',
@@ -104,12 +104,13 @@ const SearchInputComponents = ({
   return (
     <section className={className} data-testid={testId}>
       <Text variant="heading2" className="mb-4">
-        Search Field Component
+        Search Input Component
       </Text>
 
       <div className="my-8">
-        The <span className="font-mono font-bold">Search Field</span> component displays a search
-        input field.
+        The <span className="font-mono font-bold">SearchInput</span> component displays a search
+        input field which may be used for a typeahead style search and permits API calls to
+        asynchronously fetch search results.
       </div>
 
       <div className="my-8">
@@ -140,7 +141,7 @@ const SearchInputComponents = ({
 
         <CodeSnippet
           className="my-2"
-          code={`<SearchField
+          code={`<SearchInput
   className="w-full"
   errorText={error}
   onChange={(val) => setValue(val)}
