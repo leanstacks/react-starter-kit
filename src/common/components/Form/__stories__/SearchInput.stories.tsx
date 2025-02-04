@@ -6,6 +6,13 @@ import SearchResult from '../SearchResult';
 const meta = {
   title: 'Common/Form/SearchInput',
   component: SearchInput,
+  decorators: [
+    (Story) => (
+      <div className="w-96">
+        <Story />
+      </div>
+    ),
+  ],
   parameters: {
     layout: 'centered',
   },
@@ -40,6 +47,35 @@ export const Simple: Story = {
 export const MultipleResults: Story = {
   args: {
     onChange: () => {},
-    searchResults: [<SearchResult onClick={() => {}}>Apples</SearchResult>],
+    searchResults: [
+      <SearchResult onClick={() => {}}>Apples</SearchResult>,
+      <SearchResult onClick={() => {}}>Bananas</SearchResult>,
+      <SearchResult onClick={() => {}}>Oranges</SearchResult>,
+    ],
+  },
+};
+
+export const WithSupportingText: Story = {
+  args: {
+    onChange: () => {},
+    searchResults: [
+      <SearchResult onClick={() => {}}>Apples</SearchResult>,
+      <SearchResult onClick={() => {}}>Bananas</SearchResult>,
+      <SearchResult onClick={() => {}}>Oranges</SearchResult>,
+    ],
+    supportingText: 'I am supporting text.',
+  },
+};
+
+export const WithError: Story = {
+  args: {
+    errorText: 'I am error text.',
+    onChange: () => {},
+    searchResults: [
+      <SearchResult onClick={() => {}}>Apples</SearchResult>,
+      <SearchResult onClick={() => {}}>Bananas</SearchResult>,
+      <SearchResult onClick={() => {}}>Oranges</SearchResult>,
+    ],
+    supportingText: 'I am supporting text.',
   },
 };
