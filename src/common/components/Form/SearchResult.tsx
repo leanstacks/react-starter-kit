@@ -25,12 +25,12 @@ const SearchResult = ({
   children,
   className,
   onClick,
-  testId = 'field-search-result',
+  testId = 'search-result',
 }: SearchResultProps): JSX.Element => {
   return (
     <div
       className={classNames(
-        'flex h-16 cursor-pointer items-center border-b border-neutral-500/50 px-4 last:border-none hover:bg-neutral-500/25',
+        'flex cursor-pointer items-center px-2 py-1 hover:bg-neutral-500/25',
         className,
       )}
       onClick={onClick}

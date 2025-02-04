@@ -20,6 +20,7 @@ import TextComponents from 'pages/Components/components/TextComponents';
 import ButtonComponents from 'pages/Components/components/ButtonComponents';
 import BadgeComponents from 'pages/Components/components/BadgeComponents';
 import CardComponents from 'pages/Components/components/CardComponents';
+import SearchInputComponents from 'pages/Components/components/SearchInputComponents';
 
 // Tasks Page Family
 import TasksPage from 'pages/Tasks/TasksPage';
@@ -96,6 +97,10 @@ export const routes: RouteObject[] = [
               {
                 path: 'card',
                 element: <CardComponents />,
+              },
+              {
+                path: 'searchinput',
+                element: <SearchInputComponents />,
               },
               {
                 path: 'text',
