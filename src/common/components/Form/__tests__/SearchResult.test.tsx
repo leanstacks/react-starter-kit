@@ -10,10 +10,10 @@ describe('SearchResult', () => {
   it('should render successfully', async () => {
     // ARRANGE
     render(<SearchResult onClick={mockOnClick} />);
-    await screen.findByTestId('field-search-result');
+    await screen.findByTestId('search-result');
 
     // ASSERT
-    expect(screen.getByTestId('field-search-result')).toBeDefined();
+    expect(screen.getByTestId('search-result')).toBeDefined();
   });
 
   it('should use custom testId', async () => {
@@ -28,10 +28,10 @@ describe('SearchResult', () => {
   it('should use custom className', async () => {
     // ARRANGE
     render(<SearchResult onClick={mockOnClick} className="custom-className" />);
-    await screen.findByTestId('field-search-result');
+    await screen.findByTestId('search-result');
 
     // ASSERT
-    expect(screen.getByTestId('field-search-result').classList).toContain('custom-className');
+    expect(screen.getByTestId('search-result').classList).toContain('custom-className');
   });
 
   it('should render children', async () => {
@@ -50,10 +50,10 @@ describe('SearchResult', () => {
   it('should call onClick when clicked', async () => {
     // ARRANGE
     render(<SearchResult onClick={mockOnClick} />);
-    await screen.findByTestId('field-search-result');
+    await screen.findByTestId('search-result');
 
     // ACT
-    await userEvent.click(screen.getByTestId('field-search-result'));
+    await userEvent.click(screen.getByTestId('search-result'));
 
     // ASSERT
     expect(mockOnClick).toHaveBeenCalledTimes(1);

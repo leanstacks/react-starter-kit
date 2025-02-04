@@ -2,8 +2,9 @@ import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from 'test/test-utils';
 import userEvent from '@testing-library/user-event';
 
-import SearchInput from '../SearchInput';
 import SearchResult from '../SearchResult';
+
+import SearchInput from '../SearchInput';
 
 describe('SearchInput', () => {
   const mockOnChange = vi.fn();
@@ -57,19 +58,19 @@ describe('SearchInput', () => {
         searchResults={searchResults}
       />,
     );
-    await screen.findByTestId('field-search-supporting-text');
+    await screen.findByTestId('input-search-supporting-text');
 
     // ASSERT
-    expect(screen.getByTestId('field-search-supporting-text').textContent).toBe('supporting');
+    expect(screen.getByTestId('input-search-supporting-text').textContent).toBe('supporting');
   });
 
   it('should display error text', async () => {
     // ARRANGE
     render(<SearchInput errorText="error" onChange={mockOnChange} searchResults={searchResults} />);
-    await screen.findByTestId('field-search-error');
+    await screen.findByTestId('input-search-error');
 
     // ASSERT
-    expect(screen.getByTestId('field-search-error').textContent).toBe('error');
+    expect(screen.getByTestId('input-search-error').textContent).toBe('error');
   });
 
   it('should call onChange when input changes', async () => {
@@ -77,11 +78,11 @@ describe('SearchInput', () => {
     render(<SearchInput onChange={mockOnChange} searchResults={searchResults} />);
     await screen.findByTestId('input-search');
 
-    // ACT
-    await userEvent.type(screen.getByTestId('field-search-input'), 'test');
+    // input
+    await userEvent.type(screen.getByTestId('input-search-input'), 'test');
 
     // ASSERT
-    expect(screen.getByTestId<HTMLInputElement>('field-search-input').value).toBe('test');
+    expect(screen.getByTestId<HTMLInputElement>('input-search-input').value).toBe('test');
     expect(mockOnChange).toHaveBeenCalledWith('test');
   });
 });
