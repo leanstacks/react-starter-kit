@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import classNames from 'classnames';
 import { object, string } from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useTranslation } from 'react-i18next';
 
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 import { useSignin } from '../api/useSignin';
 import Input from 'common/components/Form/Input';
@@ -72,7 +72,7 @@ const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): 
   });
 
   return (
-    <div className={classNames('lg:w-2/3 xl:w-1/2', className)} data-testid={testId}>
+    <div className={cn('lg:w-2/3 xl:w-1/2', className)} data-testid={testId}>
       {error && (
         <Alert variant="error" className="mb-4 rounded-none" testId={`${testId}-alert`}>
           <FAIcon icon="circleExclamation" size="lg" />

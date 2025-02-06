@@ -1,5 +1,4 @@
-import classNames from 'classnames';
-
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 
 /**
@@ -71,7 +70,7 @@ const Avatar = ({
         alt={value}
         title={value}
         referrerPolicy="no-referrer"
-        className={classNames('size-8', className)}
+        className={cn('size-8', className)}
         data-testid={testId}
       />
     );
@@ -83,7 +82,7 @@ const Avatar = ({
   const backgroundColor = BACKGROUND_COLORS[trimmedValue.length % BACKGROUND_COLORS.length];
   return (
     <div
-      className={classNames(
+      className={cn(
         'flex size-8 items-center justify-center font-bold text-neutral-100',
         backgroundColor,
         className,

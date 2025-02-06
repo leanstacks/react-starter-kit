@@ -1,5 +1,4 @@
-import classNames from 'classnames';
-
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 
 /**
@@ -18,12 +17,7 @@ const MenuSeparator = ({
   className,
   testId = 'menu-separator',
 }: MenuSeparatorProps): JSX.Element => {
-  return (
-    <div
-      className={classNames('my-2 border-t border-neutral-500', className)}
-      data-testid={testId}
-    />
-  );
+  return <div className={cn('my-2 border-t border-neutral-500', className)} data-testid={testId} />;
 };
 
 export default MenuSeparator;

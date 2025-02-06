@@ -1,6 +1,6 @@
 import { ColumnDef, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
-import classNames from 'classnames';
 
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 
 /**
@@ -36,7 +36,7 @@ const Table = <TData, TValue>({
 
   return (
     <table
-      className={classNames('w-full border-collapse text-left text-sm', className)}
+      className={cn('w-full border-collapse text-left text-sm', className)}
       data-testid={testId}
     >
       <thead>

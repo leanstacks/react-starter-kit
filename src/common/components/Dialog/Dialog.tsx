@@ -1,6 +1,6 @@
 import { PropsWithChildren, useEffect, useState } from 'react';
-import classNames from 'classnames';
 
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 import Backdrop from '../Backdrop/Backdrop';
 
@@ -49,7 +49,7 @@ const Dialog = ({
   };
 
   return (
-    <div className={classNames({ hidden: !isDialogOpen }, className)} data-testid={testId}>
+    <div className={cn({ hidden: !isDialogOpen }, className)} data-testid={testId}>
       <Backdrop
         className="flex items-center justify-center"
         onClick={handleBackdropClick}

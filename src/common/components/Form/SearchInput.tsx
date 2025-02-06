@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useRef } from 'react';
-import classNames from 'classnames';
 
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 import FAIcon from 'common/components/Icon/FAIcon';
 
@@ -77,25 +77,19 @@ const SearchInput = ({
 
   return (
     <div className={className} onClick={doFocus} data-testid={testId}>
-      <div
-        className={classNames(
-          'mb-1 flex items-center gap-2 border-b border-neutral-500/50 px-1 py-0.5 has-[:focus]:border-blue-600',
-        )}
-      >
+      <div className="mb-1 flex items-center gap-2 border-b border-neutral-500/50 px-1 py-0.5 has-[:focus]:border-blue-600">
         <FAIcon icon="magnifyingGlass" data-testid={`${testId}-icon-leading`} />
         <input
           name={`${testId}-input`}
           onChange={doOnChange}
-          className={classNames(
-            'flex-grow appearance-none bg-transparent focus-visible:outline-none',
-          )}
+          className="flex-grow appearance-none bg-transparent focus-visible:outline-none"
           autoComplete="off"
           ref={inputRef}
           data-testid={`${testId}-input`}
         />
         <FAIcon
           icon="circleNotch"
-          className={classNames({
+          className={cn({
             invisible: !isLoading,
           })}
           spin
@@ -116,9 +110,7 @@ const SearchInput = ({
         )}
       </div>
 
-      <div className={classNames('max-h-64 overflow-y-auto rounded-lg bg-neutral-500/10')}>
-        {searchResults}
-      </div>
+      <div className="max-h-64 overflow-y-auto rounded-lg bg-neutral-500/10">{searchResults}</div>
     </div>
   );
 };

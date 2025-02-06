@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
-import classNames from 'classnames';
 
 import { BaseComponentProps } from 'common/utils/types';
+import { cn } from 'common/utils/css';
 
 /**
  * Properties for the `DropdownContent` component.
@@ -26,7 +26,7 @@ const DropdownContent = ({
 }: DropdownContentProps): JSX.Element => {
   return (
     <div
-      className={classNames(
+      className={cn(
         'rounded-lg border border-neutral-500 bg-white py-2 dark:bg-neutral-800',
         className,
       )}

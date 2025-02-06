@@ -1,6 +1,6 @@
 import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom';
-import classNames from 'classnames';
 
+import { cn } from 'common/utils/css';
 import { PropsWithTestId } from 'common/utils/types';
 
 /**
@@ -21,10 +21,7 @@ export interface LinkProps extends RouterLinkProps, PropsWithTestId {}
 const Link = ({ children, className, testId = 'link', ...props }: LinkProps): JSX.Element => {
   return (
     <RouterLink
-      className={classNames(
-        'text-blue-600 hover:underline hover:opacity-75 dark:text-blue-400',
-        className,
-      )}
+      className={cn('text-blue-600 hover:underline hover:opacity-75 dark:text-blue-400', className)}
       data-testid={testId}
       {...props}
     >

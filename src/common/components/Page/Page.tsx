@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import { PropsWithChildren } from 'react';
 
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 
 /**
@@ -17,7 +17,7 @@ export interface PageProps extends BaseComponentProps, PropsWithChildren {}
  */
 const Page = ({ children, className, testId = 'page' }: PageProps): JSX.Element => {
   return (
-    <div className={classNames('px-2 sm:px-8', className)} data-testid={testId}>
+    <div className={cn('px-2 sm:px-8', className)} data-testid={testId}>
       {children}
     </div>
   );

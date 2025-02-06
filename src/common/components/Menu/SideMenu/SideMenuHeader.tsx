@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
-import classNames from 'classnames';
 
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 import MenuCloseButton from '../MenuCloseButton';
 
@@ -32,7 +32,7 @@ const SideMenuHeader = ({
 }: SideMenuHeaderProps): JSX.Element => {
   return (
     <div
-      className={classNames('flex h-14 items-center justify-between px-2 pt-2', className)}
+      className={cn('flex h-14 items-center justify-between px-2 pt-2', className)}
       data-testid={testId}
     >
       <div className="mx-2">{children}</div>

@@ -1,7 +1,7 @@
-import classNames from 'classnames';
 import { PropsWithChildren } from 'react';
 
 import { BaseComponentProps } from 'common/utils/types';
+import { cn } from 'common/utils/css';
 
 /**
  * Properties for the `SearchResult` React component.
@@ -29,7 +29,7 @@ const SearchResult = ({
 }: SearchResultProps): JSX.Element => {
   return (
     <div
-      className={classNames(
+      className={cn(
         'flex cursor-pointer items-center px-2 py-1 hover:bg-neutral-500/25',
         className,
       )}

@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 import { Task } from 'pages/Tasks/api/useGetUserTasks';
 import { useGetUser } from 'common/api/useGetUser';
@@ -55,7 +55,7 @@ const TaskView = ({ className, task, testId = 'task-view' }: TaskViewProps): JSX
       <div className="mt-4">
         <div className="text-xs font-bold uppercase">Status</div>
         <Badge
-          className={classNames('inline', { '!bg-blue-600': task.completed })}
+          className={cn('inline', { '!bg-blue-600': task.completed })}
           testId={`${testId}-status`}
         >
           {task.completed ? 'COMPLETE' : 'INCOMPLETE'}

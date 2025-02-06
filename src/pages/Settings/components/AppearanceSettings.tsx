@@ -1,5 +1,4 @@
-import classNames from 'classnames';
-
+import { cn } from 'common/utils/css';
 import { PropsWithTestId } from 'common/utils/types';
 import { useSettings } from 'common/hooks/useSettings';
 import { useSetSettings } from 'common/api/useSetSettings';
@@ -32,7 +31,7 @@ const AppearanceSettings = ({
 
       <div className="flex flex-wrap gap-8">
         <div
-          className={classNames(
+          className={cn(
             'flex w-48 flex-col overflow-clip rounded-lg border',
             { 'border-slate-500/25': settings.theme !== 'light' },
             { 'border-blue-600': settings.theme === 'light' },
@@ -55,7 +54,7 @@ const AppearanceSettings = ({
         </div>
 
         <div
-          className={classNames(
+          className={cn(
             'flex w-48 flex-col overflow-clip rounded-lg border',
             { 'border-slate-500/25': settings.theme !== 'dark' },
             { 'border-blue-600': settings.theme === 'dark' },

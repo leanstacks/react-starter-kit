@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
-import classNames from 'classnames';
 
 import { BaseComponentProps } from 'common/utils/types';
+import { cn } from 'common/utils/css';
 
 /**
  * Properties for the `DropdownItem` component.
@@ -30,7 +30,7 @@ const DropdownItem = ({
 }: DropdownItemProps): JSX.Element => {
   return (
     <div
-      className={classNames(
+      className={cn(
         'mb-2 flex cursor-pointer items-center gap-2 px-3 py-1 last:mb-0 hover:bg-neutral-500/25',
         className,
       )}

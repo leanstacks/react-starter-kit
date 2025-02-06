@@ -1,5 +1,4 @@
-import classNames from 'classnames';
-
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 import Button from 'common/components/Button/Button';
 import FAIcon from 'common/components/Icon/FAIcon';
@@ -28,7 +27,7 @@ const MenuCloseButton = ({
   return (
     <Button
       variant="text"
-      className={classNames('pe-1 ps-1 hover:bg-neutral-200 dark:hover:bg-opacity-25', className)}
+      className={cn('pe-1 ps-1 hover:bg-neutral-200 dark:hover:bg-opacity-25', className)}
       onClick={() => close?.()}
       title="Close"
       testId={testId}

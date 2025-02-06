@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
-import classNames from 'classnames';
 import { filter, reject } from 'lodash';
 import colors from 'tailwindcss/colors';
 import { useTranslation } from 'react-i18next';
 
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 import { Task } from 'pages/Tasks/api/useGetUserTasks';
 import DonutChart, { DonutChartData, DonutChartProps } from 'common/components/Chart/DonutChart';
@@ -59,7 +59,7 @@ const TaskStatusDonutChart = ({
     // render the chart
     return (
       <DonutChart
-        className={classNames('text-xs', className)}
+        className={cn('text-xs', className)}
         data={chartData}
         height={height}
         width={width}
