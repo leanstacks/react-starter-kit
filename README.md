@@ -33,7 +33,7 @@ The production technology stack includes:
 - Yup - schema based validation
 - Lodash - utility functions
 - DayJS - date and time utility functions
-- TanStack React Table - advanced tables and datagrids
+- TanStack Table - advanced tables and datagrids
 - Recharts - composable charting library for React
 
 The development technology stack includes:
