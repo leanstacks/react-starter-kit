@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
-import classNames from 'classnames';
 
 import { BaseComponentProps } from 'common/utils/types';
+import { cn } from 'common/utils/css';
 
 /**
  * Properties for the `Backdrop` component.
@@ -32,10 +32,7 @@ const Backdrop = ({
 
   return (
     <div
-      className={classNames(
-        'fixed right-0 top-0 z-[1000] h-screen w-screen bg-neutral-500/50',
-        className,
-      )}
+      className={cn('fixed right-0 top-0 z-[1000] h-screen w-screen bg-neutral-500/50', className)}
       onClick={handleClick}
       data-testid={testId}
     >

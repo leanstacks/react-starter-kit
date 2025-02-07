@@ -1,9 +1,9 @@
+import { PropsWithChildren } from 'react';
 import { NavLink, NavLinkProps } from 'react-router-dom';
-import classNames from 'classnames';
 
+import { cn } from 'common/utils/css';
 import { PropsWithTestId } from 'common/utils/types';
 import FAIcon, { FAIconProps } from 'common/components/Icon/FAIcon';
-import { PropsWithChildren } from 'react';
 
 /**
  * Properties for the `MenuNavLink` component.
@@ -56,7 +56,7 @@ const MenuNavLink = ({
   const getClassName = (props: NavLinkRenderProps): string => {
     const classNameFromProps = typeof className === 'function' ? className(props) : className;
 
-    return classNames(
+    return cn(
       'flex items-center rounded-md px-2 py-1.5 text-sm hover:bg-neutral-500/25',
       { 'bg-neutral-500/10 hover:!bg-neutral-500/10': styleActive && props.isActive },
       classNameFromProps,
@@ -70,7 +70,7 @@ const MenuNavLink = ({
           <FAIcon
             icon={icon}
             size="lg"
-            className={classNames('me-2', iconClassName)}
+            className={cn('me-2', iconClassName)}
             testId={`${testId}-icon`}
           />
         )}

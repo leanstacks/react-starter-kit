@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes } from 'react';
-import classNames from 'classnames';
 
 import { PropsWithTestId } from 'common/utils/types';
+import { cn } from 'common/utils/css';
 
 /**
  * The variations of `Button` components.
@@ -34,7 +34,7 @@ const Button = ({
 }: ButtonProps): JSX.Element => {
   return (
     <button
-      className={classNames(
+      className={cn(
         'flex items-center justify-center gap-2 rounded-md border px-2 py-1 enabled:hover:opacity-80 disabled:opacity-50',
         {
           'border-neutral-700 bg-neutral-700 text-white dark:border-neutral-300 dark:bg-neutral-300 dark:text-neutral-900':

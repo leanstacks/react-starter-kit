@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import classNames from 'classnames';
 import dayjs from 'dayjs';
 import { animated, useSpring } from '@react-spring/web';
 
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 import { ToastDetail } from 'common/providers/ToastsContext';
 import { useConfig } from 'common/hooks/useConfig';
@@ -63,7 +63,7 @@ const Toast = ({ className, dismiss, testId = 'toast', toast }: ToastProps): JSX
 
   return (
     <animated.div
-      className={classNames('max-w-sm rounded bg-neutral-200 dark:bg-neutral-600', className)}
+      className={cn('max-w-sm rounded bg-neutral-200 dark:bg-neutral-600', className)}
       data-testid={testId}
       style={{ ...springs }}
     >

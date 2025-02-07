@@ -1,5 +1,4 @@
-import classNames from 'classnames';
-
+import { cn } from 'common/utils/css';
 import Card, { CardProps } from './Card';
 import FAIcon, { FAIconProps } from 'common/components/Icon/FAIcon';
 
@@ -30,7 +29,7 @@ const MessageCard = ({
   title,
 }: MessageCardProps): JSX.Element => {
   return (
-    <Card className={classNames('w-80', className)} testId={testId}>
+    <Card className={cn('w-80', className)} testId={testId}>
       <div className="flex flex-col items-center gap-2 text-center">
         {iconProps && <FAIcon {...iconProps} testId={`${testId}-icon`} />}
         {title && (

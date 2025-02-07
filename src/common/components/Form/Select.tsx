@@ -1,7 +1,7 @@
 import { InputHTMLAttributes, PropsWithChildren } from 'react';
 import { useFormContext } from 'react-hook-form';
-import classNames from 'classnames';
 
+import { cn } from 'common/utils/css';
 import { PropsWithTestId } from 'common/utils/types';
 
 /**
@@ -63,7 +63,7 @@ const Select = ({
         id={props.id || name}
         {...props}
         {...register(name)}
-        className={classNames(
+        className={cn(
           'mb-1 block w-full border-b border-neutral-500/50 bg-transparent py-0.5 focus:border-blue-600',
           {
             '!border-red-600': hasError,

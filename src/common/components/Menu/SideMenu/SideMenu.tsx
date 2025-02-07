@@ -1,7 +1,7 @@
 import { PropsWithChildren, ReactNode } from 'react';
-import classNames from 'classnames';
 import { animated, useSpring } from '@react-spring/web';
 
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 import { MenuProps } from '../Menu';
 import SideMenuHeader from './SideMenuHeader';
@@ -47,7 +47,7 @@ const SideMenu = ({
 
   return (
     <div
-      className={classNames(
+      className={cn(
         'fixed right-0 top-0 z-[1000] flex h-screen w-screen bg-neutral-500/50',
         { 'flex-row-reverse justify-start': isLeft },
         { 'justify-end': isRight },
@@ -58,7 +58,7 @@ const SideMenu = ({
       <div className="grow" onClick={() => close?.()} data-testid={`${testId}-backdrop`}></div>
       <animated.div
         style={{ ...springs }}
-        className={classNames(
+        className={cn(
           'z-[1001] h-screen w-80 min-w-48 border-neutral-500 bg-neutral-100 dark:bg-neutral-800',
           { 'rounded-r-lg border-r': isLeft },
           { 'rounded-l-lg border-l': isRight },

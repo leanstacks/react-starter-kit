@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
-import classNames from 'classnames';
 
+import { cn } from 'common/utils/css';
 import { PropsWithTestId } from 'common/utils/types';
 import { toNumberBetween } from 'common/utils/numbers';
 import { SearchParam } from 'common/utils/constants';
@@ -79,7 +79,7 @@ const Tabs = ({
         {tabs.map(({ className, ...tabProps }, index) => (
           <Tab
             {...tabProps}
-            className={classNames({ className, 'flex-grow': variant === 'fullWidth' })}
+            className={cn({ className, 'flex-grow': variant === 'fullWidth' })}
             isActive={activeTabIndex === index}
             onClick={() => setTab(index)}
             key={index}

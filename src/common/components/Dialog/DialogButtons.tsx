@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
-import classNames from 'classnames';
 
 import { BaseComponentProps } from 'common/utils/types';
+import { cn } from 'common/utils/css';
 
 /**
  * Properties for the `DialogButtons` component.
@@ -23,10 +23,7 @@ const DialogButtons = ({
   testId = 'dialog-buttons',
 }: DialogButtonsProps): JSX.Element => {
   return (
-    <div
-      className={classNames('mt-6 flex items-center justify-end gap-4', className)}
-      data-testid={testId}
-    >
+    <div className={cn('mt-6 flex items-center justify-end gap-4', className)} data-testid={testId}>
       {children}
     </div>
   );

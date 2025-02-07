@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
-import classNames from 'classnames';
 
 import { BaseComponentProps } from 'common/utils/types';
+import { cn } from 'common/utils/css';
 
 /**
  * The variations of `Alert` components.
@@ -32,7 +32,7 @@ const Alert = ({
 }: AlertProps): JSX.Element => {
   return (
     <div
-      className={classNames(
+      className={cn(
         'flex items-center gap-2 rounded-lg p-3',
         {
           'bg-red-800/90 text-white/80': variant === 'error',

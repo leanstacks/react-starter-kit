@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
-import classNames from 'classnames';
 
 import { BaseComponentProps } from 'common/utils/types';
+import { cn } from 'common/utils/css';
 
 /**
  * Properties for the `DialogHeading` component.
@@ -22,7 +22,7 @@ const DialogHeading = ({
   testId = 'dialog-heading',
 }: DialogHeadingProps): JSX.Element => {
   return (
-    <div className={classNames('mb-4 line-clamp-2 text-2xl', className)} data-testid={testId}>
+    <div className={cn('mb-4 line-clamp-2 text-2xl', className)} data-testid={testId}>
       {children}
     </div>
   );

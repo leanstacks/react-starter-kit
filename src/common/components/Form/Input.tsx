@@ -1,7 +1,7 @@
 import { InputHTMLAttributes } from 'react';
 import { useFormContext } from 'react-hook-form';
-import classNames from 'classnames';
 
+import { cn } from 'common/utils/css';
 import { PropsWithTestId } from 'common/utils/types';
 
 /**
@@ -42,7 +42,7 @@ const Input = ({
   const isDisabled = props.disabled || props.readOnly;
 
   return (
-    <div className={classNames(className)} data-testid={testId}>
+    <div className={cn(className)} data-testid={testId}>
       {!!label && (
         <label
           htmlFor={name}
@@ -56,7 +56,7 @@ const Input = ({
         id={props.id || name}
         {...props}
         {...register(name)}
-        className={classNames(
+        className={cn(
           'mb-1 block w-full border-b border-neutral-500/50 bg-transparent py-0.5 focus:border-blue-600 focus-visible:outline-none',
           {
             '!border-red-600': hasError,

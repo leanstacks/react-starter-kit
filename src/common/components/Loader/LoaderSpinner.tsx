@@ -1,5 +1,4 @@
-import classNames from 'classnames';
-
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 import FAIcon, { FAIconProps } from 'common/components/Icon/FAIcon';
 
@@ -33,9 +32,9 @@ const LoaderSpinner = ({
   textClassName,
 }: LoaderSpinnerProps): JSX.Element => {
   return (
-    <div className={classNames('flex items-center', className)} data-testid={testId}>
+    <div className={cn('flex items-center', className)} data-testid={testId}>
       <FAIcon icon={icon} spin className={iconClassName} testId={`${testId}-icon`} />
-      {!!text && <div className={classNames('ms-2', textClassName)}>{text}</div>}
+      {!!text && <div className={cn('ms-2', textClassName)}>{text}</div>}
     </div>
   );
 };

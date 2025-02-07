@@ -1,7 +1,7 @@
-import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 import { Task } from 'pages/Tasks/api/useGetUserTasks';
 import { useUpdateTask } from 'pages/Tasks/api/useUpdateTask';
@@ -66,7 +66,7 @@ const TaskCompleteToggle = ({
 
   return (
     <Button
-      className={classNames('!m-0 contents !border-none !p-0', className)}
+      className={cn('!m-0 contents !border-none !p-0', className)}
       variant="text"
       title={buttonTitle}
       onClick={handleButtonClick}
@@ -77,7 +77,7 @@ const TaskCompleteToggle = ({
     >
       <FAIcon
         icon={showCompleted ? 'circleCheck' : 'circleRegular'}
-        className={classNames({ 'text-green-600': showCompleted })}
+        className={cn({ 'text-green-600': showCompleted })}
         testId={`${testId}-icon`}
       />
     </Button>

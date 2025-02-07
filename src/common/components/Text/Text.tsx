@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
-import classNames from 'classnames';
 
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 
 /**
@@ -27,7 +27,7 @@ export interface TextProps extends BaseComponentProps, PropsWithChildren {
 const Text = ({ children, className, testId = 'text', variant }: TextProps): JSX.Element => {
   return (
     <div
-      className={classNames(
+      className={cn(
         {
           'text-4xl': variant === 'heading1',
           'text-2xl': variant === 'heading2',

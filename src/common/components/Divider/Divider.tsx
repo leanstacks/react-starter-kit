@@ -1,5 +1,4 @@
-import classNames from 'classnames';
-
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 
 /**
@@ -17,7 +16,7 @@ export interface DividerProps extends BaseComponentProps {}
 const Divider = ({ className, testId = 'divider' }: DividerProps): JSX.Element => {
   return (
     <div
-      className={classNames('h-0 w-full border-t border-neutral-500/50', className)}
+      className={cn('h-0 w-full border-t border-neutral-500/50', className)}
       data-testid={testId}
     ></div>
   );

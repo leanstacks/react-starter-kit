@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
-import classNames from 'classnames';
 
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 import { useSettings } from 'common/hooks/useSettings';
 
@@ -23,7 +23,7 @@ const Theme = ({ className, children, testId = 'theme' }: ThemeProps): JSX.Eleme
   return (
     <div className={settings.theme} data-testid={testId}>
       <div
-        className={classNames(
+        className={cn(
           'min-h-screen bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text',
           className,
         )}

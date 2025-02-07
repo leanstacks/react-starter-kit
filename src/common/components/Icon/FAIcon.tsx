@@ -1,5 +1,4 @@
 import { ComponentPropsWithoutRef } from 'react';
-import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCircle as faCircleRegular } from '@fortawesome/free-regular-svg-icons';
@@ -35,6 +34,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import { BaseComponentProps } from 'common/utils/types';
+import { cn } from 'common/utils/css';
 
 /**
  * A union type of all Font Awesome icon names (without the `fa-` prefix)
@@ -135,7 +135,7 @@ const FAIcon = ({
 
   return (
     <FontAwesomeIcon
-      className={classNames('fa-icon', className)}
+      className={cn('fa-icon', className)}
       icon={faIcon}
       {...iconProps}
       data-testid={testId}

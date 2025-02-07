@@ -1,8 +1,7 @@
-import classNames from 'classnames';
-
 import { PropsWithClassName } from 'common/utils/types';
 import { useSetSettings } from 'common/api/useSetSettings';
 import { useSettings } from 'common/hooks/useSettings';
+import { cn } from 'common/utils/css';
 import Button from './Button';
 import FAIcon from 'common/components/Icon/FAIcon';
 
@@ -27,7 +26,7 @@ const ThemeToggle = ({ className }: ThemeToggleProps): JSX.Element => {
       {settings?.theme === 'light' ? (
         <Button
           variant="text"
-          className={classNames('text-light-text', className)}
+          className={cn('text-light-text', className)}
           title="Dark Mode"
           onClick={() => setSettings({ theme: 'dark' })}
           testId="button-theme-dark"
@@ -37,7 +36,7 @@ const ThemeToggle = ({ className }: ThemeToggleProps): JSX.Element => {
       ) : (
         <Button
           variant="text"
-          className={classNames('text-dark-text', className)}
+          className={cn('text-dark-text', className)}
           title="Light Mode"
           onClick={() => setSettings({ theme: 'light' })}
           testId="button-theme-light"

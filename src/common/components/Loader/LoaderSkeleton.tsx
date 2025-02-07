@@ -1,5 +1,4 @@
-import classNames from 'classnames';
-
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 
 /**
@@ -20,10 +19,7 @@ const LoaderSkeleton = ({
 }: LoaderSkeletonProps): JSX.Element => {
   return (
     <div
-      className={classNames(
-        'animate-pulse rounded-md bg-neutral-200 dark:bg-neutral-700',
-        className,
-      )}
+      className={cn('animate-pulse rounded-md bg-neutral-200 dark:bg-neutral-700', className)}
       data-testid={testId}
     />
   );

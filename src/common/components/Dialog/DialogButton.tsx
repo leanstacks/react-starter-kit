@@ -1,5 +1,4 @@
-import classNames from 'classnames';
-
+import { cn } from 'common/utils/css';
 import Button, { ButtonProps } from '../Button/Button';
 
 /**
@@ -31,7 +30,7 @@ const DialogButton = ({
   return (
     <Button
       variant="text"
-      className={classNames(
+      className={cn(
         'text-sm',
         { 'font-bold text-blue-600 dark:text-blue-400': variant === 'primary' },
         { 'font-bold text-red-600': variant === 'danger' },

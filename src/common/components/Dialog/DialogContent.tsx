@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
-import classNames from 'classnames';
 
 import { BaseComponentProps } from 'common/utils/types';
+import { cn } from 'common/utils/css';
 
 /**
  * Properties for the `DialogContent` component.
@@ -22,7 +22,7 @@ const DialogContent = ({
   testId = 'dialog-content',
 }: DialogContentProps): JSX.Element => {
   return (
-    <div className={classNames('mb-6 mt-4 text-sm', className)} data-testid={testId}>
+    <div className={cn('mb-6 mt-4 text-sm', className)} data-testid={testId}>
       {children}
     </div>
   );

@@ -1,7 +1,7 @@
 import { ReactNode, useState } from 'react';
-import classNames from 'classnames';
 
 import { BaseComponentProps } from 'common/utils/types';
+import { cn } from 'common/utils/css';
 
 /**
  * Properties for the `Dropdown` component.
@@ -57,7 +57,7 @@ const Dropdown = ({
   return (
     <div className={className} data-testid={testId}>
       <div
-        className={classNames('absolute left-0 top-0 z-[1000] h-screen w-screen', {
+        className={cn('absolute left-0 top-0 z-[1000] h-screen w-screen', {
           hidden: hidden,
         })}
         onClick={() => setHidden(true)}
@@ -72,7 +72,7 @@ const Dropdown = ({
           {toggle}
         </div>
         <div
-          className={classNames('absolute right-0 z-[1001]', {
+          className={cn('absolute right-0 z-[1001]', {
             hidden: hidden,
           })}
           onClick={() => setHidden(true)}

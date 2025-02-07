@@ -1,5 +1,4 @@
-import classNames from 'classnames';
-
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 
 /**
@@ -43,7 +42,7 @@ const Tab = ({
 
   return (
     <div
-      className={classNames(
+      className={cn(
         'flex cursor-pointer items-center justify-center px-2 py-1 text-sm font-bold uppercase',
         {
           'border-b-2 border-b-blue-300 dark:border-b-blue-600': isActive,

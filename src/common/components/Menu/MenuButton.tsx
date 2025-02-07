@@ -1,6 +1,6 @@
 import { ComponentType, useState } from 'react';
-import classNames from 'classnames';
 
+import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 import { MenuProps } from './Menu';
 import Button from 'common/components/Button/Button';
@@ -36,7 +36,7 @@ const MenuButton = ({
     <>
       <Button
         variant="text"
-        className={classNames('text-light-text dark:text-dark-text', className)}
+        className={cn('text-light-text dark:text-dark-text', className)}
         onClick={() => setIsMenuOpen(true)}
         title={title}
         testId={testId}
