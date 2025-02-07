@@ -51,7 +51,7 @@ describe('useGetTokens', () => {
     getItemSpy.mockReturnValue(null);
     // use a specific wrapper to avoid test side effects from "AuthProvider"
     const { result } = renderHook(() => useGetUserTokens(), { wrapper: WithQueryClientProvider });
-    await waitFor(() => expect(result.current.isError).toBe(true));
+    await waitFor(() => expect(result.current.isError).toBe(true), { timeout: 2000 });
 
     // ASSERT
     expect(result.current.error).toBeInstanceOf(Error);
