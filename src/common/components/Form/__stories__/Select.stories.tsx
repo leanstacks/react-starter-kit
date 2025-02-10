@@ -64,7 +64,7 @@ export const WithSupportingText: Story = {
 export const WithLabel: Story = {
   args: {
     children: options,
-    name: 'myField',
-    label: 'Fruit',
+    name: 'color',
+    label: 'Color',
   },
 };
