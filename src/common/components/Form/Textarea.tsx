@@ -1,22 +1,22 @@
-import { InputHTMLAttributes } from 'react';
+import { TextareaHTMLAttributes } from 'react';
 import { Control, FieldValues, Path, useController } from 'react-hook-form';
 
 import { cn } from 'common/utils/css';
-import { PropsWithTestId } from 'common/utils/types';
+import { BaseComponentProps } from 'common/utils/types';
 
 /**
- * Properties for the `Input` component.
+ * Properties for the `Textarea` component.
  * @param {Control} control - Object containing methods for registering components
  * into React Hook Form.
  * @param {string} [label] - Optional. The label text to display.
- * @param {string} name - Name of the form control.
+ * @param {Path} name - Name of the form control.
  * @param {string} [supportingText] - Optional. Help text or instructions.
  * @see {@link PropsWithTestId}
  * @see {@link InputHTMLAttributes}
  */
-export interface InputProps<T extends FieldValues>
-  extends InputHTMLAttributes<HTMLInputElement>,
-    PropsWithTestId {
+export interface TextareaProps<T extends FieldValues>
+  extends BaseComponentProps,
+    TextareaHTMLAttributes<HTMLTextAreaElement> {
   control: Control<T>;
   label?: string;
   name: Path<T>;
@@ -24,20 +24,20 @@ export interface InputProps<T extends FieldValues>
 }
 
 /**
- * The `Input` component renders an HTML `input` element. It is used to capture
- * single line text input from a user.
- * @param {InputProps} props - Component properties.
+ * The `Textarea` component renders an HTML `textarea` element. It is used to capture
+ * multiple lines of text input from a user.
+ * @param {TextareaProps} props - Component properties.
  * @returns {JSX.Element} JSX
  */
-const Input = <T extends FieldValues>({
+const Textarea = <T extends FieldValues>({
   className,
   control,
   label,
   name,
   supportingText,
-  testId = 'input',
+  testId = 'textarea',
   ...props
-}: InputProps<T>): JSX.Element => {
+}: TextareaProps<T>): JSX.Element => {
   const { field, fieldState } = useController({ control, name });
   const isDisabled = props.disabled || props.readOnly;
 
@@ -52,7 +52,7 @@ const Input = <T extends FieldValues>({
           {label}
         </label>
       )}
-      <input
+      <textarea
         id={props.id || name}
         {...props}
         {...field}
@@ -65,9 +65,9 @@ const Input = <T extends FieldValues>({
             'opacity-50': isDisabled,
           },
         )}
-        data-testid={`${testId}-input`}
-      />
-      {fieldState.error && (
+        data-testid={`${testId}-textarea`}
+      ></textarea>
+      {!!fieldState.error && (
         <div className="me-1 inline text-sm text-red-600" data-testid={`${testId}-error`}>
           {fieldState.error.message}
         </div>
@@ -81,4 +81,4 @@ const Input = <T extends FieldValues>({
   );
 };
 
-export default Input;
+export default Textarea;
