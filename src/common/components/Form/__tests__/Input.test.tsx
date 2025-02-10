@@ -14,6 +14,10 @@ const formSchema = object({
 
 type FormValues = InferType<typeof formSchema>;
 
+/**
+ * A wrapper for testing the `Input` component which requires some
+ * react-hook-form objects passed as props.
+ */
 const InputWrapper = (props: Omit<InputProps<FormValues>, 'control'>) => {
   const form = useForm<FormValues>({
     defaultValues: { color: '' },

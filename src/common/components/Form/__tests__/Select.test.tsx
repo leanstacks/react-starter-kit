@@ -1,11 +1,12 @@
-import { render, screen } from 'test/test-utils';
+import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 import { useForm } from 'react-hook-form';
 import { InferType, object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+import { render, screen } from 'test/test-utils';
+
 import Select, { SelectProps } from '../Select';
-import userEvent from '@testing-library/user-event';
 
 const formSchema = object({
   color: string().oneOf(['blue'], 'Must select a value in the list.'),
@@ -13,6 +14,10 @@ const formSchema = object({
 
 type FormValues = InferType<typeof formSchema>;
 
+/**
+ * A wrapper for testing the `Select` component which requires some
+ * react-hook-form objects passed as props.
+ */
 const SelectWrapper = (props: Omit<SelectProps<FormValues>, 'control'>) => {
   const form = useForm<FormValues>({
     defaultValues: { color: '' },
