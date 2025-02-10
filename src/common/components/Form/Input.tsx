@@ -1,5 +1,5 @@
 import { InputHTMLAttributes } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { Control, FieldValues, Path, useController } from 'react-hook-form';
 
 import { cn } from 'common/utils/css';
 import { PropsWithTestId } from 'common/utils/types';
@@ -13,9 +13,12 @@ import { PropsWithTestId } from 'common/utils/types';
  * @see {@link PropsWithTestId}
  * @see {@link InputHTMLAttributes}
  */
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement>, PropsWithTestId {
+export interface InputProps<T extends FieldValues>
+  extends InputHTMLAttributes<HTMLInputElement>,
+    PropsWithTestId {
+  control: Control<T>;
   label?: string;
-  name: string;
+  name: Path<T>;
   supportingText?: string;
 }
 
@@ -25,20 +28,16 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement>, Props
  * @param {InputProps} props - Component properties.
  * @returns {JSX.Element} JSX
  */
-const Input = ({
+const Input = <T extends FieldValues>({
   className,
+  control,
   label,
   name,
   supportingText,
   testId = 'input',
   ...props
-}: InputProps): JSX.Element => {
-  const {
-    formState: { errors },
-    register,
-  } = useFormContext();
-  const hasError = !!errors[name];
-  const errorMessage: string = errors[name]?.message as string;
+}: InputProps<T>): JSX.Element => {
+  const { field, fieldState } = useController({ control, name });
   const isDisabled = props.disabled || props.readOnly;
 
   return (
@@ -55,11 +54,11 @@ const Input = ({
       <input
         id={props.id || name}
         {...props}
-        {...register(name)}
+        {...field}
         className={cn(
           'mb-1 block w-full border-b border-neutral-500/50 bg-transparent py-0.5 focus:border-blue-600 focus-visible:outline-none',
           {
-            '!border-red-600': hasError,
+            '!border-red-600': fieldState.error,
           },
           {
             'opacity-50': isDisabled,
@@ -67,9 +66,9 @@ const Input = ({
         )}
         data-testid={`${testId}-input`}
       />
-      {hasError && (
+      {fieldState.error && (
         <div className="me-1 inline text-sm text-red-600" data-testid={`${testId}-error`}>
-          {errorMessage}
+          {fieldState.error.message}
         </div>
       )}
       {!!supportingText && (
