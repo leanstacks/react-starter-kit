@@ -16,7 +16,7 @@ import { PropsWithTestId } from 'common/utils/types';
  * @see {@link PropsWithChildren}
  * @see {@link InputHTMLAttributes}
  */
-interface SelectProps<T extends FieldValues>
+export interface SelectProps<T extends FieldValues>
   extends PropsWithTestId,
     PropsWithChildren,
     InputHTMLAttributes<HTMLSelectElement> {
