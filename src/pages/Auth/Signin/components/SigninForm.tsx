@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { object, string } from 'yup';
+import { InferType, object, string } from 'yup';
 import { useNavigate } from 'react-router-dom';
-import { FormProvider, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useTranslation } from 'react-i18next';
+import { t } from 'i18next';
 
 import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
@@ -14,12 +14,20 @@ import Alert from 'common/components/Alert/Alert';
 import Button from 'common/components/Button/Button';
 
 /**
+ * Signin form validation schema.
+ */
+const validationSchema = object({
+  password: string().required(t('validation.required')),
+  username: string()
+    .required(t('validation.required'))
+    .max(30, t('validation.max', { count: 30 })),
+});
+
+/**
  * Signin form values.
  */
-interface SigninFormValues {
-  username: string;
-  password: string;
-}
+
+type SigninFormValues = InferType<typeof validationSchema>;
 
 /**
  * The `SigninForm` component renders a form for user authentication.
@@ -33,25 +41,14 @@ interface SigninFormValues {
  * @returns {JSX.Element} JSX
  */
 const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): JSX.Element => {
-  const { t } = useTranslation();
   const [error, setError] = useState<string>('');
   const { mutate: signin } = useSignin();
   const navigate = useNavigate();
 
   /**
-   * Signin form validation schema.
-   */
-  const validationSchema = object({
-    password: string().required(t('validation.required')),
-    username: string()
-      .required(t('validation.required'))
-      .max(30, t('validation.max', { count: 30 })),
-  });
-
-  /**
    * Initialize management of the form.
    */
-  const formMethods = useForm<SigninFormValues>({
+  const { control, formState, handleSubmit } = useForm<SigninFormValues>({
     defaultValues: { username: '', password: '' },
     resolver: yupResolver(validationSchema),
   });
@@ -59,7 +56,7 @@ const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): 
   /**
    * Handles the form submission.
    */
-  const handleFormSubmit = formMethods.handleSubmit((data: SigninFormValues) => {
+  const onFormSubmit = (data: SigninFormValues) => {
     setError('');
     signin(data.username, {
       onSuccess: () => {
@@ -69,7 +66,7 @@ const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): 
         setError(err.message);
       },
     });
-  });
+  };
 
   return (
     <div className={cn('lg:w-2/3 xl:w-1/2', className)} data-testid={testId}>
@@ -80,41 +77,41 @@ const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): 
         </Alert>
       )}
 
-      <FormProvider {...formMethods}>
-        <form onSubmit={handleFormSubmit}>
-          <Input
-            name="username"
-            label="Username"
-            supportingText="Use any username from {JSON}Placeholder, e.g. Bret or Samantha."
-            className="mb-4"
-            autoFocus
-            autoComplete="off"
-            maxLength={30}
-            disabled={formMethods.formState.isSubmitting}
-            testId={`${testId}-input-username`}
-          />
+      <form onSubmit={handleSubmit(onFormSubmit)}>
+        <Input
+          control={control}
+          name="username"
+          label="Username"
+          supportingText="Use any username from {JSON}Placeholder, e.g. Bret or Samantha."
+          className="mb-4"
+          autoFocus
+          autoComplete="off"
+          maxLength={30}
+          disabled={formState.isSubmitting}
+          testId={`${testId}-input-username`}
+        />
 
-          <Input
-            type="password"
-            name="password"
-            label="Password"
-            className="mb-4"
-            autoComplete="off"
-            maxLength={30}
-            disabled={formMethods.formState.isSubmitting}
-            testId={`${testId}-input-password`}
-          />
+        <Input
+          control={control}
+          type="password"
+          name="password"
+          label="Password"
+          className="mb-4"
+          autoComplete="off"
+          maxLength={30}
+          disabled={formState.isSubmitting}
+          testId={`${testId}-input-password`}
+        />
 
-          <Button
-            type="submit"
-            className="w-full sm:w-40"
-            disabled={formMethods.formState.isSubmitting || !formMethods.formState.isDirty}
-            testId={`${testId}-button-submit`}
-          >
-            Sign In
-          </Button>
-        </form>
-      </FormProvider>
+        <Button
+          type="submit"
+          className="w-full sm:w-40"
+          disabled={formState.isSubmitting || !formState.isDirty}
+          testId={`${testId}-button-submit`}
+        >
+          Sign In
+        </Button>
+      </form>
     </div>
   );
 };

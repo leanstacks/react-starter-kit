@@ -1,36 +1,44 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FormProvider, useForm } from 'react-hook-form';
+import { FieldValues, useForm } from 'react-hook-form';
 
-import Input from '../Input';
+import { default as MyInput } from '../Input';
+import { InputProps } from '../Input';
+
+/**
+ * A wrapper for the `Input` component.  Provides the RHF form `control`
+ * to the `Input` component.
+ */
+const Input = (props: Omit<InputProps<FieldValues>, 'control'>) => {
+  const form = useForm();
+
+  const onSubmit = () => {};
+
+  return (
+    <form className="w-96" onSubmit={form.handleSubmit(onSubmit)}>
+      <MyInput control={form.control} {...props} />
+    </form>
+  );
+};
 
 const meta = {
   title: 'Common/Form/Input',
   component: Input,
-  decorators: [
-    (Story) => {
-      const formMethods = useForm({ defaultValues: { color: '' } });
-      return (
-        <FormProvider {...formMethods}>
-          <form className="w-80">
-            <Story />
-          </form>
-        </FormProvider>
-      );
-    },
-  ],
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
   argTypes: {
     className: { description: 'Additional CSS classes.' },
+    control: {
+      description: 'Object containing methods for registering components into React Hook Form.',
+    },
     label: { description: 'The field label.' },
     name: { description: 'The form field name.' },
     supportingText: { description: 'Additional field instructions.' },
     testId: { description: 'The test identifier.' },
   },
   args: {},
-} satisfies Meta<typeof Input>;
+} satisfies Meta<typeof MyInput>;
 
 export default meta;
 

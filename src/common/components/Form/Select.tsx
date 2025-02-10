@@ -1,11 +1,13 @@
 import { InputHTMLAttributes, PropsWithChildren } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { Control, FieldValues, Path, useController } from 'react-hook-form';
 
 import { cn } from 'common/utils/css';
 import { PropsWithTestId } from 'common/utils/types';
 
 /**
  * Properties for the `Select` component.
+ * @param {Control} control - Object containing methods for registering components
+ * into React Hook Form.
  * @param {string} [label] - Optional. The text to display. If omitted, the
  * `value` is displayed.
  * @param {string} name - Name of the form control.
@@ -14,12 +16,13 @@ import { PropsWithTestId } from 'common/utils/types';
  * @see {@link PropsWithChildren}
  * @see {@link InputHTMLAttributes}
  */
-interface SelectProps
+export interface SelectProps<T extends FieldValues>
   extends PropsWithTestId,
     PropsWithChildren,
     InputHTMLAttributes<HTMLSelectElement> {
+  control: Control<T>;
   label?: string;
-  name: string;
+  name: Path<T>;
   supportingText?: string;
 }
 
@@ -31,21 +34,17 @@ interface SelectProps
  * @param {SelectProps} props - Component properties.
  * @returns JSX
  */
-const Select = ({
+const Select = <T extends FieldValues>({
   children,
   className,
+  control,
   label,
   name,
   supportingText,
   testId = 'select',
   ...props
-}: SelectProps): JSX.Element => {
-  const {
-    formState: { errors },
-    register,
-  } = useFormContext();
-  const hasError = !!errors[name];
-  const errorMessage: string = errors[name]?.message as string;
+}: SelectProps<T>): JSX.Element => {
+  const { field, fieldState } = useController({ control, name });
   const isDisabled = props.disabled || props.readOnly;
 
   return (
@@ -62,11 +61,11 @@ const Select = ({
       <select
         id={props.id || name}
         {...props}
-        {...register(name)}
+        {...field}
         className={cn(
           'mb-1 block w-full border-b border-neutral-500/50 bg-transparent py-0.5 focus:border-blue-600',
           {
-            '!border-red-600': hasError,
+            '!border-red-600': fieldState.error,
           },
           {
             'opacity-50': isDisabled,
@@ -76,9 +75,9 @@ const Select = ({
       >
         {children}
       </select>
-      {hasError && (
+      {fieldState.error && (
         <div className="me-1 inline text-sm text-red-600" data-testid={`${testId}-error`}>
-          {errorMessage}
+          {fieldState.error.message}
         </div>
       )}
       {!!supportingText && (
