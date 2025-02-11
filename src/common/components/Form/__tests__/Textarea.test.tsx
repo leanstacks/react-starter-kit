@@ -1,11 +1,12 @@
+import { describe, expect, it } from 'vitest';
+import userEvent from '@testing-library/user-event';
 import { InferType, object, string } from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import Textarea, { TextareaProps } from '../Textarea';
-import { describe, expect, it } from 'vitest';
 import { render, screen } from 'test/test-utils';
-import userEvent from '@testing-library/user-event';
+
+import Textarea, { TextareaProps } from '../Textarea';
 
 const formSchema = object({
   myField: string().required('Required'),
