@@ -3,6 +3,7 @@ import { Control, FieldValues, Path, useController } from 'react-hook-form';
 
 import { cn } from 'common/utils/css';
 import { PropsWithTestId } from 'common/utils/types';
+import Label from './Label';
 
 /**
  * Properties for the `Select` component.
@@ -50,13 +51,9 @@ const Select = <T extends FieldValues>({
   return (
     <div className={className} data-testid={testId}>
       {!!label && (
-        <label
-          htmlFor={name}
-          className="mb-1 block text-sm font-medium"
-          data-testid={`${testId}-label`}
-        >
+        <Label htmlFor={name} testId={`${testId}-label`}>
           {label}
-        </label>
+        </Label>
       )}
       <select
         id={props.id || name}
