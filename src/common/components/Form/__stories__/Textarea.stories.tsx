@@ -1,28 +1,28 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { FieldValues, useForm } from 'react-hook-form';
 
-import { default as MySelect } from '../Select';
-import { SelectProps } from '../Select';
+import { default as MyTextarea } from '../Textarea';
+import { TextareaProps } from '../Textarea';
 
 /**
- * A wrapper for the `Select` component.  Provides the RHF form `control`
- * to the `Select` component.
+ * A wrapper for the `Textarea` component.  Provides the RHF form `control`
+ * to the `Textarea` component.
  */
-const Select = (props: Omit<SelectProps<FieldValues>, 'control'>) => {
+const Textarea = (props: Omit<TextareaProps<FieldValues>, 'control'>) => {
   const form = useForm();
 
   const onSubmit = () => {};
 
   return (
     <form className="w-96" onSubmit={form.handleSubmit(onSubmit)}>
-      <MySelect control={form.control} {...props}></MySelect>
+      <MyTextarea control={form.control} {...props} />
     </form>
   );
 };
 
 const meta = {
-  title: 'Common/Form/Select',
-  component: Select,
+  title: 'Common/Form/Textarea',
+  component: Textarea,
   parameters: {
     layout: 'centered',
   },
@@ -38,42 +38,39 @@ const meta = {
     testId: { description: 'The test identifier.' },
   },
   args: {},
-} satisfies Meta<typeof MySelect>;
+} satisfies Meta<typeof MyTextarea>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const options = (
-  <>
-    <option value="blue">Blue</option>
-    <option value="green">Green</option>
-    <option value="red">Red</option>
-  </>
-);
-
 export const WithSupportingText: Story = {
   args: {
-    children: options,
-    name: 'color',
-    label: 'Color',
-    supportingText: 'Choose a color.',
+    name: 'bio',
+    label: 'Bio',
+    supportingText: 'Tell us a little bit about yourself.',
   },
 };
 
 export const WithLabel: Story = {
   args: {
-    children: options,
-    name: 'color',
-    label: 'Color',
+    name: 'bio',
+    label: 'Bio',
   },
 };
 
 export const Required: Story = {
   args: {
-    children: options,
-    name: 'color',
-    label: 'Color',
+    name: 'bio',
+    label: 'Bio',
     required: true,
+  },
+};
+
+export const MoreRows: Story = {
+  args: {
+    name: 'bio',
+    label: 'Bio',
+    rows: 8,
   },
 };
