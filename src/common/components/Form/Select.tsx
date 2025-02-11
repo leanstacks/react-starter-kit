@@ -5,6 +5,7 @@ import { cn } from 'common/utils/css';
 import { PropsWithTestId } from 'common/utils/types';
 import Label from './Label';
 import FieldError from './FieldError';
+import HelpText from '../Text/HelpText';
 
 /**
  * Properties for the `Select` component.
@@ -75,9 +76,7 @@ const Select = <T extends FieldValues>({
       </select>
       <FieldError message={fieldState.error?.message} testId={`${testId}-error`} />
       {!!supportingText && (
-        <div className="inline text-sm font-light" data-testid={`${testId}-supporting-text`}>
-          {supportingText}
-        </div>
+        <HelpText testId={`${testId}-supporting-text`}>{supportingText}</HelpText>
       )}
     </div>
   );
