@@ -4,6 +4,7 @@ import { Control, FieldValues, Path, useController } from 'react-hook-form';
 import { cn } from 'common/utils/css';
 import { PropsWithTestId } from 'common/utils/types';
 import Label from './Label';
+import FieldError from './FieldError';
 
 /**
  * Properties for the `Select` component.
@@ -72,11 +73,7 @@ const Select = <T extends FieldValues>({
       >
         {children}
       </select>
-      {fieldState.error && (
-        <div className="me-1 inline text-sm text-red-600" data-testid={`${testId}-error`}>
-          {fieldState.error.message}
-        </div>
-      )}
+      <FieldError message={fieldState.error?.message} testId={`${testId}-error`} />
       {!!supportingText && (
         <div className="inline text-sm font-light" data-testid={`${testId}-supporting-text`}>
           {supportingText}
