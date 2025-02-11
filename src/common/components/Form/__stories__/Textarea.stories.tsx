@@ -59,6 +59,14 @@ export const WithLabel: Story = {
   },
 };
 
+export const Required: Story = {
+  args: {
+    name: 'bio',
+    label: 'Bio',
+    required: true,
+  },
+};
+
 export const MoreRows: Story = {
   args: {
     name: 'bio',

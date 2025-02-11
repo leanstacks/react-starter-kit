@@ -68,3 +68,12 @@ export const WithLabel: Story = {
     label: 'Color',
   },
 };
+
+export const Required: Story = {
+  args: {
+    children: options,
+    name: 'color',
+    label: 'Color',
+    required: true,
+  },
+};

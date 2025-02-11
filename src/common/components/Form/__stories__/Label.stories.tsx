@@ -36,6 +36,12 @@ export const Styled: Story = {
   },
 };
 
+export const Required: Story = {
+  args: {
+    required: true,
+  },
+};
+
 export const WithIcon: Story = {
   args: {
     children: (

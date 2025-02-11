@@ -87,6 +87,7 @@ const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): 
           autoFocus
           autoComplete="off"
           maxLength={30}
+          required
           disabled={formState.isSubmitting}
           testId={`${testId}-input-username`}
         />
@@ -99,6 +100,7 @@ const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): 
           className="mb-4"
           autoComplete="off"
           maxLength={30}
+          required
           disabled={formState.isSubmitting}
           testId={`${testId}-input-password`}
         />

@@ -47,7 +47,7 @@ const Input = <T extends FieldValues>({
   return (
     <div className={cn(className)} data-testid={testId}>
       {!!label && (
-        <Label htmlFor={name} testId={`${testId}-label`}>
+        <Label htmlFor={name} required={props.required} testId={`${testId}-label`}>
           {label}
         </Label>
       )}
