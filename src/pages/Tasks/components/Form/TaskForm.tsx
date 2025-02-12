@@ -90,7 +90,6 @@ const TaskForm = ({
    * @param {TaskFormValues} data - Form data values.
    */
   const onFormSubmit = (data: TaskFormValues) => {
-    console.log('onFormSubmit::', data);
     setError('');
     createTask(
       { task: data },
