@@ -4,6 +4,7 @@ import find from 'lodash/find';
 
 import { usersFixture } from '__fixtures__/users';
 import { todosFixture } from '__fixtures__/todos';
+import { Task } from 'pages/Tasks/api/useGetUserTasks';
 
 export const handlers = [
   http.get('https://jsonplaceholder.typicode.com/users', () => {
@@ -24,6 +25,14 @@ export const handlers = [
     const { userId } = params;
     const todos = filter(todosFixture, { userId: Number(userId) });
     return HttpResponse.json(todos);
+  }),
+  http.post('https://jsonplaceholder.typicode.com/todos', async ({ request }) => {
+    // create a task
+    const requestTodo = (await request.json()) as Task;
+    if (requestTodo.title === '500') {
+      return new HttpResponse(null, { status: 500 });
+    }
+    return HttpResponse.json(request.body);
   }),
   http.get('https://jsonplaceholder.typicode.com/todos/:todoId', ({ params }) => {
     // get a task

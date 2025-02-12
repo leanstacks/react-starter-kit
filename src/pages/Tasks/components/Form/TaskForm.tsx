@@ -107,7 +107,7 @@ const TaskForm = ({
   return (
     <div className={cn('lg:w-2/3 xl:w-1/2', className)} data-testid={testId}>
       {error && (
-        <Alert variant="error" className="mb-4 rounded-none" testId={`${testId}-alert`}>
+        <Alert variant="error" className="mb-4 rounded-none" testId={`${testId}-error`}>
           <FAIcon icon="circleExclamation" size="lg" />
           {`${t('errors.unable-to-process')} ${error}`}
         </Alert>
