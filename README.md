@@ -10,6 +10,8 @@ A serverless, progressive, responsive starter user interface (UI) with React at 
 
 This project's API integration uses the simulated REST endpoints made available by [JSON Placeholder](https://jsonplaceholder.typicode.com/).
 
+There are some limitations to the JSONP Placeholder APIs. The primary limitation is that the API is stateless. You may create (`post`), update (`put`), and delete items within the JSON Placeholder collections; however, the collections are not actually mutated and persisted by JSON Placeholder. Within the starter kit, we update the TanStack Query caches upon successful mutation to simulate a stateful back end.
+
 ### Authentication
 
 When running the application, you may sign in with any of the JSON Placeholder [Users](https://jsonplaceholder.typicode.com/users). Simply enter the _Username_ value from any user in the API and use any value for the _Password_. For example, try username `Bret` and password `abc123`.

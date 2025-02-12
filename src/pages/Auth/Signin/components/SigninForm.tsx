@@ -77,7 +77,7 @@ const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): 
         </Alert>
       )}
 
-      <form onSubmit={handleSubmit(onFormSubmit)}>
+      <form onSubmit={handleSubmit(onFormSubmit)} noValidate>
         <Input
           control={control}
           name="username"
