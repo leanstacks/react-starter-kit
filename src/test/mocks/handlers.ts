@@ -32,7 +32,7 @@ export const handlers = [
     if (requestTodo.title === '500') {
       return new HttpResponse(null, { status: 500 });
     }
-    return HttpResponse.json(request.body);
+    return HttpResponse.json(requestTodo, { status: 201 });
   }),
   http.get('https://jsonplaceholder.typicode.com/todos/:todoId', ({ params }) => {
     // get a task
