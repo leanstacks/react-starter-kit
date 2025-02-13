@@ -1,4 +1,10 @@
 {
+  "addTask": "Crear una nueva tarea",
+  "label": {
+    "title": "Título",
+    "completed": "Está completo"
+  },
+  "createdTask": "Tarea creada.",
   "markComplete": "Márcalo completo",
   "markIncomplete": "Márcalo como incompleto",
   "markedComplete": "Tarea marcada completada",

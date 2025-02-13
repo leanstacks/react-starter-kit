@@ -117,7 +117,7 @@ const TaskForm = ({
         <Input
           control={control}
           name="title"
-          label="Title"
+          label={t('label.title', { ns: 'tasks' })}
           className="mb-4"
           autoFocus
           autoComplete="off"
@@ -129,9 +129,8 @@ const TaskForm = ({
         <Toggle
           control={control}
           name="completed"
-          label="Is Complete"
+          label={t('label.completed', { ns: 'tasks' })}
           className="mb-4"
-          required
           disabled={formState.isSubmitting}
           testId={`${testId}-input-completed`}
         />
@@ -140,12 +139,12 @@ const TaskForm = ({
           <Button
             type="button"
             variant="outline"
-            className="w-1/2 sm:w-40"
+            className="my-8 w-1/2 sm:w-40"
             onClick={() => onFormCancel()}
             disabled={formState.isSubmitting}
             testId={`${testId}-button-cancel`}
           >
-            Cancel
+            {t('label.cancel')}
           </Button>
           <Button
             type="submit"
@@ -153,7 +152,7 @@ const TaskForm = ({
             disabled={formState.isSubmitting}
             testId={`${testId}-button-submit`}
           >
-            Create
+            {t('label.save')}
           </Button>
         </div>
       </form>

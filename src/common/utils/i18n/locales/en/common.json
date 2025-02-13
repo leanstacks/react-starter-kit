@@ -7,6 +7,10 @@
     "unable-to-process": "We are experiencing problems processing your request.",
     "unable-to-retrieve": "We are unable to retrieve the requested information at this time."
   },
+  "label": {
+    "cancel": "Cancel",
+    "save": "Save"
+  },
   "letsGetStarted": "Let's get started",
   "privacy": "Privacy",
   "privacyPolicy": "Privacy policy",

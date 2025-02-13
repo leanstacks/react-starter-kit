@@ -1,4 +1,10 @@
 {
+  "addTask": "Add a new task",
+  "label": {
+    "title": "Title",
+    "completed": "Is complete"
+  },
+  "createdTask": "Task created.",
   "markComplete": "Mark complete",
   "markIncomplete": "Mark incomplete",
   "markedComplete": "Marked task complete",
