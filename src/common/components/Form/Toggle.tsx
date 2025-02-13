@@ -59,6 +59,7 @@ const Toggle = <T extends FieldValues>({
         </Label>
       )}
       <Button
+        id={name}
         variant="text"
         onClick={handleClick}
         disabled={disabled}
