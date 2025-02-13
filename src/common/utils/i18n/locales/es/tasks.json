@@ -1,5 +1,6 @@
 {
   "addTask": "Crear una nueva tarea",
+  "editTask": "Editar tarea",
   "label": {
     "title": "Título",
     "completed": "Está completo"
@@ -16,5 +17,6 @@
   "status-of-tasks": "Estado de las Tareas",
   "task": "Tarea",
   "tasks": "Tareas",
-  "tasks-empty": "No hay nada que hacer. Haz una tarea para empezar."
+  "tasks-empty": "No hay nada que hacer. Haz una tarea para empezar.",
+  "updatedTask": "Tarea actualizada."
 }

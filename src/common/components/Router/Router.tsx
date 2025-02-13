@@ -27,6 +27,7 @@ import TasksPage from 'pages/Tasks/TasksPage';
 import TaskListLayout from 'pages/Tasks/components/TaskListLayout';
 import TaskDetailLayout from 'pages/Tasks/components/TaskDetailLayout';
 import TaskAdd from 'pages/Tasks/components/Add/TaskAdd';
+import TaskEdit from 'pages/Tasks/components/Edit/TaskEdit';
 
 /**
  * The React Router configuration. An array of `RouteObject`.
@@ -123,7 +124,16 @@ export const routes: RouteObject[] = [
               },
               {
                 path: ':taskId',
-                element: <TaskDetailLayout />,
+                children: [
+                  {
+                    index: true,
+                    element: <TaskDetailLayout />,
+                  },
+                  {
+                    path: 'edit',
+                    element: <TaskEdit />,
+                  },
+                ],
               },
             ],
           },

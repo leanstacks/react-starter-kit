@@ -1,5 +1,6 @@
 {
   "addTask": "Add a new task",
+  "editTask": "Edit task",
   "label": {
     "title": "Title",
     "completed": "Is complete"
@@ -16,5 +17,6 @@
   "status-of-tasks": "Status of Tasks",
   "task": "Task",
   "tasks": "Tasks",
-  "tasks-empty": "Nothing to do. Create a task to get started."
+  "tasks-empty": "Nothing to do. Create a task to get started.",
+  "updatedTask": "Task updated."
 }

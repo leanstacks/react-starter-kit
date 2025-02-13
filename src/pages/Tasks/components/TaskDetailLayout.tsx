@@ -76,7 +76,14 @@ const TaskDetailLayout = ({
 
         {/* Menu */}
         <div className="ms-auto flex items-center gap-2">
-          <FAIcon icon="pencil" className="px-2 py-1" />
+          <Button
+            variant="text"
+            title="Edit"
+            onClick={() => navigate('edit')}
+            testId={`${testId}-button-edit`}
+          >
+            <FAIcon icon="pencil" />
+          </Button>
           <Button
             variant="text"
             title="Delete"

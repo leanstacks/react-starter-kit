@@ -1,18 +1,14 @@
-import { useState } from 'react';
 import { boolean, InferType, number, object, string } from 'yup';
 import { t } from 'i18next';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { useCreateTask } from 'pages/Tasks/api/useCreateTask';
 import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 import { Task } from 'pages/Tasks/api/useGetUserTasks';
 import Input from 'common/components/Form/Input';
 import Button from 'common/components/Button/Button';
 import Toggle from 'common/components/Form/Toggle';
-import Alert from 'common/components/Alert/Alert';
-import FAIcon from 'common/components/Icon/FAIcon';
 
 /**
  * Task form validation schema.
@@ -28,7 +24,7 @@ const validationSchema = object({
 /**
  * Task form values.
  */
-type TaskFormValues = InferType<typeof validationSchema>;
+export type TaskFormValues = InferType<typeof validationSchema>;
 
 /**
  * Properties for the `TaskForm` component.
@@ -39,8 +35,8 @@ type TaskFormValues = InferType<typeof validationSchema>;
  * @see {@link BaseComponentProps}
  */
 export interface TaskFormProps extends BaseComponentProps {
-  onCancel?: () => void;
-  onSubmit?: () => void;
+  onCancel: () => Promise<void> | void;
+  onSubmit: (data: TaskFormValues) => Promise<void> | void;
   task?: Partial<Task>;
 }
 
@@ -63,9 +59,6 @@ const TaskForm = ({
   task,
   testId = 'task-form',
 }: TaskFormProps): JSX.Element => {
-  const [error, setError] = useState('');
-  const { mutate: createTask } = useCreateTask();
-
   /**
    * Initializes management of the form.
    */
@@ -75,45 +68,13 @@ const TaskForm = ({
       title: task?.title || '',
       completed: task?.completed || false,
     },
+    mode: 'all',
     resolver: yupResolver(validationSchema),
   });
 
-  /**
-   * Handles form cancellation.
-   */
-  const onFormCancel = () => {
-    onCancel?.();
-  };
-
-  /**
-   * Handles form submission.
-   * @param {TaskFormValues} data - Form data values.
-   */
-  const onFormSubmit = (data: TaskFormValues) => {
-    setError('');
-    createTask(
-      { task: data },
-      {
-        onSuccess: () => {
-          onSubmit?.();
-        },
-        onError: (err: Error) => {
-          setError(err.message);
-        },
-      },
-    );
-  };
-
   return (
     <div className={cn('lg:w-2/3 xl:w-1/2', className)} data-testid={testId}>
-      {error && (
-        <Alert variant="error" className="mb-4 rounded-none" testId={`${testId}-error`}>
-          <FAIcon icon="circleExclamation" size="lg" />
-          {`${t('errors.unable-to-process')} ${error}`}
-        </Alert>
-      )}
-
-      <form onSubmit={handleSubmit(onFormSubmit)} noValidate>
+      <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <Input
           control={control}
           name="title"
@@ -140,7 +101,7 @@ const TaskForm = ({
             type="button"
             variant="outline"
             className="my-8 w-1/2 sm:w-40"
-            onClick={() => onFormCancel()}
+            onClick={onCancel}
             disabled={formState.isSubmitting}
             aria-label={t('label.cancel')}
             testId={`${testId}-button-cancel`}
@@ -150,7 +111,7 @@ const TaskForm = ({
           <Button
             type="submit"
             className="w-1/2 sm:w-40"
-            disabled={formState.isSubmitting}
+            disabled={formState.isSubmitting || !formState.isDirty}
             aria-label={t('label.save')}
             testId={`${testId}-button-submit`}
           >
