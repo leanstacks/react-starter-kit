@@ -1,9 +1,9 @@
 import { describe, expect, it, vi } from 'vitest';
+import userEvent from '@testing-library/user-event';
 
 import { render, screen } from 'test/test-utils';
 
 import TaskForm from '../TaskForm';
-import userEvent from '@testing-library/user-event';
 
 describe('TaskForm', () => {
   it('should render successfully', async () => {

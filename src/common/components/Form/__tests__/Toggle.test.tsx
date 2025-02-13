@@ -3,9 +3,10 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { boolean, InferType, object } from 'yup';
 
-import Toggle, { ToggleProps } from '../Toggle';
 import { describe, expect, it } from 'vitest';
 import { render, screen } from 'test/test-utils';
+
+import Toggle, { ToggleProps } from '../Toggle';
 
 const formSchema = object({
   myField: boolean().oneOf([false]),

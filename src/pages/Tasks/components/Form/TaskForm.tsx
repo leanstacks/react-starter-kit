@@ -142,6 +142,7 @@ const TaskForm = ({
             className="my-8 w-1/2 sm:w-40"
             onClick={() => onFormCancel()}
             disabled={formState.isSubmitting}
+            aria-label={t('label.cancel')}
             testId={`${testId}-button-cancel`}
           >
             {t('label.cancel')}
@@ -150,6 +151,7 @@ const TaskForm = ({
             type="submit"
             className="w-1/2 sm:w-40"
             disabled={formState.isSubmitting}
+            aria-label={t('label.save')}
             testId={`${testId}-button-submit`}
           >
             {t('label.save')}

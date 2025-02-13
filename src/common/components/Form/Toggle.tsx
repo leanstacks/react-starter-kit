@@ -58,7 +58,13 @@ const Toggle = <T extends FieldValues>({
           {label}
         </Label>
       )}
-      <Button variant="text" onClick={handleClick} disabled={disabled} testId={`${testId}-button`}>
+      <Button
+        variant="text"
+        onClick={handleClick}
+        disabled={disabled}
+        aria-label={label}
+        testId={`${testId}-button`}
+      >
         {field.value ? (
           <FAIcon icon="toggleOn" size="2xl" fixedWidth />
         ) : (
