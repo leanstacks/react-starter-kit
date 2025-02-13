@@ -31,7 +31,6 @@ export const useDeleteTask = () => {
    * @param {DeleteTaskVariables} variables - The mutation function variables.
    */
   const deleteTask = async ({ task }: DeleteTaskVariables): Promise<void> => {
-    // throw new Error('Failed');
     await axios.request({
       method: 'delete',
       url: `${config.VITE_BASE_URL_API}/todos/${task.id}`,

@@ -23,11 +23,14 @@ import {
   faPaintBrush,
   faPencil,
   faPhone,
+  faPlus,
   faPuzzlePiece,
   faRightFromBracket,
   faRightToBracket,
   faSliders,
   faSun,
+  faToggleOff,
+  faToggleOn,
   faTrash,
   faUsers,
   faXmark,
@@ -62,11 +65,14 @@ export type FAIconName =
   | 'paintbrush'
   | 'pencil'
   | 'phone'
+  | 'plus'
   | 'puzzlePiece'
   | 'rightFromBracket'
   | 'rightToBracket'
   | 'sliders'
   | 'sun'
+  | 'toggleOff'
+  | 'toggleOn'
   | 'trash'
   | 'users'
   | 'xmark';
@@ -108,11 +114,14 @@ const icons: Record<FAIconName, IconProp> = {
   paintbrush: faPaintBrush,
   pencil: faPencil,
   phone: faPhone,
+  plus: faPlus,
   puzzlePiece: faPuzzlePiece,
   rightFromBracket: faRightFromBracket,
   rightToBracket: faRightToBracket,
   sliders: faSliders,
   sun: faSun,
+  toggleOff: faToggleOff,
+  toggleOn: faToggleOn,
   trash: faTrash,
   users: faUsers,
   xmark: faXmark,

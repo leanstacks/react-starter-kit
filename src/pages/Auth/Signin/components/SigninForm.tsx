@@ -77,7 +77,7 @@ const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): 
         </Alert>
       )}
 
-      <form onSubmit={handleSubmit(onFormSubmit)}>
+      <form onSubmit={handleSubmit(onFormSubmit)} noValidate>
         <Input
           control={control}
           name="username"
@@ -107,7 +107,7 @@ const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): 
 
         <Button
           type="submit"
-          className="w-full sm:w-40"
+          className="my-8 w-full sm:w-40"
           disabled={formState.isSubmitting || !formState.isDirty}
           testId={`${testId}-button-submit`}
         >
