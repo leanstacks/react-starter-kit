@@ -67,9 +67,9 @@ const Toggle = <T extends FieldValues>({
         testId={`${testId}-button`}
       >
         {field.value ? (
-          <FAIcon icon="toggleOn" size="2xl" fixedWidth />
+          <FAIcon icon="toggleOn" size="2xl" fixedWidth testId={`${testId}-icon-on`} />
         ) : (
-          <FAIcon icon="toggleOff" size="2xl" fixedWidth />
+          <FAIcon icon="toggleOff" size="2xl" fixedWidth testId={`${testId}-icon-off`} />
         )}
       </Button>
       <FieldError message={fieldState.error?.message} testId={`${testId}-error`} />
