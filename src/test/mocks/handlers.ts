@@ -1,4 +1,4 @@
-import { HttpResponse, http } from 'msw';
+import { delay, HttpResponse, http } from 'msw';
 import filter from 'lodash/filter';
 import find from 'lodash/find';
 
@@ -34,8 +34,9 @@ export const handlers = [
     }
     return HttpResponse.json(requestTodo, { status: 201 });
   }),
-  http.get('https://jsonplaceholder.typicode.com/todos/:todoId', ({ params }) => {
+  http.get('https://jsonplaceholder.typicode.com/todos/:todoId', async ({ params }) => {
     // get a task
+    await delay();
     const { todoId } = params;
     const todo = find(todosFixture, { id: Number(todoId) });
     if (todo) {
@@ -45,12 +46,17 @@ export const handlers = [
   }),
   http.put('https://jsonplaceholder.typicode.com/todos/:todoId', async ({ params, request }) => {
     // update a task
+    await delay();
     const { todoId } = params;
     const todo = find(todosFixture, { id: Number(todoId) });
     if (todo) {
+      const requestTodo = (await request.json()) as Task;
+      if (requestTodo.title === '500') {
+        // simulate 500 error
+        return new HttpResponse(null, { status: 500 });
+      }
       // return the request body as the response
-      const requestBody = await request.json();
-      return HttpResponse.json(requestBody);
+      return HttpResponse.json(requestTodo);
     }
     return new HttpResponse(null, { status: 404 });
   }),

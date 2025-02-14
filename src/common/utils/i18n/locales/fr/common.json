@@ -2,7 +2,7 @@
   "creatingReactApps": "La création d'applications React est devenue beaucoup plus simple",
   "errors": {
     "generic": "Uh oh",
-    "unable-to-find-short": "Not found",
+    "unable-to-find-short": "Impossible de trouver.",
     "unable-to-find": "Nous ne parvenons pas à trouver d'informations correspondant à votre demande.",
     "unable-to-process": "Nous rencontrons des problèmes lors du traitement de votre demande.",
     "unable-to-retrieve": "Nous ne sommes pas en mesure de récupérer les informations demandées pour le moment."

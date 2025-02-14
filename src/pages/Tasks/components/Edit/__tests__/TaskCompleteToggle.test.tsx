@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import userEvent from '@testing-library/user-event';
 
-import { render, screen } from 'test/test-utils';
+import { render, screen, waitFor } from 'test/test-utils';
 import { Task } from 'pages/Tasks/api/useGetUserTasks';
 import { todosFixture } from '__fixtures__/todos';
 import * as UseToasts from 'common/hooks/useToasts';
@@ -85,6 +85,7 @@ describe('TaskCompleteToggle', () => {
 
     // ACT
     await user.click(screen.getByTestId('toggle-task-complete'));
+    await waitFor(() => expect(mockCreateToast).toHaveBeenCalledOnce());
 
     // ASSERT
     expect(mockCreateToast).toHaveBeenCalledOnce();
@@ -107,6 +108,7 @@ describe('TaskCompleteToggle', () => {
 
     // ACT
     await user.click(screen.getByTestId('toggle-task-complete'));
+    await waitFor(() => expect(mockCreateToast).toHaveBeenCalledOnce());
 
     // ASSERT
     expect(mockCreateToast).toHaveBeenCalledOnce();

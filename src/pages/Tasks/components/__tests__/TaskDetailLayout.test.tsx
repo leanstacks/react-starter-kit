@@ -89,6 +89,20 @@ describe('TaskDetailLayout', () => {
     expect(mockNavigate).toHaveBeenCalledWith(-1);
   });
 
+  it('should navigate to edit', async () => {
+    // ARRANGE
+    const user = userEvent.setup();
+    render(<TaskDetailLayout testId="component" />);
+    await screen.findByTestId('component-button-edit');
+
+    // ACT
+    await user.click(screen.getByTestId('component-button-edit'));
+
+    // ASSERT
+    expect(mockNavigate).toHaveBeenCalledTimes(1);
+    expect(mockNavigate).toHaveBeenCalledWith('edit');
+  });
+
   it('should display task delete error', async () => {
     // ARRANGE
     const useDeleteTaskSpy = vi.spyOn(UseDeleteTask, 'useDeleteTask');

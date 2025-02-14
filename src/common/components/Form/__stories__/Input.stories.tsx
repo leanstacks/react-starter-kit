@@ -1,20 +1,34 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FieldValues, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+import { InferType, object, string } from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { default as MyInput } from '../Input';
 import { InputProps } from '../Input';
+
+const formSchema = object({
+  color: string().required('Required'),
+});
+
+type FormValues = InferType<typeof formSchema>;
 
 /**
  * A wrapper for the `Input` component.  Provides the RHF form `control`
  * to the `Input` component.
  */
-const Input = (props: Omit<InputProps<FieldValues>, 'control'>) => {
-  const form = useForm();
+const Input = (props: Omit<InputProps<FormValues>, 'control'>) => {
+  const form = useForm({
+    defaultValues: {
+      color: '',
+    },
+    mode: 'all',
+    resolver: yupResolver(formSchema),
+  });
 
   const onSubmit = () => {};
 
   return (
-    <form className="w-96" onSubmit={form.handleSubmit(onSubmit)}>
+    <form className="w-96" onSubmit={form.handleSubmit(onSubmit)} noValidate>
       <MyInput control={form.control} {...props} />
     </form>
   );

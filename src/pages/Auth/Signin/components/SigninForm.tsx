@@ -82,7 +82,7 @@ const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): 
           control={control}
           name="username"
           label="Username"
-          supportingText="Use any username from {JSON}Placeholder, e.g. Bret or Samantha."
+          supportingText="Use any username from {JSON}Placeholder, e.g. Kamren or Samantha."
           className="mb-4"
           autoFocus
           autoComplete="off"

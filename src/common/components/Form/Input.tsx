@@ -22,7 +22,7 @@ export interface InputProps<T extends FieldValues>
     PropsWithTestId {
   control: Control<T>;
   label?: string;
-  name: Path<T>;
+  name: string;
   supportingText?: string;
 }
 
@@ -41,7 +41,7 @@ const Input = <T extends FieldValues>({
   testId = 'input',
   ...props
 }: InputProps<T>): JSX.Element => {
-  const { field, fieldState } = useController({ control, name });
+  const { field, fieldState } = useController({ control, name: name as Path<T> });
   const isDisabled = props.disabled || props.readOnly;
 
   return (

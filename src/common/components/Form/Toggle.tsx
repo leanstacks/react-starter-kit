@@ -24,7 +24,7 @@ export interface ToggleProps<T extends FieldValues> extends BaseComponentProps {
   control: Control<T>;
   disabled?: boolean;
   label?: string;
-  name: Path<T>;
+  name: string;
   required?: boolean;
   supportingText?: string;
 }
@@ -45,7 +45,7 @@ const Toggle = <T extends FieldValues>({
   supportingText,
   testId = 'toggle',
 }: ToggleProps<T>): JSX.Element => {
-  const { field, fieldState } = useController({ control, name });
+  const { field, fieldState } = useController({ control, name: name as Path<T> });
 
   const handleClick = () => {
     field.onChange(!field.value);
@@ -59,6 +59,7 @@ const Toggle = <T extends FieldValues>({
         </Label>
       )}
       <Button
+        id={name}
         variant="text"
         onClick={handleClick}
         disabled={disabled}
@@ -66,9 +67,9 @@ const Toggle = <T extends FieldValues>({
         testId={`${testId}-button`}
       >
         {field.value ? (
-          <FAIcon icon="toggleOn" size="2xl" fixedWidth />
+          <FAIcon icon="toggleOn" size="2xl" fixedWidth testId={`${testId}-icon-on`} />
         ) : (
-          <FAIcon icon="toggleOff" size="2xl" fixedWidth />
+          <FAIcon icon="toggleOff" size="2xl" fixedWidth testId={`${testId}-icon-off`} />
         )}
       </Button>
       <FieldError message={fieldState.error?.message} testId={`${testId}-error`} />

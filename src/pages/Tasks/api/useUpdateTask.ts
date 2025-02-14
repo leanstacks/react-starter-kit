@@ -42,11 +42,13 @@ export const useUpdateTask = () => {
   return useMutation({
     mutationFn: updateTask,
     onSuccess: (data, variables) => {
-      // update cached query data
+      // update the cached task list
       queryClient.setQueryData<Task[]>(
         [QueryKey.Tasks, { userId: variables.task.userId }],
         (cachedTasks) => (cachedTasks ? [...reject(cachedTasks, { id: data.id }), data] : [data]),
       );
+      // update the cache for this task
+      queryClient.setQueryData<Task>([QueryKey.Tasks, data.id], () => data);
     },
   });
 };
