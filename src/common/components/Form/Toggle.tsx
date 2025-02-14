@@ -24,7 +24,7 @@ export interface ToggleProps<T extends FieldValues> extends BaseComponentProps {
   control: Control<T>;
   disabled?: boolean;
   label?: string;
-  name: Path<T>;
+  name: string;
   required?: boolean;
   supportingText?: string;
 }
@@ -45,7 +45,7 @@ const Toggle = <T extends FieldValues>({
   supportingText,
   testId = 'toggle',
 }: ToggleProps<T>): JSX.Element => {
-  const { field, fieldState } = useController({ control, name });
+  const { field, fieldState } = useController({ control, name: name as Path<T> });
 
   const handleClick = () => {
     field.onChange(!field.value);

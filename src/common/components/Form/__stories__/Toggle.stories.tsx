@@ -1,15 +1,29 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { FieldValues, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+import { boolean, InferType, object } from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { default as MyToggle } from '../Toggle';
 import { ToggleProps } from '../Toggle';
+
+const formSchema = object({
+  isEnabledNotifications: boolean(),
+});
+
+type FormValues = InferType<typeof formSchema>;
 
 /**
  * A wrapper for the `Toggle` component.  Provides the RHF form `control`
  * to the `Input` component.
  */
-const Toggle = (props: Omit<ToggleProps<FieldValues>, 'control'>) => {
-  const form = useForm();
+const Toggle = (props: Omit<ToggleProps<FormValues>, 'control'>) => {
+  const form = useForm({
+    defaultValues: {
+      isEnabledNotifications: false,
+    },
+    mode: 'all',
+    resolver: yupResolver(formSchema),
+  });
 
   const onSubmit = () => {};
 

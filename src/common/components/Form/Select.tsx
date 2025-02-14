@@ -25,7 +25,7 @@ export interface SelectProps<T extends FieldValues>
     InputHTMLAttributes<HTMLSelectElement> {
   control: Control<T>;
   label?: string;
-  name: Path<T>;
+  name: string;
   supportingText?: string;
 }
 
@@ -47,7 +47,7 @@ const Select = <T extends FieldValues>({
   testId = 'select',
   ...props
 }: SelectProps<T>): JSX.Element => {
-  const { field, fieldState } = useController({ control, name });
+  const { field, fieldState } = useController({ control, name: name as Path<T> });
   const isDisabled = props.disabled || props.readOnly;
 
   return (
