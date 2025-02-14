@@ -2,9 +2,9 @@ import { describe, expect, it, vi } from 'vitest';
 import userEvent from '@testing-library/user-event';
 
 import { render, screen } from 'test/test-utils';
+import { todosFixture } from '__fixtures__/todos';
 
 import TaskForm from '../TaskForm';
-import { todosFixture } from '__fixtures__/todos';
 
 describe('TaskForm', () => {
   it('should render successfully', async () => {
