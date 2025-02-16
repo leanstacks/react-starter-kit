@@ -8,7 +8,7 @@ assignees: ''
 
 ### Describe the bug
 
-A clear and concise description of what the bug is.
+_Provide a clear and concise description of what the bug is._
 
 ### Steps to reproduce
 
@@ -21,11 +21,11 @@ Steps to reproduce the behavior:
 
 ### Expected behavior
 
-A clear and concise description of what you expected to happen.
+_Provide a clear and concise description of what you expected to happen._
 
 ### Screenshots
 
-If applicable, add screenshots to help explain your problem.
+_If applicable, add screenshots to help explain your problem._
 
 ### Environment
 
@@ -44,4 +44,4 @@ If applicable, add screenshots to help explain your problem.
 
 ### Additional context
 
-Add any other context about the problem here.
+_Add any other context about the problem here._

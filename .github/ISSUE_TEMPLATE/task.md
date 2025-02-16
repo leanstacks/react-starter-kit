@@ -8,8 +8,8 @@ assignees: ''
 
 ### Describe the task
 
-Provide a clear description of the task.
+_Provide a clear description of the task._
 
 ### Additional context
 
-Add any other context about the story here.
+_Add any other context about the task here._

@@ -8,11 +8,11 @@ assignees: ''
 
 ### Describe the story
 
-Provide a clear description of the new feature or improvement to existing functionality.
+_Provide a clear description of the new feature or improvement to existing functionality._
 
 ### Acceptance criteria
 
-Provide clear acceptance criteria to validate the story is complete.
+_Provide clear acceptance criteria to validate the story is complete._
 
 [Gherkin syntax](https://cucumber.io/docs/gherkin/reference) example:
 
@@ -22,4 +22,4 @@ Provide clear acceptance criteria to validate the story is complete.
 
 ### Additional context
 
-Add any other context about the story here.
+_Add any other context about the story here._
