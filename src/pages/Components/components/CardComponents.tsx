@@ -95,14 +95,14 @@ const CardComponents = ({
 
         <Text variant="heading3">Examples</Text>
         <div className="my-8">
-          <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+          <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <Card>I am the card content.</Card>
           </div>
           <CodeSnippet className="my-2" code={`<Card>I am the card content.</Card>`} />
         </div>
 
         <div className="my-8">
-          <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+          <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <Card className="bg-slate-800 text-white" testId="my-card">
               I am the card content.
             </Card>
@@ -136,14 +136,14 @@ const CardComponents = ({
 
         <Text variant="heading3">Examples</Text>
         <div className="my-8">
-          <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+          <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <MessageCard message="Hello World!" />
           </div>
           <CodeSnippet className="my-2" code={`<MessageCard message="Hello World!" />`} />
         </div>
 
         <div className="my-8">
-          <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+          <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <MessageCard
               iconProps={{ icon: 'circleInfo', size: '2x' }}
               message="Select an item from the list to view details."
@@ -161,7 +161,7 @@ const CardComponents = ({
         </div>
 
         <div className="my-8">
-          <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+          <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <MessageCard
               className="text-red-800"
               iconProps={{ icon: 'circleExclamation', size: '2x', className: 'text-red-600' }}

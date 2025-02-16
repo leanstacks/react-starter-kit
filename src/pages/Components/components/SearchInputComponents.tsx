@@ -129,7 +129,7 @@ const SearchInputComponents = ({
           </div>
         )}
 
-        <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+        <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <SearchInput
             className="w-full"
             errorText={error}

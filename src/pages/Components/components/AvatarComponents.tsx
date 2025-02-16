@@ -78,14 +78,14 @@ const AvatarComponents = ({
 
       <Text variant="heading3">Examples</Text>
       <div className="my-8">
-        <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+        <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Avatar value="John Smith" />
         </div>
         <CodeSnippet className="my-2" code={`<Avatar value="John Smith" />`} />
       </div>
 
       <div className="my-8">
-        <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+        <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Avatar value="Alexander Johnson" className="rounded-full" />
         </div>
         <CodeSnippet
@@ -95,7 +95,7 @@ const AvatarComponents = ({
       </div>
 
       <div className="my-8">
-        <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+        <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Avatar
             picture={avatarPicture}
             value="Jane Jones"

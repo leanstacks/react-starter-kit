@@ -77,12 +77,12 @@ const SearchInput = ({
 
   return (
     <div className={className} onClick={doFocus} data-testid={testId}>
-      <div className="mb-1 flex items-center gap-2 border-b border-neutral-500/50 px-1 py-0.5 has-[:focus]:border-blue-600">
+      <div className="mb-1 flex items-center gap-2 border-b border-neutral-500/50 px-1 py-0.5 has-focus:border-blue-600">
         <FAIcon icon="magnifyingGlass" data-testid={`${testId}-icon-leading`} />
         <input
           name={`${testId}-input`}
           onChange={doOnChange}
-          className="flex-grow appearance-none bg-transparent focus-visible:outline-none"
+          className="grow appearance-none bg-transparent focus-visible:outline-hidden"
           autoComplete="off"
           ref={inputRef}
           data-testid={`${testId}-input`}

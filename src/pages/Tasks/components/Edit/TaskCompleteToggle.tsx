@@ -66,7 +66,7 @@ const TaskCompleteToggle = ({
 
   return (
     <Button
-      className={cn('!m-0 contents !border-none !p-0', className)}
+      className={cn('m-0! contents border-none! p-0!', className)}
       variant="text"
       title={buttonTitle}
       onClick={handleButtonClick}

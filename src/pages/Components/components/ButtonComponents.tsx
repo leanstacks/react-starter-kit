@@ -78,38 +78,38 @@ const ButtonComponents = ({
 
       <Text variant="heading3">Examples</Text>
       <div className="my-8">
-        <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+        <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Button>Default button</Button>
         </div>
         <CodeSnippet className="my-2" code={`<Button>Default button</Button>`} />
       </div>
 
       <div className="my-8">
-        <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+        <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Button variant="outline">Outline button</Button>
         </div>
         <CodeSnippet className="my-2" code={`<Button variant="outline">Outline button</Button>`} />
       </div>
 
       <div className="my-8">
-        <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+        <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Button variant="solid">Solid button</Button>
         </div>
         <CodeSnippet className="my-2" code={`<Button variant="solid">Solid button</Button>`} />
       </div>
 
       <div className="my-8">
-        <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+        <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Button variant="text">Text button</Button>
         </div>
         <CodeSnippet className="my-2" code={`<Button variant="text">Text button</Button>`} />
       </div>
 
       <div className="my-8">
-        <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+        <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Button
             variant="solid"
-            className="!border-blue-600 !bg-blue-600 !text-white"
+            className="border-blue-600! bg-blue-600! text-white!"
             onClick={() => alert('Hey! You clicked me!')}
             testId="click-me-button"
           >
@@ -120,7 +120,7 @@ const ButtonComponents = ({
           className="my-2"
           code={`<Button
   variant="solid"
-  className="!border-blue-600 !bg-blue-600 !text-white"
+  className="border-blue-600! bg-blue-600! text-white!"
   onClick={() => alert('Hey! You clicked me!')}
   testId="click-me-button"
 >

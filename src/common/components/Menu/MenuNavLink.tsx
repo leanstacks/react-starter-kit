@@ -58,7 +58,7 @@ const MenuNavLink = ({
 
     return cn(
       'flex items-center rounded-md px-2 py-1.5 text-sm hover:bg-neutral-500/25',
-      { 'bg-neutral-500/10 hover:!bg-neutral-500/10': styleActive && props.isActive },
+      { 'bg-neutral-500/10 hover:bg-neutral-500/10!': styleActive && props.isActive },
       classNameFromProps,
     );
   };

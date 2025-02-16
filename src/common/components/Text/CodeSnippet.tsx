@@ -67,7 +67,7 @@ const CodeSnippet = ({
       >
         <SandpackLayout>
           <SandpackCodeEditor
-            className="!h-fit rounded-lg"
+            className="h-fit! rounded-lg"
             readOnly={true}
             showLineNumbers={true}
             showReadOnly={false}

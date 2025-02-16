@@ -18,7 +18,7 @@ const Toasts = ({ testId = 'toasts' }: ToastsProps): JSX.Element => {
   const { removeToast, toasts } = useToasts();
 
   return (
-    <div className="fixed inset-x-0 bottom-0 left-0 z-[9999]" data-testid={testId}>
+    <div className="fixed inset-x-0 bottom-0 left-0 z-9999" data-testid={testId}>
       {toasts.map((toast) => (
         <Toast
           key={toast.id}

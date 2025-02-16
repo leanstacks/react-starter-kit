@@ -42,12 +42,12 @@ const AppearanceSettings = ({
         >
           <div className="flex h-24 flex-col border-b border-slate-500/25 bg-white">
             <div className="h-3 w-full border-b border-b-neutral-500/30 bg-neutral-100"></div>
-            <div className="ms-4 mt-1 h-3 w-1/3 rounded bg-neutral-300"></div>
-            <div className="ms-4 mt-0.5 h-3 w-1/3 rounded bg-neutral-300"></div>
-            <div className="ms-4 mt-0.5 h-3 w-1/3 rounded bg-neutral-300"></div>
+            <div className="ms-4 mt-1 h-3 w-1/3 rounded-sm bg-neutral-300"></div>
+            <div className="ms-4 mt-0.5 h-3 w-1/3 rounded-sm bg-neutral-300"></div>
+            <div className="ms-4 mt-0.5 h-3 w-1/3 rounded-sm bg-neutral-300"></div>
             <div className="ms-4 mt-1 flex">
-              <div className="h-2 w-4 rounded border border-neutral-300"></div>
-              <div className="ms-1 h-2 w-4 rounded bg-blue-600"></div>
+              <div className="h-2 w-4 rounded-sm border border-neutral-300"></div>
+              <div className="ms-1 h-2 w-4 rounded-sm bg-blue-600"></div>
             </div>
           </div>
           <div className="flex h-12 items-center justify-center font-bold">Light</div>
@@ -65,12 +65,12 @@ const AppearanceSettings = ({
         >
           <div className="flex h-24 flex-col border-b border-slate-500/25 bg-neutral-800">
             <div className="h-3 w-full border-b border-b-neutral-500/50 bg-neutral-900"></div>
-            <div className="ms-4 mt-1 h-3 w-1/3 rounded bg-neutral-700"></div>
-            <div className="ms-4 mt-0.5 h-3 w-1/3 rounded bg-neutral-700"></div>
-            <div className="ms-4 mt-0.5 h-3 w-1/3 rounded bg-neutral-700"></div>
+            <div className="ms-4 mt-1 h-3 w-1/3 rounded-sm bg-neutral-700"></div>
+            <div className="ms-4 mt-0.5 h-3 w-1/3 rounded-sm bg-neutral-700"></div>
+            <div className="ms-4 mt-0.5 h-3 w-1/3 rounded-sm bg-neutral-700"></div>
             <div className="ms-4 mt-1 flex">
-              <div className="h-2 w-4 rounded border border-neutral-500"></div>
-              <div className="ms-1 h-2 w-4 rounded bg-blue-600"></div>
+              <div className="h-2 w-4 rounded-sm border border-neutral-500"></div>
+              <div className="ms-1 h-2 w-4 rounded-sm bg-blue-600"></div>
             </div>
           </div>
           <div className="flex h-12 items-center justify-center font-bold">Dark</div>

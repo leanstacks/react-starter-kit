@@ -48,7 +48,7 @@ const SideMenu = ({
   return (
     <div
       className={cn(
-        'fixed right-0 top-0 z-[1000] flex h-screen w-screen bg-neutral-500/50',
+        'fixed right-0 top-0 z-1000 flex h-screen w-screen bg-neutral-500/50',
         { 'flex-row-reverse justify-start': isLeft },
         { 'justify-end': isRight },
         className,
@@ -59,7 +59,7 @@ const SideMenu = ({
       <animated.div
         style={{ ...springs }}
         className={cn(
-          'z-[1001] h-screen w-80 min-w-48 border-neutral-500 bg-neutral-100 dark:bg-neutral-800',
+          'z-1001 h-screen w-80 min-w-48 border-neutral-500 bg-neutral-100 dark:bg-neutral-800',
           { 'rounded-r-lg border-r': isLeft },
           { 'rounded-l-lg border-l': isRight },
         )}

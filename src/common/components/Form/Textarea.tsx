@@ -56,9 +56,9 @@ const Textarea = <T extends FieldValues>({
         {...props}
         {...field}
         className={cn(
-          'mb-1 block w-full border-b border-neutral-500/50 bg-transparent py-0.5 focus:border-blue-600 focus-visible:outline-none',
+          'mb-1 block w-full border-b border-neutral-500/50 bg-transparent py-0.5 focus:border-blue-600 focus-visible:outline-hidden',
           {
-            '!border-red-600': fieldState.error,
+            'border-red-600!': fieldState.error,
           },
           {
             'opacity-50': isDisabled,
