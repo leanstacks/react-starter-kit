@@ -55,7 +55,7 @@ const TaskView = ({ className, task, testId = 'task-view' }: TaskViewProps): JSX
       <div className="mt-4">
         <div className="text-xs font-bold uppercase">Status</div>
         <Badge
-          className={cn('inline', { '!bg-blue-600': task.completed })}
+          className={cn('inline', { 'bg-blue-600!': task.completed })}
           testId={`${testId}-status`}
         >
           {task.completed ? 'COMPLETE' : 'INCOMPLETE'}

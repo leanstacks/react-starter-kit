@@ -64,7 +64,7 @@ const Select = <T extends FieldValues>({
         className={cn(
           'mb-1 block w-full border-b border-neutral-500/50 bg-transparent py-0.5 focus:border-blue-600',
           {
-            '!border-red-600': fieldState.error,
+            'border-red-600!': fieldState.error,
           },
           {
             'opacity-50': isDisabled,

@@ -30,7 +30,7 @@ export const Simple: Story = {};
 
 export const Colored: Story = {
   args: {
-    className: '!border-blue-600',
+    className: 'border-blue-600!',
   },
 };
 

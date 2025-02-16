@@ -74,28 +74,28 @@ const TextComponents = ({
 
       <Text variant="heading3">Examples</Text>
       <div className="my-8">
-        <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+        <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Text variant="heading1">Heading 1</Text>
         </div>
         <CodeSnippet className="my-2" code={`<Text variant="heading1">Heading 1</Text>`} />
       </div>
 
       <div className="my-8">
-        <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+        <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Text variant="heading2">Heading 2</Text>
         </div>
         <CodeSnippet className="my-2" code={`<Text variant="heading2">Heading 2</Text>`} />
       </div>
 
       <div className="my-8">
-        <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+        <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Text variant="heading3">Heading 3</Text>
         </div>
         <CodeSnippet className="my-2" code={`<Text variant="heading3">Heading 3</Text>`} />
       </div>
 
       <div className="my-8">
-        <div className="mb-2 flex place-content-center rounded border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+        <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Text>
             This is standard body copy text. It may be styled in various ways such as{' '}
             <span className="font-bold">bold</span> or <span className="italic">italic</span>, as{' '}

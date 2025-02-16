@@ -79,7 +79,7 @@ const Tabs = ({
         {tabs.map(({ className, ...tabProps }, index) => (
           <Tab
             {...tabProps}
-            className={cn({ className, 'flex-grow': variant === 'fullWidth' })}
+            className={cn({ className, 'grow': variant === 'fullWidth' })}
             isActive={activeTabIndex === index}
             onClick={() => setTab(index)}
             key={index}

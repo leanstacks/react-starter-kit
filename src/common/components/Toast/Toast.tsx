@@ -63,7 +63,7 @@ const Toast = ({ className, dismiss, testId = 'toast', toast }: ToastProps): JSX
 
   return (
     <animated.div
-      className={cn('max-w-sm rounded bg-neutral-200 dark:bg-neutral-600', className)}
+      className={cn('max-w-sm rounded-sm bg-neutral-200 dark:bg-neutral-600', className)}
       data-testid={testId}
       style={{ ...springs }}
     >
@@ -73,7 +73,7 @@ const Toast = ({ className, dismiss, testId = 'toast', toast }: ToastProps): JSX
         </div>
         <Button
           variant="text"
-          className="!p-0"
+          className="p-0!"
           onClick={() => doDismiss()}
           data-testid={`${testId}-button-dismiss`}
         >

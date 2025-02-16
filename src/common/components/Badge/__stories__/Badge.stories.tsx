@@ -32,6 +32,6 @@ export const Counter: Story = {
 export const Label: Story = {
   args: {
     children: 'NEW',
-    className: '!bg-blue-700',
+    className: 'bg-blue-700!',
   },
 };

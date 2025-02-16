@@ -40,7 +40,7 @@ const UserInfo = ({
           <div className="flex items-center gap-2">
             <Avatar
               value={user.name}
-              className="flex-shrink-0 rounded-full"
+              className="shrink-0 rounded-full"
               testId={`${testId}-avatar`}
             />
 

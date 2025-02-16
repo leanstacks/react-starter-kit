@@ -62,6 +62,6 @@ describe('Tabs', () => {
     expect(screen.getByTestId('tabs')).toBeDefined();
     expect(screen.getByTestId('tabs-tabs').children.length).toBe(tabs.length);
     expect(screen.getByTestId('tab-content-one')).toBeDefined();
-    expect(screen.getByTestId('tab-one').classList).toContain('flex-grow');
+    expect(screen.getByTestId('tab-one').classList).toContain('grow');
   });
 });
