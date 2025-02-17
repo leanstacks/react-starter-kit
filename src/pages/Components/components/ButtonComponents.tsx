@@ -41,7 +41,7 @@ const ButtonComponents = ({
     },
     {
       name: 'variant',
-      description: 'Optional. Applies default styling. Default: solid',
+      description: 'Optional. Style variant. Default: solid',
     },
   ];
   const columnHelper = createColumnHelper<ComponentProperty>();

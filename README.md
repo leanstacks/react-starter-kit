@@ -264,6 +264,7 @@ This project uses GitHub Actions to perform DevOps automation activities such as
 - [React Hook Form][reacthookform]
 - [Yup][yup]
 - [Tailwind CSS][tailwind]
+- [Class Variance Authority][cva]
 - [Font Awesome][fontawesome]
 - [React Spring][reactspring]
 - [React i18next][reacti18next]
@@ -281,6 +282,7 @@ This project uses GitHub Actions to perform DevOps automation activities such as
 [reacthookform]: https://www.react-hook-form.com/ 'React Hook Form'
 [yup]: https://github.com/jquense/yup 'Yup'
 [tailwind]: https://tailwindcss.com/ 'Tailwind CSS'
+[cva]: https://cva.style/ 'Class Variance Authority'
 [fontawesome]: https://fontawesome.com/ 'Font Awesome'
 [tanstack]: https://tanstack.com/ 'TanStack'
 [testing-library]: https://testing-library.com/ 'Testing Library'
