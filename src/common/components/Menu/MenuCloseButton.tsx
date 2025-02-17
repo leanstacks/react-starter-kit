@@ -28,10 +28,7 @@ const MenuCloseButton = ({
     <Button
       variant="text"
       size="icon"
-      className={cn(
-        'size-8 ps-1 pe-1 hover:bg-neutral-200 dark:hover:bg-neutral-200/25',
-        className,
-      )}
+      className={cn('size-8 hover:bg-neutral-200 dark:hover:bg-neutral-200/25', className)}
       onClick={() => close?.()}
       title="Close"
       testId={testId}
