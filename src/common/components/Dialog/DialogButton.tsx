@@ -30,8 +30,8 @@ const DialogButton = ({
   return (
     <Button
       variant="text"
+      size="sm"
       className={cn(
-        'text-sm',
         { 'font-bold text-blue-600 dark:text-blue-400': variant === 'primary' },
         { 'font-bold text-red-600': variant === 'danger' },
         className,

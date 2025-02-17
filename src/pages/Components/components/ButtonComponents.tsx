@@ -5,6 +5,7 @@ import Text from 'common/components/Text/Text';
 import { ComponentProperty } from '../model/components';
 import { createColumnHelper } from '@tanstack/react-table';
 import Table from 'common/components/Table/Table';
+import FAIcon from 'common/components/Icon/FAIcon';
 
 /**
  * Properties for the `ButtonComponents` React component.
@@ -34,6 +35,10 @@ const ButtonComponents = ({
     {
       name: 'onClick',
       description: 'Optional. Click event handler function.',
+    },
+    {
+      name: 'size',
+      description: 'Optional. Size variant. Default: md',
     },
     {
       name: 'testId',
@@ -82,6 +87,28 @@ const ButtonComponents = ({
           <Button>Default button</Button>
         </div>
         <CodeSnippet className="my-2" code={`<Button>Default button</Button>`} />
+      </div>
+
+      <div className="my-8">
+        <div className="mb-2 flex items-center justify-center gap-8 rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+          <Button size="sm">Small</Button>
+          <Button size="md">Medium</Button>
+          <Button size="lg">Large</Button>
+          <Button size="icon" variant="text">
+            <FAIcon icon="bars" size="xl" />
+          </Button>
+        </div>
+        <CodeSnippet
+          className="my-2"
+          code={`<>
+  <Button size="sm">Small</Button>
+  <Button size="md">Medium</Button>
+  <Button size="lg">Large</Button>
+  <Button size="icon" variant="text">
+    <FAIcon icon="bars" size="xl" />
+  </Button>
+</>`}
+        />
       </div>
 
       <div className="my-8">

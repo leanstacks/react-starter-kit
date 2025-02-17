@@ -25,7 +25,7 @@ const Header = ({ testId = 'header' }: HeaderProps): JSX.Element => {
 
   return (
     <header
-      className="flex h-16 items-center justify-between border-b border-b-neutral-500 border-opacity-30 bg-neutral-100 px-4 dark:border-opacity-50 dark:bg-neutral-900"
+      className="border-opacity-30 dark:border-opacity-50 flex h-16 items-center justify-between border-b border-b-neutral-500 bg-neutral-100 px-4 dark:bg-neutral-900"
       data-testid={testId}
     >
       <div className="flex items-center">
@@ -33,7 +33,7 @@ const Header = ({ testId = 'header' }: HeaderProps): JSX.Element => {
           <img src={logo} alt="Logo" height="32" width="32" />
         </Link>
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center gap-4">
         <LanguageToggle />
         <ThemeToggle />
         <MenuButton Menu={AppMenu} />

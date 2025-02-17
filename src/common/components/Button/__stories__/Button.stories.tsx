@@ -27,6 +27,7 @@ const meta = {
       },
     },
     className: { description: 'Additional CSS classes.' },
+    size: { description: 'The size variant.' },
     variant: { description: 'The style variant.' },
     testId: { description: 'The test identifier.' },
   },
@@ -61,5 +62,20 @@ export const IconButton: Story = {
   args: {
     children: 'Icon',
     variant: 'text',
+    size: 'icon',
+  },
+};
+
+export const Small: Story = {
+  args: {
+    variant: 'solid',
+    size: 'sm',
+  },
+};
+
+export const Large: Story = {
+  args: {
+    variant: 'solid',
+    size: 'lg',
   },
 };

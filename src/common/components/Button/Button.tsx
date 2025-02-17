@@ -8,7 +8,7 @@ import { cn } from 'common/utils/css';
  * Define the component base and variant styles.
  */
 const variants = cva(
-  'flex items-center justify-center gap-2 rounded-md border px-2 py-1 enabled:hover:opacity-80 disabled:opacity-50',
+  'flex items-center justify-center gap-2 rounded-md border enabled:hover:opacity-80 disabled:opacity-50 cursor-pointer',
   {
     variants: {
       variant: {
@@ -17,8 +17,14 @@ const variants = cva(
         outline: 'border-neutral-700 dark:border-neutral-300',
         text: 'border-transparent',
       },
+      size: {
+        sm: 'h-9 px-3 text-sm',
+        md: 'h-10 px-4',
+        lg: 'h-11 px-8',
+        icon: 'h-auto p-0',
+      },
     },
-    defaultVariants: { variant: 'solid' },
+    defaultVariants: { variant: 'solid', size: 'md' },
   },
 );
 
@@ -46,6 +52,7 @@ export interface ButtonProps
 const Button = ({
   className,
   role = 'button',
+  size,
   type = 'button',
   variant,
   testId = 'button',
@@ -53,7 +60,7 @@ const Button = ({
 }: ButtonProps): JSX.Element => {
   return (
     <button
-      className={cn(variants({ variant, className }))}
+      className={cn(variants({ size, variant, className }))}
       data-testid={testId}
       role={role}
       type={type}

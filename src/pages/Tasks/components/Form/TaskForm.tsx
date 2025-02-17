@@ -96,11 +96,11 @@ const TaskForm = ({
           testId={`${testId}-input-completed`}
         />
 
-        <div className="flex items-center gap-4">
+        <div className="my-8 flex items-center gap-4">
           <Button
             type="button"
             variant="outline"
-            className="my-8 w-1/2 sm:w-40"
+            className="w-1/2 sm:w-40"
             onClick={onCancel}
             disabled={formState.isSubmitting}
             aria-label={t('label.cancel')}
@@ -108,6 +108,7 @@ const TaskForm = ({
           >
             {t('label.cancel')}
           </Button>
+
           <Button
             type="submit"
             className="w-1/2 sm:w-40"

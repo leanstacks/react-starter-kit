@@ -73,7 +73,7 @@ const Toast = ({ className, dismiss, testId = 'toast', toast }: ToastProps): JSX
         </div>
         <Button
           variant="text"
-          className="p-0!"
+          size="icon"
           onClick={() => doDismiss()}
           data-testid={`${testId}-button-dismiss`}
         >
