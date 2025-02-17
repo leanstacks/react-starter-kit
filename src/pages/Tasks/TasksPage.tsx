@@ -27,9 +27,10 @@ const TasksPage = ({ testId = 'page-tasks' }: PropsWithTestId): JSX.Element => {
         {/* page heading */}
         <div className="mb-4 flex items-center justify-between border-b border-neutral-500/50 pb-2">
           <h1 className="text-4xl">{t('tasks', { ns: 'tasks' })}</h1>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-4">
             <Button
               variant="text"
+              size="icon"
               title="Add task"
               onClick={() => navigate('/app/tasks/add')}
               data-testid={`${testId}-button-add`}

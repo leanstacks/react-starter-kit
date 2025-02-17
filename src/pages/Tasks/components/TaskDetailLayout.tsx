@@ -75,9 +75,10 @@ const TaskDetailLayout = ({
         {isLoadingTask && <LoaderSkeleton className="h-7 w-32" />}
 
         {/* Menu */}
-        <div className="ms-auto flex items-center gap-2">
+        <div className="ms-auto flex items-center gap-4">
           <Button
             variant="text"
+            size="icon"
             title="Edit"
             onClick={() => navigate('edit')}
             testId={`${testId}-button-edit`}
@@ -86,6 +87,7 @@ const TaskDetailLayout = ({
           </Button>
           <Button
             variant="text"
+            size="icon"
             title="Delete"
             onClick={() => setIsDeleteDialogOpen(true)}
             testId={`${testId}-button-delete`}
@@ -94,6 +96,7 @@ const TaskDetailLayout = ({
           </Button>
           <Button
             variant="text"
+            size="icon"
             title="Close"
             onClick={() => navigate(-1)}
             testId={`${testId}-button-close`}

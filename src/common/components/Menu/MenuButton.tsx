@@ -36,6 +36,7 @@ const MenuButton = ({
     <>
       <Button
         variant="text"
+        size="icon"
         className={cn('text-light-text dark:text-dark-text', className)}
         onClick={() => setIsMenuOpen(true)}
         title={title}

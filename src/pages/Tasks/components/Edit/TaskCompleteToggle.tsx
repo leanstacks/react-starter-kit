@@ -66,8 +66,9 @@ const TaskCompleteToggle = ({
 
   return (
     <Button
-      className={cn('m-0! contents border-none! p-0!', className)}
+      className={cn('contents border-none!', className)}
       variant="text"
+      size="icon"
       title={buttonTitle}
       onClick={handleButtonClick}
       onMouseEnter={() => setIsHovering(true)}
