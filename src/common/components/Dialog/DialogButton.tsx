@@ -1,19 +1,31 @@
+import { cva, VariantProps } from 'class-variance-authority';
+
 import { cn } from 'common/utils/css';
 import Button, { ButtonProps } from '../Button/Button';
 
 /**
- * The variations of the `DialogButton` components.
+ * Define the component base and variant styles.
  */
-export type DialogButtonVariant = 'primary' | 'secondary' | 'danger';
+const variants = cva('', {
+  variants: {
+    variant: {
+      danger: 'font-bold text-red-600',
+      primary: 'font-bold text-blue-600 dark:text-blue-400',
+      secondary: '',
+    },
+  },
+  defaultVariants: { variant: 'secondary' },
+});
+
+/**
+ * The variant attributes of the DialogButton component.
+ */
+type DialogButtonVariants = VariantProps<typeof variants>;
 
 /**
  * Properties for the `DialogButton` component.
- * @param {DialogButtonVariant} variant - The variant.
- * @see {@link ButtonProps}
  */
-export interface DialogButtonProps extends Omit<ButtonProps, 'variant'> {
-  variant?: DialogButtonVariant;
-}
+export interface DialogButtonProps extends Omit<ButtonProps, 'variant'>, DialogButtonVariants {}
 
 /**
  * The `DialogButton` is a type of `Button` specifically styled for use
@@ -23,7 +35,7 @@ export interface DialogButtonProps extends Omit<ButtonProps, 'variant'> {
  */
 const DialogButton = ({
   className,
-  variant = 'secondary',
+  variant,
   testId = 'dialog-button',
   ...buttonProps
 }: DialogButtonProps): JSX.Element => {
@@ -31,11 +43,7 @@ const DialogButton = ({
     <Button
       variant="text"
       size="sm"
-      className={cn(
-        { 'font-bold text-blue-600 dark:text-blue-400': variant === 'primary' },
-        { 'font-bold text-red-600': variant === 'danger' },
-        className,
-      )}
+      className={cn(variants({ variant, className }))}
       testId={testId}
       {...buttonProps}
     />
