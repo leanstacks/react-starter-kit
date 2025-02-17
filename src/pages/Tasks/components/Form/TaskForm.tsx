@@ -17,7 +17,7 @@ const validationSchema = object({
   userId: number().required(t('validation.required')),
   title: string()
     .required(t('validation.required'))
-    .max(50, t('validation.max', { count: 50 })),
+    .max(100, t('validation.max', { count: 100 })),
   completed: boolean().required(t('validation.required')).default(false),
 });
 
@@ -82,6 +82,7 @@ const TaskForm = ({
           className="mb-4"
           autoFocus
           autoComplete="off"
+          maxLength={100}
           required
           disabled={formState.isSubmitting}
           testId={`${testId}-input-title`}

@@ -50,6 +50,7 @@ const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): 
    */
   const { control, formState, handleSubmit } = useForm<SigninFormValues>({
     defaultValues: { username: '', password: '' },
+    mode: 'all',
     resolver: yupResolver(validationSchema),
   });
 
