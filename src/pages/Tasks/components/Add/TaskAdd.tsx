@@ -71,7 +71,7 @@ const TaskAdd = ({ className, testId = 'task-add' }: TaskAddProps): JSX.Element 
 
       {/* error state */}
       {!!taskCreateError && (
-        <Alert variant="error" className="mb-4 rounded-none" testId={`${testId}-error-create`}>
+        <Alert variant="error" className="mb-4" testId={`${testId}-error-create`}>
           <FAIcon icon="circleExclamation" size="lg" />
           {`${t('errors.unable-to-process')} ${taskCreateError}`}
         </Alert>

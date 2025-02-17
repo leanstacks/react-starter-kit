@@ -80,14 +80,14 @@ const TaskEdit = ({ className, testId = 'task-edit' }: TaskEditProps): JSX.Eleme
 
       {/* error state */}
       {!!taskFetchError && (
-        <Alert variant="error" className="mb-4 rounded-none" testId={`${testId}-error-fetch`}>
+        <Alert variant="error" className="mb-4" testId={`${testId}-error-fetch`}>
           <FAIcon icon="circleExclamation" size="lg" />
           {`${t('errors.unable-to-find-short')} ${taskFetchError}`}
         </Alert>
       )}
 
       {!!taskUpdateError && (
-        <Alert variant="error" className="mb-4 rounded-none" testId={`${testId}-error-update`}>
+        <Alert variant="error" className="mb-4" testId={`${testId}-error-update`}>
           <FAIcon icon="circleExclamation" size="lg" />
           {`${t('errors.unable-to-process')} ${taskUpdateError}`}
         </Alert>

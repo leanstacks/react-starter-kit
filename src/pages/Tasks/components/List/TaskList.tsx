@@ -81,7 +81,7 @@ const TaskList = ({
       )}
 
       {isError && (
-        <Alert variant="error" className="mb-4 rounded-none" testId={`${testId}-error`}>
+        <Alert variant="error" className="mb-4" testId={`${testId}-error`}>
           <FAIcon icon="circleExclamation" size="lg" />
           {t('errors.unable-to-retrieve')}
         </Alert>
