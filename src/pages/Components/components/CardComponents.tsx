@@ -2,11 +2,11 @@ import { createColumnHelper } from '@tanstack/react-table';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { ComponentProperty } from '../model/components';
-import Text from 'common/components/Text/Text';
 import Table from 'common/components/Table/Table';
 import CodeSnippet from 'common/components/Text/CodeSnippet';
 import Card from 'common/components/Card/Card';
 import MessageCard from 'common/components/Card/MessageCard';
+import Heading from 'common/components/Text/Heading';
 
 /**
  * Properties for the `CardComponents` React component.
@@ -77,9 +77,9 @@ const CardComponents = ({
   return (
     <section className={className} data-testid={testId}>
       <div className="mb-16">
-        <Text variant="heading2" className="mb-4">
+        <Heading level={2} className="mb-4">
           Card Component
-        </Text>
+        </Heading>
 
         <div className="my-8">
           The <span className="font-mono font-bold">Card</span> component displays block container
@@ -87,13 +87,13 @@ const CardComponents = ({
         </div>
 
         <div className="my-8">
-          <Text variant="heading3" className="mb-2">
+          <Heading level={3} className="mb-2">
             Properties
-          </Text>
+          </Heading>
           <Table<ComponentProperty, string> data={cardData} columns={columns} />
         </div>
 
-        <Text variant="heading3">Examples</Text>
+        <Heading level={3}>Examples</Heading>
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <Card>I am the card content.</Card>
@@ -117,9 +117,9 @@ const CardComponents = ({
       </div>
 
       <div className="mb-16">
-        <Text variant="heading2" className="mb-4">
+        <Heading level={2} className="mb-4">
           MessageCard Component
-        </Text>
+        </Heading>
 
         <div className="my-8">
           The <span className="font-mono font-bold">MessageCard</span> component displays block
@@ -128,13 +128,13 @@ const CardComponents = ({
         </div>
 
         <div className="my-8">
-          <Text variant="heading3" className="mb-2">
+          <Heading level={3} className="mb-2">
             Properties
-          </Text>
+          </Heading>
           <Table<ComponentProperty, string> data={messageCardData} columns={columns} />
         </div>
 
-        <Text variant="heading3">Examples</Text>
+        <Heading level={3}>Examples</Heading>
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <MessageCard message="Hello World!" />

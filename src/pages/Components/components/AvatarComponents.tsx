@@ -3,10 +3,10 @@ import { createColumnHelper } from '@tanstack/react-table';
 import { BaseComponentProps } from 'common/utils/types';
 import avatarPicture from './avatar-picture.png';
 import { ComponentProperty } from '../model/components';
-import Text from 'common/components/Text/Text';
 import Table from 'common/components/Table/Table';
 import CodeSnippet from 'common/components/Text/CodeSnippet';
 import Avatar from 'common/components/Icon/Avatar';
+import Heading from 'common/components/Text/Heading';
 
 /**
  * Properties for the `AvatarComponents` React component.
@@ -59,9 +59,9 @@ const AvatarComponents = ({
 
   return (
     <section className={className} data-testid={testId}>
-      <Text variant="heading2" className="mb-4">
+      <Heading level={2} className="mb-4">
         Avatar Component
-      </Text>
+      </Heading>
 
       <div className="my-8">
         The <span className="font-mono font-bold">Avatar</span> component displays a circular image
@@ -70,13 +70,13 @@ const AvatarComponents = ({
       </div>
 
       <div className="my-8">
-        <Text variant="heading3" className="mb-2">
+        <Heading level={3} className="mb-2">
           Properties
-        </Text>
+        </Heading>
         <Table<ComponentProperty, string> data={data} columns={columns} />
       </div>
 
-      <Text variant="heading3">Examples</Text>
+      <Heading level={3}>Examples</Heading>
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Avatar value="John Smith" />
