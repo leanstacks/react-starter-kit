@@ -12,7 +12,12 @@ import LoaderSpinner from 'common/components/Loader/LoaderSpinner';
  */
 const AuthContextProvider = ({ children }: PropsWithChildren): JSX.Element => {
   // REPLACE: use a query hook to fetch authentication details from an IdP
-  const { data: userTokens, isPending, isSuccess, refetch: refetchUserTokens } = useGetUserTokens();
+  const {
+    data: userTokens,
+    isPending,
+    isSuccess,
+    refetch: refetchUserTokens,
+  } = useGetUserTokens({ refetchInterval: 300000 });
 
   const value: AuthContextValue = {
     isAuthenticated: isSuccess,
