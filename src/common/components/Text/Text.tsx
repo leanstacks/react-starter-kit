@@ -1,44 +1,43 @@
 import { PropsWithChildren } from 'react';
+import { cva, VariantProps } from 'class-variance-authority';
 
 import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 
 /**
- * The variations of `Text` components.
+ * Define the component base and variant styles.
  */
-export type TextVariant = 'heading1' | 'heading2' | 'heading3';
+const variants = cva('', {
+  variants: {
+    variant: {
+      danger: 'text-red-600/80',
+      info: 'text-cyan-600/80',
+      warning: 'text-amber-600/80',
+    },
+  },
+  defaultVariants: {
+    variant: 'info',
+  },
+});
+
+/**
+ * The variant attributes of the Text component.
+ */
+type TextVariants = VariantProps<typeof variants>;
 
 /**
  * Properties for the `Text` React component.
- * @param {TextVariant} [variant] - Optional. The variant. Default: `none`
- * @see {@link BaseComponentProps}
- * @see {@link PropsWithChildren}
  */
-export interface TextProps extends BaseComponentProps, PropsWithChildren {
-  variant?: TextVariant;
-}
+export interface TextProps extends BaseComponentProps, PropsWithChildren, TextVariants {}
 
 /**
- * The `Text` component renders a block of text. The text is styled to match
- * the supplied `variant`.
- * @param {TextProps} props - Component properties.
- * @returns {JSX.Element} JSX
+ * The `Text` component displays styled text based upon the selected `variant`.
  */
 const Text = ({ children, className, testId = 'text', variant }: TextProps): JSX.Element => {
   return (
-    <div
-      className={cn(
-        {
-          'text-4xl': variant === 'heading1',
-          'text-2xl': variant === 'heading2',
-          'text-xl font-bold': variant === 'heading3',
-        },
-        className,
-      )}
-      data-testid={testId}
-    >
+    <span className={cn(variants({ variant, className }))} data-testid={testId}>
       {children}
-    </div>
+    </span>
   );
 };
 
