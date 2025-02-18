@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import image from 'assets/react.svg';
+import image from 'assets/img/logo.png';
 
 import Avatar from '../Avatar';
 
