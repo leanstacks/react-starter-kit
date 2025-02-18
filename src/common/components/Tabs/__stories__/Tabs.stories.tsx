@@ -23,10 +23,10 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
+    align: { description: 'Optional. Horizontal appearance of tabs.' },
     tabs: { description: 'An array of `Tab` component properties.' },
     tabContents: { description: 'An array of `TabContent` component properties.' },
     testId: { description: 'The test identifier.' },
-    variant: { description: 'Optional. The tab display behavior.' },
   },
 } satisfies Meta<typeof Tabs>;
 
@@ -34,20 +34,17 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const tabs: TabProps[] = [
-  { isActive: true, label: 'List' },
-  { isActive: false, label: 'Detail' },
-];
+const tabs: TabProps[] = [{ label: 'List' }, { label: 'Detail' }];
 
 const tabContents: TabContentProps[] = [
   { children: <div className="my-4">This is the list tab.</div> },
   { children: <div className="my-4">This is the item detail tab.</div> },
 ];
 
-export const Standard: Story = {
+export const Default: Story = {
   args: { tabs, tabContents },
 };
 
-export const FullWidth: Story = {
-  args: { tabs, tabContents, variant: 'fullWidth' },
+export const Stretched: Story = {
+  args: { tabs, tabContents, align: 'stretch' },
 };

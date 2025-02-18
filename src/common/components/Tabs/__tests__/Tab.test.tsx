@@ -48,7 +48,7 @@ describe('Tab', () => {
     await screen.findByTestId('tab');
 
     // ASSERT
-    expect(screen.getByTestId('tab').classList).toContain('border-b-blue-300');
+    expect(screen.getByTestId('tab').classList).toContain('border-blue-300');
   });
 
   it('should call click handler', async () => {
