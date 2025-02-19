@@ -37,7 +37,7 @@ describe('Alert', () => {
     await screen.findByTestId('alert');
 
     // ASSERT
-    expect(screen.getByTestId('alert').classList).toContain('bg-blue-800/90');
+    expect(screen.getByTestId('alert').classList).toContain('bg-neutral-200/90');
   });
 
   it('should render the Warning variant', async () => {
@@ -73,7 +73,7 @@ describe('Alert', () => {
     await screen.findByTestId('alert');
 
     // ASSERT
-    expect(screen.getByTestId('alert').classList).toContain('bg-blue-800/90');
+    expect(screen.getByTestId('alert').classList).toContain('bg-neutral-200/90');
   });
 
   it('should have role=alert', async () => {

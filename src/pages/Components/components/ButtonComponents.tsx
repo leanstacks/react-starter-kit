@@ -1,11 +1,11 @@
 import { BaseComponentProps } from 'common/utils/types';
 import Button from 'common/components/Button/Button';
 import CodeSnippet from 'common/components/Text/CodeSnippet';
-import Text from 'common/components/Text/Text';
 import { ComponentProperty } from '../model/components';
 import { createColumnHelper } from '@tanstack/react-table';
 import Table from 'common/components/Table/Table';
 import FAIcon from 'common/components/Icon/FAIcon';
+import Heading from 'common/components/Text/Heading';
 
 /**
  * Properties for the `ButtonComponents` React component.
@@ -65,9 +65,9 @@ const ButtonComponents = ({
 
   return (
     <section className={className} data-testid={testId}>
-      <Text variant="heading2" className="mb-4">
+      <Heading level={2} className="mb-4">
         Button Component
-      </Text>
+      </Heading>
 
       <div className="my-8">
         The <span className="font-mono font-bold">Button</span> component displays a clickable
@@ -75,13 +75,13 @@ const ButtonComponents = ({
       </div>
 
       <div className="my-8">
-        <Text variant="heading3" className="mb-2">
+        <Heading level={3} className="mb-2">
           Properties
-        </Text>
+        </Heading>
         <Table<ComponentProperty, string> data={data} columns={columns} />
       </div>
 
-      <Text variant="heading3">Examples</Text>
+      <Heading level={3}>Examples</Heading>
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Button>Default button</Button>

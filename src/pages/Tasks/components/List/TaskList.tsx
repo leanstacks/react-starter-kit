@@ -73,7 +73,7 @@ const TaskList = ({
             {title}
           </h2>
           {showBadge && !isLoading && (
-            <Badge className="self-start" testId={`${testId}-heading-badge`}>
+            <Badge className="self-start" size="sm" testId={`${testId}-heading-badge`}>
               {orderedTasks.length}
             </Badge>
           )}
@@ -81,7 +81,7 @@ const TaskList = ({
       )}
 
       {isError && (
-        <Alert variant="error" className="mb-4 rounded-none" testId={`${testId}-error`}>
+        <Alert variant="error" className="mb-4" testId={`${testId}-error`}>
           <FAIcon icon="circleExclamation" size="lg" />
           {t('errors.unable-to-retrieve')}
         </Alert>

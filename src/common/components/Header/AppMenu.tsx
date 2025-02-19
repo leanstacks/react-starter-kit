@@ -2,7 +2,7 @@ import { useAuth } from 'common/hooks/useAuth';
 import { useGetCurrentUser } from 'common/api/useGetCurrentUser';
 import { useTranslation } from 'react-i18next';
 
-import logo from './logo.png';
+import logo from 'assets/img/logo.png';
 import SideMenu, { SideMenuProps } from 'common/components/Menu/SideMenu/SideMenu';
 import MenuNavLink from 'common/components/Menu/MenuNavLink';
 import Avatar from 'common/components/Icon/Avatar';

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { PropsWithTestId } from 'common/utils/types';
 import { useAuth } from 'common/hooks/useAuth';
-import logo from './logo.png';
+import logo from 'assets/img/logo.png';
 import ThemeToggle from 'common/components/Button/ThemeToggle';
 import AppMenu from './AppMenu';
 import MenuButton from 'common/components/Menu/MenuButton';

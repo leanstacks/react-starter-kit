@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
 
 import Page from 'common/components/Page/Page';
-import Text from 'common/components/Text/Text';
 import MenuNavLink from 'common/components/Menu/MenuNavLink';
+import Heading from 'common/components/Text/Heading';
 
 /**
  * The `ComponentsPage` component renders the layout for the components page.
@@ -14,9 +14,9 @@ const ComponentsPage = (): JSX.Element => {
   return (
     <Page testId="page-components">
       <div className="container mx-auto my-4 min-h-[50vh]">
-        <Text variant="heading1" className="mb-4 border-b border-neutral-500/50 pb-2">
+        <Heading level={1} className="mb-4 border-b border-neutral-500/50 pb-2">
           Components
-        </Text>
+        </Heading>
 
         <div className="my-6 grid grid-cols-1 gap-8 md:grid-cols-4">
           <div data-testid="page-components-menu">

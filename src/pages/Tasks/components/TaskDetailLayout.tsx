@@ -107,14 +107,14 @@ const TaskDetailLayout = ({
       </div>
 
       {taskError && (
-        <Alert variant="error" className="my-4 rounded-none" testId={`${testId}-error-task`}>
+        <Alert variant="error" className="my-4" testId={`${testId}-error-task`}>
           <FAIcon icon="circleExclamation" />
           {`Unable to retrieve task. Detail: ${taskError.message}`}
         </Alert>
       )}
 
       {deleteError && (
-        <Alert variant="error" className="my-4 rounded-none" testId={`${testId}-error-delete`}>
+        <Alert variant="error" className="my-4" testId={`${testId}-error-delete`}>
           <FAIcon icon="circleExclamation" />
           {`Unable to delete task. Detail: ${deleteError.message}`}
         </Alert>

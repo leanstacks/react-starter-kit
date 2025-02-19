@@ -8,11 +8,6 @@ import Tab, { TabProps } from './Tab';
 import TabContent, { TabContentProps } from './TabContent';
 
 /**
- * The `TabVariant` describes variations of display behavior for `Tabs`.
- */
-export type TabVariant = 'fullWidth' | 'standard';
-
-/**
  * Properties for the `Tabs` React component.
  * @param {TabProps[]} tabs - An array of `Tab` component properties.
  * @param {TabContent[]} tabContents - An array of `TabContent` component properties.
@@ -20,10 +15,9 @@ export type TabVariant = 'fullWidth' | 'standard';
  * Default: `standard`.
  * @see {@link PropsWithTestId}
  */
-export interface TabsProps extends PropsWithTestId {
-  tabs: Omit<TabProps, 'isActive' | 'onClick'>[];
+export interface TabsProps extends PropsWithTestId, Pick<TabProps, 'align'> {
+  tabs: Omit<TabProps, 'align' | 'isActive' | 'onClick'>[];
   tabContents: TabContentProps[];
-  variant?: TabVariant;
 }
 
 /**
@@ -50,12 +44,7 @@ export interface TabsProps extends PropsWithTestId {
  * @param {TabsProps} - Component properties
  * @returns {JSX.Element} JSX
  */
-const Tabs = ({
-  tabs,
-  tabContents,
-  testId = 'tabs',
-  variant = 'standard',
-}: TabsProps): JSX.Element => {
+const Tabs = ({ align, tabs, tabContents, testId = 'tabs' }: TabsProps): JSX.Element => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   // obtain activeTabIndex from query string
@@ -79,7 +68,8 @@ const Tabs = ({
         {tabs.map(({ className, ...tabProps }, index) => (
           <Tab
             {...tabProps}
-            className={cn({ className, 'grow': variant === 'fullWidth' })}
+            className={cn(className)}
+            align={align}
             isActive={activeTabIndex === index}
             onClick={() => setTab(index)}
             key={index}

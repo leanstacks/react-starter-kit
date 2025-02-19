@@ -55,7 +55,7 @@ describe('Tabs', () => {
 
   it('should render full width variant', async () => {
     // ARRANGE
-    render(<Tabs tabs={tabs} tabContents={tabContents} variant="fullWidth" />);
+    render(<Tabs tabs={tabs} tabContents={tabContents} align="stretch" />);
     await screen.findByTestId('tabs');
 
     // ASSERT

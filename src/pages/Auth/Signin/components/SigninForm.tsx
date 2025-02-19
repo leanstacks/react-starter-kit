@@ -72,7 +72,7 @@ const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): 
   return (
     <div className={cn('lg:w-2/3 xl:w-1/2', className)} data-testid={testId}>
       {error && (
-        <Alert variant="error" className="mb-4 rounded-none" testId={`${testId}-alert`}>
+        <Alert variant="error" className="mb-4" testId={`${testId}-alert`}>
           <FAIcon icon="circleExclamation" size="lg" />
           {error}
         </Alert>

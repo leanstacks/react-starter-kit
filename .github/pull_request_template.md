@@ -8,10 +8,12 @@
 
 ### :wrench: Change Summary
 
-_List the changes included in this pull request._
+_Describe the changes included in this pull request. [Link](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword) to the associated GitHub issue(s)._
 
-- Issue: [ISSUE-123](https://example.com/ISSUE-123)
-- ...
+- fixes #1234
+- Added the [...]
+- Updated the [...]
+- Fixed the [...]
 
 ### :memo: Checklist
 
@@ -27,10 +29,12 @@ _Pull request authors must complete the following tasks before marking the PR as
 
 _Describe the process to test the changes in this pull request._
 
-1. ...
+1. Go to [...]
+2. Click on [...]
+3. Verify that [...]
 
 ### :link: Additional Information
 
 _Optionally, provide additional details, screenshots, or URLs that may assist the reviewer._
 
-- ...
+- [...]

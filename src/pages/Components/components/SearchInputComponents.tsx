@@ -5,11 +5,11 @@ import { map } from 'lodash';
 
 import { BaseComponentProps } from 'common/utils/types';
 import CodeSnippet from 'common/components/Text/CodeSnippet';
-import Text from 'common/components/Text/Text';
 import { ComponentProperty } from '../model/components';
 import Table from 'common/components/Table/Table';
 import SearchInput from 'common/components/Form/SearchInput';
 import SearchResult from 'common/components/Form/SearchResult';
+import Heading from 'common/components/Text/Heading';
 
 /**
  * The `SearchInputComponents` React component renders a set of examples illustrating
@@ -103,9 +103,9 @@ const SearchInputComponents = ({
 
   return (
     <section className={className} data-testid={testId}>
-      <Text variant="heading2" className="mb-4">
+      <Heading level={2} className="mb-4">
         Search Input Component
-      </Text>
+      </Heading>
 
       <div className="my-8">
         The <span className="font-mono font-bold">SearchInput</span> component displays a search
@@ -114,13 +114,13 @@ const SearchInputComponents = ({
       </div>
 
       <div className="my-8">
-        <Text variant="heading3" className="mb-2">
+        <Heading level={3} className="mb-2">
           Properties
-        </Text>
+        </Heading>
         <Table<ComponentProperty, string> data={data} columns={columns} />
       </div>
 
-      <Text variant="heading3">Examples</Text>
+      <Heading level={3}>Examples</Heading>
 
       <div className="my-8">
         {!!selectedValue && (

@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
+
 import { render, screen } from 'test/test-utils';
+
 import Text from '../Text';
 
 describe('Text', () => {
@@ -30,30 +32,21 @@ describe('Text', () => {
     expect(screen.getByTestId('text').classList).toContain('custom-className');
   });
 
-  it('should render the heading1 variant', async () => {
+  it('should use the default variant', async () => {
     // ARRANGE
-    render(<Text variant="heading1">content</Text>);
+    render(<Text>content</Text>);
     await screen.findByTestId('text');
 
     // ASSERT
-    expect(screen.getByTestId('text').classList).toContain('text-4xl');
+    expect(screen.getByTestId('text').classList).toContain('text-cyan-600/80');
   });
 
-  it('should render the heading2 variant', async () => {
+  it('should use the specified variant', async () => {
     // ARRANGE
-    render(<Text variant="heading2">content</Text>);
+    render(<Text variant="danger">content</Text>);
     await screen.findByTestId('text');
 
     // ASSERT
-    expect(screen.getByTestId('text').classList).toContain('text-2xl');
-  });
-
-  it('should render the heading3 variant', async () => {
-    // ARRANGE
-    render(<Text variant="heading3">content</Text>);
-    await screen.findByTestId('text');
-
-    // ASSERT
-    expect(screen.getByTestId('text').classList).toContain('text-xl');
+    expect(screen.getByTestId('text').classList).toContain('text-red-600/80');
   });
 });

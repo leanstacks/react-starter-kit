@@ -1,17 +1,37 @@
+import { cva, VariantProps } from 'class-variance-authority';
+
 import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 
 /**
- * Properties for the `Tab` React component.
- * @param {boolean} [isActive=false] - Optional. Indicates if this tab is the
- * active tab.
- * @param {string} label - The tab label.
- * @param {function} [onClick] - Optional. A function to be invoked when the
- * tab is clicked.
- * @see {@link BaseComponentProps}
+ * Define the component base and variant styles.
  */
-export interface TabProps extends BaseComponentProps {
-  isActive?: boolean;
+const variants = cva(
+  'flex items-center justify-center border-b-2 px-2 py-1 text-sm font-bold uppercase cursor-pointer',
+  {
+    variants: {
+      align: {
+        start: '',
+        stretch: 'grow',
+      },
+      isActive: {
+        false: 'border-transparent',
+        true: 'border-blue-300 dark:border-blue-600',
+      },
+    },
+    defaultVariants: { align: 'start', isActive: false },
+  },
+);
+
+/**
+ * The variant attributes of the Tab component.
+ */
+type TabVariants = VariantProps<typeof variants>;
+
+/**
+ * Properties for the `Tab` React component.
+ */
+export interface TabProps extends BaseComponentProps, TabVariants {
   label: string;
   onClick?: () => void;
 }
@@ -27,14 +47,15 @@ export interface TabProps extends BaseComponentProps {
  * @returns {JSX.Element} JSX
  */
 const Tab = ({
+  align,
   className,
-  isActive = false,
+  isActive,
   label,
   onClick,
   testId = 'tab',
 }: TabProps): JSX.Element => {
   /**
-   * Handle tab click events.
+   * Handles tab click events.
    */
   const handleClick = () => {
     onClick?.();
@@ -42,16 +63,7 @@ const Tab = ({
 
   return (
     <div
-      className={cn(
-        'flex cursor-pointer items-center justify-center px-2 py-1 text-sm font-bold uppercase',
-        {
-          'border-b-2 border-b-blue-300 dark:border-b-blue-600': isActive,
-        },
-        {
-          'border-b-2 border-transparent': !isActive,
-        },
-        className,
-      )}
+      className={cn(variants({ align, isActive, className }))}
       onClick={handleClick}
       data-testid={testId}
     >
