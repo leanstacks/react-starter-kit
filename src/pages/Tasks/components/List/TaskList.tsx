@@ -73,7 +73,7 @@ const TaskList = ({
             {title}
           </h2>
           {showBadge && !isLoading && (
-            <Badge className="self-start" testId={`${testId}-heading-badge`}>
+            <Badge className="self-start" size="sm" testId={`${testId}-heading-badge`}>
               {orderedTasks.length}
             </Badge>
           )}
