@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { InferType, object, string } from 'yup';
+import { object, string } from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
@@ -14,20 +14,13 @@ import Alert from 'common/components/Alert/Alert';
 import Button from 'common/components/Button/Button';
 
 /**
- * Signin form validation schema.
- */
-const validationSchema = object({
-  password: string().required(t('validation.required')),
-  username: string()
-    .required(t('validation.required'))
-    .max(30, t('validation.max', { count: 30 })),
-});
-
-/**
  * Signin form values.
  */
 
-type SigninFormValues = InferType<typeof validationSchema>;
+type SigninFormValues = {
+  username: string;
+  password: string;
+};
 
 /**
  * The `SigninForm` component renders a form for user authentication.
@@ -44,6 +37,17 @@ const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): 
   const [error, setError] = useState<string>('');
   const { mutate: signin } = useSignin();
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  /**
+   * Signin form validation schema.
+   */
+  const validationSchema = object({
+    password: string().required(t('validation.required')),
+    username: string()
+      .required(t('validation.required'))
+      .max(30, t('validation.max', { count: 30 })),
+  });
 
   /**
    * Initialize management of the form.
