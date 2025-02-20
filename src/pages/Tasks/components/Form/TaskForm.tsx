@@ -1,7 +1,7 @@
-import { boolean, InferType, number, object, string } from 'yup';
-import { t } from 'i18next';
+import { boolean, number, object, string } from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useTranslation } from 'react-i18next';
 
 import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
@@ -11,20 +11,9 @@ import Button from 'common/components/Button/Button';
 import Toggle from 'common/components/Form/Toggle';
 
 /**
- * Task form validation schema.
- */
-const validationSchema = object({
-  userId: number().required(t('validation.required')),
-  title: string()
-    .required(t('validation.required'))
-    .max(100, t('validation.max', { count: 100 })),
-  completed: boolean().required(t('validation.required')).default(false),
-});
-
-/**
  * Task form values.
  */
-export type TaskFormValues = InferType<typeof validationSchema>;
+export type TaskFormValues = Pick<Task, 'userId' | 'title' | 'completed'>;
 
 /**
  * Properties for the `TaskForm` component.
@@ -42,12 +31,8 @@ export interface TaskFormProps extends BaseComponentProps {
 
 /**
  * The `TaskForm` component renders a form for creating and updating `Task` objects.
- *
- * Upon successful submission, navigates back to the previous page.
- *
- * Upon cancellation, navigates back to the previous page.
- *
- * Upon error, displays a message.
+ * Form submission and cancellation functions are supplied as props and
+ * will be invoked when the respective form button is clicked.
  *
  * @param {TaskFormProps} props - Component properties.
  * @returns JSX
@@ -59,6 +44,19 @@ const TaskForm = ({
   task,
   testId = 'task-form',
 }: TaskFormProps): JSX.Element => {
+  const { t } = useTranslation();
+
+  /**
+   * Task form validation schema.
+   */
+  const validationSchema = object({
+    userId: number().required(t('validation.required')),
+    title: string()
+      .required(t('validation.required'))
+      .max(100, t('validation.max', { count: 100 })),
+    completed: boolean().required(t('validation.required')).default(false),
+  });
+
   /**
    * Initializes management of the form.
    */
