@@ -33,8 +33,20 @@ const BadgeComponents = ({
       description: 'Optional. Additional CSS class names.',
     },
     {
+      name: 'size',
+      description: 'Optional. Size variant.',
+    },
+    {
       name: 'testId',
       description: 'Optional. Identifier for testing.',
+    },
+    {
+      name: 'uppercase',
+      description: 'Optional. Indicates if the content should be UPPERCASE.',
+    },
+    {
+      name: 'variant',
+      description: 'Optional. Style variant.',
     },
   ];
   const columnHelper = createColumnHelper<ComponentProperty>();
@@ -80,38 +92,34 @@ const BadgeComponents = ({
 
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-          <Badge>999+</Badge>
+          <Badge size="sm">999+</Badge>
         </div>
-        <CodeSnippet className="my-2" code={`<Badge>999+</Badge>`} />
+        <CodeSnippet className="my-2" code={`<Badge size="sm">999+</Badge>`} />
       </div>
 
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-          <Badge className="bg-blue-600! dark:bg-blue-700!" testId="my-badge">
+          <Badge size="sm" variant="primary" testId="my-badge">
             19
           </Badge>
         </div>
         <CodeSnippet
           className="my-2"
-          code={`<Badge className='bg-blue-600! dark:bg-blue-700!' testId='my-badge'>19</Badge>`}
+          code={`<Badge size="sm" variant="primary" testId="my-badge">
+  19
+</Badge`}
         />
       </div>
 
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-          <Badge
-            className="bg-neutral-500! uppercase dark:bg-neutral-300! dark:text-black"
-            testId="badge-status-closed"
-          >
+          <Badge size="lg" variant="info" uppercase testId="badge-status-closed">
             Closed
           </Badge>
         </div>
         <CodeSnippet
           className="my-2"
-          code={`<Badge
-  className="bg-neutral-500! uppercase dark:bg-neutral-300! dark:text-black"
-  testId="badge-status-closed"
->
+          code={`<Badge size="lg" variant="info" uppercase testId="badge-status-closed">
   Closed
 </Badge>`}
         />
