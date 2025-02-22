@@ -49,9 +49,9 @@ describe('Alert', () => {
     expect(screen.getByTestId('alert').classList).toContain('bg-amber-400/90');
   });
 
-  it('should render the Error variant', async () => {
+  it('should render the Danger variant', async () => {
     // ARRANGE
-    render(<Alert variant="error" />);
+    render(<Alert variant="danger" />);
     await screen.findByTestId('alert');
 
     // ASSERT
