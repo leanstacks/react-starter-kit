@@ -30,14 +30,14 @@ const ErrorAlert = ({
 }: ErrorAlertProps): JSX.Element => {
   return (
     <Alert variant="danger" className={cn(className)} testId={testId} {...props}>
-      <FAIcon icon={icon} size="lg" />
-      <AlertContent>
+      <FAIcon icon={icon} size="lg" testId={`${testId}-icon`} />
+      <AlertContent testId={`${testId}-content`}>
         {!!title && (
-          <AlertHeader>
-            <AlertTitle>{title}</AlertTitle>
+          <AlertHeader testId={`${testId}-header`}>
+            <AlertTitle testId={`${testId}-title`}>{title}</AlertTitle>
           </AlertHeader>
         )}
-        <AlertDescription>{description}</AlertDescription>
+        <AlertDescription testId={`${testId}-description`}>{description}</AlertDescription>
       </AlertContent>
     </Alert>
   );

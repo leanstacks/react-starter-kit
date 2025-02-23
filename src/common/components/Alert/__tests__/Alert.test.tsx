@@ -31,7 +31,7 @@ describe('Alert', () => {
     expect(screen.getByTestId('alert').classList).toContain('custom-class');
   });
 
-  it('should render the Info variant', async () => {
+  it('should render the info variant', async () => {
     // ARRANGE
     render(<Alert variant="info" />);
     await screen.findByTestId('alert');
@@ -40,7 +40,7 @@ describe('Alert', () => {
     expect(screen.getByTestId('alert').classList).toContain('bg-neutral-200/90');
   });
 
-  it('should render the Warning variant', async () => {
+  it('should render the warning variant', async () => {
     // ARRANGE
     render(<Alert variant="warning" />);
     await screen.findByTestId('alert');
@@ -49,7 +49,7 @@ describe('Alert', () => {
     expect(screen.getByTestId('alert').classList).toContain('bg-amber-400/90');
   });
 
-  it('should render the Danger variant', async () => {
+  it('should render the danger variant', async () => {
     // ARRANGE
     render(<Alert variant="danger" />);
     await screen.findByTestId('alert');
@@ -58,7 +58,7 @@ describe('Alert', () => {
     expect(screen.getByTestId('alert').classList).toContain('bg-red-800/90');
   });
 
-  it('should render the Success variant', async () => {
+  it('should render the success variant', async () => {
     // ARRANGE
     render(<Alert variant="success" />);
     await screen.findByTestId('alert');
@@ -67,7 +67,7 @@ describe('Alert', () => {
     expect(screen.getByTestId('alert').classList).toContain('bg-green-800/90');
   });
 
-  it('should render the Info variant when variant not specified', async () => {
+  it('should render the default variant when variant not specified', async () => {
     // ARRANGE
     render(<Alert />);
     await screen.findByTestId('alert');
