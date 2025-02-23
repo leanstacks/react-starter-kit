@@ -10,9 +10,8 @@ import { useGetTask } from 'pages/Tasks/api/useGetTask';
 import { useToasts } from 'common/hooks/useToasts';
 import { useUpdateTask } from 'pages/Tasks/api/useUpdateTask';
 import TaskForm, { TaskFormValues } from '../Form/TaskForm';
-import Alert from 'common/components/Alert/Alert';
-import FAIcon from 'common/components/Icon/FAIcon';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
+import ErrorAlert from 'common/components/Alert/ErrorAlert';
 
 /**
  * Properties for the `TaskEdit` component.
@@ -80,17 +79,19 @@ const TaskEdit = ({ className, testId = 'task-edit' }: TaskEditProps): JSX.Eleme
 
       {/* error state */}
       {!!taskFetchError && (
-        <Alert variant="error" className="mb-4" testId={`${testId}-error-fetch`}>
-          <FAIcon icon="circleExclamation" size="lg" />
-          {`${t('errors.unable-to-find-short')} ${taskFetchError}`}
-        </Alert>
+        <ErrorAlert
+          description={`${t('errors.unable-to-find-short')} ${taskFetchError}`}
+          className="mb-4"
+          testId={`${testId}-error-fetch`}
+        />
       )}
 
       {!!taskUpdateError && (
-        <Alert variant="error" className="mb-4" testId={`${testId}-error-update`}>
-          <FAIcon icon="circleExclamation" size="lg" />
-          {`${t('errors.unable-to-process')} ${taskUpdateError}`}
-        </Alert>
+        <ErrorAlert
+          description={`${t('errors.unable-to-process')} ${taskUpdateError}`}
+          className="mb-4"
+          testId={`${testId}-error-update`}
+        />
       )}
 
       {/* form */}

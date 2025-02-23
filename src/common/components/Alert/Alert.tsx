@@ -7,10 +7,10 @@ import { cn } from 'common/utils/css';
 /**
  * Define the component base and variant styles.
  */
-const variants = cva('flex items-center gap-2 rounded-md p-3', {
+const variants = cva('flex gap-2 rounded-md p-3', {
   variants: {
     variant: {
-      error: 'bg-red-800/90 text-white/80',
+      danger: 'bg-red-800/90 text-white/80',
       info: 'bg-neutral-200/90 text-slate-900',
       success: 'bg-green-800/90 text-white/80',
       warning: 'bg-amber-400/90 text-slate-900',
@@ -26,18 +26,35 @@ type AlertVariants = VariantProps<typeof variants>;
 
 /**
  * Properties for the `Alert` component.
- * @see {@link PropsWithChildren}
- * @see {@link BaseComponentProps}
  */
 export interface AlertProps extends AlertVariants, PropsWithChildren, BaseComponentProps {}
 
 /**
- * The `Alert` React component formats and renders a styled message. Use the
+ * The `Alert` component formats and renders a styled message. Use the
  * `variant` property to apply predefined styles.
- * @param {AlertProps} props - Component properties, `AlertProps`.
- * @returns {JSX.Element} JSX
+ *
+ * Compose an Alert using of combinations of: `FAIcon`, `AlertContent`,
+ * `AlertHeader`, `AlertTitle`, and `AlertDescription`.
+ *
+ * *Example:*
+ * ```
+ * <Alert variant="danger" className="my-4" testId="task-create-alert">
+ *   <FAIcon icon="circleExclamation" size="lg" />
+ *   <AlertContent>
+ *     <AlertHeader>
+ *       <AlertTitle>Unable to create task</AlertTitle>
+ *     </AlertHeader>
+ *     <AlertDescription>{error.message}</AlertDescription>
+ *   </AlertContent>
+ * </Alert>
+ * ```
  */
-const Alert = ({ children, className, variant, testId = 'alert' }: AlertProps): JSX.Element => {
+const Alert = ({
+  children,
+  className,
+  variant = 'info',
+  testId = 'alert',
+}: AlertProps): JSX.Element => {
   return (
     <div className={cn(variants({ variant, className }))} role="alert" data-testid={testId}>
       {children}

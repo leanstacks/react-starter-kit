@@ -7,8 +7,7 @@ import { useGetCurrentUser } from 'common/api/useGetCurrentUser';
 import { useCreateTask } from 'pages/Tasks/api/useCreateTask';
 import { BaseComponentProps } from 'common/utils/types';
 import TaskForm, { TaskFormValues } from '../Form/TaskForm';
-import Alert from 'common/components/Alert/Alert';
-import FAIcon from 'common/components/Icon/FAIcon';
+import ErrorAlert from 'common/components/Alert/ErrorAlert';
 
 /**
  * Properties for the `TaskAdd` component.
@@ -71,10 +70,11 @@ const TaskAdd = ({ className, testId = 'task-add' }: TaskAddProps): JSX.Element 
 
       {/* error state */}
       {!!taskCreateError && (
-        <Alert variant="error" className="mb-4" testId={`${testId}-error-create`}>
-          <FAIcon icon="circleExclamation" size="lg" />
-          {`${t('errors.unable-to-process')} ${taskCreateError}`}
-        </Alert>
+        <ErrorAlert
+          description={`${t('errors.unable-to-process')} ${taskCreateError}`}
+          className="mb-4"
+          testId={`${testId}-error-create`}
+        />
       )}
 
       {/* form */}

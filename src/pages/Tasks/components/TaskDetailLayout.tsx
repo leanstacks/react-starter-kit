@@ -11,8 +11,8 @@ import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import FAIcon from 'common/components/Icon/FAIcon';
 import TaskDeleteDialog from './Delete/TaskDeleteDialog';
 import Button from 'common/components/Button/Button';
-import Alert from 'common/components/Alert/Alert';
 import TaskView from './View/TaskView';
+import ErrorAlert from 'common/components/Alert/ErrorAlert';
 
 /**
  * Properties for the `TaskDetailLayout` component.
@@ -107,17 +107,21 @@ const TaskDetailLayout = ({
       </div>
 
       {taskError && (
-        <Alert variant="error" className="my-4" testId={`${testId}-error-task`}>
-          <FAIcon icon="circleExclamation" />
-          {`Unable to retrieve task. Detail: ${taskError.message}`}
-        </Alert>
+        <ErrorAlert
+          title="Unable to retrieve task"
+          description={taskError.message}
+          className="my-4"
+          testId={`${testId}-error-task`}
+        />
       )}
 
       {deleteError && (
-        <Alert variant="error" className="my-4" testId={`${testId}-error-delete`}>
-          <FAIcon icon="circleExclamation" />
-          {`Unable to delete task. Detail: ${deleteError.message}`}
-        </Alert>
+        <ErrorAlert
+          title="Unable to delete task"
+          description={deleteError.message}
+          className="my-4"
+          testId={`${testId}-error-delete`}
+        />
       )}
 
       {(isLoadingTask || isDeletePending) && (
