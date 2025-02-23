@@ -33,8 +33,21 @@ export interface AlertProps extends AlertVariants, PropsWithChildren, BaseCompon
  * The `Alert` component formats and renders a styled message. Use the
  * `variant` property to apply predefined styles.
  *
- * Compose an Alert using of `FAIcon`, `AlertContent`, `AlertHeader`, `AlertTitle`,
- * and `AlertDescription`.
+ * Compose an Alert using of combinations of: `FAIcon`, `AlertContent`,
+ * `AlertHeader`, `AlertTitle`, and `AlertDescription`.
+ *
+ * *Example:*
+ * ```
+ * <Alert variant="danger" className="my-4" testId="task-create-alert">
+ *   <FAIcon icon="circleExclamation" size="lg" />
+ *   <AlertContent>
+ *     <AlertHeader>
+ *       <AlertTitle>Unable to create task</AlertTitle>
+ *     </AlertHeader>
+ *     <AlertDescription>{error.message}</AlertDescription>
+ *   </AlertContent>
+ * </Alert>
+ * ```
  */
 const Alert = ({
   children,

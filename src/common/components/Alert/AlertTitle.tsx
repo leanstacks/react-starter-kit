@@ -3,8 +3,15 @@ import { PropsWithChildren } from 'react';
 import { BaseComponentProps } from 'common/utils/types';
 import { cn } from 'common/utils/css';
 
+/**
+ * Properties for the `AlertTitle` component.
+ */
 export interface AlertTitleProps extends BaseComponentProps, PropsWithChildren {}
 
+/**
+ * The `AlertTitle` component renders the styled title text for an `Alert`.
+ * AlertTitle is always within an `AlertHeader`.
+ */
 const AlertTitle = ({
   children,
   className,
