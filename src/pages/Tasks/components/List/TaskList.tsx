@@ -5,11 +5,10 @@ import { times } from 'lodash';
 
 import { Task, useGetUserTasks } from 'pages/Tasks/api/useGetUserTasks';
 import { BaseComponentProps } from 'common/utils/types';
-import Alert from 'common/components/Alert/Alert';
-import FAIcon from 'common/components/Icon/FAIcon';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import TaskListItem from './TaskListItem';
 import Badge from 'common/components/Badge/Badge';
+import ErrorAlert from 'common/components/Alert/ErrorAlert';
 
 /**
  * Type describes the possible sort order directions.
@@ -81,10 +80,11 @@ const TaskList = ({
       )}
 
       {isError && (
-        <Alert variant="error" className="mb-4" testId={`${testId}-error`}>
-          <FAIcon icon="circleExclamation" size="lg" />
-          {t('errors.unable-to-retrieve')}
-        </Alert>
+        <ErrorAlert
+          description={t('errors.unable-to-retrieve')}
+          className="mb-4"
+          testId={`${testId}-error`}
+        />
       )}
 
       {isLoading && (

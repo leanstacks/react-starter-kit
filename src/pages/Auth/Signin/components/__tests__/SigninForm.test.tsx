@@ -68,9 +68,9 @@ describe('SigninForm', () => {
     await user.type(screen.getByLabelText('Username*'), 'NotAUser');
     await user.type(screen.getByLabelText('Password*'), 'aB1!12345678');
     await user.click(screen.getByTestId('form-signin-button-submit'));
-    await screen.findByTestId('form-signin-alert');
+    await screen.findByTestId('form-signin-error');
 
     // ASSERT
-    expect(screen.getByTestId('form-signin-alert')).toBeDefined();
+    expect(screen.getByTestId('form-signin-error')).toBeDefined();
   });
 });

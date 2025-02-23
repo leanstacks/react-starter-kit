@@ -9,9 +9,8 @@ import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 import { useSignin } from '../api/useSignin';
 import Input from 'common/components/Form/Input';
-import FAIcon from 'common/components/Icon/FAIcon';
-import Alert from 'common/components/Alert/Alert';
 import Button from 'common/components/Button/Button';
+import ErrorAlert from 'common/components/Alert/ErrorAlert';
 
 /**
  * Signin form values.
@@ -76,10 +75,12 @@ const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): 
   return (
     <div className={cn('lg:w-2/3 xl:w-1/2', className)} data-testid={testId}>
       {error && (
-        <Alert variant="error" className="mb-4" testId={`${testId}-alert`}>
-          <FAIcon icon="circleExclamation" size="lg" />
-          {error}
-        </Alert>
+        <ErrorAlert
+          title="Authentication failed"
+          description={error}
+          className="mb-4"
+          testId={`${testId}-error`}
+        />
       )}
 
       <form onSubmit={handleSubmit(onFormSubmit)} noValidate>
