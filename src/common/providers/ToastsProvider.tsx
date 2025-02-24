@@ -69,7 +69,7 @@ const reducer = (state: ToastsContextState, action: ToastsContextAction): Toasts
  * @returns An object whose properties are action functions.
  */
 const actions = (dispatch: Dispatch<ToastsContextAction>) => {
-  const createToast = ({ text, isAutoDismiss }: CreateToastDTO): void => {
+  const createToast = ({ text, isAutoDismiss, variant }: CreateToastDTO): void => {
     dispatch({
       type: ToastAction.Create,
       payload: {
@@ -77,6 +77,7 @@ const actions = (dispatch: Dispatch<ToastsContextAction>) => {
         createdAt: dayjs().toISOString(),
         isAutoDismiss,
         text,
+        variant,
       },
     });
   };

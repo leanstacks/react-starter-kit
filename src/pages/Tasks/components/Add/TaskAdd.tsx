@@ -47,7 +47,11 @@ const TaskAdd = ({ className, testId = 'task-add' }: TaskAddProps): JSX.Element 
         { task: data },
         {
           onSuccess: () => {
-            createToast({ text: t('createdTask', { ns: 'tasks' }), isAutoDismiss: true });
+            createToast({
+              text: t('createdTask', { ns: 'tasks' }),
+              isAutoDismiss: true,
+              variant: 'success',
+            });
             navigate(-1);
           },
           onError: (err) => {

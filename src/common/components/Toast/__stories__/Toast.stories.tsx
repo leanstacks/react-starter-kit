@@ -44,3 +44,15 @@ const toast: ToastDetail = {
 export const Simple: Story = {
   args: { dismiss: () => {}, toast },
 };
+
+export const Info: Story = {
+  args: { dismiss: () => {}, toast: { ...toast, variant: 'info' } },
+};
+
+export const Danger: Story = {
+  args: { dismiss: () => {}, toast: { ...toast, variant: 'danger' } },
+};
+
+export const Success: Story = {
+  args: { dismiss: () => {}, toast: { ...toast, variant: 'success' } },
+};

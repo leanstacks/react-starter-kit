@@ -1,9 +1,11 @@
 import { createContext } from 'react';
 
+import { ToastVariants } from 'common/components/Toast/Toast';
+
 /**
  * Describes the attributes of a single Toast.
  */
-export interface ToastDetail {
+export interface ToastDetail extends Pick<ToastVariants, 'variant'> {
   id: string;
   text: string;
   createdAt: string;
@@ -13,7 +15,7 @@ export interface ToastDetail {
 /**
  * A DTO type which describes the attributes to create a new Toast.
  */
-export type CreateToastDTO = Pick<ToastDetail, 'text' | 'isAutoDismiss'>;
+export type CreateToastDTO = Pick<ToastDetail, 'text' | 'isAutoDismiss' | 'variant'>;
 
 /**
  * The `value` provided by the `ToastsContext`.
