@@ -53,7 +53,11 @@ const TaskEdit = ({ className, testId = 'task-edit' }: TaskEditProps): JSX.Eleme
         { task: updatedTask },
         {
           onSuccess: () => {
-            createToast({ text: t('updatedTask', { ns: 'tasks' }), isAutoDismiss: true });
+            createToast({
+              text: t('updatedTask', { ns: 'tasks' }),
+              isAutoDismiss: true,
+              variant: 'success',
+            });
             navigate(-1);
           },
           onError: (err) => {
