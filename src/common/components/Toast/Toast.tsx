@@ -85,7 +85,7 @@ const Toast = ({ className, dismiss, testId = 'toast', toast }: ToastProps): JSX
       data-testid={testId}
       style={{ ...springs }}
     >
-      <div className="flex min-h-12 items-center p-2">
+      <div className="flex min-h-12 items-center gap-2 p-2">
         <div className="grow text-sm" data-testid={`${testId}-text`}>
           {toast.text}
         </div>
