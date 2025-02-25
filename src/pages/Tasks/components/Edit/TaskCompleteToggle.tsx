@@ -58,6 +58,7 @@ const TaskCompleteToggle = ({
               ? t('markedComplete', { ns: 'tasks' })
               : t('markedIncomplete', { ns: 'tasks' }),
             isAutoDismiss: true,
+            variant: 'success',
           });
         },
       },

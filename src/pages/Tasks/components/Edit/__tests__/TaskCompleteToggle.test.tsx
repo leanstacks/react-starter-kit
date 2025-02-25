@@ -92,6 +92,7 @@ describe('TaskCompleteToggle', () => {
     expect(mockCreateToast).toHaveBeenCalledWith({
       text: 'Marked task complete',
       isAutoDismiss: true,
+      variant: 'success',
     });
   });
 
@@ -115,6 +116,7 @@ describe('TaskCompleteToggle', () => {
     expect(mockCreateToast).toHaveBeenCalledWith({
       text: 'Marked task incomplete',
       isAutoDismiss: true,
+      variant: 'success',
     });
   });
 
