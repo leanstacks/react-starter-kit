@@ -13,7 +13,7 @@ import FAIcon from 'common/components/Icon/FAIcon';
 /**
  * Defines the component base and variant styles.
  */
-const variants = cva('max-w-sm rounded-md', {
+const variants = cva('max-w-sm sm:max-w-md rounded-md', {
   variants: {
     variant: {
       danger: 'bg-red-800 text-white',
