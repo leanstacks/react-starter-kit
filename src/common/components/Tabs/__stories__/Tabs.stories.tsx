@@ -1,32 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { MemoryRouter } from 'react-router-dom';
-
-import { TabContentProps } from '../TabContent';
-import { TabProps } from '../Tab';
 
 import Tabs from '../Tabs';
+import TabList from '../TabList';
+import Tab from '../Tab';
+import TabContent from '../TabContent';
 
 const meta = {
   title: 'Common/Tabs',
   component: Tabs,
-  decorators: [
-    (Story) => (
-      <div className="w-96">
-        <MemoryRouter>
-          <Story />
-        </MemoryRouter>
-      </div>
-    ),
-  ],
-  parameters: {
-    layout: 'centered',
-  },
   tags: ['autodocs'],
   argTypes: {
-    align: { description: 'Optional. Horizontal appearance of tabs.' },
-    tabs: { description: 'An array of `Tab` component properties.' },
-    tabContents: { description: 'An array of `TabContent` component properties.' },
+    children: { description: 'The content.' },
+    className: { description: 'Additional CSS classes.' },
+    defaultValue: { description: 'The default (or initial) active tab.' },
     testId: { description: 'The test identifier.' },
+  },
+  args: {
+    defaultValue: 'one',
   },
 } satisfies Meta<typeof Tabs>;
 
@@ -34,17 +24,36 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const tabs: TabProps[] = [{ label: 'List' }, { label: 'Detail' }];
-
-const tabContents: TabContentProps[] = [
-  { children: <div className="my-4">This is the list tab.</div> },
-  { children: <div className="my-4">This is the item detail tab.</div> },
-];
-
 export const Default: Story = {
-  args: { tabs, tabContents },
+  render: (args) => (
+    <Tabs {...args}>
+      <TabList>
+        <Tab value="one">One</Tab>
+        <Tab value="two">Two</Tab>
+      </TabList>
+      <TabContent value="one">
+        <div className="py-8 text-blue-600">I am the content for tab one!</div>
+      </TabContent>
+      <TabContent value="two">
+        <div className="py-8 text-green-600">I am the content for tab two!</div>
+      </TabContent>
+    </Tabs>
+  ),
 };
 
-export const Stretched: Story = {
-  args: { tabs, tabContents, align: 'stretch' },
+export const StretchedTabs: Story = {
+  render: (args) => (
+    <Tabs {...args}>
+      <TabList align="stretch">
+        <Tab value="one">One</Tab>
+        <Tab value="two">Two</Tab>
+      </TabList>
+      <TabContent value="one">
+        <div className="py-8 text-blue-600">I am the content for tab one!</div>
+      </TabContent>
+      <TabContent value="two">
+        <div className="py-8 text-green-600">I am the content for tab two!</div>
+      </TabContent>
+    </Tabs>
+  ),
 };
