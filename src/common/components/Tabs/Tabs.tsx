@@ -4,8 +4,15 @@ import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 import { TabsContext, TabsContextValue } from 'common/providers/TabsContext';
 
+/**
+ * Properties for the `TabsProvider` component.
+ */
 interface TabsProviderProps extends PropsWithChildren, Pick<TabsContextValue, 'value'> {}
 
+/**
+ * The `TabsProvider` component renders a React Context Provider which provides access
+ * to the the value of the `TabsContext`, i.e. the `TabsContextValue`.
+ */
 const TabsProvider = ({ children, value }: TabsProviderProps): JSX.Element => {
   const [selectedTab, setSelectedTab] = useState<string>(value);
 
@@ -17,7 +24,7 @@ const TabsProvider = ({ children, value }: TabsProviderProps): JSX.Element => {
 };
 
 /**
- * Properties for the `Tabs` React component.
+ * Properties for the `Tabs` component.
  * @param defaultValue - The default (or initial) active tab.
  */
 export interface TabsProps extends BaseComponentProps, PropsWithChildren {
@@ -25,7 +32,12 @@ export interface TabsProps extends BaseComponentProps, PropsWithChildren {
 }
 
 /**
- * The `Tabs` component is a wrapper for rendering tabbed content.
+ * The `Tabs` component is a wrapper for rendering tabbed content. Compose tabbed
+ * content using: `Tabs`, `TabList`, `Tab`, and `TabContent` as illustrated in
+ * the example.
+ *
+ * Note: The `defaultValue` property must match the `value` of one of the Tab
+ * components.
  *
  * *Example:*
  * ```

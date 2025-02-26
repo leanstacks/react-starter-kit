@@ -11,8 +11,8 @@ import Tab from 'common/components/Tabs/Tab';
 import TabContent from 'common/components/Tabs/TabContent';
 
 /**
- * The `TabsComponents` React component renders a set of examples illustrating
- * the use of the `Avatar` component.
+ * The `TabsComponents` component renders a set of examples illustrating
+ * the use of the `Tabs` component.
  */
 const TabsComponents = ({
   className,
@@ -77,11 +77,11 @@ const TabsComponents = ({
                 <Tab value="list">List</Tab>
                 <Tab value="detail">Detail</Tab>
               </TabList>
-              <TabContent value="list" className="py-8">
-                <div className="font-bold">I am the LIST tab.</div>
+              <TabContent value="list">
+                <div className="py-8 font-bold">I am the LIST tab.</div>
               </TabContent>
-              <TabContent value="detail" className="py-8">
-                <div className="font-bold">I am the DETAIL tab.</div>
+              <TabContent value="detail">
+                <div className="py-8 font-bold">I am the DETAIL tab.</div>
               </TabContent>
             </Tabs>
           </div>
@@ -92,11 +92,11 @@ const TabsComponents = ({
     <Tab value="list">List</Tab>
     <Tab value="detail">Detail</Tab>
   </TabList>
-  <TabContent value="list" className="py-8">
-    <div className="font-bold">I am the LIST tab.</div>
+  <TabContent value="list">
+    <div className="font-bold py-8">I am the LIST tab.</div>
   </TabContent>
-  <TabContent value="detail" className="py-8">
-    <div className="font-bold">I am the DETAIL tab.</div>
+  <TabContent value="detail">
+    <div className="font-bold py-8">I am the DETAIL tab.</div>
   </TabContent>
 </Tabs>`}
           />
@@ -112,11 +112,11 @@ const TabsComponents = ({
                 <Tab value="list">List</Tab>
                 <Tab value="detail">Detail</Tab>
               </TabList>
-              <TabContent value="list" className="py-8">
-                <div className="font-bold">I am the LIST tab.</div>
+              <TabContent value="list">
+                <div className="py-8 font-bold">I am the LIST tab.</div>
               </TabContent>
-              <TabContent value="detail" className="py-8">
-                <div className="font-bold">I am the DETAIL tab.</div>
+              <TabContent value="detail">
+                <div className="py-8 font-bold">I am the DETAIL tab.</div>
               </TabContent>
             </Tabs>
           </div>
@@ -127,11 +127,11 @@ const TabsComponents = ({
     <Tab value="list">List</Tab>
     <Tab value="detail">Detail</Tab>
   </TabList>
-  <TabContent value="list" className="py-8">
-    <div className="font-bold">I am the LIST tab.</div>
+  <TabContent value="list">
+    <div className="font-bold py-8">I am the LIST tab.</div>
   </TabContent>
-  <TabContent value="detail" className="py-8">
-    <div className="font-bold">I am the DETAIL tab.</div>
+  <TabContent value="detail">
+    <div className="font-bold py-8">I am the DETAIL tab.</div>
   </TabContent>
 </Tabs>`}
           />

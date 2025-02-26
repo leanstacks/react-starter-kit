@@ -6,6 +6,9 @@ import { useTabs } from 'common/hooks/useTabs';
 import { cn } from 'common/utils/css';
 import Button from '../Button/Button';
 
+/**
+ * Defines the component base and variant styles.
+ */
 const variants = cva('rounded-none border-0 border-b-2 px-4 text-sm font-bold uppercase', {
   variants: {
     active: {
@@ -19,15 +22,18 @@ const variants = cva('rounded-none border-0 border-b-2 px-4 text-sm font-bold up
 });
 
 /**
- * Properties for the `Tab` React component.
+ * Properties for the `Tab` component.
  */
 export interface TabProps extends BaseComponentProps, PropsWithChildren {
   value: string;
 }
 
 /**
- * The `Tab` component renders the clickable tab button which, when clicked,
+ * The `Tab` component renders a clickable tab button which, when clicked,
  * displays the associated tab content.
+ *
+ * Note: The `Tab` and its associated `TabContent` must have the same `value`
+ * property value.
  */
 const Tab = ({ children, className, testId = 'tab', value }: TabProps): JSX.Element => {
   const { value: selectedTab, setValue } = useTabs();
