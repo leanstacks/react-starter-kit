@@ -1,84 +1,52 @@
-import { useSearchParams } from 'react-router-dom';
+import { PropsWithChildren, useState } from 'react';
 
 import { cn } from 'common/utils/css';
-import { PropsWithTestId } from 'common/utils/types';
-import { toNumberBetween } from 'common/utils/numbers';
-import { SearchParam } from 'common/utils/constants';
-import Tab, { TabProps } from './Tab';
-import TabContent, { TabContentProps } from './TabContent';
+import { BaseComponentProps } from 'common/utils/types';
+import { TabsContext, TabsContextValue } from 'common/providers/TabsContext';
+
+interface TabsProviderProps extends PropsWithChildren, Pick<TabsContextValue, 'value'> {}
+
+const TabsProvider = ({ children, value }: TabsProviderProps): JSX.Element => {
+  const [selectedTab, setSelectedTab] = useState<string>(value);
+
+  const contextValue: TabsContextValue = {
+    setValue: setSelectedTab,
+    value: selectedTab,
+  };
+  return <TabsContext.Provider value={contextValue}>{children}</TabsContext.Provider>;
+};
 
 /**
  * Properties for the `Tabs` React component.
- * @param {TabProps[]} tabs - An array of `Tab` component properties.
- * @param {TabContent[]} tabContents - An array of `TabContent` component properties.
- * @param {TabVariant} [variant='standard'] -  Optional. The tab display behavior.
- * Default: `standard`.
- * @see {@link PropsWithTestId}
+ * @param defaultValue - The default (or initial) active tab.
  */
-export interface TabsProps extends PropsWithTestId, Pick<TabProps, 'align'> {
-  tabs: Omit<TabProps, 'align' | 'isActive' | 'onClick'>[];
-  tabContents: TabContentProps[];
+export interface TabsProps extends BaseComponentProps, PropsWithChildren {
+  defaultValue: string;
 }
 
 /**
  * The `Tabs` component is a wrapper for rendering tabbed content.
  *
- * Supply one to many `TabProps` objects in the `tabs` property describing each
- * `Tab` to render. Supply one to many `TabContentProps` objects in the `tabContents` property
- * describing each `TabContent` to render.
- *
- * The number of `tabs` and `tabContents` items should be equal. The order of each array
- * matters.  The first item in the `tabs` array should correspond to content in the first
- * item in the `tabContents` array and so on.
- *
  * *Example:*
  * ```
- * <Tabs
- *   tabs={[
- *     { label: 'List', testId: 'tab-list' },
- *     { label: 'Detail', testId: 'tab-detail' },
- *    ]}
- *    tabContents={[{ children: <MyList /> }, { children: <Outlet />, className: 'my-6' }]}
- * />
+ * <Tabs defaultValue="list" className="w-full">
+ *   <TabList>
+ *     <Tab value="list">List</Tab>
+ *     <Tab value="detail">Detail</Tab>
+ *   </TabList>
+ *   <TabContent value="list" className="py-8">
+ *     <div className="font-bold">I am the LIST tab.</div>
+ *   </TabContent>
+ *   <TabContent value="detail" className="py-8">
+ *     <div className="font-bold">I am the DETAIL tab.</div>
+ *   </TabContent>
+ * </Tabs>
  * ```
- * @param {TabsProps} - Component properties
- * @returns {JSX.Element} JSX
  */
-const Tabs = ({ align, tabs, tabContents, testId = 'tabs' }: TabsProps): JSX.Element => {
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  // obtain activeTabIndex from query string
-  const activeTabIndex = toNumberBetween(searchParams.get(SearchParam.tab), 0, tabs.length - 1, 0);
-
-  /**
-   * Set the active tab index.
-   * @param {number} index - A tab index.
-   */
-  const setTab = (index: number = 0): void => {
-    const tabIndex = toNumberBetween(index, 0, tabs.length - 1, 0);
-    if (tabIndex !== activeTabIndex) {
-      searchParams.set(SearchParam.tab, tabIndex.toString());
-      setSearchParams(searchParams);
-    }
-  };
-
+const Tabs = ({ children, className, defaultValue, testId = 'tabs' }: TabsProps): JSX.Element => {
   return (
-    <div data-testid={testId}>
-      <div className="flex gap-4 border-b border-b-neutral-500/10" data-testid={`${testId}-tabs`}>
-        {tabs.map(({ className, ...tabProps }, index) => (
-          <Tab
-            {...tabProps}
-            className={cn(className)}
-            align={align}
-            isActive={activeTabIndex === index}
-            onClick={() => setTab(index)}
-            key={index}
-          />
-        ))}
-      </div>
-      <div data-testid={`${testId}-content`}>
-        <TabContent {...tabContents[activeTabIndex]} />
-      </div>
+    <div className={cn(className)} data-testid={testId}>
+      <TabsProvider value={defaultValue}>{children}</TabsProvider>
     </div>
   );
 };
