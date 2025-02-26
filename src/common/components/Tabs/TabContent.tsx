@@ -1,28 +1,50 @@
 import { PropsWithChildren } from 'react';
+import { cva } from 'class-variance-authority';
 
 import { BaseComponentProps } from 'common/utils/types';
+import { useTabs } from 'common/hooks/useTabs';
+import { cn } from 'common/utils/css';
 
 /**
- * Properties for the `TabContent` React  component.
- * @see {@link PropsWithChildren}
- * @see {@link BaseComponentProps}
+ * Defines the component base and variant styles.
  */
-export interface TabContentProps extends BaseComponentProps, PropsWithChildren {}
+const variants = cva('', {
+  variants: {
+    active: {
+      true: 'block',
+      false: 'hidden',
+    },
+  },
+  defaultVariants: {
+    active: false,
+  },
+});
 
 /**
- * The `TabContent` component renders a single block of tabbed content.
+ * Properties for the `TabContent` component.
+ */
+export interface TabContentProps extends BaseComponentProps, PropsWithChildren {
+  value: string;
+}
+
+/**
+ * The `TabContent` component renders the content for a single tab.
  *
- * A `TabContent` is typically not rendered outside of the `Tabs` component, but
- * rather the `TabContentProps` are supplied to the `Tabs` component. The `Tabs`
- * component renders one or more `TabContent` components.
+ * Note: The `TabContent` and its associated `Tab` must have the same `value`
+ * property value.
  */
 const TabContent = ({
   children,
   className,
   testId = 'tab-content',
+  value,
 }: TabContentProps): JSX.Element => {
+  const { value: selectedTab } = useTabs();
+
+  const active = value === selectedTab;
+
   return (
-    <div className={className} data-testid={testId}>
+    <div className={cn(variants({ active, className }))} data-testid={testId}>
       {children}
     </div>
   );
