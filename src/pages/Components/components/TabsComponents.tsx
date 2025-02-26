@@ -16,7 +16,7 @@ import TabContent from 'common/components/Tabs/TabContent';
  */
 const TabsComponents = ({
   className,
-  testId = 'components-avatar',
+  testId = 'components-tabs',
 }: BaseComponentProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {

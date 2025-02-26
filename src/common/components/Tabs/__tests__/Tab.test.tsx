@@ -1,14 +1,22 @@
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import userEvent from '@testing-library/user-event';
 
-import { render, screen } from 'test/test-utils';
+import { render, screen, waitFor } from 'test/test-utils';
 
 import Tab from '../Tab';
+import Tabs from '../Tabs';
+import TabList from '../TabList';
 
 describe('Tab', () => {
   it('should render successfully', async () => {
     // ARRANGE
-    render(<Tab label="Label" />);
+    render(
+      <Tabs defaultValue="one">
+        <TabList>
+          <Tab value="one">One</Tab>
+        </TabList>
+      </Tabs>,
+    );
     await screen.findByTestId('tab');
 
     // ASSERT
@@ -17,50 +25,112 @@ describe('Tab', () => {
 
   it('should use custom testId', async () => {
     // ARRANGE
-    render(<Tab label="Label" testId="custom-testId" />);
-    await screen.findByTestId('custom-testId');
+    render(
+      <Tabs defaultValue="one">
+        <TabList>
+          <Tab value="one" testId="test-id">
+            One
+          </Tab>
+        </TabList>
+      </Tabs>,
+    );
+    await screen.findByTestId('test-id');
 
     // ASSERT
-    expect(screen.getByTestId('custom-testId')).toBeDefined();
+    expect(screen.getByTestId('test-id')).toBeDefined();
   });
 
   it('should use custom className', async () => {
     // ARRANGE
-    render(<Tab label="Label" className="custom-className" />);
+    render(
+      <Tabs defaultValue="one">
+        <TabList>
+          <Tab value="one" className="class-name">
+            One
+          </Tab>
+        </TabList>
+      </Tabs>,
+    );
     await screen.findByTestId('tab');
 
     // ASSERT
-    expect(screen.getByTestId('tab').classList).toContain('custom-className');
+    expect(screen.getByTestId('tab').classList).toContain('class-name');
   });
 
   it('should render label', async () => {
     // ARRANGE
-    render(<Tab label="Label" />);
+    render(
+      <Tabs defaultValue="one">
+        <TabList>
+          <Tab value="one">One</Tab>
+        </TabList>
+      </Tabs>,
+    );
     await screen.findByTestId('tab');
 
     // ASSERT
-    expect(screen.getByTestId('tab').textContent).toBe('Label');
+    expect(screen.getByTestId('tab').textContent).toBe('One');
   });
 
-  it('should render active state', async () => {
+  it('should display active state', async () => {
     // ARRANGE
-    render(<Tab label="Label" isActive />);
+    render(
+      <Tabs defaultValue="one">
+        <TabList>
+          <Tab value="one">One</Tab>
+        </TabList>
+      </Tabs>,
+    );
     await screen.findByTestId('tab');
 
     // ASSERT
     expect(screen.getByTestId('tab').classList).toContain('border-blue-300');
   });
 
-  it('should call click handler', async () => {
+  it('should display inactive state', async () => {
     // ARRANGE
-    const mockClickFn = vi.fn();
-    render(<Tab label="Label" onClick={mockClickFn} />);
+    render(
+      <Tabs defaultValue="some-other-tab">
+        <TabList>
+          <Tab value="one">One</Tab>
+        </TabList>
+      </Tabs>,
+    );
     await screen.findByTestId('tab');
 
+    // ASSERT
+    expect(screen.getByTestId('tab').classList).toContain('border-transparent');
+  });
+
+  it('should set active tab when clicked', async () => {
+    // ARRANGE
+    const user = userEvent.setup();
+    render(
+      <Tabs defaultValue="one">
+        <TabList>
+          <Tab value="one" testId="tab-one">
+            One
+          </Tab>
+          <Tab value="two" testId="tab-two">
+            Two
+          </Tab>
+        </TabList>
+      </Tabs>,
+    );
+    await screen.findByTestId('tab-one');
+    // assert that tab "one" is active
+    expect(screen.getByTestId('tab-one')).toHaveClass('border-blue-300');
+
     // ACT
-    await userEvent.click(screen.getByTestId('tab'));
+    // click tab two
+    await user.click(screen.getByTestId('tab-two'));
+    // wait until tab one becomes inactive
+    await waitFor(() => expect(screen.getByTestId('tab-one')).toHaveClass('border-transparent'));
 
     // ASSERT
-    expect(mockClickFn).toHaveBeenCalledTimes(1);
+    // assert that tab one is inactive
+    expect(screen.getByTestId('tab-one')).toHaveClass('border-transparent');
+    // assert that tab two is active
+    expect(screen.getByTestId('tab-two')).toHaveClass('border-blue-300');
   });
 });
