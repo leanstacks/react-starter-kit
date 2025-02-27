@@ -16,23 +16,10 @@ type DropdownMenuContextValue = {
 /**
  * The DropdownMenuContext instance.
  */
-const DropdownMenuContext = createContext<DropdownMenuContextValue | undefined>(undefined);
-
-/**
- * Returns the current `DropdownMenuContext` value. This hook is used within
- * the DropdownMenu family of components to access and mutate the shared state
- * of a DropdownMenu.
- * @returns Returns a DropdownMenuContext instance or `undefined` if the hook
- * is used outside of a `DropdownMenu`.
- */
-const useDropdownMenu = () => {
-  const context = useContext(DropdownMenuContext);
-  if (!context) {
-    throw new Error('The useDropdownMenu hook must be used within a DropdownMenu.');
-  }
-
-  return context;
-};
+const DropdownMenuContext = createContext<DropdownMenuContextValue>({
+  isHidden: true,
+  setIsHidden: () => {},
+});
 
 /**
  * Properties for the DropdownMenu component.
@@ -91,7 +78,7 @@ const Trigger = ({
   className,
   testId = 'dropdown-menu-trigger',
 }: BaseComponentProps & PropsWithChildren): JSX.Element => {
-  const { isHidden, setIsHidden } = useDropdownMenu();
+  const { isHidden, setIsHidden } = useContext(DropdownMenuContext);
 
   return (
     <div
@@ -116,7 +103,7 @@ const Content = ({
   className,
   testId = 'dropdown-menu-content',
 }: BaseComponentProps & PropsWithChildren) => {
-  const { isHidden, setIsHidden } = useDropdownMenu();
+  const { isHidden, setIsHidden } = useContext(DropdownMenuContext);
 
   return (
     <>
@@ -158,7 +145,7 @@ const Item = ({
   onClick,
   testId = 'dropdown-menu-item',
 }: ItemProps): JSX.Element => {
-  const { isHidden, setIsHidden } = useDropdownMenu();
+  const { isHidden, setIsHidden } = useContext(DropdownMenuContext);
 
   const handleClick = () => {
     onClick?.();
