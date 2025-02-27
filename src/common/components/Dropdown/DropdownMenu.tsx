@@ -5,13 +5,26 @@ import { cn } from 'common/utils/css';
 import Backdrop from '../Backdrop/Backdrop';
 import Divider, { DividerProps } from '../Divider/Divider';
 
+/**
+ * Defines the properties of the DropdownMenuContext value.
+ */
 type DropdownMenuContextValue = {
   isHidden: boolean;
   setIsHidden: (isHidden: boolean) => void;
 };
 
+/**
+ * The DropdownMenuContext instance.
+ */
 const DropdownMenuContext = createContext<DropdownMenuContextValue | undefined>(undefined);
 
+/**
+ * Returns the current `DropdownMenuContext` value. This hook is used within
+ * the DropdownMenu family of components to access and mutate the shared state
+ * of a DropdownMenu.
+ * @returns Returns a DropdownMenuContext instance or `undefined` if the hook
+ * is used outside of a `DropdownMenu`.
+ */
 const useDropdownMenu = () => {
   const context = useContext(DropdownMenuContext);
   if (!context) {
@@ -21,8 +34,37 @@ const useDropdownMenu = () => {
   return context;
 };
 
+/**
+ * Properties for the DropdownMenu component.
+ */
 export interface DropdownMenuProps extends BaseComponentProps, PropsWithChildren {}
 
+/**
+ * The `DropdownMenu` component displays a context menu adjacent to the element
+ * which triggers the display of the menu.
+ * 
+ * **Example:**
+ * ```
+  <DropdownMenu className={className} testId="dropdown-language">
+    <DropdownMenu.Trigger>
+      <FAIcon icon="language" size="2x" title="Select Language" />
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content>
+      <DropdownMenu.Heading>Languages</DropdownMenu.Heading>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Item onClick={() => setLanguage('en')} testId="dropdown-item-en">
+        English
+      </DropdownMenu.Item>
+      <DropdownMenu.Item onClick={() => setLanguage('fr')} testId="dropdown-item-fr">
+        French
+      </DropdownMenu.Item>
+      <DropdownMenu.Item onClick={() => setLanguage('es')} testId="dropdown-item-es">
+        Spanish
+      </DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu>
+ * ```
+ */
 const DropdownMenu = ({
   children,
   className,
@@ -39,6 +81,11 @@ const DropdownMenu = ({
   );
 };
 
+/**
+ * The `Trigger` component wraps the element used to open
+ * a DropdownMenu. There should be 1 `Trigger` within a
+ * DropdownMenu.
+ */
 const Trigger = ({
   children,
   className,
@@ -59,6 +106,11 @@ const Trigger = ({
 };
 DropdownMenu.Trigger = Trigger;
 
+/**
+ * The `Content` component wraps the contents of a DropdownMenu including,
+ * headings, menu items, etc.  There should be 1 `Content` within a
+ * DropdownMenu.
+ */
 const Content = ({
   children,
   className,
@@ -89,10 +141,17 @@ const Content = ({
 };
 DropdownMenu.Content = Content;
 
+/**
+ * Properties for the `Item` component.
+ */
 interface ItemProps extends BaseComponentProps, PropsWithChildren {
   onClick?: () => void;
 }
 
+/**
+ * The `Item` component renders a single, clickable menu item within a
+ * DropdownMenu.
+ */
 const Item = ({
   children,
   className,
@@ -122,19 +181,27 @@ const Item = ({
 };
 DropdownMenu.Item = Item;
 
+/**
+ * The `Heading` component renders a heading within a DropdownMenu. This is
+ * useful for describing a group of related menu items.
+ */
 const Heading = ({
   children,
   className,
   testId = 'dropdown-menu-heading',
 }: BaseComponentProps & PropsWithChildren): JSX.Element => {
   return (
-    <div className={cn('px-2 py-1.5 text-sm font-bold', className)} data-testid={testId}>
+    <h5 className={cn('px-2 py-1.5 text-sm font-bold', className)} data-testid={testId}>
       {children}
-    </div>
+    </h5>
   );
 };
 DropdownMenu.Heading = Heading;
 
+/**
+ * The `Separator` component renders a horizontal divider within a DropdownMenu.
+ * This is useful to organize and separate groups of related menu items.
+ */
 const Separator = ({
   className,
   testId = 'dropdown-menu-separator',
