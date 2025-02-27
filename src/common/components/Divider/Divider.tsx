@@ -14,12 +14,7 @@ export interface DividerProps extends BaseComponentProps {}
  * @returns {JSX.Element} JSX
  */
 const Divider = ({ className, testId = 'divider' }: DividerProps): JSX.Element => {
-  return (
-    <div
-      className={cn('h-0 w-full border-t border-neutral-500/50', className)}
-      data-testid={testId}
-    ></div>
-  );
+  return <div className={cn('h-px bg-neutral-500/50', className)} data-testid={testId}></div>;
 };
 
 export default Divider;

@@ -16,12 +16,13 @@ import AppearanceSettings from 'pages/Settings/components/AppearanceSettings';
 // Components Page Family
 import ComponentsPage from 'pages/Components/ComponentsPage';
 import AvatarComponents from 'pages/Components/components/AvatarComponents';
-import TextComponents from 'pages/Components/components/TextComponents';
-import ButtonComponents from 'pages/Components/components/ButtonComponents';
 import BadgeComponents from 'pages/Components/components/BadgeComponents';
+import ButtonComponents from 'pages/Components/components/ButtonComponents';
 import CardComponents from 'pages/Components/components/CardComponents';
+import DropdownComponents from 'pages/Components/components/DropdownComponents';
 import SearchInputComponents from 'pages/Components/components/SearchInputComponents';
 import TabsComponents from 'pages/Components/components/TabsComponents';
+import TextComponents from 'pages/Components/components/TextComponents';
 
 // Tasks Page Family
 import TasksPage from 'pages/Tasks/TasksPage';
@@ -100,6 +101,10 @@ export const routes: RouteObject[] = [
               {
                 path: 'card',
                 element: <CardComponents />,
+              },
+              {
+                path: 'dropdown',
+                element: <DropdownComponents />,
               },
               {
                 path: 'searchinput',

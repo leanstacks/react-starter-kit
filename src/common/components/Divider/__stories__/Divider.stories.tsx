@@ -30,12 +30,12 @@ export const Simple: Story = {};
 
 export const Colored: Story = {
   args: {
-    className: 'border-blue-600!',
+    className: 'bg-blue-600!',
   },
 };
 
 export const Thick: Story = {
   args: {
-    className: 'border-4',
+    className: 'h-1',
   },
 };

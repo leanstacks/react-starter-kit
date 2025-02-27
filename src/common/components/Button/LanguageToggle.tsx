@@ -3,11 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { PropsWithClassName } from 'common/utils/types';
 import { StorageKey } from 'common/utils/constants';
 import storage from 'common/utils/storage';
-import Dropdown from 'common/components/Dropdown/Dropdown';
 import FAIcon from 'common/components/Icon/FAIcon';
-import DropdownContent from 'common/components/Dropdown/DropdownContent';
-import DropdownItem from 'common/components/Dropdown/DropdownItem';
-import Button from './Button';
+import DropdownMenu from '../Dropdown/DropdownMenu';
 
 /**
  * Properties for the `LanguageToggle` component.
@@ -34,34 +31,24 @@ const LanguageToggle = ({ className }: LanguageToggleProps): JSX.Element => {
   };
 
   return (
-    <Dropdown
-      toggle={
-        <Button variant="text" size="icon">
-          <FAIcon icon="language" size="2x" title="Select Language" />
-        </Button>
-      }
-      content={
-        <DropdownContent className="text-sm">
-          <DropdownItem onClick={() => setLanguage('en')} testId="dropdown-item-en">
-            <Button variant="text" className="h-auto p-0!" title="English Language">
-              English
-            </Button>
-          </DropdownItem>
-          <DropdownItem onClick={() => setLanguage('fr')} testId="dropdown-item-fr">
-            <Button variant="text" className="h-auto p-0!" title="French Language">
-              French
-            </Button>
-          </DropdownItem>
-          <DropdownItem onClick={() => setLanguage('es')} testId="dropdown-item-es">
-            <Button variant="text" className="h-auto p-0!" title="Spanish Language">
-              Spanish
-            </Button>
-          </DropdownItem>
-        </DropdownContent>
-      }
-      className={className}
-      testId="dropdown-language"
-    />
+    <DropdownMenu className={className} testId="dropdown-language">
+      <DropdownMenu.Trigger>
+        <FAIcon icon="language" size="2x" title="Select Language" />
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Content>
+        <DropdownMenu.Heading>Languages</DropdownMenu.Heading>
+        <DropdownMenu.Separator />
+        <DropdownMenu.Item onClick={() => setLanguage('en')} testId="dropdown-item-en">
+          English
+        </DropdownMenu.Item>
+        <DropdownMenu.Item onClick={() => setLanguage('fr')} testId="dropdown-item-fr">
+          French
+        </DropdownMenu.Item>
+        <DropdownMenu.Item onClick={() => setLanguage('es')} testId="dropdown-item-es">
+          Spanish
+        </DropdownMenu.Item>
+      </DropdownMenu.Content>
+    </DropdownMenu>
   );
 };
 
