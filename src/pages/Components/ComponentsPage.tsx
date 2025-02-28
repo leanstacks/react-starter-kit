@@ -20,6 +20,9 @@ const ComponentsPage = (): JSX.Element => {
 
         <div className="my-6 grid grid-cols-1 gap-8 md:grid-cols-4">
           <div data-testid="page-components-menu">
+            <MenuNavLink to="alert" styleActive>
+              Alert
+            </MenuNavLink>
             <MenuNavLink to="avatar" styleActive>
               Avatar
             </MenuNavLink>

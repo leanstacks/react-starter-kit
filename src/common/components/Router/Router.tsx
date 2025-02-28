@@ -15,6 +15,7 @@ import AppearanceSettings from 'pages/Settings/components/AppearanceSettings';
 
 // Components Page Family
 import ComponentsPage from 'pages/Components/ComponentsPage';
+import AlertComponents from 'pages/Components/components/AlertComponents';
 import AvatarComponents from 'pages/Components/components/AvatarComponents';
 import BadgeComponents from 'pages/Components/components/BadgeComponents';
 import ButtonComponents from 'pages/Components/components/ButtonComponents';
@@ -84,7 +85,11 @@ export const routes: RouteObject[] = [
             children: [
               {
                 index: true,
-                element: <Navigate to="avatar" />,
+                element: <Navigate to="alert" />,
+              },
+              {
+                path: 'alert',
+                element: <AlertComponents />,
               },
               {
                 path: 'avatar',
