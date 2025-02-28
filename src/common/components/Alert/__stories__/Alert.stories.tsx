@@ -1,11 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import Alert from '../Alert';
-import FAIcon from '../../Icon/FAIcon';
-import AlertContent from '../AlertContent';
-import AlertHeader from '../AlertHeader';
-import AlertTitle from '../AlertTitle';
-import AlertDescription from '../AlertDescription';
 
 const meta = {
   title: 'Common/Alert/Alert',
@@ -27,43 +22,17 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const IconOnLeft: Story = {
+export const WithIcon: Story = {
   render: (args) => (
     <Alert {...args}>
-      <FAIcon icon="circleExclamation" size="lg" />
-      <AlertContent>
-        <AlertHeader>
-          <AlertTitle>Something unexpected has happened!</AlertTitle>
-        </AlertHeader>
-        <AlertDescription>
-          Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
-          exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
-          exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit qui.
-          Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque incididunt.
-        </AlertDescription>
-      </AlertContent>
-    </Alert>
-  ),
-  args: {
-    variant: 'danger',
-  },
-};
-
-export const IconInHeader: Story = {
-  render: (args) => (
-    <Alert {...args}>
-      <AlertContent>
-        <AlertHeader>
-          <FAIcon icon="circleExclamation" size="lg" />
-          <AlertTitle>Something unexpected has happened!</AlertTitle>
-        </AlertHeader>
-        <AlertDescription>
-          Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
-          exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
-          exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit qui.
-          Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque incididunt.
-        </AlertDescription>
-      </AlertContent>
+      <Alert.Icon icon="circleExclamation" />
+      <Alert.Title>Something unexpected has happened!</Alert.Title>
+      <Alert.Description>
+        Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
+        exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
+        exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit qui.
+        Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque incididunt.
+      </Alert.Description>
     </Alert>
   ),
   args: {
@@ -74,17 +43,13 @@ export const IconInHeader: Story = {
 export const NoIcon: Story = {
   render: (args) => (
     <Alert {...args}>
-      <AlertContent>
-        <AlertHeader>
-          <AlertTitle>Something unexpected has happened!</AlertTitle>
-        </AlertHeader>
-        <AlertDescription>
-          Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
-          exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
-          exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit qui.
-          Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque incididunt.
-        </AlertDescription>
-      </AlertContent>
+      <Alert.Title>Something unexpected has happened!</Alert.Title>
+      <Alert.Description>
+        Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
+        exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
+        exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit qui.
+        Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque incididunt.
+      </Alert.Description>
     </Alert>
   ),
   args: {
@@ -95,12 +60,12 @@ export const NoIcon: Story = {
 export const DescriptionOnly: Story = {
   render: (args) => (
     <Alert {...args}>
-      <AlertDescription>
+      <Alert.Description>
         Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
         exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
         exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit qui.
         Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque incididunt.
-      </AlertDescription>
+      </Alert.Description>
     </Alert>
   ),
   args: {
@@ -108,15 +73,11 @@ export const DescriptionOnly: Story = {
   },
 };
 
-export const HeaderOnly: Story = {
+export const TitleOnly: Story = {
   render: (args) => (
     <Alert {...args}>
-      <AlertContent>
-        <AlertHeader>
-          <FAIcon icon="circleExclamation" size="lg" />
-          <AlertTitle>Something unexpected has happened!</AlertTitle>
-        </AlertHeader>
-      </AlertContent>
+      <Alert.Icon icon="circleExclamation" />
+      <Alert.Title>Something unexpected has happened!</Alert.Title>
     </Alert>
   ),
   args: {
@@ -127,17 +88,13 @@ export const HeaderOnly: Story = {
 export const Info: Story = {
   render: (args) => (
     <Alert {...args}>
-      <AlertContent>
-        <AlertHeader>
-          <AlertTitle>Something you should know...</AlertTitle>
-        </AlertHeader>
-        <AlertDescription>
-          Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
-          exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
-          exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit qui.
-          Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque incididunt.
-        </AlertDescription>
-      </AlertContent>
+      <Alert.Title>Something you should know...</Alert.Title>
+      <Alert.Description>
+        Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
+        exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
+        exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit qui.
+        Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque incididunt.
+      </Alert.Description>
     </Alert>
   ),
   args: {
@@ -148,17 +105,13 @@ export const Info: Story = {
 export const Warning: Story = {
   render: (args) => (
     <Alert {...args}>
-      <AlertContent>
-        <AlertHeader>
-          <AlertTitle>Proceed with caution!</AlertTitle>
-        </AlertHeader>
-        <AlertDescription>
-          Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
-          exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
-          exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit qui.
-          Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque incididunt.
-        </AlertDescription>
-      </AlertContent>
+      <Alert.Title>Proceed with caution!</Alert.Title>
+      <Alert.Description>
+        Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
+        exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
+        exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit qui.
+        Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque incididunt.
+      </Alert.Description>
     </Alert>
   ),
   args: {
@@ -169,17 +122,13 @@ export const Warning: Story = {
 export const Success: Story = {
   render: (args) => (
     <Alert {...args}>
-      <AlertContent>
-        <AlertHeader>
-          <AlertTitle>You did it!</AlertTitle>
-        </AlertHeader>
-        <AlertDescription>
-          Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
-          exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
-          exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit qui.
-          Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque incididunt.
-        </AlertDescription>
-      </AlertContent>
+      <Alert.Title>You did it!</Alert.Title>
+      <Alert.Description>
+        Mollit proident aliqua vel pariatur dolor cupidatat sunt. Tempus quis elit officia ero
+        exercitation labore a. Nisi commodo nunc id et. Labore facilisis do nibh fermentum
+        exercitation voluptate. Aute et ut est justo veniam. Ut do convallis reprehenderit qui.
+        Consectetur nibh nibh est pariatur tempor. Qos laoreet qui labore a neque incididunt.
+      </Alert.Description>
     </Alert>
   ),
   args: {

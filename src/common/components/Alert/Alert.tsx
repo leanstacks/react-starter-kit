@@ -3,11 +3,12 @@ import { cva, VariantProps } from 'class-variance-authority';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { cn } from 'common/utils/css';
+import FAIcon, { FAIconProps } from '../Icon/FAIcon';
 
 /**
- * Define the component base and variant styles.
+ * Define the `Alert` component base and variant styles.
  */
-const variants = cva('flex gap-2 rounded-md p-3', {
+const alertVariants = cva('relative rounded-md p-3 *:data-icon:absolute [&>svg~*]:ps-8', {
   variants: {
     variant: {
       danger: 'bg-red-800/90 text-white/80',
@@ -20,33 +21,26 @@ const variants = cva('flex gap-2 rounded-md p-3', {
 });
 
 /**
- * The variant attributes of the Alert component.
- */
-type AlertVariants = VariantProps<typeof variants>;
-
-/**
  * Properties for the `Alert` component.
  */
-export interface AlertProps extends AlertVariants, PropsWithChildren, BaseComponentProps {}
+export interface AlertProps
+  extends BaseComponentProps,
+    PropsWithChildren,
+    VariantProps<typeof alertVariants> {}
 
 /**
  * The `Alert` component formats and renders a styled message. Use the
  * `variant` property to apply predefined styles.
  *
- * Compose an Alert using of combinations of: `FAIcon`, `AlertContent`,
- * `AlertHeader`, `AlertTitle`, and `AlertDescription`.
+ * Compose an Alert using of combinations of: `Icon`, `Title`, and `Description`.
  *
- * *Example:*
+ * **Example:**
  * ```
- * <Alert variant="danger" className="my-4" testId="task-create-alert">
- *   <FAIcon icon="circleExclamation" size="lg" />
- *   <AlertContent>
- *     <AlertHeader>
- *       <AlertTitle>Unable to create task</AlertTitle>
- *     </AlertHeader>
- *     <AlertDescription>{error.message}</AlertDescription>
- *   </AlertContent>
- * </Alert>
+  <Alert variant="danger" className="my-4" testId="task-create-alert">
+    <Alert.Icon icon="circleExclamation" />
+    <Alert.Title>Unable to create task</Alert.Title>
+    <Alert.Description>{error.message}</Alert.Description>
+  </Alert>
  * ```
  */
 const Alert = ({
@@ -56,10 +50,50 @@ const Alert = ({
   testId = 'alert',
 }: AlertProps): JSX.Element => {
   return (
-    <div className={cn(variants({ variant, className }))} role="alert" data-testid={testId}>
+    <div className={cn(alertVariants({ variant, className }))} role="alert" data-testid={testId}>
       {children}
     </div>
   );
 };
+
+/**
+ * The `Title` component renders the styled title text for an `Alert`.
+ */
+const Title = ({
+  children,
+  className,
+  testId = 'alert-title',
+}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+  return (
+    <div className={cn('mb-1 text-xl leading-none font-bold', className)} data-testid={testId}>
+      {children}
+    </div>
+  );
+};
+Alert.Title = Title;
+
+/**
+ * The `Description` component renders the styled description text for an `Alert`.
+ */
+const Description = ({
+  children,
+  className,
+  testId = 'alert-description',
+}: BaseComponentProps & PropsWithChildren): JSX.Element => {
+  return (
+    <div className={cn('leading-tight', className)} data-testid={testId}>
+      {children}
+    </div>
+  );
+};
+Alert.Description = Description;
+
+/**
+ * The `Icon` component renders the styled icon for an `Alert`.
+ */
+const Icon = ({ size = 'lg', testId = 'alert-icon', ...props }: FAIconProps): JSX.Element => {
+  return <FAIcon size={size} testId={testId} {...props} />;
+};
+Alert.Icon = Icon;
 
 export default Alert;
