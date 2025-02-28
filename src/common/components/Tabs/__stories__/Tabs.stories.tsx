@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import Tabs from '../Tabs';
-import TabList from '../TabList';
-import Tab from '../Tab';
-import TabContent from '../TabContent';
 
 const meta = {
   title: 'Common/Tabs',
@@ -27,16 +24,16 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: (args) => (
     <Tabs {...args}>
-      <TabList>
-        <Tab value="one">One</Tab>
-        <Tab value="two">Two</Tab>
-      </TabList>
-      <TabContent value="one">
+      <Tabs.List>
+        <Tabs.Tab value="one">One</Tabs.Tab>
+        <Tabs.Tab value="two">Two</Tabs.Tab>
+      </Tabs.List>
+      <Tabs.Content value="one">
         <div className="py-8 text-blue-600">I am the content for tab one!</div>
-      </TabContent>
-      <TabContent value="two">
+      </Tabs.Content>
+      <Tabs.Content value="two">
         <div className="py-8 text-green-600">I am the content for tab two!</div>
-      </TabContent>
+      </Tabs.Content>
     </Tabs>
   ),
 };
@@ -44,16 +41,16 @@ export const Default: Story = {
 export const StretchedTabs: Story = {
   render: (args) => (
     <Tabs {...args}>
-      <TabList align="stretch">
-        <Tab value="one">One</Tab>
-        <Tab value="two">Two</Tab>
-      </TabList>
-      <TabContent value="one">
+      <Tabs.List align="stretch">
+        <Tabs.Tab value="one">One</Tabs.Tab>
+        <Tabs.Tab value="two">Two</Tabs.Tab>
+      </Tabs.List>
+      <Tabs.Content value="one">
         <div className="py-8 text-blue-600">I am the content for tab one!</div>
-      </TabContent>
-      <TabContent value="two">
+      </Tabs.Content>
+      <Tabs.Content value="two">
         <div className="py-8 text-green-600">I am the content for tab two!</div>
-      </TabContent>
+      </Tabs.Content>
     </Tabs>
   ),
 };

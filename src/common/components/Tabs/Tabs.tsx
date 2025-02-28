@@ -1,27 +1,25 @@
-import { PropsWithChildren, useState } from 'react';
+import { createContext, PropsWithChildren, useContext, useState } from 'react';
+import { cva, VariantProps } from 'class-variance-authority';
 
 import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
-import { TabsContext, TabsContextValue } from 'common/providers/TabsContext';
+import Button from '../Button/Button';
 
 /**
- * Properties for the `TabsProvider` component.
+ * Defines the shape of the `TabsContext` value.
  */
-interface TabsProviderProps extends PropsWithChildren, Pick<TabsContextValue, 'value'> {}
-
-/**
- * The `TabsProvider` component renders a React Context Provider which provides access
- * to the the value of the `TabsContext`, i.e. the `TabsContextValue`.
- */
-const TabsProvider = ({ children, value }: TabsProviderProps): JSX.Element => {
-  const [selectedTab, setSelectedTab] = useState<string>(value);
-
-  const contextValue: TabsContextValue = {
-    setValue: setSelectedTab,
-    value: selectedTab,
-  };
-  return <TabsContext.Provider value={contextValue}>{children}</TabsContext.Provider>;
+type TabsContextValue = {
+  activeTab: string;
+  setActiveTab: (activeTab: string) => void;
 };
+
+/**
+ * The `TabsContext` instance.
+ */
+const TabsContext = createContext<TabsContextValue>({
+  activeTab: '',
+  setActiveTab: () => {},
+});
 
 /**
  * Properties for the `Tabs` component.
@@ -56,11 +54,145 @@ export interface TabsProps extends BaseComponentProps, PropsWithChildren {
  * ```
  */
 const Tabs = ({ children, className, defaultValue, testId = 'tabs' }: TabsProps): JSX.Element => {
+  const [activeTab, setActiveTab] = useState(defaultValue);
+
   return (
     <div className={cn(className)} data-testid={testId}>
-      <TabsProvider value={defaultValue}>{children}</TabsProvider>
+      <TabsContext.Provider value={{ activeTab, setActiveTab }}>{children}</TabsContext.Provider>
     </div>
   );
 };
+
+/**
+ * Defines the `List` component base and variant styles.
+ */
+const listVariants = cva('flex gap-4 border-b border-b-neutral-500/10', {
+  variants: {
+    align: {
+      stretch: '*:grow',
+      start: 'flex',
+    },
+  },
+  defaultVariants: { align: 'start' },
+});
+
+/**
+ * Properties for the `List` component.
+ */
+interface ListProps
+  extends BaseComponentProps,
+    PropsWithChildren,
+    VariantProps<typeof listVariants> {}
+
+/**
+ * The `List` component is a container for one to many `Tab` components. It
+ * renders a horizontal bar of clickable tabs.
+ */
+const List = ({
+  align = 'start',
+  children,
+  className,
+  testId = 'tabs-list',
+}: ListProps): JSX.Element => {
+  return (
+    <div className={cn(listVariants({ align, className }))} data-testid={testId}>
+      {children}
+    </div>
+  );
+};
+Tabs.List = List;
+
+/**
+ * Defines the `Tab` component base and variant styles.
+ */
+const tabVariants = cva('rounded-none border-0 border-b-2 px-4 text-sm font-bold uppercase', {
+  variants: {
+    active: {
+      false: 'border-transparent',
+      true: 'border-blue-300 dark:border-blue-600',
+    },
+  },
+  defaultVariants: {
+    active: false,
+  },
+});
+
+/**
+ * Properties for the `Tab` component.
+ */
+interface TabProps extends BaseComponentProps, PropsWithChildren {
+  value: string;
+}
+
+/**
+ * The `Tab` component renders a clickable tab button which, when clicked,
+ * displays the associated tab content.
+ *
+ * Note: The `Tab` and its associated `TabContent` must have the same `value`
+ * property value.
+ */
+const Tab = ({ children, className, testId = 'tabs-tab', value }: TabProps): JSX.Element => {
+  const { activeTab, setActiveTab } = useContext(TabsContext);
+
+  const active = value === activeTab;
+
+  return (
+    <Button
+      variant="text"
+      className={cn(tabVariants({ active, className }))}
+      onClick={() => setActiveTab(value)}
+      testId={testId}
+    >
+      {children}
+    </Button>
+  );
+};
+Tabs.Tab = Tab;
+
+/**
+ * Defines the `Content` component base and variant styles.
+ */
+const contentVariants = cva('', {
+  variants: {
+    active: {
+      true: 'block',
+      false: 'hidden',
+    },
+  },
+  defaultVariants: {
+    active: false,
+  },
+});
+
+/**
+ * Properties for the `Content` component.
+ */
+interface TabContentProps extends BaseComponentProps, PropsWithChildren {
+  value: string;
+}
+
+/**
+ * The `TabContent` component renders the content for a single tab.
+ *
+ * Note: The `TabContent` and its associated `Tab` must have the same `value`
+ * property value.
+ */
+const Content = ({
+  children,
+  className,
+  testId = 'tabs-content',
+  value,
+}: TabContentProps): JSX.Element => {
+  const { activeTab } = useContext(TabsContext);
+
+  const active = value === activeTab;
+
+  return (
+    <div className={cn(contentVariants({ active, className }))} data-testid={testId}>
+      {children}
+    </div>
+  );
+};
+Tabs.Content = Content;
 
 export default Tabs;

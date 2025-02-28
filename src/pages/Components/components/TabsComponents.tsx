@@ -6,9 +6,6 @@ import Table from 'common/components/Table/Table';
 import CodeSnippet from 'common/components/Text/CodeSnippet';
 import Heading from 'common/components/Text/Heading';
 import Tabs from 'common/components/Tabs/Tabs';
-import TabList from 'common/components/Tabs/TabList';
-import Tab from 'common/components/Tabs/Tab';
-import TabContent from 'common/components/Tabs/TabContent';
 
 /**
  * The `TabsComponents` component renders a set of examples illustrating
@@ -57,15 +54,19 @@ const TabsComponents = ({
       </Heading>
 
       <div className="my-8">
-        The <span className="font-mono font-bold">Tabs</span> component organizes content into
-        sections, i.e. tabs, allowing the user to select the section which is actively displayed.
+        <div>
+          The <span className="font-mono font-bold">Tabs</span> component organizes content into
+          sections, i.e. tabs, allowing the user to select the section which is actively displayed.
+        </div>
         <div className="my-8">
           <Heading level={3} className="mb-2">
             Properties
           </Heading>
           <Table<ComponentProperty, string> data={data} columns={columns} />
         </div>
+
         <Heading level={3}>Examples</Heading>
+
         <Heading level={4} className="my-8">
           Default Tabs
         </Heading>
@@ -73,34 +74,35 @@ const TabsComponents = ({
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Tabs Example Here */}
             <Tabs defaultValue="list" className="w-full">
-              <TabList>
-                <Tab value="list">List</Tab>
-                <Tab value="detail">Detail</Tab>
-              </TabList>
-              <TabContent value="list">
+              <Tabs.List>
+                <Tabs.Tab value="list">List</Tabs.Tab>
+                <Tabs.Tab value="detail">Detail</Tabs.Tab>
+              </Tabs.List>
+              <Tabs.Content value="list">
                 <div className="py-8 font-bold">I am the LIST tab.</div>
-              </TabContent>
-              <TabContent value="detail">
+              </Tabs.Content>
+              <Tabs.Content value="detail">
                 <div className="py-8 font-bold">I am the DETAIL tab.</div>
-              </TabContent>
+              </Tabs.Content>
             </Tabs>
           </div>
           <CodeSnippet
             className="my-2"
             code={`<Tabs defaultValue="list" className="w-full">
-  <TabList>
-    <Tab value="list">List</Tab>
-    <Tab value="detail">Detail</Tab>
-  </TabList>
-  <TabContent value="list">
-    <div className="font-bold py-8">I am the LIST tab.</div>
-  </TabContent>
-  <TabContent value="detail">
-    <div className="font-bold py-8">I am the DETAIL tab.</div>
-  </TabContent>
+  <Tabs.List>
+    <Tabs.Tab value="list">List</Tabs.Tab>
+    <Tabs.Tab value="detail">Detail</Tabs.Tab>
+  </Tabs.List>
+  <Tabs.Content value="list">
+    <div className="py-8 font-bold">I am the LIST tab.</div>
+  </Tabs.Content>
+  <Tabs.Content value="detail">
+    <div className="py-8 font-bold">I am the DETAIL tab.</div>
+  </Tabs.Content>
 </Tabs>`}
           />
         </div>
+
         <Heading level={4} className="my-8">
           Stretched Tabs
         </Heading>
@@ -108,31 +110,31 @@ const TabsComponents = ({
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Tabs Example Here */}
             <Tabs defaultValue="list" className="w-full">
-              <TabList align="stretch">
-                <Tab value="list">List</Tab>
-                <Tab value="detail">Detail</Tab>
-              </TabList>
-              <TabContent value="list">
+              <Tabs.List align="stretch">
+                <Tabs.Tab value="list">List</Tabs.Tab>
+                <Tabs.Tab value="detail">Detail</Tabs.Tab>
+              </Tabs.List>
+              <Tabs.Content value="list">
                 <div className="py-8 font-bold">I am the LIST tab.</div>
-              </TabContent>
-              <TabContent value="detail">
+              </Tabs.Content>
+              <Tabs.Content value="detail">
                 <div className="py-8 font-bold">I am the DETAIL tab.</div>
-              </TabContent>
+              </Tabs.Content>
             </Tabs>
           </div>
           <CodeSnippet
             className="my-2"
             code={`<Tabs defaultValue="list" className="w-full">
-  <TabList align='stretch'>
-    <Tab value="list">List</Tab>
-    <Tab value="detail">Detail</Tab>
-  </TabList>
-  <TabContent value="list">
-    <div className="font-bold py-8">I am the LIST tab.</div>
-  </TabContent>
-  <TabContent value="detail">
-    <div className="font-bold py-8">I am the DETAIL tab.</div>
-  </TabContent>
+  <Tabs.List align="stretch">
+    <Tabs.Tab value="list">List</Tabs.Tab>
+    <Tabs.Tab value="detail">Detail</Tabs.Tab>
+  </Tabs.List>
+  <Tabs.Content value="list">
+    <div className="py-8 font-bold">I am the LIST tab.</div>
+  </Tabs.Content>
+  <Tabs.Content value="detail">
+    <div className="py-8 font-bold">I am the DETAIL tab.</div>
+  </Tabs.Content>
 </Tabs>`}
           />
         </div>
