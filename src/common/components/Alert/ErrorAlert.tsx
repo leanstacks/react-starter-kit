@@ -1,10 +1,6 @@
 import { cn } from 'common/utils/css';
-import FAIcon, { FAIconProps } from '../Icon/FAIcon';
+import { FAIconProps } from '../Icon/FAIcon';
 import Alert, { AlertProps } from './Alert';
-import AlertContent from './AlertContent';
-import AlertDescription from './AlertDescription';
-import AlertHeader from './AlertHeader';
-import AlertTitle from './AlertTitle';
 
 /**
  * Properties for the `ErrorAlert` component.
@@ -30,15 +26,9 @@ const ErrorAlert = ({
 }: ErrorAlertProps): JSX.Element => {
   return (
     <Alert variant="danger" className={cn(className)} testId={testId} {...props}>
-      <FAIcon icon={icon} size="lg" testId={`${testId}-icon`} />
-      <AlertContent testId={`${testId}-content`}>
-        {!!title && (
-          <AlertHeader testId={`${testId}-header`}>
-            <AlertTitle testId={`${testId}-title`}>{title}</AlertTitle>
-          </AlertHeader>
-        )}
-        <AlertDescription testId={`${testId}-description`}>{description}</AlertDescription>
-      </AlertContent>
+      <Alert.Icon icon={icon} testId={`${testId}-icon`} />
+      {title && <Alert.Title testId={`${testId}-title`}>{title}</Alert.Title>}
+      <Alert.Description testId={`${testId}-description`}>{description}</Alert.Description>
     </Alert>
   );
 };
