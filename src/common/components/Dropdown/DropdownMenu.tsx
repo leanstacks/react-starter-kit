@@ -1,4 +1,5 @@
 import { createContext, PropsWithChildren, useContext, useState } from 'react';
+import noop from 'lodash/noop';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { cn } from 'common/utils/css';
@@ -18,7 +19,7 @@ type DropdownMenuContextValue = {
  */
 const DropdownMenuContext = createContext<DropdownMenuContextValue>({
   isHidden: true,
-  setIsHidden: () => {},
+  setIsHidden: noop,
 });
 
 /**
