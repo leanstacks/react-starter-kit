@@ -40,16 +40,16 @@ export interface TabsProps extends BaseComponentProps, PropsWithChildren {
  *
  * *Example:*
  * ```
- * <Tabs defaultValue="list" className="w-full">
+ * <Tabs defaultValue="list">
  *   <Tabs.List>
  *     <Tabs.Tab value="list">List</Tab>
  *     <Tabs.Tab value="detail">Detail</Tab>
  *   </Tabs.List>
- *   <Tabs.Content value="list" className="py-8">
- *     <div className="font-bold">I am the LIST tab.</div>
+ *   <Tabs.Content value="list">
+ *     <div className="font-bold py-8">I am the LIST tab.</div>
  *   </Tabs.Content>
- *   <Tabs.Content value="detail" className="py-8">
- *     <div className="font-bold">I am the DETAIL tab.</div>
+ *   <Tabs.Content value="detail">
+ *     <div className="font-bold py-8">I am the DETAIL tab.</div>
  *   </Tabs.Content>
  * </Tabs>
  * ```
@@ -70,8 +70,8 @@ const Tabs = ({ children, className, defaultValue, testId = 'tabs' }: TabsProps)
 const listVariants = cva('flex gap-4 border-b border-b-neutral-500/10', {
   variants: {
     align: {
+      start: 'justify-start',
       stretch: '*:grow',
-      start: 'flex',
     },
   },
   defaultVariants: { align: 'start' },
