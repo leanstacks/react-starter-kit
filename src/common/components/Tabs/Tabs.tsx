@@ -31,8 +31,8 @@ export interface TabsProps extends BaseComponentProps, PropsWithChildren {
 }
 
 /**
- * The `Tabs` component is a wrapper for rendering tabbed content. Compose tabbed
- * content using: `Tabs`, `TabList`, `Tab`, and `TabContent` as illustrated in
+ * The `Tabs` component is used to display tabbed content. Compose tabbed
+ * content using: `List`, `Tab`, and `Content` as illustrated in
  * the example.
  *
  * Note: The `defaultValue` property must match the `value` of one of the Tab
@@ -41,16 +41,16 @@ export interface TabsProps extends BaseComponentProps, PropsWithChildren {
  * *Example:*
  * ```
  * <Tabs defaultValue="list" className="w-full">
- *   <TabList>
- *     <Tab value="list">List</Tab>
- *     <Tab value="detail">Detail</Tab>
- *   </TabList>
- *   <TabContent value="list" className="py-8">
+ *   <Tabs.List>
+ *     <Tabs.Tab value="list">List</Tab>
+ *     <Tabs.Tab value="detail">Detail</Tab>
+ *   </Tabs.List>
+ *   <Tabs.Content value="list" className="py-8">
  *     <div className="font-bold">I am the LIST tab.</div>
- *   </TabContent>
- *   <TabContent value="detail" className="py-8">
+ *   </Tabs.Content>
+ *   <Tabs.Content value="detail" className="py-8">
  *     <div className="font-bold">I am the DETAIL tab.</div>
- *   </TabContent>
+ *   </Tabs.Content>
  * </Tabs>
  * ```
  */
