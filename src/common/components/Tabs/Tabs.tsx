@@ -11,7 +11,7 @@ import Button from '../Button/Button';
  */
 type TabsContextValue = {
   activeTab: string;
-  setActiveTab: (activeTab: string) => void;
+  setActiveTab: (tab: string) => void;
 };
 
 /**
