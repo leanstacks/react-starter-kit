@@ -1,12 +1,8 @@
-import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { BaseComponentProps } from 'common/utils/types';
-import { Task } from 'pages/Tasks/api/useGetUserTasks';
 import { useGetTask } from '../api/useGetTask';
-import { useDeleteTask } from '../api/useDeleteTask';
-import { useToasts } from 'common/hooks/useToasts';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import FAIcon from 'common/components/Icon/FAIcon';
 import TaskDeleteDialog from './Delete/TaskDeleteDialog';
@@ -31,34 +27,14 @@ const TaskDetailLayout = ({
   testId = 'layout-task-detail',
 }: TaskDetailLayoutProps): JSX.Element => {
   const { t } = useTranslation();
-  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState<boolean>(false);
   const navigate = useNavigate();
   const { taskId } = useParams();
-  const { createToast } = useToasts();
 
   const {
     data: task,
     error: taskError,
     isLoading: isLoadingTask,
   } = useGetTask({ taskId: Number(taskId) });
-
-  const { mutate: deleteTask, isPending: isDeletePending, error: deleteError } = useDeleteTask();
-
-  const doDelete = (task: Task) => {
-    setIsDeleteDialogOpen(false);
-    deleteTask(
-      { task },
-      {
-        onSuccess: () => {
-          createToast({
-            text: `Deleted task ${task.id}`,
-            isAutoDismiss: true,
-          });
-          navigate(-1);
-        },
-      },
-    );
-  };
 
   return (
     <div className={className} data-testid={testId}>
@@ -76,24 +52,18 @@ const TaskDetailLayout = ({
 
         {/* Menu */}
         <div className="ms-auto flex items-center gap-4">
-          <Button
-            variant="text"
-            size="icon"
-            title="Edit"
-            onClick={() => navigate('edit')}
-            testId={`${testId}-button-edit`}
-          >
-            <FAIcon icon="pencil" />
-          </Button>
-          <Button
-            variant="text"
-            size="icon"
-            title="Delete"
-            onClick={() => setIsDeleteDialogOpen(true)}
-            testId={`${testId}-button-delete`}
-          >
-            <FAIcon icon="trash" />
-          </Button>
+          {task && (
+            <Button
+              variant="text"
+              size="icon"
+              title="Edit"
+              onClick={() => navigate('edit')}
+              testId={`${testId}-button-edit`}
+            >
+              <FAIcon icon="pencil" />
+            </Button>
+          )}
+          {task && <TaskDeleteDialog task={task} />}
           <Button
             variant="text"
             size="icon"
@@ -115,16 +85,7 @@ const TaskDetailLayout = ({
         />
       )}
 
-      {deleteError && (
-        <ErrorAlert
-          title="Unable to delete task"
-          description={deleteError.message}
-          className="my-4"
-          testId={`${testId}-error-delete`}
-        />
-      )}
-
-      {(isLoadingTask || isDeletePending) && (
+      {isLoadingTask && (
         <div data-testid={`${testId}-loading`}>
           <div className="mt-4">
             <LoaderSkeleton className="mb-2 h-4 w-12" />
@@ -141,17 +102,9 @@ const TaskDetailLayout = ({
         </div>
       )}
 
-      {task && !isDeletePending && (
+      {task && (
         <div data-testid={`${testId}-task`}>
           <TaskView task={task} testId={`${testId}-task-view`} />
-
-          <TaskDeleteDialog
-            isOpen={isDeleteDialogOpen}
-            onCancel={() => setIsDeleteDialogOpen(false)}
-            onClose={() => setIsDeleteDialogOpen(false)}
-            onDelete={() => doDelete(task)}
-            task={task}
-          />
         </div>
       )}
     </div>

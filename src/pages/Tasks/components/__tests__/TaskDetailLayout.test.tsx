@@ -1,9 +1,8 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import userEvent from '@testing-library/user-event';
-import { UseMutationResult, UseQueryResult } from '@tanstack/react-query';
+import { UseQueryResult } from '@tanstack/react-query';
 
 import { render, screen } from 'test/test-utils';
-import * as UseDeleteTask from 'pages/Tasks/api/useDeleteTask';
 import * as UseGetTask from 'pages/Tasks/api/useGetTask';
 import { Task } from 'pages/Tasks/api/useGetUserTasks';
 
@@ -101,83 +100,5 @@ describe('TaskDetailLayout', () => {
     // ASSERT
     expect(mockNavigate).toHaveBeenCalledTimes(1);
     expect(mockNavigate).toHaveBeenCalledWith('edit');
-  });
-
-  it('should display task delete error', async () => {
-    // ARRANGE
-    const useDeleteTaskSpy = vi.spyOn(UseDeleteTask, 'useDeleteTask');
-    useDeleteTaskSpy.mockReturnValue({
-      data: undefined,
-      error: new Error(),
-      isLoading: false,
-    } as unknown as UseMutationResult<void, Error, UseDeleteTask.DeleteTaskVariables>);
-    render(<TaskDetailLayout testId="component" />);
-    await screen.findByTestId('component-error-delete');
-
-    // ASSERT
-    expect(screen.getByTestId('component-error-delete')).toBeDefined();
-  });
-
-  it('should show the delete dialog', async () => {
-    // ARRANGE
-    const user = userEvent.setup();
-    render(<TaskDetailLayout testId="component" />);
-    await screen.findByTestId('dialog-task-delete');
-    expect(screen.getByTestId('dialog-task-delete')).toHaveClass('hidden');
-
-    // ACT
-    await user.click(screen.getByTestId('component-button-delete'));
-
-    // ASSERT
-    expect(screen.getByTestId('dialog-task-delete')).not.toHaveClass('hidden');
-  });
-
-  it('should hide the delete dialog when cancel clicked', async () => {
-    // ARRANGE
-    const user = userEvent.setup();
-    render(<TaskDetailLayout testId="component" />);
-    await screen.findByTestId('dialog-task-delete');
-    expect(screen.getByTestId('dialog-task-delete')).toHaveClass('hidden');
-
-    // ACT
-    await user.click(screen.getByTestId('component-button-delete'));
-    expect(screen.getByTestId('dialog-task-delete')).not.toHaveClass('hidden');
-
-    await user.click(screen.getByTestId('dialog-task-delete-button-cancel'));
-
-    // ASSERT
-    expect(screen.getByTestId('dialog-task-delete')).toHaveClass('hidden');
-  });
-
-  it('should hide the delete dialog when backdrop clicked', async () => {
-    // ARRANGE
-    const user = userEvent.setup();
-    render(<TaskDetailLayout testId="component" />);
-    await screen.findByTestId('dialog-task-delete');
-    expect(screen.getByTestId('dialog-task-delete')).toHaveClass('hidden');
-
-    // ACT
-    await user.click(screen.getByTestId('component-button-delete'));
-    expect(screen.getByTestId('dialog-task-delete')).not.toHaveClass('hidden');
-
-    await user.click(screen.getByTestId('dialog-task-delete-backdrop'));
-
-    // ASSERT
-    expect(screen.getByTestId('dialog-task-delete')).toHaveClass('hidden');
-  });
-
-  it('should delete a task', async () => {
-    // ARRANGE
-    const user = userEvent.setup();
-    render(<TaskDetailLayout testId="component" />);
-    await screen.findByTestId('component-button-delete');
-
-    // ACT
-    await user.click(screen.getByTestId('component-button-delete'));
-    await user.click(screen.getByTestId('dialog-task-delete-button-delete'));
-
-    // ASSERT
-    expect(mockNavigate).toHaveBeenCalledTimes(1);
-    expect(mockNavigate).toHaveBeenCalledWith(-1);
   });
 });
