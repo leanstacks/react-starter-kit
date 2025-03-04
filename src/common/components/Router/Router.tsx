@@ -20,6 +20,7 @@ import AvatarComponents from 'pages/Components/components/AvatarComponents';
 import BadgeComponents from 'pages/Components/components/BadgeComponents';
 import ButtonComponents from 'pages/Components/components/ButtonComponents';
 import CardComponents from 'pages/Components/components/CardComponents';
+import DialogComponents from 'pages/Components/components/DialogComponents';
 import DropdownComponents from 'pages/Components/components/DropdownComponents';
 import SearchInputComponents from 'pages/Components/components/SearchInputComponents';
 import TabsComponents from 'pages/Components/components/TabsComponents';
@@ -106,6 +107,10 @@ export const routes: RouteObject[] = [
               {
                 path: 'card',
                 element: <CardComponents />,
+              },
+              {
+                path: 'dialog',
+                element: <DialogComponents />,
               },
               {
                 path: 'dropdown',
