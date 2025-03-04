@@ -38,7 +38,7 @@ type DialogRenderFnContext = {
 type DialogRenderFn = (ctx: DialogRenderFnContext) => ReactNode;
 
 export interface DialogProps extends BaseComponentProps {
-  children: ReactNode | DialogRenderFn;
+  children?: ReactNode | DialogRenderFn;
 }
 
 /**
