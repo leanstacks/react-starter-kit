@@ -12,7 +12,11 @@ describe('TaskDeleteDialog', () => {
   it('should render successfully', async () => {
     // ARRANGE
     const task = todosFixture[0];
-    render(<TaskDeleteDialog task={task} testId="dialog" />);
+    render(
+      <TaskDeleteDialog task={task} testId="dialog">
+        Open
+      </TaskDeleteDialog>,
+    );
     await screen.findByTestId('dialog');
 
     // ASSERT
@@ -23,7 +27,11 @@ describe('TaskDeleteDialog', () => {
     // ARRANGE
     const user = userEvent.setup();
     const task = todosFixture[0];
-    render(<TaskDeleteDialog task={task} testId="dialog" />);
+    render(
+      <TaskDeleteDialog task={task} testId="dialog">
+        Open
+      </TaskDeleteDialog>,
+    );
     await screen.findByTestId('dialog');
 
     // ACT
@@ -50,7 +58,11 @@ describe('TaskDeleteDialog', () => {
       toasts: [],
     } as unknown as ToastsContextValue);
 
-    render(<TaskDeleteDialog task={task} testId="dialog" />);
+    render(
+      <TaskDeleteDialog task={task} testId="dialog">
+        Open
+      </TaskDeleteDialog>,
+    );
     await screen.findByTestId('dialog');
 
     // ACT
@@ -65,7 +77,11 @@ describe('TaskDeleteDialog', () => {
     const user = userEvent.setup();
     const task = { ...todosFixture[0], id: 999999 };
 
-    render(<TaskDeleteDialog task={task} testId="dialog" />);
+    render(
+      <TaskDeleteDialog task={task} testId="dialog">
+        Open
+      </TaskDeleteDialog>,
+    );
     await screen.findByTestId('dialog');
 
     // ACT

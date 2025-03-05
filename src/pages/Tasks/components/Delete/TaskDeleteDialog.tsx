@@ -1,18 +1,18 @@
-import { Task } from 'pages/Tasks/api/useGetUserTasks';
+import { PropsWithChildren } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { BaseComponentProps } from 'common/utils/types';
+import { Task } from 'pages/Tasks/api/useGetUserTasks';
 import { useDeleteTask } from 'pages/Tasks/api/useDeleteTask';
 import { useToasts } from 'common/hooks/useToasts';
 import Dialog from 'common/components/Dialog/Dialog';
-import FAIcon from 'common/components/Icon/FAIcon';
 import ErrorAlert from 'common/components/Alert/ErrorAlert';
 
 /**
  * Properties for the `TaskDeleteDialog` component.
  */
-interface TaskDeleteDialogProps extends BaseComponentProps {
+interface TaskDeleteDialogProps extends BaseComponentProps, PropsWithChildren {
   task: Task;
 }
 
@@ -21,6 +21,7 @@ interface TaskDeleteDialogProps extends BaseComponentProps {
  * of a `Task`.
  */
 const TaskDeleteDialog = ({
+  children,
   className,
   task,
   testId = 'dialog-task-delete',
@@ -52,9 +53,7 @@ const TaskDeleteDialog = ({
     <Dialog className={className} testId={testId}>
       {({ close }) => (
         <>
-          <Dialog.Trigger testId={`${testId}-trigger`}>
-            <FAIcon icon="trash" />
-          </Dialog.Trigger>
+          <Dialog.Trigger testId={`${testId}-trigger`}>{children}</Dialog.Trigger>
           <Dialog.Content>
             <Dialog.Header>
               <Dialog.Title>Are you sure?</Dialog.Title>

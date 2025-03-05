@@ -63,7 +63,11 @@ const TaskDetailLayout = ({
               <FAIcon icon="pencil" />
             </Button>
           )}
-          {task && <TaskDeleteDialog task={task} />}
+          {task && (
+            <TaskDeleteDialog task={task}>
+              <FAIcon icon="trash" />
+            </TaskDeleteDialog>
+          )}
           <Button
             variant="text"
             size="icon"
