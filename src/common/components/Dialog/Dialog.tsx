@@ -25,8 +25,8 @@ const DialogContext = createContext<DialogContextValue>({
 });
 
 /**
- * Defines the properties of the `Dialog` render prop function context.
- * @param close - Close the dialog.
+ * Defines the properties of the `Dialog` render prop function context object.
+ * @param close - Closes the dialog.
  */
 type DialogRenderFnContext = {
   close: () => void;
@@ -258,7 +258,7 @@ export interface ButtonProps extends Omit<CommonButtonProps, 'variant'>, ButtonV
 const Button = ({
   className,
   variant = 'secondary',
-  testId = 'dialog-footer',
+  testId = 'dialog-button',
   ...props
 }: ButtonProps): JSX.Element => {
   return (
