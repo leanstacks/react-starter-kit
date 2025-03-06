@@ -94,7 +94,7 @@ Card.Footer = Footer;
 
 /**
  * The `Image` is an image which is styled for use within a Card. The image will
- * respect the boundaries of the card when used as an immediate child of `Card`.
+ * respect the boundaries of the card when used as the first or last child of `Card`.
  */
 const Image = ({
   className,
@@ -106,7 +106,8 @@ const Image = ({
 Card.Image = Image;
 
 /**
- * A `Title` for the `Card`.
+ * A `Title` for a `Card`.  Typically used within the card `Header`, but not
+ * required.
  */
 const Title = ({
   children,
@@ -122,7 +123,8 @@ const Title = ({
 Card.Title = Title;
 
 /**
- * A `Subtitle` for the `Card`.
+ * A `Subtitle` for a `Card`. Typically used within the card `Header`, but not
+ * required.
  */
 const Subtitle = ({
   children,
