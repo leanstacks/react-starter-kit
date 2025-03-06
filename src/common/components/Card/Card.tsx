@@ -147,7 +147,7 @@ Card.Subtitle = Subtitle;
  * The `Separator` component renders a horizontal divider.
  * This is useful to organize and separate content.
  */
-const Separator = ({ className, testId = 'dialog-separator' }: DividerProps): JSX.Element => {
+const Separator = ({ className, testId = 'card-separator' }: DividerProps): JSX.Element => {
   return <Divider className={cn('my-1', className)} testId={testId} />;
 };
 Card.Separator = Separator;
