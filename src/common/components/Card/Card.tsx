@@ -11,6 +11,22 @@ export interface CardProps extends BaseComponentProps, PropsWithChildren {}
 
 /**
  * The `Card` component renders a container for grouped, related content.
+ * 
+ * **Example:**
+ * ```
+  <Card className="w-100" testId="example-card">
+    <Card.Image src="https://placehold.co/400x200" alt="placeholder" />
+    <Card.Header>
+      <Card.Title>Card Title</Card.Title>
+      <Card.Subtitle>with a subtitle</Card.Subtitle>
+    </Card.Header>
+    <Card.Body>
+      Nul nostrud non dui elit nul proin. Consectetur magna mi justo dui.
+    </Card.Body>
+    <Card.Separator />
+    <Card.Footer className="text-right text-sm">Read more...</Card.Footer>
+  </Card>
+ * ```
  */
 const Card = ({ children, className, testId = 'card' }: CardProps): JSX.Element => {
   return (
