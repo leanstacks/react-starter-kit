@@ -28,8 +28,14 @@ const TaskListLayout = ({
           <div className="mb-4 grid md:grid-cols-2 lg:grid-cols-3">
             {!!tasks && (
               <Card testId={`${testId}-chart-status`}>
-                <div className="text-sm font-bold">{t('status-of-tasks', { ns: 'tasks' })}</div>
-                <TaskStatusDonutChart tasks={tasks} width={160} />
+                <Card.Header>
+                  <Card.Title className="text-md font-bold">
+                    {t('status-of-tasks', { ns: 'tasks' })}
+                  </Card.Title>
+                </Card.Header>
+                <Card.Body>
+                  <TaskStatusDonutChart tasks={tasks} width={160} />
+                </Card.Body>
               </Card>
             )}
           </div>

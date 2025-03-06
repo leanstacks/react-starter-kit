@@ -28,17 +28,17 @@ const MessageCard = ({
   testId = 'card-message',
   title,
 }: MessageCardProps): JSX.Element => {
+  const hasHeader = !!iconProps || !!title;
+
   return (
     <Card className={cn('w-80', className)} testId={testId}>
-      <div className="flex flex-col items-center gap-2 text-center">
-        {iconProps && <FAIcon {...iconProps} testId={`${testId}-icon`} />}
-        {title && (
-          <div className="font-bold" data-testid={`${testId}-title`}>
-            {title}
-          </div>
-        )}
-        <div data-testid={`${testId}-message`}>{message}</div>
-      </div>
+      {hasHeader && (
+        <Card.Header className="flex items-center justify-center gap-2">
+          {iconProps && <FAIcon {...iconProps} testId={`${testId}-icon`} />}
+          {title && <Card.Title testId={`${testId}-title`}>{title}</Card.Title>}
+        </Card.Header>
+      )}
+      <Card.Body testId={`${testId}-message`}>{message}</Card.Body>
     </Card>
   );
 };
