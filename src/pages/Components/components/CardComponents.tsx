@@ -7,6 +7,8 @@ import CodeSnippet from 'common/components/Text/CodeSnippet';
 import Card from 'common/components/Card/Card';
 import MessageCard from 'common/components/Card/MessageCard';
 import Heading from 'common/components/Text/Heading';
+import Button from 'common/components/Button/Button';
+import Text from 'common/components/Text/Text';
 
 /**
  * Properties for the `CardComponents` React component.
@@ -94,23 +96,197 @@ const CardComponents = ({
         </div>
 
         <Heading level={3}>Examples</Heading>
-        <div className="my-8">
-          <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-            <Card>I am the card content.</Card>
-          </div>
-          <CodeSnippet className="my-2" code={`<Card>I am the card content.</Card>`} />
-        </div>
 
+        <Heading level={4}>Card components</Heading>
+        <Text className="text-neutral-500 italic">
+          The Card component is a compound component. It has component properties which allow you to
+          compose Card content. Those components include: Header, Title, Subtitle, Body, Footer,
+          Separator, and Image.
+        </Text>
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-            <Card className="bg-slate-800 text-white" testId="my-card">
-              I am the card content.
+            <Card className="w-100">
+              <Card.Body>I am a simple Card with only a Body.</Card.Body>
             </Card>
           </div>
           <CodeSnippet
             className="my-2"
-            code={`<Card className="bg-slate-800 text-white" testId="my-card">
-  I am the card content.
+            code={`<Card className="w-100">
+  <Card.Body>I am a simple Card with only a Body.</Card.Body>
+</Card>`}
+          />
+        </div>
+
+        <div className="my-8">
+          <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+            <Card className="w-100">
+              <Card.Header>
+                <Card.Title>I am a title</Card.Title>
+                <Card.Subtitle>There can be subtitles too</Card.Subtitle>
+              </Card.Header>
+              <Card.Separator />
+              <Card.Body>And of course, we have the body of the card.</Card.Body>
+              <Card.Separator />
+              <Card.Footer>And a footer for things at the bottom</Card.Footer>
+            </Card>
+          </div>
+          <CodeSnippet
+            className="my-2"
+            code={`<Card className="w-100">
+  <Card.Header>
+    <Card.Title>I am a title</Card.Title>
+    <Card.Subtitle>There can be subtitles too</Card.Subtitle>
+  </Card.Header>
+  <Card.Separator />
+  <Card.Body>And of course, we have the body of the card.</Card.Body>
+  <Card.Separator />
+  <Card.Footer>And a footer for things at the bottom</Card.Footer>
+</Card>`}
+          />
+        </div>
+
+        <Heading level={4}>Card images</Heading>
+        <Text className="text-neutral-500 italic">
+          Card images may be used anywhere within a Card. If the image is the first or last child of
+          the Card component, the image will be flush to the top or bottom and the corners rounded.
+        </Text>
+        <div className="my-8">
+          <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+            <Card className="w-100">
+              <Card.Image src="https://placehold.co/400x200" alt="placeholder" />
+              <Card.Header>
+                <Card.Title>Title</Card.Title>
+                <Card.Subtitle>with a subtitle</Card.Subtitle>
+              </Card.Header>
+              <Card.Body>
+                A sapien vel facilisis enim minim. Arcu sunt nostrud bibendum nul id cras dolor.
+                Posuere justo minim dui aliquip laboris et aenean. Fermentum et velit duis bibendum
+                ea commodo. Ullamco excepteur officia id ornare minim. Voluptate amet dolor magna
+                nostrud posuere ornare. Cras enim ex ex quam aute proident mi. Commodo sapien aliqua
+                minim id adipiscing dolor ero incididunt.
+              </Card.Body>
+              <Card.Footer className="flex items-center justify-end">
+                <Button variant="text" className="text-sm font-bold text-blue-600">
+                  View
+                </Button>
+              </Card.Footer>
+            </Card>
+          </div>
+          <CodeSnippet
+            className="my-2"
+            code={`<Card className="w-100">
+  <Card.Image src="https://placehold.co/400x200" alt="placeholder" />
+  <Card.Header>
+    <Card.Title>Title</Card.Title>
+    <Card.Subtitle>with a subtitle</Card.Subtitle>
+  </Card.Header>
+  <Card.Body>
+    A sapien vel facilisis enim minim. Arcu sunt nostrud bibendum nul id cras dolor.
+    Posuere justo minim dui aliquip laboris et aenean. Fermentum et velit duis bibendum
+    ea commodo. Ullamco excepteur officia id ornare minim. Voluptate amet dolor magna
+    nostrud posuere ornare. Cras enim ex ex quam aute proident mi. Commodo sapien aliqua
+    minim id adipiscing dolor ero incididunt.
+  </Card.Body>
+  <Card.Footer className="flex items-center justify-end">
+    <Button variant="text" className="text-sm font-bold text-blue-600">
+      View
+    </Button>
+  </Card.Footer>
+</Card>`}
+          />
+        </div>
+
+        <div className="my-8">
+          <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+            <Card className="w-100">
+              <Card.Header>
+                <Card.Title>Title</Card.Title>
+                <Card.Subtitle>with a subtitle</Card.Subtitle>
+              </Card.Header>
+              <Card.Body>
+                A sapien vel facilisis enim minim. Arcu sunt nostrud bibendum nul id cras dolor.
+                Posuere justo minim dui aliquip laboris et aenean. Fermentum et velit duis bibendum
+                ea commodo. Ullamco excepteur officia id ornare minim. Voluptate amet dolor magna
+                nostrud posuere ornare. Cras enim ex ex quam aute proident mi. Commodo sapien aliqua
+                minim id adipiscing dolor ero incididunt.
+              </Card.Body>
+              <Card.Footer className="flex items-center justify-end">
+                <Button variant="text" className="text-sm font-bold text-blue-600">
+                  View
+                </Button>
+              </Card.Footer>
+              <Card.Image src="https://placehold.co/400x200" alt="placeholder" />
+            </Card>
+          </div>
+          <CodeSnippet
+            className="my-2"
+            code={`<Card className="w-100">
+  <Card.Header>
+    <Card.Title>Title</Card.Title>
+    <Card.Subtitle>with a subtitle</Card.Subtitle>
+  </Card.Header>
+  <Card.Body>
+    A sapien vel facilisis enim minim. Arcu sunt nostrud bibendum nul id cras dolor.
+    Posuere justo minim dui aliquip laboris et aenean. Fermentum et velit duis bibendum
+    ea commodo. Ullamco excepteur officia id ornare minim. Voluptate amet dolor magna
+    nostrud posuere ornare. Cras enim ex ex quam aute proident mi. Commodo sapien aliqua
+    minim id adipiscing dolor ero incididunt.
+  </Card.Body>
+  <Card.Footer className="flex items-center justify-end">
+    <Button variant="text" className="text-sm font-bold text-blue-600">
+      View
+    </Button>
+  </Card.Footer>
+  <Card.Image src="https://placehold.co/400x200" alt="placeholder" />
+</Card>`}
+          />
+        </div>
+        <div className="my-8">
+          <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+            <Card className="w-100">
+              <Card.Header>
+                <Card.Title>Title</Card.Title>
+                <Card.Subtitle>with a subtitle</Card.Subtitle>
+              </Card.Header>
+              <Card.Image src="https://placehold.co/400x200" alt="placeholder" />
+              <Card.Body>
+                A sapien vel facilisis enim minim. Arcu sunt nostrud bibendum nul id cras dolor.
+                Posuere justo minim dui aliquip laboris et aenean. Fermentum et velit duis bibendum
+                ea commodo. Ullamco excepteur officia id ornare minim. Voluptate amet dolor magna
+                nostrud posuere ornare. Cras enim ex ex quam aute proident mi. Commodo sapien aliqua
+                minim id adipiscing dolor ero incididunt.
+              </Card.Body>
+              <Card.Footer className="flex items-center justify-end">
+                <Button
+                  variant="text"
+                  className="text-sm font-bold text-blue-600"
+                  data-testid="card-button-view"
+                >
+                  View
+                </Button>
+              </Card.Footer>
+            </Card>
+          </div>
+          <CodeSnippet
+            className="my-2"
+            code={`<Card className="w-100">
+  <Card.Header>
+    <Card.Title>Title</Card.Title>
+    <Card.Subtitle>with a subtitle</Card.Subtitle>
+  </Card.Header>
+  <Card.Image src="https://placehold.co/400x200" alt="placeholder" />
+  <Card.Body>
+    A sapien vel facilisis enim minim. Arcu sunt nostrud bibendum nul id cras dolor.
+    Posuere justo minim dui aliquip laboris et aenean. Fermentum et velit duis bibendum
+    ea commodo. Ullamco excepteur officia id ornare minim. Voluptate amet dolor magna
+    nostrud posuere ornare. Cras enim ex ex quam aute proident mi. Commodo sapien aliqua
+    minim id adipiscing dolor ero incididunt.
+  </Card.Body>
+  <Card.Footer className="flex items-center justify-end">
+    <Button variant="text" className="text-sm font-bold text-blue-600">
+      View
+    </Button>
+  </Card.Footer>
 </Card>`}
           />
         </div>
@@ -122,9 +298,8 @@ const CardComponents = ({
         </Heading>
 
         <div className="my-8">
-          The <span className="font-mono font-bold">MessageCard</span> component displays block
-          container for displaying messages. The card consists of a message with optional title and
-          icon.
+          The <span className="font-mono font-bold">MessageCard</span> component is a bespoke Card
+          layout for displaying messages.
         </div>
 
         <div className="my-8">
@@ -137,25 +312,28 @@ const CardComponents = ({
         <Heading level={3}>Examples</Heading>
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-            <MessageCard message="Hello World!" />
+            <MessageCard className="w-100" message="Hello world! &#128075;" />
           </div>
-          <CodeSnippet className="my-2" code={`<MessageCard message="Hello World!" />`} />
+          <CodeSnippet
+            className="my-2"
+            code={`<MessageCard className="w-100" message="Hello world! &#128075;" />`}
+          />
         </div>
 
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <MessageCard
+              className="w-100"
               iconProps={{ icon: 'circleInfo', size: '2x' }}
-              message="Select an item from the list to view details."
-              testId="my-empty-state"
+              message="Here is a tip to help you with this page."
             />
           </div>
           <CodeSnippet
             className="my-2"
             code={`<MessageCard
+  className="w-100"
   iconProps={{ icon: 'circleInfo', size: '2x' }}
-  message="Select an item from the list to view details."
-  testId='my-empty-state'
+  message="Here is a tip to help you with this page."
 />`}
           />
         </div>
@@ -163,19 +341,19 @@ const CardComponents = ({
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <MessageCard
-              className="text-red-800"
-              iconProps={{ icon: 'circleExclamation', size: '2x', className: 'text-red-600' }}
-              message="Are you sure you wish to proceed?"
-              title="Stop!"
+              className="w-100 bg-red-800"
+              iconProps={{ icon: 'circleExclamation', size: 'xl' }}
+              message="What you are about to do... It is permanent and we will not be able to recover the data afterward."
+              title="Read this first!"
             />
           </div>
           <CodeSnippet
             className="my-2"
             code={`<MessageCard
-  className="text-red-800"
-  iconProps={{ icon: 'circleExclamation', size: '2x', className: 'text-red-600' }}
-  message="Are you sure you wish to proceed?"
-  title="Stop!"
+  className="w-100 bg-red-800"
+  iconProps={{ icon: 'circleExclamation', size: 'xl' }}
+  message="What you are about to do... It is permanent and we will not be able to recover the data afterward."
+  title="Read this first!"
 />`}
           />
         </div>
