@@ -29,6 +29,9 @@ const ComponentsPage = (): JSX.Element => {
             <MenuNavLink to="badge" styleActive>
               Badge
             </MenuNavLink>
+            <MenuNavLink to="breadcrumbs" styleActive>
+              Breadcrumbs
+            </MenuNavLink>
             <MenuNavLink to="button" styleActive>
               Button
             </MenuNavLink>

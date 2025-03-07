@@ -18,6 +18,7 @@ import ComponentsPage from 'pages/Components/ComponentsPage';
 import AlertComponents from 'pages/Components/components/AlertComponents';
 import AvatarComponents from 'pages/Components/components/AvatarComponents';
 import BadgeComponents from 'pages/Components/components/BadgeComponents';
+import BreadcrumbsComponents from 'pages/Components/components/BreadcrumbsComponents';
 import ButtonComponents from 'pages/Components/components/ButtonComponents';
 import CardComponents from 'pages/Components/components/CardComponents';
 import DialogComponents from 'pages/Components/components/DialogComponents';
@@ -99,6 +100,10 @@ export const routes: RouteObject[] = [
               {
                 path: 'badge',
                 element: <BadgeComponents />,
+              },
+              {
+                path: 'breadcrumbs',
+                element: <BreadcrumbsComponents />,
               },
               {
                 path: 'button',
