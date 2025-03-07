@@ -5,6 +5,7 @@ import Avatar from 'common/components/Icon/Avatar';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import MenuNavLink from 'common/components/Menu/MenuNavLink';
 import Page from 'common/components/Page/Page';
+import SettingsPageBreadcrumbs from './components/SettingsPageBreadcrumbs';
 
 /**
  * The `SettingsPage` component renders the layout for the settings page. It
@@ -17,6 +18,8 @@ const SettingsPage = (): JSX.Element => {
   return (
     <Page testId="page-settings">
       <div className="container mx-auto my-4 min-h-[50vh]">
+        <SettingsPageBreadcrumbs className="mb-4" />
+
         {user ? (
           <div className="my-6 flex items-center gap-4" data-testid="page-settings-header">
             <Avatar value={user.name} className="size-12 rounded-full text-lg" />
