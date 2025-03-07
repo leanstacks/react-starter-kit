@@ -12,7 +12,7 @@ import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
  */
 const TasksPageBreadcrumbs = ({
   className,
-  testId = 'page-task-breadcrumbs',
+  testId = 'page-tasks-breadcrumbs',
 }: BaseComponentProps): JSX.Element => {
   const location = useLocation();
   const params = useParams();
@@ -28,17 +28,21 @@ const TasksPageBreadcrumbs = ({
     <Breadcrumbs className={className} testId={testId}>
       <Breadcrumbs.List>
         <Breadcrumbs.Item>
-          <Breadcrumbs.Link to="/">Home</Breadcrumbs.Link>
+          <Breadcrumbs.Link to="/" testId={`${testId}-link-home`}>
+            Home
+          </Breadcrumbs.Link>
         </Breadcrumbs.Item>
         <Breadcrumbs.Separator />
         <Breadcrumbs.Item>
-          <Breadcrumbs.Link to="/app/tasks">Tasks</Breadcrumbs.Link>
+          <Breadcrumbs.Link to="/app/tasks" testId={`${testId}-link-tasks`}>
+            Tasks
+          </Breadcrumbs.Link>
         </Breadcrumbs.Item>
         {hasTaskAdd && (
           <>
             <Breadcrumbs.Separator />
             <Breadcrumbs.Item>
-              <Breadcrumbs.Page>Add</Breadcrumbs.Page>
+              <Breadcrumbs.Page testId={`${testId}-page-task-add`}>Add</Breadcrumbs.Page>
             </Breadcrumbs.Item>
           </>
         )}
@@ -47,9 +51,13 @@ const TasksPageBreadcrumbs = ({
             <Breadcrumbs.Separator />
             <Breadcrumbs.Item>
               {!!task && (
-                <Breadcrumbs.Link to={`/app/tasks/${task.id}`}>{task.title}</Breadcrumbs.Link>
+                <Breadcrumbs.Link to={`/app/tasks/${task.id}`} testId={`${testId}-link-task`}>
+                  {task.title}
+                </Breadcrumbs.Link>
               )}
-              {isLoadingTask && <LoaderSkeleton className="h-4 w-30" />}
+              {isLoadingTask && (
+                <LoaderSkeleton className="h-4 w-30" testId={`${testId}-item-task-loader`} />
+              )}
             </Breadcrumbs.Item>
           </>
         )}
@@ -57,7 +65,7 @@ const TasksPageBreadcrumbs = ({
           <>
             <Breadcrumbs.Separator />
             <Breadcrumbs.Item>
-              <Breadcrumbs.Page>Edit</Breadcrumbs.Page>
+              <Breadcrumbs.Page testId={`${testId}-page-task-edit`}>Edit</Breadcrumbs.Page>
             </Breadcrumbs.Item>
           </>
         )}
