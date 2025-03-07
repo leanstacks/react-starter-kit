@@ -122,7 +122,7 @@ export const routes: RouteObject[] = [
                 element: <DropdownComponents />,
               },
               {
-                path: 'searchinput',
+                path: 'search-input',
                 element: <SearchInputComponents />,
               },
               {

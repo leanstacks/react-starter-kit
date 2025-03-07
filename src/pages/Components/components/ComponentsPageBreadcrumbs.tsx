@@ -3,10 +3,10 @@ import Breadcrumbs from 'common/components/Breadcrumbs/Breadcrumbs';
 import { useLocation } from 'react-router-dom';
 
 /**
- * The `SettingsPageBreadcrumbs` component renders the `Breadcrumbs` for the settings
+ * The `ComponentsPageBreadcrumbs` component renders the `Breadcrumbs` for the components
  * family of pages.
  */
-const SettingsPageBreadcrumbs = ({
+const ComponentsPageBreadcrumbs = ({
   className,
   testId = 'page-settings-breadcrumbs',
 }: BaseComponentProps): JSX.Element => {
@@ -21,7 +21,7 @@ const SettingsPageBreadcrumbs = ({
         </Breadcrumbs.Item>
         <Breadcrumbs.Separator />
         <Breadcrumbs.Item>
-          <Breadcrumbs.Link to="/app/settings">Settings</Breadcrumbs.Link>
+          <Breadcrumbs.Link to="/app/components">Components</Breadcrumbs.Link>
         </Breadcrumbs.Item>
         {!!pathElements[3] && (
           <>
@@ -38,4 +38,4 @@ const SettingsPageBreadcrumbs = ({
   );
 };
 
-export default SettingsPageBreadcrumbs;
+export default ComponentsPageBreadcrumbs;

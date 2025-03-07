@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Page from 'common/components/Page/Page';
 import MenuNavLink from 'common/components/Menu/MenuNavLink';
 import Heading from 'common/components/Text/Heading';
+import ComponentsPageBreadcrumbs from './components/ComponentsPageBreadcrumbs';
 
 /**
  * The `ComponentsPage` component renders the layout for the components page.
@@ -14,6 +15,8 @@ const ComponentsPage = (): JSX.Element => {
   return (
     <Page testId="page-components">
       <div className="container mx-auto my-4 min-h-[50vh]">
+        <ComponentsPageBreadcrumbs className="mb-4" />
+
         <Heading level={1} className="mb-4 border-b border-neutral-500/50 pb-2">
           Components
         </Heading>
@@ -44,7 +47,7 @@ const ComponentsPage = (): JSX.Element => {
             <MenuNavLink to="dropdown" styleActive>
               Dropdown
             </MenuNavLink>
-            <MenuNavLink to="searchinput" styleActive>
+            <MenuNavLink to="search-input" styleActive>
               Search Input
             </MenuNavLink>
             <MenuNavLink to="tabs" styleActive>
