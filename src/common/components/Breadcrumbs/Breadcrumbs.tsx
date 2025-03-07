@@ -142,7 +142,7 @@ const Ellipsis = ({
   testId = 'breadcrumbs-ellipsis',
 }: BaseComponentProps): JSX.Element => {
   return (
-    <span className={cn(className)} data-testid={testId}>
+    <span className={cn('hover:opacity-75', className)} data-testid={testId}>
       <FAIcon icon="ellipsis" className="size-4" />
       <span className="sr-only">More</span>
     </span>
