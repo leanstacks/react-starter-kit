@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom';
  */
 const ComponentsPageBreadcrumbs = ({
   className,
-  testId = 'page-settings-breadcrumbs',
+  testId = 'page-components-breadcrumbs',
 }: BaseComponentProps): JSX.Element => {
   const location = useLocation();
   const pathElements = location.pathname.split('/');
@@ -27,7 +27,7 @@ const ComponentsPageBreadcrumbs = ({
           <>
             <Breadcrumbs.Separator />
             <Breadcrumbs.Item>
-              <Breadcrumbs.Page className="capitalize">
+              <Breadcrumbs.Page className="capitalize" testId={`${testId}-page-${pathElements[3]}`}>
                 {pathElements[3].replace('-', ' ')}
               </Breadcrumbs.Page>
             </Breadcrumbs.Item>

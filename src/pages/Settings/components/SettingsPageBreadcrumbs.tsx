@@ -27,7 +27,7 @@ const SettingsPageBreadcrumbs = ({
           <>
             <Breadcrumbs.Separator />
             <Breadcrumbs.Item>
-              <Breadcrumbs.Page className="capitalize">
+              <Breadcrumbs.Page className="capitalize" testId={`${testId}-page-${pathElements[3]}`}>
                 {pathElements[3].replace('-', ' ')}
               </Breadcrumbs.Page>
             </Breadcrumbs.Item>
