@@ -7,12 +7,15 @@ import {
   faBuilding,
   faCheck,
   faChevronDown,
+  faChevronRight,
   faChevronUp,
   faCircleCheck,
   faCircleExclamation,
   faCircleInfo,
   faCircleNotch,
   faCircleXmark,
+  faEllipsis,
+  faEllipsisVertical,
   faEnvelope,
   faLanguage,
   faLink,
@@ -48,6 +51,7 @@ export type FAIconName =
   | 'building'
   | 'check'
   | 'chevronDown'
+  | 'chevronRight'
   | 'chevronUp'
   | 'circleCheck'
   | 'circleExclamation'
@@ -55,6 +59,8 @@ export type FAIconName =
   | 'circleNotch'
   | 'circleRegular'
   | 'circleXmark'
+  | 'ellipsis'
+  | 'ellipsisVertical'
   | 'envelope'
   | 'language'
   | 'link'
@@ -97,6 +103,7 @@ const icons: Record<FAIconName, IconProp> = {
   building: faBuilding,
   check: faCheck,
   chevronDown: faChevronDown,
+  chevronRight: faChevronRight,
   chevronUp: faChevronUp,
   circleCheck: faCircleCheck,
   circleExclamation: faCircleExclamation,
@@ -104,6 +111,8 @@ const icons: Record<FAIconName, IconProp> = {
   circleNotch: faCircleNotch,
   circleRegular: faCircleRegular,
   circleXmark: faCircleXmark,
+  ellipsis: faEllipsis,
+  ellipsisVertical: faEllipsisVertical,
   envelope: faEnvelope,
   language: faLanguage,
   link: faLink,
