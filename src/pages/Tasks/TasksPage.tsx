@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { PropsWithTestId } from 'common/utils/types';
 import { useGetCurrentUser } from 'common/api/useGetCurrentUser';
 import Page from 'common/components/Page/Page';
+import TasksPageBreadcrumbs from './components/TasksPageBreadcrumbs';
 import UserInfo from './components/UserInfo';
 import Card from 'common/components/Card/Card';
 import FAIcon from 'common/components/Icon/FAIcon';
@@ -24,6 +25,8 @@ const TasksPage = ({ testId = 'page-tasks' }: PropsWithTestId): JSX.Element => {
   return (
     <Page testId={testId}>
       <div className="container mx-auto my-4 min-h-[75vh]">
+        <TasksPageBreadcrumbs className="mb-4" />
+
         {/* page heading */}
         <div className="mb-4 flex items-center justify-between border-b border-neutral-500/50 pb-2">
           <h1 className="text-4xl">{t('tasks', { ns: 'tasks' })}</h1>
