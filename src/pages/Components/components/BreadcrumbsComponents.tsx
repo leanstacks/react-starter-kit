@@ -9,21 +9,13 @@ import Breadcrumbs from 'common/components/Breadcrumbs/Breadcrumbs';
 import DropdownMenu from 'common/components/Dropdown/DropdownMenu';
 
 /**
- * Properties for the `CardComponents` React component.
- * @see {@link BaseComponentProps}
- */
-interface CardComponentsProps extends BaseComponentProps {}
-
-/**
  * The `BreadcrumbsComponents` React component renders a set of examples illustrating
  * the use of the `Breadcrumbs` family of components.
- * @param {CardComponentsProps} props - Component properties.
- * @returns {JSX.Element} JSX
  */
 const BreadcrumbsComponents = ({
   className,
   testId = 'components-breadcrumbs',
-}: CardComponentsProps): JSX.Element => {
+}: BaseComponentProps): JSX.Element => {
   const columnHelper = createColumnHelper<ComponentProperty>();
   const breadcrumbsData: ComponentProperty[] = [
     {

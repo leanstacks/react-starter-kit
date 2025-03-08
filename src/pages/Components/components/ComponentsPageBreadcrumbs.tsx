@@ -1,6 +1,7 @@
+import { useLocation } from 'react-router-dom';
+
 import { BaseComponentProps } from 'common/utils/types';
 import Breadcrumbs from 'common/components/Breadcrumbs/Breadcrumbs';
-import { useLocation } from 'react-router-dom';
 
 /**
  * The `ComponentsPageBreadcrumbs` component renders the `Breadcrumbs` for the components
