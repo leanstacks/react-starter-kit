@@ -10,7 +10,7 @@ A serverless, progressive, responsive starter user interface (UI) with React at 
 
 If you do not wish to check out the repository and run the starter kit locally, you may view the latest release of the React Starter Kit at [https://react-starter.leanstacks.net/][app]. Please see the _Authentication_ section below for instructions to sign in.
 
-> **NOTE:** This app does not collect any personal data and does not use cookies.
+> **NOTE:** This app does not collect any data and does not use cookies.
 
 ### Data
 
