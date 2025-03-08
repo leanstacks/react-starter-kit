@@ -6,15 +6,21 @@ A serverless, progressive, responsive starter user interface (UI) with React at 
 
 ## Helpful Hints
 
+### Viewing the Starter Kit
+
+If you do not wish to check out the repository and run the starter kit locally, you may view the latest release of the React Starter Kit at [https://react-starter.leanstacks.net/][app]. Please see the _Authentication_ section below for instructions to sign in.
+
+> **NOTE:** This app does not collect any personal data and does not use cookies.
+
 ### Data
 
 This project's API integration uses the simulated REST endpoints made available by [JSON Placeholder](https://jsonplaceholder.typicode.com/).
 
-There are some limitations to the JSONP Placeholder APIs. The primary limitation is that the API is stateless. You may create (`post`), update (`put`), and delete items within the JSON Placeholder collections; however, the collections are not actually mutated and persisted by JSON Placeholder. Within the starter kit, we update the TanStack Query caches upon successful mutation to simulate a stateful back end.
+There are some limitations to the JSON Placeholder APIs. The primary limitation is that the API is stateless. You may create (`post`), update (`put`), and delete items within the JSON Placeholder collections; however, the collections are not actually mutated and persisted by JSON Placeholder. Within the starter kit, we update the TanStack Query caches upon successful mutation to simulate a stateful back end.
 
 ### Authentication
 
-When running the application, you may sign in with any of the JSON Placeholder [Users](https://jsonplaceholder.typicode.com/users). Simply enter the _Username_ value from any user in the API and use any value for the _Password_. For example, try username `Bret` and password `abc123`.
+When using the application, you may sign in with any of the JSON Placeholder [Users](https://jsonplaceholder.typicode.com/users). Simply enter the _Username_ value from any user in the API and use any value for the _Password_. For example, try username `Kamren` or `Samantha` and password `abc123`.
 
 ## About
 
@@ -273,6 +279,7 @@ This project uses GitHub Actions to perform DevOps automation activities such as
 - [Storybook][storybook]
 - [GitHub Actions][ghactions]
 
+[app]: https://react-starter.leanstacks.net/ 'React Starter Kit | LeanStacks'
 [repo]: https://github.com/leanstacks/react-starter-kit 'GitHub Repository'
 [nvm]: https://github.com/nvm-sh/nvm 'Node Version Manager'
 [react]: https://react.dev 'React'
