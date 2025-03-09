@@ -10,9 +10,9 @@ describe('ComponentsPageBreadcrumbs', () => {
     // ARRANGE
     render(
       <Routes>
-        <Route path="/app/components" element={<ComponentsPageBreadcrumbs />} />
-        <Route path="/app/components/alert" element={<ComponentsPageBreadcrumbs />} />
-        <Route path="/" element={<Navigate to="/app/components/alert" />} />
+        <Route path="/pub/components" element={<ComponentsPageBreadcrumbs />} />
+        <Route path="/pub/components/alert" element={<ComponentsPageBreadcrumbs />} />
+        <Route path="/" element={<Navigate to="/pub/components/alert" />} />
       </Routes>,
     );
     await screen.findByTestId('page-components-breadcrumbs');
@@ -25,9 +25,9 @@ describe('ComponentsPageBreadcrumbs', () => {
     // ARRANGE
     render(
       <Routes>
-        <Route path="/app/components" element={<ComponentsPageBreadcrumbs />} />
-        <Route path="/app/components/alert" element={<ComponentsPageBreadcrumbs />} />
-        <Route path="/" element={<Navigate to="/app/components/alert" />} />
+        <Route path="/pub/components" element={<ComponentsPageBreadcrumbs />} />
+        <Route path="/pub/components/alert" element={<ComponentsPageBreadcrumbs />} />
+        <Route path="/" element={<Navigate to="/pub/components/alert" />} />
       </Routes>,
     );
     await screen.findByTestId('page-components-breadcrumbs-page-alert');
