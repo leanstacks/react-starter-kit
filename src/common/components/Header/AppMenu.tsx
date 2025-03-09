@@ -49,7 +49,7 @@ const AppMenu = ({ side = 'right', testId = 'menu-app', ...props }: AppMenuProps
           <MenuNavLink to="/app/settings" title="Settings" icon="sliders">
             Settings
           </MenuNavLink>
-          <MenuNavLink to="/app/components" title="Components" icon="puzzlePiece">
+          <MenuNavLink to="/pub/components" title="Components" icon="puzzlePiece">
             Components
           </MenuNavLink>
           <MenuNavLink to="/app/tasks" title={t('tasks', { ns: 'tasks' })} icon="listCheck">
@@ -65,7 +65,7 @@ const AppMenu = ({ side = 'right', testId = 'menu-app', ...props }: AppMenuProps
             Need an account? Sign Up
           </MenuNavLink>
           <MenuSeparator />
-          <MenuNavLink to="/app/components" title="Components" icon="puzzlePiece">
+          <MenuNavLink to="/pub/components" title="Components" icon="puzzlePiece">
             Components
           </MenuNavLink>
         </>

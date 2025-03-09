@@ -17,7 +17,7 @@ const LandingPage = (): JSX.Element => {
   const authContext = useAuth();
 
   if (authContext.isAuthenticated) {
-    return <Navigate to="/app/tasks" />;
+    return <Navigate to="/app/tasks" replace />;
   }
 
   return (

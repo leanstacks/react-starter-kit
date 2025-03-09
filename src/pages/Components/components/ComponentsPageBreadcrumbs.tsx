@@ -22,7 +22,7 @@ const ComponentsPageBreadcrumbs = ({
         </Breadcrumbs.Item>
         <Breadcrumbs.Separator />
         <Breadcrumbs.Item>
-          <Breadcrumbs.Link to="/app/components">Components</Breadcrumbs.Link>
+          <Breadcrumbs.Link to="/pub/components">Components</Breadcrumbs.Link>
         </Breadcrumbs.Item>
         {!!pathElements[3] && (
           <>
