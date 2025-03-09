@@ -26,7 +26,7 @@ const DialogContext = createContext<DialogContextValue>({
 
 /**
  * Defines the properties of the `Dialog` render prop function context object.
- * @param close - Closes the dialog.
+ * @param close - A function which closes the dialog.
  */
 type DialogRenderFnContext = {
   close: () => void;
@@ -44,6 +44,39 @@ export interface DialogProps extends BaseComponentProps {
 /**
  * A `Dialog` is a modal window that displays on top of the main content,
  * typically asking the user to take an action or confirm a decision.
+ * 
+ * A Dialog may be composed with regular `children` or accepts a render prop
+ * function. The render prop function provides access to the Dialog context
+ * attributes.
+ * 
+ * **Example:**
+ * ```
+  <Dialog>
+    {({ close }) => (
+      <>
+        <Dialog.Trigger>
+          <Button>Review the terms and conditions</Button>
+        </Dialog.Trigger>
+        <Dialog.Content>
+          <Dialog.Header>
+            <Dialog.Title>Terms and Conditions</Dialog.Title>
+            <Dialog.Subtitle>Please review and accept.</Dialog.Subtitle>
+          </Dialog.Header>
+          <Dialog.Body>
+            Sed qos eiusmod eiusmod at consectetur nam veniam exercitation.
+          </Dialog.Body>
+          <Dialog.Separator />
+          <Dialog.Footer>
+            <Dialog.ButtonBar>
+              <Dialog.Button onClick={() => close()}>Cancel</Dialog.Button>
+              <Dialog.Button variant="primary">Accept</Dialog.Button>
+            </Dialog.ButtonBar>
+          </Dialog.Footer>
+        </Dialog.Content>
+      </>
+    )}
+  </Dialog>
+ * ```
  */
 const Dialog = ({ children, className, testId = 'dialog' }: DialogProps): JSX.Element => {
   const [isHidden, setIsHidden] = useState(true);
