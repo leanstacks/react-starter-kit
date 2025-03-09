@@ -13,6 +13,40 @@ export interface BreadcrumbsProps extends BaseComponentProps, PropsWithChildren 
 /**
  * The `Breadcrumbs` component renders a heirarchy of links as a path to the
  * current route.
+ * 
+ * **Example:**
+ * ```
+  <Breadcrumbs>
+    <Breadcrumbs.List>
+      <Breadcrumbs.Item>
+        <Breadcrumbs.Link to="/">Home</Breadcrumbs.Link>
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Separator />
+      <Breadcrumbs.Item>
+        <DropdownMenu>
+          <DropdownMenu.Trigger>
+            <Breadcrumbs.Ellipsis />
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Content className="left-0">
+            <DropdownMenu.Item>Components</DropdownMenu.Item>
+            <DropdownMenu.Item>Settings</DropdownMenu.Item>
+            <DropdownMenu.Item>Tasks</DropdownMenu.Item>
+          </DropdownMenu.Content>
+        </DropdownMenu>
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Separator />
+      <Breadcrumbs.Item>
+        <Breadcrumbs.Link to="/app/tasks/97">
+          dolorum laboriosam eos qui iure aliquam
+        </Breadcrumbs.Link>
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Separator />
+      <Breadcrumbs.Item>
+        <Breadcrumbs.Page>Edit</Breadcrumbs.Page>
+      </Breadcrumbs.Item>
+    </Breadcrumbs.List>
+  </Breadcrumbs>
+ * ```
  */
 const Breadcrumbs = ({
   children,
