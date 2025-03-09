@@ -1,38 +1,46 @@
+import { lazy } from 'react';
 import { Navigate, RouteObject, createBrowserRouter } from 'react-router-dom';
 
+import { withSuspense } from 'common/utils/suspense';
 import StandardLayout from 'common/components/Layout/StandardLayout';
 import ErrorPage from 'pages/Error/ErrorPage';
 import PrivateOutlet from './PrivateOutlet';
+
+// Landing Page Family
 import LandingPage from 'pages/Landing/LandingPage';
 
 // Auth Page Family
-import SigninPage from 'pages/Auth/Signin/SigninPage';
-import SignoutPage from 'pages/Auth/Signout/SignoutPage';
+const SigninPage = lazy(() => import('pages/Auth/Signin/SigninPage'));
+const SignoutPage = lazy(() => import('pages/Auth/Signout/SignoutPage'));
 
 // Settings Page Family
-import SettingsPage from 'pages/Settings/SettingsPage';
-import AppearanceSettings from 'pages/Settings/components/AppearanceSettings';
+const SettingsPage = lazy(() => import('pages/Settings/SettingsPage'));
+const AppearanceSettings = lazy(() => import('pages/Settings/components/AppearanceSettings'));
 
 // Components Page Family
-import ComponentsPage from 'pages/Components/ComponentsPage';
-import AlertComponents from 'pages/Components/components/AlertComponents';
-import AvatarComponents from 'pages/Components/components/AvatarComponents';
-import BadgeComponents from 'pages/Components/components/BadgeComponents';
-import BreadcrumbsComponents from 'pages/Components/components/BreadcrumbsComponents';
-import ButtonComponents from 'pages/Components/components/ButtonComponents';
-import CardComponents from 'pages/Components/components/CardComponents';
-import DialogComponents from 'pages/Components/components/DialogComponents';
-import DropdownComponents from 'pages/Components/components/DropdownComponents';
-import SearchInputComponents from 'pages/Components/components/SearchInputComponents';
-import TabsComponents from 'pages/Components/components/TabsComponents';
-import TextComponents from 'pages/Components/components/TextComponents';
+const ComponentsPage = lazy(() => import('pages/Components/ComponentsPage'));
+const AlertComponents = lazy(() => import('pages/Components/components/AlertComponents'));
+const AvatarComponents = lazy(() => import('pages/Components/components/AvatarComponents'));
+const BadgeComponents = lazy(() => import('pages/Components/components/BadgeComponents'));
+const BreadcrumbsComponents = lazy(
+  () => import('pages/Components/components/BreadcrumbsComponents'),
+);
+const ButtonComponents = lazy(() => import('pages/Components/components/ButtonComponents'));
+const CardComponents = lazy(() => import('pages/Components/components/CardComponents'));
+const DialogComponents = lazy(() => import('pages/Components/components/DialogComponents'));
+const DropdownComponents = lazy(() => import('pages/Components/components/DropdownComponents'));
+const SearchInputComponents = lazy(
+  () => import('pages/Components/components/SearchInputComponents'),
+);
+const TabsComponents = lazy(() => import('pages/Components/components/TabsComponents'));
+const TextComponents = lazy(() => import('pages/Components/components/TextComponents'));
 
 // Tasks Page Family
-import TasksPage from 'pages/Tasks/TasksPage';
-import TaskListLayout from 'pages/Tasks/components/TaskListLayout';
-import TaskDetailLayout from 'pages/Tasks/components/TaskDetailLayout';
-import TaskAdd from 'pages/Tasks/components/Add/TaskAdd';
-import TaskEdit from 'pages/Tasks/components/Edit/TaskEdit';
+const TasksPage = lazy(() => import('pages/Tasks/TasksPage'));
+const TaskListLayout = lazy(() => import('pages/Tasks/components/TaskListLayout'));
+const TaskDetailLayout = lazy(() => import('pages/Tasks/components/TaskDetailLayout'));
+const TaskAdd = lazy(() => import('pages/Tasks/components/Add/TaskAdd'));
+const TaskEdit = lazy(() => import('pages/Tasks/components/Edit/TaskEdit'));
 
 /**
  * The React Router configuration. An array of `RouteObject`.
@@ -54,11 +62,11 @@ export const routes: RouteObject[] = [
           { index: true, element: <Navigate to="signin" replace /> },
           {
             path: 'signin',
-            element: <SigninPage />,
+            element: withSuspense(<SigninPage />),
           },
           {
             path: 'signout',
-            element: <SignoutPage />,
+            element: withSuspense(<SignoutPage />),
           },
         ],
       },
@@ -68,7 +76,7 @@ export const routes: RouteObject[] = [
           { index: true, element: <Navigate to="components" replace /> },
           {
             path: 'components',
-            element: <ComponentsPage />,
+            element: withSuspense(<ComponentsPage />),
             children: [
               {
                 index: true,
@@ -76,47 +84,47 @@ export const routes: RouteObject[] = [
               },
               {
                 path: 'alert',
-                element: <AlertComponents />,
+                element: withSuspense(<AlertComponents />),
               },
               {
                 path: 'avatar',
-                element: <AvatarComponents />,
+                element: withSuspense(<AvatarComponents />),
               },
               {
                 path: 'badge',
-                element: <BadgeComponents />,
+                element: withSuspense(<BadgeComponents />),
               },
               {
                 path: 'breadcrumbs',
-                element: <BreadcrumbsComponents />,
+                element: withSuspense(<BreadcrumbsComponents />),
               },
               {
                 path: 'button',
-                element: <ButtonComponents />,
+                element: withSuspense(<ButtonComponents />),
               },
               {
                 path: 'card',
-                element: <CardComponents />,
+                element: withSuspense(<CardComponents />),
               },
               {
                 path: 'dialog',
-                element: <DialogComponents />,
+                element: withSuspense(<DialogComponents />),
               },
               {
                 path: 'dropdown',
-                element: <DropdownComponents />,
+                element: withSuspense(<DropdownComponents />),
               },
               {
                 path: 'search-input',
-                element: <SearchInputComponents />,
+                element: withSuspense(<SearchInputComponents />),
               },
               {
                 path: 'tabs',
-                element: <TabsComponents />,
+                element: withSuspense(<TabsComponents />),
               },
               {
                 path: 'text',
-                element: <TextComponents />,
+                element: withSuspense(<TextComponents />),
               },
             ],
           },
@@ -129,7 +137,7 @@ export const routes: RouteObject[] = [
           { index: true, element: <Navigate to="tasks" replace /> },
           {
             path: 'settings',
-            element: <SettingsPage />,
+            element: withSuspense(<SettingsPage />),
             children: [
               {
                 index: true,
@@ -137,32 +145,32 @@ export const routes: RouteObject[] = [
               },
               {
                 path: 'appearance',
-                element: <AppearanceSettings />,
+                element: withSuspense(<AppearanceSettings />),
               },
             ],
           },
           {
             path: 'tasks',
-            element: <TasksPage />,
+            element: withSuspense(<TasksPage />),
             children: [
               {
                 index: true,
-                element: <TaskListLayout />,
+                element: withSuspense(<TaskListLayout />),
               },
               {
                 path: 'add',
-                element: <TaskAdd />,
+                element: withSuspense(<TaskAdd />),
               },
               {
                 path: ':taskId',
                 children: [
                   {
                     index: true,
-                    element: <TaskDetailLayout />,
+                    element: withSuspense(<TaskDetailLayout />),
                   },
                   {
                     path: 'edit',
-                    element: <TaskEdit />,
+                    element: withSuspense(<TaskEdit />),
                   },
                 ],
               },
