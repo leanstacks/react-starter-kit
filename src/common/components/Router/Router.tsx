@@ -51,7 +51,7 @@ export const routes: RouteObject[] = [
       {
         path: 'auth',
         children: [
-          { index: true, element: <Navigate to="signin" /> },
+          { index: true, element: <Navigate to="signin" replace /> },
           {
             path: 'signin',
             element: <SigninPage />,
@@ -63,31 +63,16 @@ export const routes: RouteObject[] = [
         ],
       },
       {
-        path: 'app',
-        element: <PrivateOutlet />,
+        path: 'pub',
         children: [
-          { index: true, element: <Navigate to="tasks" /> },
-          {
-            path: 'settings',
-            element: <SettingsPage />,
-            children: [
-              {
-                index: true,
-                element: <Navigate to="appearance" />,
-              },
-              {
-                path: 'appearance',
-                element: <AppearanceSettings />,
-              },
-            ],
-          },
+          { index: true, element: <Navigate to="components" replace /> },
           {
             path: 'components',
             element: <ComponentsPage />,
             children: [
               {
                 index: true,
-                element: <Navigate to="alert" />,
+                element: <Navigate to="alert" replace />,
               },
               {
                 path: 'alert',
@@ -132,6 +117,27 @@ export const routes: RouteObject[] = [
               {
                 path: 'text',
                 element: <TextComponents />,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        path: 'app',
+        element: <PrivateOutlet />,
+        children: [
+          { index: true, element: <Navigate to="tasks" replace /> },
+          {
+            path: 'settings',
+            element: <SettingsPage />,
+            children: [
+              {
+                index: true,
+                element: <Navigate to="appearance" replace />,
+              },
+              {
+                path: 'appearance',
+                element: <AppearanceSettings />,
               },
             ],
           },
