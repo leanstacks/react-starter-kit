@@ -4,6 +4,7 @@ import Page from 'common/components/Page/Page';
 import MenuNavLink from 'common/components/Menu/MenuNavLink';
 import Heading from 'common/components/Text/Heading';
 import ComponentsPageBreadcrumbs from './components/ComponentsPageBreadcrumbs';
+import Columns from 'common/components/Content/Columns';
 
 /**
  * The `ComponentsPage` component renders the layout for the components page.
@@ -21,8 +22,8 @@ const ComponentsPage = (): JSX.Element => {
           Components
         </Heading>
 
-        <div className="my-6 grid grid-cols-1 gap-8 md:grid-cols-4">
-          <div data-testid="page-components-menu">
+        <Columns layout="1-3" gap="lg" className="my-6">
+          <Columns.Column data-testid="page-components-menu">
             <MenuNavLink to="alert" styleActive>
               Alert
             </MenuNavLink>
@@ -56,11 +57,11 @@ const ComponentsPage = (): JSX.Element => {
             <MenuNavLink to="text" styleActive>
               Text
             </MenuNavLink>
-          </div>
-          <div className="md:col-span-3" data-testid="page-components-content">
+          </Columns.Column>
+          <Columns.Column data-testid="page-components-content">
             <Outlet />
-          </div>
-        </div>
+          </Columns.Column>
+        </Columns>
       </div>
     </Page>
   );

@@ -6,6 +6,7 @@ import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import MenuNavLink from 'common/components/Menu/MenuNavLink';
 import Page from 'common/components/Page/Page';
 import SettingsPageBreadcrumbs from './components/SettingsPageBreadcrumbs';
+import Columns from 'common/components/Content/Columns';
 
 /**
  * The `SettingsPage` component renders the layout for the settings page. It
@@ -32,16 +33,17 @@ const SettingsPage = (): JSX.Element => {
             <LoaderSkeleton className="h-16" />
           </div>
         )}
-        <div className="my-6 grid grid-cols-1 gap-8 md:grid-cols-4">
-          <div data-testid="page-settings-menu">
+
+        <Columns layout="1-3" gap="lg" className="my-6">
+          <Columns.Column testId="page-settings-menu">
             <MenuNavLink to="appearance" icon="paintbrush" styleActive>
               Appearance
             </MenuNavLink>
-          </div>
-          <div className="md:col-span-3" data-testid="page-settings-content">
+          </Columns.Column>
+          <Columns.Column testId="page-settings-content">
             <Outlet />
-          </div>
-        </div>
+          </Columns.Column>
+        </Columns>
       </div>
     </Page>
   );
