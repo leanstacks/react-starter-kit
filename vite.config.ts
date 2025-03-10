@@ -34,4 +34,23 @@ export default defineConfig({
     mockReset: true,
     setupFiles: ['./vitest.setup.ts'],
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          if (id.indexOf('node_modules') > -1) {
+            if (id.indexOf('@codemirror') > -1) {
+              return 'codemirror';
+            }
+            if (id.indexOf('@fortawesome') > -1) {
+              return 'fortawesome';
+            }
+            if (id.indexOf('mime-db') > -1) {
+              return 'mime-db';
+            }
+          }
+        },
+      },
+    },
+  },
 });
