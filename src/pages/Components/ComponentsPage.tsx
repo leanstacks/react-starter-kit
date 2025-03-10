@@ -42,6 +42,9 @@ const ComponentsPage = (): JSX.Element => {
             <MenuNavLink to="card" styleActive>
               Card
             </MenuNavLink>
+            <MenuNavLink to="columns" styleActive>
+              Columns
+            </MenuNavLink>
             <MenuNavLink to="dialog" styleActive>
               Dialog
             </MenuNavLink>
