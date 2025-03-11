@@ -53,7 +53,7 @@ const ColumnsComponents = ({
   ];
 
   const Block = ({ children }: PropsWithChildren) => (
-    <div className="flex h-full min-h-24 items-center justify-center bg-blue-500 font-bold">
+    <div className="flex h-full min-h-24 items-center justify-center bg-blue-500 font-bold text-white">
       {children}
     </div>
   );
@@ -68,7 +68,7 @@ const ColumnsComponents = ({
         <div>
           The <span className="font-mono font-bold">Columns</span> component renders a responsive
           grid column layout. Use the "layout" property to specify the number of columns and their
-          relative widths. Use the "gap" property to specify the spacing between columns
+          relative widths. Use the "gap" property to specify the spacing between columns.
         </div>
         <div className="my-8">
           <Heading level={3} className="mb-2">
