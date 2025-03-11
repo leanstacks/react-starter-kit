@@ -36,6 +36,17 @@ export interface ContainerProps
  * of content to a breakpoint and centers the content within the viewport.
  * By default, a `Container` sets the maximum width of the content to the
  * minimum width of the current breakpoint.
+ * 
+ * Use the `size` property to specify a fixed maximum width for all viewport
+ * sizes.
+ * 
+ * **Example:**
+ * ```
+  <Container className="my-4 min-h-[50vh]">
+    <Heading level={1}>Page Title</Heading>
+    <div>lorem ipsum</div>
+  </Container>
+ * ```
  */
 const Container = ({
   children,

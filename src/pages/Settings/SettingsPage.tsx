@@ -19,7 +19,7 @@ const SettingsPage = (): JSX.Element => {
 
   return (
     <Page testId="page-settings">
-      <Container size="2xl" className="my-4 min-h-[50vh]">
+      <Container className="my-4 min-h-[50vh]">
         <SettingsPageBreadcrumbs className="mb-4" />
 
         {user ? (
