@@ -5,15 +5,12 @@ import { BaseComponentProps } from 'common/utils/types';
 
 /**
  * Properties for the `Page` React component.
- * @see {@link PropsWithChildren}
- * @see {@link BaseComponentProps}
  */
 export interface PageProps extends BaseComponentProps, PropsWithChildren {}
 
 /**
- * The `Page` component renders a standardized styled page-level block.
- * @param {PageProps} - Component properties.
- * @returns {JSX.Element} JSX
+ * The `Page` component renders a responsive, styled wrapper for a page of content
+ * ensuring consistent spacing at various breakpoints.
  */
 const Page = ({ children, className, testId = 'page' }: PageProps): JSX.Element => {
   return (

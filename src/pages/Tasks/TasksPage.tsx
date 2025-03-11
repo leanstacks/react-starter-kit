@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { PropsWithTestId } from 'common/utils/types';
 import { useGetCurrentUser } from 'common/api/useGetCurrentUser';
-import Page from 'common/components/Page/Page';
+import Page from 'common/components/Content/Page';
 import TasksPageBreadcrumbs from './components/TasksPageBreadcrumbs';
 import UserInfo from './components/UserInfo';
 import Card from 'common/components/Card/Card';

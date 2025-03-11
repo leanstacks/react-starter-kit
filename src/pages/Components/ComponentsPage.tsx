@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
-import Page from 'common/components/Page/Page';
+import Page from 'common/components/Content/Page';
 import MenuNavLink from 'common/components/Menu/MenuNavLink';
 import Heading from 'common/components/Text/Heading';
 import ComponentsPageBreadcrumbs from './components/ComponentsPageBreadcrumbs';

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useSignout } from './api/useSignout';
 import LoaderSpinner from 'common/components/Loader/LoaderSpinner';
-import Page from 'common/components/Page/Page';
+import Page from 'common/components/Content/Page';
 
 /**
  * The `SignoutPage` component deauthenticates the current user and redirects

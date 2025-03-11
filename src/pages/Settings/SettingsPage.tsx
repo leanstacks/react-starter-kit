@@ -4,7 +4,7 @@ import { useGetCurrentUser } from 'common/api/useGetCurrentUser';
 import Avatar from 'common/components/Icon/Avatar';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import MenuNavLink from 'common/components/Menu/MenuNavLink';
-import Page from 'common/components/Page/Page';
+import Page from 'common/components/Content/Page';
 import SettingsPageBreadcrumbs from './components/SettingsPageBreadcrumbs';
 import Columns from 'common/components/Content/Columns';
 

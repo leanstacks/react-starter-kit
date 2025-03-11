@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen } from 'test/test-utils';
-import Page from '../Page';
+import Page from '../../Content/Page';
 
 describe('Page', () => {
   it('should render successfully', async () => {
