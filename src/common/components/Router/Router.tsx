@@ -31,6 +31,7 @@ const ColumnComponents = lazy(() => import('pages/Components/components/ColumnsC
 const ContainerComponents = lazy(() => import('pages/Components/components/ContainerComponents'));
 const DialogComponents = lazy(() => import('pages/Components/components/DialogComponents'));
 const DropdownComponents = lazy(() => import('pages/Components/components/DropdownComponents'));
+const PageComponents = lazy(() => import('pages/Components/components/PageComponents'));
 const SearchInputComponents = lazy(
   () => import('pages/Components/components/SearchInputComponents'),
 );
@@ -123,6 +124,10 @@ export const routes: RouteObject[] = [
               {
                 path: 'dropdown',
                 element: withSuspense(<DropdownComponents />),
+              },
+              {
+                path: 'page',
+                element: withSuspense(<PageComponents />),
               },
               {
                 path: 'search-input',
