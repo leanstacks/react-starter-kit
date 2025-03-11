@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 
 import { useAuth } from 'common/hooks/useAuth';
 import Page from 'common/components/Content/Page';
+import Container from 'common/components/Content/Container';
+import Heading from 'common/components/Text/Heading';
 
 /**
  * The `LandingPage` component renders the content of the landing page
@@ -22,13 +24,13 @@ const LandingPage = (): JSX.Element => {
 
   return (
     <Page testId="page-landing">
-      <div className="container mx-auto min-h-[50vh]">
-        <h1 className="mb-4 pt-32 text-4xl md:mb-8 md:text-8xl">
+      <Container className="min-h-[50vh]">
+        <Heading level={1} className="mt-32 mb-4 text-4xl font-normal md:mb-8 md:text-8xl">
           {t('letsGetStarted', { ns: 'common' })}
-        </h1>
+        </Heading>
 
         <div className="opacity-60 md:text-2xl">{t('creatingReactApps', { ns: 'common' })}</div>
-      </div>
+      </Container>
     </Page>
   );
 };

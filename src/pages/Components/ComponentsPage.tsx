@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 
 import Page from 'common/components/Content/Page';
+import Container from 'common/components/Content/Container';
 import MenuNavLink from 'common/components/Menu/MenuNavLink';
 import Heading from 'common/components/Text/Heading';
 import ComponentsPageBreadcrumbs from './components/ComponentsPageBreadcrumbs';
@@ -15,7 +16,7 @@ import Columns from 'common/components/Content/Columns';
 const ComponentsPage = (): JSX.Element => {
   return (
     <Page testId="page-components">
-      <div className="container mx-auto my-4 min-h-[50vh]">
+      <Container className="my-4 min-h-[50vh]">
         <ComponentsPageBreadcrumbs className="mb-4" />
 
         <Heading level={1} className="mb-4 border-b border-neutral-500/50 pb-2">
@@ -65,7 +66,7 @@ const ComponentsPage = (): JSX.Element => {
             <Outlet />
           </Columns.Column>
         </Columns>
-      </div>
+      </Container>
     </Page>
   );
 };
