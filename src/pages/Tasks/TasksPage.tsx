@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 import { PropsWithTestId } from 'common/utils/types';
 import { useGetCurrentUser } from 'common/api/useGetCurrentUser';
-import Page from 'common/components/Page/Page';
+import Page from 'common/components/Content/Page';
+import Container from 'common/components/Content/Container';
+import Heading from 'common/components/Text/Heading';
 import TasksPageBreadcrumbs from './components/TasksPageBreadcrumbs';
 import UserInfo from './components/UserInfo';
 import Card from 'common/components/Card/Card';
@@ -24,12 +26,12 @@ const TasksPage = ({ testId = 'page-tasks' }: PropsWithTestId): JSX.Element => {
 
   return (
     <Page testId={testId}>
-      <div className="container mx-auto my-4 min-h-[75vh]">
+      <Container className="my-4 min-h-[75vh]">
         <TasksPageBreadcrumbs className="mb-4" />
 
         {/* page heading */}
         <div className="mb-4 flex items-center justify-between border-b border-neutral-500/50 pb-2">
-          <h1 className="text-4xl">{t('tasks', { ns: 'tasks' })}</h1>
+          <Heading level={1}>{t('tasks', { ns: 'tasks' })}</Heading>
           <div className="flex items-center gap-4">
             <Button
               variant="text"
@@ -52,7 +54,7 @@ const TasksPage = ({ testId = 'page-tasks' }: PropsWithTestId): JSX.Element => {
             <Outlet />
           </div>
         )}
-      </div>
+      </Container>
     </Page>
   );
 };

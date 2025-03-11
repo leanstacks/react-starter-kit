@@ -1,5 +1,7 @@
-import { describe, expect, it } from 'vitest';
 import { render, screen } from 'test/test-utils';
+
+import { describe, expect, it } from 'vitest';
+
 import Page from '../Page';
 
 describe('Page', () => {

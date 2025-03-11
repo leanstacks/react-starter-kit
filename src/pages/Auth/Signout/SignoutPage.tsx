@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { useSignout } from './api/useSignout';
 import LoaderSpinner from 'common/components/Loader/LoaderSpinner';
-import Page from 'common/components/Page/Page';
+import Page from 'common/components/Content/Page';
+import Container from 'common/components/Content/Container';
 
 /**
  * The `SignoutPage` component deauthenticates the current user and redirects
@@ -27,11 +28,11 @@ const SignoutPage = (): JSX.Element => {
 
   return (
     <Page testId="page-signout">
-      <div className="container mx-auto h-[50vh]">
+      <Container className="h-[50vh]">
         <div className="flex h-full items-center justify-center text-2xl">
           <LoaderSpinner text="Signing out..." />
         </div>
-      </div>
+      </Container>
     </Page>
   );
 };

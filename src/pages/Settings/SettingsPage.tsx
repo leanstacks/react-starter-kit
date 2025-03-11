@@ -4,9 +4,10 @@ import { useGetCurrentUser } from 'common/api/useGetCurrentUser';
 import Avatar from 'common/components/Icon/Avatar';
 import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
 import MenuNavLink from 'common/components/Menu/MenuNavLink';
-import Page from 'common/components/Page/Page';
+import Page from 'common/components/Content/Page';
 import SettingsPageBreadcrumbs from './components/SettingsPageBreadcrumbs';
 import Columns from 'common/components/Content/Columns';
+import Container from 'common/components/Content/Container';
 
 /**
  * The `SettingsPage` component renders the layout for the settings page. It
@@ -18,7 +19,7 @@ const SettingsPage = (): JSX.Element => {
 
   return (
     <Page testId="page-settings">
-      <div className="container mx-auto my-4 min-h-[50vh]">
+      <Container className="my-4 min-h-[50vh]">
         <SettingsPageBreadcrumbs className="mb-4" />
 
         {user ? (
@@ -44,7 +45,7 @@ const SettingsPage = (): JSX.Element => {
             <Outlet />
           </Columns.Column>
         </Columns>
-      </div>
+      </Container>
     </Page>
   );
 };
