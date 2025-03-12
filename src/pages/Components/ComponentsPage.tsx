@@ -52,6 +52,9 @@ const ComponentsPage = (): JSX.Element => {
             <MenuNavLink to="dialog" styleActive>
               Dialog
             </MenuNavLink>
+            <MenuNavLink to="divider" styleActive>
+              Divider
+            </MenuNavLink>
             <MenuNavLink to="dropdown" styleActive>
               Dropdown
             </MenuNavLink>
