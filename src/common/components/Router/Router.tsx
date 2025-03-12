@@ -30,6 +30,7 @@ const CardComponents = lazy(() => import('pages/Components/components/CardCompon
 const ColumnComponents = lazy(() => import('pages/Components/components/ColumnsComponents'));
 const ContainerComponents = lazy(() => import('pages/Components/components/ContainerComponents'));
 const DialogComponents = lazy(() => import('pages/Components/components/DialogComponents'));
+const DividerComponents = lazy(() => import('pages/Components/components/DividerComponents'));
 const DropdownComponents = lazy(() => import('pages/Components/components/DropdownComponents'));
 const HeadingComponents = lazy(() => import('pages/Components/components/HeadingComponents'));
 const IconComponents = lazy(() => import('pages/Components/components/IconComponents'));
@@ -122,6 +123,10 @@ export const routes: RouteObject[] = [
               {
                 path: 'dialog',
                 element: withSuspense(<DialogComponents />),
+              },
+              {
+                path: 'divider',
+                element: withSuspense(<DividerComponents />),
               },
               {
                 path: 'dropdown',
