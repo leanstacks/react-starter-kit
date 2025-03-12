@@ -1,4 +1,3 @@
-import { PropsWithChildren } from 'react';
 import { createColumnHelper } from '@tanstack/react-table';
 
 import { BaseComponentProps } from 'common/utils/types';
@@ -6,15 +5,17 @@ import { ComponentProperty } from '../model/components';
 import Table from 'common/components/Table/Table';
 import CodeSnippet from 'common/components/Text/CodeSnippet';
 import Heading from 'common/components/Text/Heading';
+import Link from 'common/components/Link/Link';
+import FAIcon from 'common/components/Icon/FAIcon';
 import Columns from 'common/components/Content/Columns';
 
 /**
- * The `ColumnsComponents` component renders a set of examples illustrating
- * the use of the `Columns` component.
+ * The `IconComponents` component renders a set of examples illustrating
+ * the use of the `FAIcon` component.
  */
-const ColumnsComponents = ({
+const IconComponents = ({
   className,
-  testId = 'components-columns',
+  testId = 'components-icon',
 }: BaseComponentProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
@@ -26,12 +27,8 @@ const ColumnsComponents = ({
       description: 'Optional. Additional CSS class names.',
     },
     {
-      name: 'gap',
-      description: 'Optional. The amount of space between columns.',
-    },
-    {
-      name: 'layout',
-      description: 'Optional. The column configuration.',
+      name: 'icon',
+      description: 'The name.',
     },
     {
       name: 'testId',
@@ -52,24 +49,23 @@ const ColumnsComponents = ({
     }),
   ];
 
-  const Block = ({ children }: PropsWithChildren) => (
-    <div className="flex h-full min-h-24 items-center justify-center bg-blue-500 font-bold text-white">
-      {children}
-    </div>
-  );
-
   return (
     <section className={className} data-testid={testId}>
       <Heading level={2} className="mb-4">
-        Columns Component
+        Icon Component
       </Heading>
 
       <div className="my-8">
-        <div>
-          The <span className="font-mono font-bold">Columns</span> component renders a responsive
-          grid column layout. Use the "layout" property to specify the number of columns and their
-          relative widths. Use the "gap" property to specify the spacing between columns.
+        <div className="mb-4">
+          The <span className="font-mono font-bold">FAIcon</span> component renders a Font Awesome
+          icon. The component extends all properties and capabilities of the{' '}
+          <Link to="https://docs.fontawesome.com/web/use-with/react/style" target="_blank">
+            FontAwesomeIcon
+          </Link>{' '}
+          component, allowing you to size, rotate, spin, stack, and further manipulate the icons.
         </div>
+        <div className="mb-4">Use any of Font Awesome's 2,000+ free or 50,000+ licensed icons.</div>
+
         <div className="my-8">
           <Heading level={3} className="mb-2">
             Properties
@@ -81,153 +77,139 @@ const ColumnsComponents = ({
           Examples
         </Heading>
 
-        <Heading level={4} className="mb-2">
-          Default - Two Columns
+        <Heading level={4} className="my-2">
+          Basic
         </Heading>
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
-            <Columns className="w-full">
+            <FAIcon icon="circleInfo" />
+          </div>
+          <CodeSnippet className="my-2" code={`<FAIcon icon='circleInfo' />`} />
+        </div>
+
+        <Heading level={4} className="mb-2">
+          Sizes
+        </Heading>
+        <div className="my-8">
+          <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+            {/* Example */}
+            <Columns layout="1-1-1" className="items-center justify-center *:w-20">
               <Columns.Column>
-                <Block>1</Block>
+                <FAIcon icon="circleInfo" size="xs" />
               </Columns.Column>
               <Columns.Column>
-                <Block>2</Block>
+                <FAIcon icon="circleInfo" size="sm" />
+              </Columns.Column>
+              <Columns.Column>
+                <FAIcon icon="circleInfo" />
+              </Columns.Column>
+              <Columns.Column>
+                <FAIcon icon="circleInfo" size="lg" />
+              </Columns.Column>
+              <Columns.Column>
+                <FAIcon icon="circleInfo" size="xl" />
+              </Columns.Column>
+              <Columns.Column>
+                <FAIcon icon="circleInfo" size="2x" />
               </Columns.Column>
             </Columns>
           </div>
           <CodeSnippet
             className="my-2"
-            code={`<Columns className="w-full">
+            code={`<Columns layout="1-1-1">
   <Columns.Column>
-    <Block>1</Block>
+    <FAIcon icon="circleInfo" size="xs" />
   </Columns.Column>
   <Columns.Column>
-    <Block>2</Block>
+    <FAIcon icon="circleInfo" size="sm" />
+  </Columns.Column>
+  <Columns.Column>
+    <FAIcon icon="circleInfo" />
+  </Columns.Column>
+  <Columns.Column>
+    <FAIcon icon="circleInfo" size="lg" />
+  </Columns.Column>
+  <Columns.Column>
+    <FAIcon icon="circleInfo" size="xl" />
+  </Columns.Column>
+  <Columns.Column>
+    <FAIcon icon="circleInfo" size="2x" />
   </Columns.Column>
 </Columns>`}
           />
         </div>
 
         <Heading level={4} className="mb-2">
-          Small Left Column
+          Spin
         </Heading>
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
-            <Columns layout="1-3" className="w-full">
-              <Columns.Column>
-                <Block>1</Block>
-              </Columns.Column>
-              <Columns.Column>
-                <Block>2</Block>
-              </Columns.Column>
-            </Columns>
+            <FAIcon icon="circleNotch" spin />
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Columns layout="1-3" className="w-full">
-  <Columns.Column>
-    <Block>1</Block>
-  </Columns.Column>
-  <Columns.Column>
-    <Block>2</Block>
-  </Columns.Column>
-</Columns>`}
-          />
+          <CodeSnippet className="my-2" code={`<FAIcon icon="circleNotch" spin />`} />
         </div>
 
         <Heading level={4} className="mb-2">
-          Small Right Column
+          Animate
         </Heading>
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
-            <Columns layout="3-1" className="w-full">
+            <Columns layout="1-1-1" className="items-center justify-center *:w-20">
               <Columns.Column>
-                <Block>1</Block>
+                <FAIcon icon="circleInfo" beat />
               </Columns.Column>
               <Columns.Column>
-                <Block>2</Block>
+                <FAIcon icon="circleInfo" beatFade />
+              </Columns.Column>
+              <Columns.Column>
+                <FAIcon icon="circleRegular" bounce />
+              </Columns.Column>
+              <Columns.Column>
+                <FAIcon icon="circleInfo" fade />
+              </Columns.Column>
+              <Columns.Column>
+                <FAIcon icon="phone" shake />
+              </Columns.Column>
+              <Columns.Column>
+                <FAIcon icon="circleNotch" spin />
+              </Columns.Column>
+              <Columns.Column>
+                <FAIcon icon="circleNotch" spin spinReverse />
+              </Columns.Column>
+              <Columns.Column>
+                <FAIcon icon="circleNotch" spinPulse />
               </Columns.Column>
             </Columns>
           </div>
           <CodeSnippet
             className="my-2"
-            code={`<Columns layout="3-1" className="w-full">
+            code={`<Columns layout="1-1-1">
   <Columns.Column>
-    <Block>1</Block>
+    <FAIcon icon="circleInfo" beat />
   </Columns.Column>
   <Columns.Column>
-    <Block>2</Block>
-  </Columns.Column>
-</Columns>`}
-          />
-        </div>
-
-        <Heading level={4} className="mb-2">
-          Three Columns
-        </Heading>
-        <div className="my-8">
-          <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-            {/* Example */}
-            <Columns layout="1-1-1" className="w-full">
-              <Columns.Column>
-                <Block>1</Block>
-              </Columns.Column>
-              <Columns.Column>
-                <Block>2</Block>
-              </Columns.Column>
-              <Columns.Column>
-                <Block>3</Block>
-              </Columns.Column>
-            </Columns>
-          </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Columns layout="1-1-1" className="w-full">
-  <Columns.Column>
-    <Block>1</Block>
+    <FAIcon icon="circleInfo" beatFade />
   </Columns.Column>
   <Columns.Column>
-    <Block>2</Block>
+    <FAIcon icon="circleRegular" bounce />
   </Columns.Column>
   <Columns.Column>
-    <Block>3</Block>
-  </Columns.Column>
-</Columns>`}
-          />
-        </div>
-
-        <Heading level={4} className="mb-2">
-          Wide Middle Column
-        </Heading>
-        <div className="my-8">
-          <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-            {/* Example */}
-            <Columns layout="1-2-1" className="w-full">
-              <Columns.Column>
-                <Block>1</Block>
-              </Columns.Column>
-              <Columns.Column>
-                <Block>2</Block>
-              </Columns.Column>
-              <Columns.Column>
-                <Block>3</Block>
-              </Columns.Column>
-            </Columns>
-          </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Columns layout="1-2-1" className="w-full">
-  <Columns.Column>
-    <Block>1</Block>
+    <FAIcon icon="circleInfo" fade />
   </Columns.Column>
   <Columns.Column>
-    <Block>2</Block>
+    <FAIcon icon="phone" shake />
   </Columns.Column>
   <Columns.Column>
-    <Block>3</Block>
+    <FAIcon icon="circleNotch" spin />
+  </Columns.Column>
+  <Columns.Column>
+    <FAIcon icon="circleNotch" spin spinReverse />
+  </Columns.Column>
+  <Columns.Column>
+    <FAIcon icon="circleNotch" spinPulse />
   </Columns.Column>
 </Columns>`}
           />
@@ -237,4 +219,4 @@ const ColumnsComponents = ({
   );
 };
 
-export default ColumnsComponents;
+export default IconComponents;

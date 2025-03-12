@@ -65,9 +65,13 @@ const DialogComponents = ({
         <Table<ComponentProperty, string> data={data} columns={columns} />
       </div>
 
-      <Heading level={3}>Examples</Heading>
+      <Heading level={3} className="mb-2">
+        Examples
+      </Heading>
 
-      <Heading level={4}>Dialog with ReactNode children</Heading>
+      <Heading level={4} className="mb-2">
+        Dialog with ReactNode children
+      </Heading>
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Dialog>
@@ -124,7 +128,9 @@ const DialogComponents = ({
         />
       </div>
 
-      <Heading level={4}>Dialog with render props</Heading>
+      <Heading level={4} className="mb-2">
+        Dialog with render props
+      </Heading>
       <div className="my-8">
         <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
           <Dialog>
