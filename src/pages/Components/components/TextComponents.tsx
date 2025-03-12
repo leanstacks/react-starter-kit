@@ -92,7 +92,10 @@ const TextComponents = ({
           <Table<ComponentProperty, string> data={headingData} columns={columns} />
         </div>
 
-        <Heading level={3}>Examples</Heading>
+        <Heading level={3} className="mb-2">
+          Examples
+        </Heading>
+
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <Heading level={1}>Heading 1</Heading>

@@ -120,7 +120,9 @@ const SearchInputComponents = ({
         <Table<ComponentProperty, string> data={data} columns={columns} />
       </div>
 
-      <Heading level={3}>Examples</Heading>
+      <Heading level={3} className="mb-2">
+        Examples
+      </Heading>
 
       <div className="my-8">
         {!!selectedValue && (

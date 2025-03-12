@@ -76,8 +76,10 @@ const ContainerComponents = ({
           </Heading>
           <Table<ComponentProperty, string> data={data} columns={columns} />
         </div>
-        <Heading level={3}>Examples</Heading>
-        <Heading level={4} className="my-8">
+        <Heading level={3} className="mb-2">
+          Examples
+        </Heading>
+        <Heading level={4} className="mb-2">
           Default
         </Heading>
         <div className="my-8">
@@ -94,7 +96,8 @@ const ContainerComponents = ({
 </Container>`}
           />
         </div>
-        <Heading level={4} className="my-8">
+
+        <Heading level={4} className="mb-2">
           Small
         </Heading>
         <div className="my-8">
@@ -111,7 +114,8 @@ const ContainerComponents = ({
 </Container`}
           />
         </div>
-        <Heading level={4} className="my-8">
+
+        <Heading level={4} className="mb-2">
           Medium
         </Heading>
         <div className="my-8">
@@ -128,7 +132,8 @@ const ContainerComponents = ({
 </Container`}
           />
         </div>
-        <Heading level={4} className="my-8">
+
+        <Heading level={4} className="mb-2">
           Large
         </Heading>
         <div className="my-8">
@@ -145,7 +150,8 @@ const ContainerComponents = ({
 </Container`}
           />
         </div>
-        <Heading level={4} className="my-8">
+
+        <Heading level={4} className="mb-2">
           Extra Large
         </Heading>
         <div className="my-8">
@@ -162,7 +168,8 @@ const ContainerComponents = ({
 </Container`}
           />
         </div>
-        <Heading level={4} className="my-8">
+
+        <Heading level={4} className="mb-2">
           2XL
         </Heading>
         <div className="my-8">

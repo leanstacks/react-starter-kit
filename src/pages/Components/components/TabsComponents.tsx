@@ -65,9 +65,11 @@ const TabsComponents = ({
           <Table<ComponentProperty, string> data={data} columns={columns} />
         </div>
 
-        <Heading level={3}>Examples</Heading>
+        <Heading level={3} className="mb-2">
+          Examples
+        </Heading>
 
-        <Heading level={4} className="my-8">
+        <Heading level={4} className="mb-2">
           Default Tabs
         </Heading>
         <div className="my-8">
@@ -103,7 +105,7 @@ const TabsComponents = ({
           />
         </div>
 
-        <Heading level={4} className="my-8">
+        <Heading level={4} className="mb-2">
           Stretched Tabs
         </Heading>
         <div className="my-8">

@@ -59,7 +59,7 @@ const PageComponents = ({
       <div className="my-8">
         <div className="mb-4">
           The <span className="font-mono font-bold">Page</span> component renders a responsive,
-          styled wrapper for a page of content, ensuring consisten spacing at various breakpoints.
+          styled wrapper for a page of content, ensuring consistent spacing at various breakpoints.
         </div>
         <div className="my-8">
           <Heading level={3} className="mb-2">
@@ -68,7 +68,9 @@ const PageComponents = ({
           <Table<ComponentProperty, string> data={data} columns={columns} />
         </div>
 
-        <Heading level={3}>Examples</Heading>
+        <Heading level={3} className="mb-2">
+          Examples
+        </Heading>
 
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">

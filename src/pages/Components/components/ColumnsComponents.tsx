@@ -77,14 +77,16 @@ const ColumnsComponents = ({
           <Table<ComponentProperty, string> data={data} columns={columns} />
         </div>
 
-        <Heading level={3}>Examples</Heading>
+        <Heading level={3} className="mb-2">
+          Examples
+        </Heading>
 
-        <Heading level={4} className="my-8">
+        <Heading level={4} className="mb-2">
           Default - Two Columns
         </Heading>
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-            {/* Tabs Example Here */}
+            {/* Example */}
             <Columns className="w-full">
               <Columns.Column>
                 <Block>1</Block>
@@ -107,12 +109,12 @@ const ColumnsComponents = ({
           />
         </div>
 
-        <Heading level={4} className="my-8">
+        <Heading level={4} className="mb-2">
           Small Left Column
         </Heading>
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-            {/* Tabs Example Here */}
+            {/* Example */}
             <Columns layout="1-3" className="w-full">
               <Columns.Column>
                 <Block>1</Block>
@@ -135,12 +137,12 @@ const ColumnsComponents = ({
           />
         </div>
 
-        <Heading level={4} className="my-8">
+        <Heading level={4} className="mb-2">
           Small Right Column
         </Heading>
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-            {/* Tabs Example Here */}
+            {/* Example */}
             <Columns layout="3-1" className="w-full">
               <Columns.Column>
                 <Block>1</Block>
@@ -163,12 +165,12 @@ const ColumnsComponents = ({
           />
         </div>
 
-        <Heading level={4} className="my-8">
+        <Heading level={4} className="mb-2">
           Three Columns
         </Heading>
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-            {/* Tabs Example Here */}
+            {/* Example */}
             <Columns layout="1-1-1" className="w-full">
               <Columns.Column>
                 <Block>1</Block>
@@ -197,12 +199,12 @@ const ColumnsComponents = ({
           />
         </div>
 
-        <Heading level={4} className="my-8">
+        <Heading level={4} className="mb-2">
           Wide Middle Column
         </Heading>
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-            {/* Tabs Example Here */}
+            {/* Example */}
             <Columns layout="1-2-1" className="w-full">
               <Columns.Column>
                 <Block>1</Block>

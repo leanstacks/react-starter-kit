@@ -8,7 +8,6 @@ import Card from 'common/components/Card/Card';
 import MessageCard from 'common/components/Card/MessageCard';
 import Heading from 'common/components/Text/Heading';
 import Button from 'common/components/Button/Button';
-import Text from 'common/components/Text/Text';
 
 /**
  * Properties for the `CardComponents` React component.
@@ -95,14 +94,18 @@ const CardComponents = ({
           <Table<ComponentProperty, string> data={cardData} columns={columns} />
         </div>
 
-        <Heading level={3}>Examples</Heading>
+        <Heading level={3} className="mb-2">
+          Examples
+        </Heading>
 
-        <Heading level={4}>Card components</Heading>
-        <Text className="text-neutral-500 italic">
+        <Heading level={4} className="mb-2">
+          Card components
+        </Heading>
+        <div className="text-sm opacity-85">
           The Card component is a compound component. It has component properties which allow you to
           compose Card content. Those components include: Header, Title, Subtitle, Body, Footer,
           Separator, and Image.
-        </Text>
+        </div>
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <Card className="w-100">
@@ -145,11 +148,13 @@ const CardComponents = ({
           />
         </div>
 
-        <Heading level={4}>Card images</Heading>
-        <Text className="text-neutral-500 italic">
+        <Heading level={4} className="mb-2">
+          Card images
+        </Heading>
+        <div className="text-sm opacity-85">
           Card images may be used anywhere within a Card. If the image is the first or last child of
           the Card component, the image will be flush to the top or bottom and the corners rounded.
-        </Text>
+        </div>
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             <Card className="w-100">
