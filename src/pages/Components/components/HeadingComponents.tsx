@@ -5,15 +5,14 @@ import CodeSnippet from 'common/components/Text/CodeSnippet';
 import { ComponentProperty } from '../model/components';
 import Table from 'common/components/Table/Table';
 import Heading from 'common/components/Text/Heading';
-import Text from 'common/components/Text/Text';
 
 /**
- * The `TextComponents` React component renders a set of examples illustrating
- * the use of the text family of components.
+ * The `HeadingComponents` React component renders a set of examples illustrating
+ * the use of the `Heading` component.
  */
-const TextComponents = ({
+const HeadingComponents = ({
   className,
-  testId = 'components-text',
+  testId = 'components-heading',
 }: BaseComponentProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
@@ -25,12 +24,12 @@ const TextComponents = ({
       description: 'Optional. Additional CSS class names.',
     },
     {
-      name: 'testId',
-      description: 'Optional. Identifier for testing.',
+      name: 'level',
+      description: 'Optional. The heading level 1 through 6. Default: 2',
     },
     {
-      name: 'variant',
-      description: 'Optional. Applies default styling. Default: body copy',
+      name: 'testId',
+      description: 'Optional. Identifier for testing.',
     },
   ];
   const columnHelper = createColumnHelper<ComponentProperty>();
@@ -51,12 +50,12 @@ const TextComponents = ({
     <section className={className} data-testid={testId}>
       <div className="mb-16">
         <Heading level={2} className="mb-4">
-          Text Component
+          Heading Component
         </Heading>
 
         <div className="my-8">
-          The <span className="font-mono font-bold">Text</span> component displays styled text based
-          upon the provided `variant`.
+          The <span className="font-mono font-bold">Heading</span> component displays blocks of text
+          as HTML heading elements.
         </div>
 
         <div className="my-8">
@@ -66,39 +65,54 @@ const TextComponents = ({
           <Table<ComponentProperty, string> data={data} columns={columns} />
         </div>
 
-        <Heading level={3}>Examples</Heading>
+        <Heading level={3} className="mb-2">
+          Examples
+        </Heading>
+
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-            <Text variant="danger">Danger! Something bad has happened.</Text>
+            <Heading level={1}>Heading 1</Heading>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Text variant="danger">Danger! Something bad has happened.</Text>`}
-          />
+          <CodeSnippet className="my-2" code={`<Heading level={1}>Heading 1</Heading>`} />
         </div>
 
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-            <Text variant="warning">Warning! Be sure to read this first.</Text>
+            <Heading level={2}>Heading 2</Heading>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Text variant='warning'>Warning! Be sure to read this first.</Text>`}
-          />
+          <CodeSnippet className="my-2" code={`<Heading level={2}>Heading 2</Heading>`} />
         </div>
 
         <div className="my-8">
           <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-            <Text variant="info">This is some information to be highlighted.</Text>
+            <Heading level={3}>Heading 3</Heading>
           </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<Text variant="info">This is some information to be highlighted.</Text>`}
-          />
+          <CodeSnippet className="my-2" code={`<Heading level={3}>Heading 3</Heading>`} />
+        </div>
+
+        <div className="my-8">
+          <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+            <Heading level={4}>Heading 4</Heading>
+          </div>
+          <CodeSnippet className="my-2" code={`<Heading level={4}>Heading 4</Heading>`} />
+        </div>
+
+        <div className="my-8">
+          <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+            <Heading level={5}>Heading 5</Heading>
+          </div>
+          <CodeSnippet className="my-2" code={`<Heading level={5}>Heading 5</Heading>`} />
+        </div>
+
+        <div className="my-8">
+          <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+            <Heading level={6}>Heading 6</Heading>
+          </div>
+          <CodeSnippet className="my-2" code={`<Heading level={6}>Heading 6</Heading>`} />
         </div>
       </div>
     </section>
   );
 };
 
-export default TextComponents;
+export default HeadingComponents;

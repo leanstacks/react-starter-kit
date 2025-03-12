@@ -55,6 +55,9 @@ const ComponentsPage = (): JSX.Element => {
             <MenuNavLink to="dropdown" styleActive>
               Dropdown
             </MenuNavLink>
+            <MenuNavLink to="heading" styleActive>
+              Heading
+            </MenuNavLink>
             <MenuNavLink to="icon" styleActive>
               Icon
             </MenuNavLink>
