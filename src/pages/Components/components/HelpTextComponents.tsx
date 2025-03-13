@@ -97,7 +97,7 @@ const HelpTextComponents = ({
           Content
         </Heading>
         <div className="mb-4 opacity-85">
-          You may pass complex content as the "chilren" to the HelpText component.
+          You may pass complex content as the "children" to the HelpText component.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">

@@ -35,7 +35,7 @@ const TextareaComponents = ({
     },
     {
       name: 'name',
-      description: 'The textarea name.',
+      description: 'The form control name.',
     },
     {
       name: 'supportingText',
