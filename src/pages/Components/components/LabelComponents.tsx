@@ -79,7 +79,7 @@ const LabelComponents = ({
         </Heading>
 
         <Heading level={4} className="my-2">
-          Standard
+          Basic
         </Heading>
         <div className="mb-4 opacity-85">
           This is the most basic use of the Label component. It displays a label associated with a
