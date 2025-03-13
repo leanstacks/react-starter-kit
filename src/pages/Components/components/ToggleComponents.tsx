@@ -1,7 +1,7 @@
 import { createColumnHelper } from '@tanstack/react-table';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { object, string } from 'yup';
+import { boolean, object } from 'yup';
 import noop from 'lodash/noop';
 
 import { BaseComponentProps } from 'common/utils/types';
@@ -9,16 +9,16 @@ import { ComponentProperty } from '../model/components';
 import Table from 'common/components/Table/Table';
 import CodeSnippet from 'common/components/Text/CodeSnippet';
 import Heading from 'common/components/Text/Heading';
-import Input from 'common/components/Form/Input';
+import Toggle from 'common/components/Form/Toggle';
 import Button from 'common/components/Button/Button';
 
 /**
- * The `InputComponents` component renders a set of examples illustrating
- * the use of the `Input` component.
+ * The `ToggleComponents` component renders a set of examples illustrating
+ * the use of the `Toggle` component.
  */
-const InputComponents = ({
+const ToggleComponents = ({
   className,
-  testId = 'components-input',
+  testId = 'components-toggle',
 }: BaseComponentProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
@@ -30,12 +30,20 @@ const InputComponents = ({
       description: 'The React Hook Form control object.',
     },
     {
+      name: 'disabled',
+      description: 'Optional. Indicates if the control is disabled. Defaults to false.',
+    },
+    {
       name: 'label',
       description: 'Optional. The label text.',
     },
     {
       name: 'name',
       description: 'The form control name.',
+    },
+    {
+      name: 'required',
+      description: 'Optional. Indicates if the control is required. Defaults to false.',
     },
     {
       name: 'supportingText',
@@ -62,16 +70,12 @@ const InputComponents = ({
 
   const { control, handleSubmit, reset } = useForm({
     defaultValues: {
-      firstName: '',
-      middleInitial: '',
-      lastName: '',
+      isNotificationsEnabled: true,
     },
     mode: 'all',
     resolver: yupResolver(
       object({
-        firstName: string(),
-        middleInitial: string(),
-        lastName: string().required('Last name is required.'),
+        isNotificationsEnabled: boolean(),
       }),
     ),
   });
@@ -81,18 +85,13 @@ const InputComponents = ({
   return (
     <section className={className} data-testid={testId}>
       <Heading level={2} className="mb-4">
-        Input Component
+        Toggle Component
       </Heading>
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">Input</span> component renders a HTML input
-          element. It is used to capture a single line of text input. The Input component internally
-          uses the Label, HelpText, and FieldError components.
-        </div>
-        <div className="mb-4">
-          In addition to the custom properties listed below, the Input component also accepts all
-          standard HTML input element attribute React properties.
+          The <span className="font-mono font-bold">Toggle</span> component renders a button form
+          control which may be used for binary, i.e. true / false, inputs.
         </div>
 
         <div className="my-8">
@@ -110,19 +109,15 @@ const InputComponents = ({
           Basic
         </Heading>
         <div className="mb-4 opacity-85">
-          This is the most basic use of the Input component. It has no label or supporting text. It
+          This is the most basic use of the Toggle component. It has no label or supporting text. It
           is integrated with React Hook Form through the "control" and "reset" values obtained from
           the "useForm" hook (see the React Hook Form documentation for more information).
-        </div>
-        <div className="mb-4 opacity-85">
-          To view an example validation error message, click or tab into the Last Name input and
-          then exit the field without entering a value.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
             <form onSubmit={handleSubmit(onSubmit)}>
-              <Input control={control} name="firstName" className="mb-4" />
+              <Toggle control={control} name="isNotificationsEnabled" className="mb-4" />
               <Button
                 onClick={() => reset()}
                 size="sm"
@@ -137,8 +132,14 @@ const InputComponents = ({
           <CodeSnippet
             className="my-2"
             code={`<form onSubmit={handleSubmit(onSubmit)}>
-  <Input control={control} name="firstName" className="mb-4" />
-  <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto">
+  <Toggle control={control} name="isNotificationsEnabled" className="mb-4" />
+  <Button
+    onClick={() => reset()}
+    size="sm"
+    variant="outline"
+    className="ml-auto"
+    testId="reset-1"
+  >
     Reset
   </Button>
 </form>`}
@@ -149,19 +150,17 @@ const InputComponents = ({
           Labels
         </Heading>
         <div className="mb-4 opacity-85">
-          Use the "label" property to associate a HTML label with the input. When the input is
+          Use the "label" property to associate a HTML label with the toggle. When the toggle is
           required, the label is styled to indicate.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
             <form onSubmit={handleSubmit(onSubmit)}>
-              <Input control={control} name="firstName" label="First Name" className="mb-4" />
-              <Input
+              <Toggle
                 control={control}
-                name="lastName"
-                label="Last Name"
-                required
+                name="isNotificationsEnabled"
+                label="Enable Notifications"
                 className="mb-4"
               />
               <Button
@@ -169,7 +168,7 @@ const InputComponents = ({
                 size="sm"
                 variant="outline"
                 className="ml-auto"
-                testId="reset-2"
+                testId="reset-1"
               >
                 Reset
               </Button>
@@ -178,15 +177,19 @@ const InputComponents = ({
           <CodeSnippet
             className="my-2"
             code={`<form onSubmit={handleSubmit(onSubmit)}>
-  <Input control={control} name="firstName" label="First Name" className="mb-4" />
-  <Input
+  <Toggle
     control={control}
-    name="lastName"
-    label="Last Name"
-    required
+    name="isNotificationsEnabled"
+    label="Enable Notifications"
     className="mb-4"
   />
-  <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto">
+  <Button
+    onClick={() => reset()}
+    size="sm"
+    variant="outline"
+    className="ml-auto"
+    testId="reset-1"
+  >
     Reset
   </Button>
 </form>`}
@@ -197,26 +200,18 @@ const InputComponents = ({
           Supporting Text
         </Heading>
         <div className="mb-4 opacity-85">
-          Use the "supportingText" property to add helpful information below the input containing
+          Use the "supportingText" property to add helpful information below the toggle containing
           instructions, validation requirements, or other tips for entering information.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
             <form onSubmit={handleSubmit(onSubmit)}>
-              <Input
+              <Toggle
                 control={control}
-                name="firstName"
-                label="First Name"
-                supportingText="Enter your first name, or given name."
-                className="mb-4"
-              />
-              <Input
-                control={control}
-                name="lastName"
-                label="Last Name"
-                supportingText="Enter your last name, or surname."
-                required
+                name="isNotificationsEnabled"
+                label="Enable Notifications"
+                supportingText="Enable to receive push notifications from this app."
                 className="mb-4"
               />
               <Button
@@ -224,7 +219,7 @@ const InputComponents = ({
                 size="sm"
                 variant="outline"
                 className="ml-auto"
-                testId="reset-3"
+                testId="reset-1"
               >
                 Reset
               </Button>
@@ -233,92 +228,20 @@ const InputComponents = ({
           <CodeSnippet
             className="my-2"
             code={`<form onSubmit={handleSubmit(onSubmit)}>
-  <Input
+  <Toggle
     control={control}
-    name="firstName"
-    label="First Name"
-    supportingText="Enter your first name, or given name."
+    name="isNotificationsEnabled"
+    label="Enable Notifications"
+    supportingText="Enable to receive push notifications from this app."
     className="mb-4"
   />
-  <Input
-    control={control}
-    name="lastName"
-    label="Last Name"
-    supportingText="Enter your last name, or surname."
-    required
-    className="mb-4"
-  />
-  <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto">
-    Reset
-  </Button>
-</form>`}
-          />
-        </div>
-
-        <Heading level={4} className="my-2">
-          HTML input attributes
-        </Heading>
-        <div className="mb-4 opacity-85">
-          You may use standard HTML input element attributes; however, take caution that you do not
-          conflict with attributes supplied by React Hook Form such as "onChange" and "onBlur".
-        </div>
-        <div className="my-8">
-          <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-            {/* Example */}
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <Input
-                control={control}
-                name="firstName"
-                label="First Name"
-                supportingText="Enter your first name, or given name."
-                placeholder="e.g. Ron"
-                autoComplete="off"
-                className="mb-4"
-              />
-              <Input
-                control={control}
-                name="lastName"
-                label="Last Name"
-                supportingText="Enter your last name, or surname."
-                placeholder="e.g. McDonald"
-                autoComplete="off"
-                required
-                className="mb-4"
-              />
-              <Button
-                onClick={() => reset()}
-                size="sm"
-                variant="outline"
-                className="ml-auto"
-                testId="reset-4"
-              >
-                Reset
-              </Button>
-            </form>
-          </div>
-          <CodeSnippet
-            className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
-  <Input
-    control={control}
-    name="firstName"
-    label="First Name"
-    supportingText="Enter your first name, or given name."
-    placeholder="e.g. Ron"
-    autoComplete="off"
-    className="mb-4"
-  />
-  <Input
-    control={control}
-    name="lastName"
-    label="Last Name"
-    supportingText="Enter your last name, or surname."
-    placeholder="e.g. McDonald"
-    autoComplete="off"
-    required
-    className="mb-4"
-  />
-  <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto">
+  <Button
+    onClick={() => reset()}
+    size="sm"
+    variant="outline"
+    className="ml-auto"
+    testId="reset-1"
+  >
     Reset
   </Button>
 </form>`}
@@ -329,4 +252,4 @@ const InputComponents = ({
   );
 };
 
-export default InputComponents;
+export default ToggleComponents;

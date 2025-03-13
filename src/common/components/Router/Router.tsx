@@ -44,6 +44,7 @@ const SearchInputComponents = lazy(
 const TabsComponents = lazy(() => import('pages/Components/components/TabsComponents'));
 const TextComponents = lazy(() => import('pages/Components/components/TextComponents'));
 const TextareaComponents = lazy(() => import('pages/Components/components/TextareaComponents'));
+const ToggleComponents = lazy(() => import('pages/Components/components/ToggleComponents'));
 
 // Tasks Page Family
 const TasksPage = lazy(() => import('pages/Tasks/TasksPage'));
@@ -175,6 +176,10 @@ export const routes: RouteObject[] = [
               {
                 path: 'textarea',
                 element: withSuspense(<TextareaComponents />),
+              },
+              {
+                path: 'toggle',
+                element: withSuspense(<ToggleComponents />),
               },
             ],
           },

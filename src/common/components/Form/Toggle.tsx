@@ -32,8 +32,6 @@ export interface ToggleProps<T extends FieldValues> extends BaseComponentProps {
 /**
  * The `Toggle` component renders a button form control which may be used for
  * binary (true/false) inputs.
- * @param {ToggleProps} props - Component properties.
- * @returns JSX
  */
 const Toggle = <T extends FieldValues>({
   className,
