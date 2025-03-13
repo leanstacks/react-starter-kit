@@ -91,7 +91,7 @@ const ToggleComponents = ({
       <div className="my-8">
         <div className="mb-4">
           The <span className="font-mono font-bold">Toggle</span> component renders a button form
-          control which may be used for binary, i.e. true / false, inputs.
+          control which may be used for binary inputs, i.e. true / false.
         </div>
 
         <div className="my-8">
