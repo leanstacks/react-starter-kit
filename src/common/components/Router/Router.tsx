@@ -34,6 +34,7 @@ const DividerComponents = lazy(() => import('pages/Components/components/Divider
 const DropdownComponents = lazy(() => import('pages/Components/components/DropdownComponents'));
 const HeadingComponents = lazy(() => import('pages/Components/components/HeadingComponents'));
 const IconComponents = lazy(() => import('pages/Components/components/IconComponents'));
+const InputComponents = lazy(() => import('pages/Components/components/InputComponents'));
 const PageComponents = lazy(() => import('pages/Components/components/PageComponents'));
 const SearchInputComponents = lazy(
   () => import('pages/Components/components/SearchInputComponents'),
@@ -139,6 +140,10 @@ export const routes: RouteObject[] = [
               {
                 path: 'icon',
                 element: withSuspense(<IconComponents />),
+              },
+              {
+                path: 'input',
+                element: withSuspense(<InputComponents />),
               },
               {
                 path: 'page',

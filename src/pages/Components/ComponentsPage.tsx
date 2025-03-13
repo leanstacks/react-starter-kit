@@ -64,6 +64,9 @@ const ComponentsPage = (): JSX.Element => {
             <MenuNavLink to="icon" styleActive>
               Icon
             </MenuNavLink>
+            <MenuNavLink to="input" styleActive>
+              Input
+            </MenuNavLink>
             <MenuNavLink to="page" styleActive>
               Page
             </MenuNavLink>
