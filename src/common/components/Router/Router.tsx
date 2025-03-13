@@ -33,6 +33,7 @@ const DialogComponents = lazy(() => import('pages/Components/components/DialogCo
 const DividerComponents = lazy(() => import('pages/Components/components/DividerComponents'));
 const DropdownComponents = lazy(() => import('pages/Components/components/DropdownComponents'));
 const HeadingComponents = lazy(() => import('pages/Components/components/HeadingComponents'));
+const HelpTextComponents = lazy(() => import('pages/Components/components/HelpTextComponents'));
 const IconComponents = lazy(() => import('pages/Components/components/IconComponents'));
 const InputComponents = lazy(() => import('pages/Components/components/InputComponents'));
 const LabelComponents = lazy(() => import('pages/Components/components/LabelComponents'));
@@ -138,6 +139,10 @@ export const routes: RouteObject[] = [
               {
                 path: 'heading',
                 element: withSuspense(<HeadingComponents />),
+              },
+              {
+                path: 'help-text',
+                element: withSuspense(<HelpTextComponents />),
               },
               {
                 path: 'icon',
