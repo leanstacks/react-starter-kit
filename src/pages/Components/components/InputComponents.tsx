@@ -146,7 +146,7 @@ const InputComponents = ({
         </div>
 
         <Heading level={4} className="my-2">
-          With Label
+          Labels
         </Heading>
         <div className="mb-4 opacity-85">
           Use the "label" property to associate a HTML label with the input. When the input is
@@ -194,7 +194,7 @@ const InputComponents = ({
         </div>
 
         <Heading level={4} className="my-2">
-          With Supporting Text
+          Supporting Text
         </Heading>
         <div className="mb-4 opacity-85">
           Use the "supportingText" property to add helpful information below the input containing
@@ -256,7 +256,7 @@ const InputComponents = ({
         </div>
 
         <Heading level={4} className="my-2">
-          Use standard input attributes
+          HTML input attributes
         </Heading>
         <div className="mb-4 opacity-85">
           You may use standard HTML input element attributes; however, take caution that you do not
