@@ -79,6 +79,9 @@ const ComponentsPage = (): JSX.Element => {
             <MenuNavLink to="text" styleActive>
               Text
             </MenuNavLink>
+            <MenuNavLink to="textarea" styleActive>
+              Textarea
+            </MenuNavLink>
           </Columns.Column>
           <Columns.Column data-testid="page-components-content">
             <Outlet />
