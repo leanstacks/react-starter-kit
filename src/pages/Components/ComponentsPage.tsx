@@ -79,6 +79,9 @@ const ComponentsPage = (): JSX.Element => {
             <MenuNavLink to="search-input" styleActive>
               Search Input
             </MenuNavLink>
+            <MenuNavLink to="select" styleActive>
+              Select
+            </MenuNavLink>
             <MenuNavLink to="tabs" styleActive>
               Tabs
             </MenuNavLink>
