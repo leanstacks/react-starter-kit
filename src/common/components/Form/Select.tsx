@@ -11,8 +11,14 @@ import FAIcon, { FAIconProps } from '../Icon/FAIcon';
 import Backdrop from '../Backdrop/Backdrop';
 import Divider, { DividerProps } from '../Divider/Divider';
 
+/**
+ * The type of value for the select form control.
+ */
 type SelectValue = boolean | number | string;
 
+/**
+ * Defines the attributes of the SelectContext value.
+ */
 type SelectContextValue = {
   isDisabled: boolean;
   isError: boolean;
@@ -22,6 +28,9 @@ type SelectContextValue = {
   value?: SelectValue;
 };
 
+/**
+ * The SelectContext instance.
+ */
 const SelectContext = createContext<SelectContextValue>({
   isDisabled: false,
   isError: false,
@@ -54,10 +63,7 @@ export interface SelectProps<T extends FieldValues> extends BaseComponentProps, 
 }
 
 /**
- * The `Select` component renders a HTML `select` element. It is used to capture
- * one or more values from a curated set of options.
- *
- * The `children` must contain one or more `option` or `optgroup` elements.
+ * The `Select` component renders a list of options from which a user may select.
  */
 const Select = <T extends FieldValues>({
   children,
@@ -100,6 +106,10 @@ const Select = <T extends FieldValues>({
   );
 };
 
+/**
+ * The `Trigger` component wraps the element used to open the Select Options.
+ * There should be 1 Trigger within a Select.
+ */
 const Trigger = ({
   children,
   className,
@@ -116,7 +126,7 @@ const Trigger = ({
   return (
     <div
       className={cn(
-        'flex items-center gap-2 border-b py-0.5',
+        'flex w-full items-center gap-2 border-b py-0.5',
         { 'border-neutral-500/50 focus:border-blue-600': !isError },
         { 'border-red-600': isError },
         { 'opacity-50': isDisabled },
@@ -132,15 +142,24 @@ const Trigger = ({
 };
 Select.Trigger = Trigger;
 
+/**
+ * Properties for the Value component.
+ */
 interface ValueProps extends BaseComponentProps {
   placeholder?: string;
 }
 
+/**
+ * The `Value` component displays either the current Select value. If there is no value
+ * and "placeholder" is supplied, the placeholder is displayed.
+ *
+ * The Value component is a child of the Select Trigger.
+ */
 const Value = ({ className, placeholder, testId = 'select-value' }: ValueProps): JSX.Element => {
   const { value } = useContext(SelectContext);
 
   return (
-    <div className={cn('grow truncate', className)} data-testid={testId}>
+    <div className={cn('grow truncate text-left', className)} data-testid={testId}>
       {value}
       {!value && <span className="opacity-75">{placeholder}</span>}
     </div>
@@ -148,6 +167,10 @@ const Value = ({ className, placeholder, testId = 'select-value' }: ValueProps):
 };
 Select.Value = Value;
 
+/**
+ * The `Icon` component displays the icon within a Select Trigger.  By default,
+ * the chevron down icon is displayed; however, the icon may be overridden.
+ */
 const Icon = ({
   icon = 'chevronDown',
   testId = 'select-icon',
@@ -157,6 +180,10 @@ const Icon = ({
 };
 Select.Icon = Icon;
 
+/**
+ * The `Options` component wraps the individual Select Option, Header,
+ * and Separator components. There should be 1 Options within a Select.
+ */
 const Options = ({
   children,
   className,
@@ -186,10 +213,18 @@ const Options = ({
 };
 Select.Options = Options;
 
+/**
+ * Properties for the Option component.
+ */
 interface OptionProps extends BaseComponentProps, PropsWithChildren {
   value: SelectValue;
 }
 
+/**
+ * The `Option` component renders an individual Option. The "value" property
+ * specifies the value which will be updated in the form context when this Option
+ * is selected.
+ */
 const Option = ({
   children,
   className,
@@ -225,6 +260,10 @@ const Option = ({
 };
 Select.Option = Option;
 
+/**
+ * The `Heading` component renders a heading within the Options list. A Heading
+ * is useful for categorizing a group of related Option components.
+ */
 const Heading = ({
   children,
   className,
@@ -238,6 +277,10 @@ const Heading = ({
 };
 Select.Heading = Heading;
 
+/**
+ * The `Separator` component renders a horizontal divider within Select Options.
+ * This is useful to organize and separate groups of related options.
+ */
 const Separator = ({ className, testId = 'select-separator' }: DividerProps): JSX.Element => {
   return <Divider className={cn('-mx-1 my-1', className)} testId={testId} />;
 };

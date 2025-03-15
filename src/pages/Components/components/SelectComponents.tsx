@@ -122,7 +122,7 @@ const SelectComponents = ({
                 className="mb-4"
               >
                 <Select.Trigger>
-                  <Select.Value placeholder="Select a color" />
+                  <Select.Value placeholder="None selected" />
                   <Select.Icon />
                 </Select.Trigger>
                 <Select.Options>
