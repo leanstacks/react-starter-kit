@@ -276,10 +276,10 @@ const Option = ({
       role="option"
       data-testid={testId}
     >
+      <div className="flex w-4 items-center justify-around">
+        {isSelected && <FAIcon icon="check" size="sm" testId={`${testId}-selected`} />}
+      </div>
       {children}
-      {isSelected && (
-        <FAIcon icon="check" size="sm" className="ml-auto" testId={`${testId}-selected`} />
-      )}
     </li>
   );
 };
