@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useContext, useState } from 'react';
+import { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
 import { Control, FieldValues, Path, useController } from 'react-hook-form';
 import noop from 'lodash/noop';
 
@@ -24,8 +24,10 @@ type SelectContextValue = {
   isError: boolean;
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
-  setValue: (val: SelectValue) => void;
+  text?: string;
+  setText: (text?: string) => void;
   value?: SelectValue;
+  setValue: (val: SelectValue) => void;
 };
 
 /**
@@ -36,8 +38,10 @@ const SelectContext = createContext<SelectContextValue>({
   isError: false,
   isOpen: false,
   setIsOpen: noop,
-  setValue: noop,
+  text: undefined,
+  setText: noop,
   value: undefined,
+  setValue: noop,
 });
 
 /**
@@ -77,7 +81,15 @@ const Select = <T extends FieldValues>({
   testId = 'select',
 }: SelectProps<T>): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
+  const [text, setText] = useState<string>();
   const { field, fieldState } = useController({ control, name: name as Path<T> });
+
+  /** Reset "text" when field value is changed to empty */
+  useEffect(() => {
+    if (!field.value) {
+      setText(undefined);
+    }
+  }, [field.value]);
 
   return (
     <div className={cn('relative', className)} data-testid={testId}>
@@ -92,8 +104,10 @@ const Select = <T extends FieldValues>({
           isError: !!fieldState.error,
           isOpen,
           setIsOpen,
-          setValue: field.onChange,
+          text,
+          setText,
           value: field.value,
+          setValue: field.onChange,
         }}
       >
         {children}
@@ -124,7 +138,7 @@ const Trigger = ({
   };
 
   return (
-    <div
+    <button
       className={cn(
         'flex w-full items-center gap-2 border-b py-0.5',
         { 'border-neutral-500/50 focus:border-blue-600': !isError },
@@ -134,10 +148,12 @@ const Trigger = ({
         className,
       )}
       onClick={handleClick}
+      aria-haspopup={true}
+      aria-expanded={isOpen}
       data-testid={testId}
     >
       {children}
-    </div>
+    </button>
   );
 };
 Select.Trigger = Trigger;
@@ -156,12 +172,12 @@ interface ValueProps extends BaseComponentProps {
  * The Value component is a child of the Select Trigger.
  */
 const Value = ({ className, placeholder, testId = 'select-value' }: ValueProps): JSX.Element => {
-  const { value } = useContext(SelectContext);
+  const { text } = useContext(SelectContext);
 
   return (
     <div className={cn('grow truncate text-left', className)} data-testid={testId}>
-      {value}
-      {!value && <span className="opacity-75">{placeholder}</span>}
+      {text}
+      {!text && <span className="opacity-75">{placeholder}</span>}
     </div>
   );
 };
@@ -198,16 +214,17 @@ const Options = ({
         onClick={() => setIsOpen(!isOpen)}
         testId={`${testId}-backdrop`}
       />
-      <div
+      <ul
         className={cn(
           'absolute right-0 z-1001 mt-1 max-h-60 w-full overflow-y-auto rounded-md border border-neutral-500 bg-white p-1 dark:bg-neutral-800',
           { hidden: !isOpen },
           className,
         )}
+        role="listbox"
         data-testid={testId}
       >
         {children}
-      </div>
+      </ul>
     </>
   );
 };
@@ -231,8 +248,15 @@ const Option = ({
   testId = 'select-option',
   value,
 }: OptionProps): JSX.Element => {
-  const { setIsOpen, value: currentValue, setValue } = useContext(SelectContext);
+  const { setIsOpen, value: currentValue, setValue, setText } = useContext(SelectContext);
   const isSelected = value === currentValue;
+
+  /* Set the "text" value for the selected item. */
+  useEffect(() => {
+    if (isSelected) {
+      setText(children?.toString());
+    }
+  }, [isSelected]);
 
   const handleClick = () => {
     setValue(value);
@@ -240,7 +264,7 @@ const Option = ({
   };
 
   return (
-    <div
+    <li
       className={cn(
         'flex items-center gap-2 rounded-sm px-2 py-1.5 text-sm not-last:mb-1',
         { 'bg-neutral-500/25': isSelected },
@@ -249,13 +273,14 @@ const Option = ({
       )}
       onClick={handleClick}
       aria-selected={isSelected}
+      role="option"
       data-testid={testId}
     >
       {children}
       {isSelected && (
         <FAIcon icon="check" size="sm" className="ml-auto" testId={`${testId}-selected`} />
       )}
-    </div>
+    </li>
   );
 };
 Select.Option = Option;
