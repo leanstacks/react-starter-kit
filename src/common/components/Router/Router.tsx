@@ -42,6 +42,7 @@ const SearchInputComponents = lazy(
   () => import('pages/Components/components/SearchInputComponents'),
 );
 const SelectComponents = lazy(() => import('pages/Components/components/SelectComponents'));
+const SkeletonComponents = lazy(() => import('pages/Components/components/SkeletonComponents'));
 const TabsComponents = lazy(() => import('pages/Components/components/TabsComponents'));
 const TextComponents = lazy(() => import('pages/Components/components/TextComponents'));
 const TextareaComponents = lazy(() => import('pages/Components/components/TextareaComponents'));
@@ -169,6 +170,10 @@ export const routes: RouteObject[] = [
               {
                 path: 'select',
                 element: withSuspense(<SelectComponents />),
+              },
+              {
+                path: 'skeleton',
+                element: withSuspense(<SkeletonComponents />),
               },
               {
                 path: 'tabs',
