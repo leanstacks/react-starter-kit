@@ -1,7 +1,7 @@
 import { useGetUser } from 'common/api/useGetUser';
 import { BaseComponentProps } from 'common/utils/types';
 import Avatar from 'common/components/Icon/Avatar';
-import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
+import Skeleton from 'common/components/Loader/Skeleton';
 import FAIcon from 'common/components/Icon/FAIcon';
 
 /**
@@ -30,8 +30,8 @@ const UserInfo = ({
     <div className={className} data-testid={testId}>
       {isLoading && (
         <div data-testid={`${testId}-loading`}>
-          <LoaderSkeleton className="mb-2 h-6 w-80" />
-          <LoaderSkeleton className="h-4 w-full" />
+          <Skeleton className="mb-2 h-6 w-80" />
+          <Skeleton className="h-4 w-full" />
         </div>
       )}
 

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { useGetTask } from '../api/useGetTask';
-import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
+import Skeleton from 'common/components/Loader/Skeleton';
 import FAIcon from 'common/components/Icon/FAIcon';
 import TaskDeleteDialog from './Delete/TaskDeleteDialog';
 import Button from 'common/components/Button/Button';
@@ -48,7 +48,7 @@ const TaskDetailLayout = ({
             </h2>
           </div>
         )}
-        {isLoadingTask && <LoaderSkeleton className="h-7 w-32" />}
+        {isLoadingTask && <Skeleton className="h-7 w-32" />}
 
         {/* Menu */}
         <div className="ms-auto flex items-center gap-4">
@@ -92,16 +92,16 @@ const TaskDetailLayout = ({
       {isLoadingTask && (
         <div data-testid={`${testId}-loading`}>
           <div className="mt-4">
-            <LoaderSkeleton className="mb-2 h-4 w-12" />
-            <LoaderSkeleton className="h-5 w-80" />
+            <Skeleton className="mb-2 h-4 w-12" />
+            <Skeleton className="h-5 w-80" />
           </div>
           <div className="mt-4">
-            <LoaderSkeleton className="mb-2 h-4 w-12" />
-            <LoaderSkeleton className="h-5 w-80" />
+            <Skeleton className="mb-2 h-4 w-12" />
+            <Skeleton className="h-5 w-80" />
           </div>
           <div className="mt-4">
-            <LoaderSkeleton className="mb-2 h-4 w-12" />
-            <LoaderSkeleton className="h-5 w-80" />
+            <Skeleton className="mb-2 h-4 w-12" />
+            <Skeleton className="h-5 w-80" />
           </div>
         </div>
       )}

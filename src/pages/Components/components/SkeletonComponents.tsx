@@ -5,11 +5,11 @@ import { ComponentProperty } from '../model/components';
 import Table from 'common/components/Table/Table';
 import CodeSnippet from 'common/components/Text/CodeSnippet';
 import Heading from 'common/components/Text/Heading';
-import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
+import Skeleton from 'common/components/Loader/Skeleton';
 
 /**
  * The `SkeletonComponents` component renders a set of examples illustrating
- * the use of the `LoaderSkeleton` component.
+ * the use of the `Skeleton` component.
  */
 const SelectComponents = ({
   className,
@@ -47,8 +47,8 @@ const SelectComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">LoaderSkeleton</span> component displays an
-          animated loader which pulses faintly. The skeleton loader is typically used when initially
+          The <span className="font-mono font-bold">Skeleton</span> component displays an animated
+          loader which pulses faintly. The skeleton component is typically used when initially
           loading data asynchronously.
         </div>
 
@@ -66,15 +66,13 @@ const SelectComponents = ({
         <Heading level={4} className="my-2">
           Basic
         </Heading>
-        <div className="mb-4 opacity-85">
-          This is the most basic use of the LoaderSkeleton component.
-        </div>
+        <div className="mb-4 opacity-85">This is the most basic use of the Skeleton component.</div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
-            <LoaderSkeleton className="h-5" />
+            <Skeleton className="h-5" />
           </div>
-          <CodeSnippet className="my-2" code={`<LoaderSkeleton className="h-5" />`} />
+          <CodeSnippet className="my-2" code={`<Skeleton className="h-5" />`} />
         </div>
 
         <Heading level={4} className="my-2">
@@ -86,20 +84,20 @@ const SelectComponents = ({
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
-            <LoaderSkeleton className="mb-2 h-1 w-20" />
-            <LoaderSkeleton className="mb-2 h-2 w-30" />
-            <LoaderSkeleton className="mb-2 h-4 w-40" />
-            <LoaderSkeleton className="mb-2 h-8 w-50" />
-            <LoaderSkeleton className="mb-2 h-16 w-60" />
+            <Skeleton className="mb-2 h-1 w-20" />
+            <Skeleton className="mb-2 h-2 w-30" />
+            <Skeleton className="mb-2 h-4 w-40" />
+            <Skeleton className="mb-2 h-8 w-50" />
+            <Skeleton className="mb-2 h-16 w-60" />
           </div>
           <CodeSnippet
             className="my-2"
             code={`<>
-  <LoaderSkeleton className="mb-2 h-1 w-20" />
-  <LoaderSkeleton className="mb-2 h-2 w-30" />
-  <LoaderSkeleton className="mb-2 h-4 w-40" />
-  <LoaderSkeleton className="mb-2 h-8 w-50" />
-  <LoaderSkeleton className="mb-2 h-16 w-60" />
+  <Skeleton className="mb-2 h-1 w-20" />
+  <Skeleton className="mb-2 h-2 w-30" />
+  <Skeleton className="mb-2 h-4 w-40" />
+  <Skeleton className="mb-2 h-8 w-50" />
+  <Skeleton className="mb-2 h-16 w-60" />
 </>`}
           />
         </div>
@@ -113,20 +111,20 @@ const SelectComponents = ({
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
-            <LoaderSkeleton className="mb-2 h-4 !bg-slate-100 dark:!bg-slate-700" />
-            <LoaderSkeleton className="mb-2 h-4 !bg-sky-100 dark:!bg-sky-950" />
-            <LoaderSkeleton className="mb-2 h-4 !bg-fuchsia-100 dark:!bg-fuchsia-950" />
-            <LoaderSkeleton className="mb-2 h-4 !bg-lime-100 dark:!bg-lime-950" />
-            <LoaderSkeleton className="mb-2 h-4 !bg-pink-100 dark:!bg-pink-950" />
+            <Skeleton className="mb-2 h-4 !bg-slate-100 dark:!bg-slate-700" />
+            <Skeleton className="mb-2 h-4 !bg-sky-100 dark:!bg-sky-950" />
+            <Skeleton className="mb-2 h-4 !bg-fuchsia-100 dark:!bg-fuchsia-950" />
+            <Skeleton className="mb-2 h-4 !bg-lime-100 dark:!bg-lime-950" />
+            <Skeleton className="mb-2 h-4 !bg-pink-100 dark:!bg-pink-950" />
           </div>
           <CodeSnippet
             className="my-2"
             code={`<>
-  <LoaderSkeleton className="mb-2 h-4 !bg-slate-100 dark:!bg-slate-700" />
-  <LoaderSkeleton className="mb-2 h-4 !bg-sky-100 dark:!bg-sky-950" />
-  <LoaderSkeleton className="mb-2 h-4 !bg-fuchsia-100 dark:!bg-fuchsia-950" />
-  <LoaderSkeleton className="mb-2 h-4 !bg-lime-100 dark:!bg-lime-950" />
-  <LoaderSkeleton className="mb-2 h-4 !bg-pink-100 dark:!bg-pink-950" />
+  <Skeleton className="mb-2 h-4 !bg-slate-100 dark:!bg-slate-700" />
+  <Skeleton className="mb-2 h-4 !bg-sky-100 dark:!bg-sky-950" />
+  <Skeleton className="mb-2 h-4 !bg-fuchsia-100 dark:!bg-fuchsia-950" />
+  <Skeleton className="mb-2 h-4 !bg-lime-100 dark:!bg-lime-950" />
+  <Skeleton className="mb-2 h-4 !bg-pink-100 dark:!bg-pink-950" />
 </>`}
           />
         </div>
@@ -135,29 +133,29 @@ const SelectComponents = ({
           Composition
         </Heading>
         <div className="mb-4 opacity-85">
-          Combine multiple LoaderSkeleton components to create more complex shapes that represent
-          the layout of the component being loaded.
+          Combine multiple Skeleton components to create more complex shapes that represent the
+          layout of the component being loaded.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
             <div className="flex items-center gap-4 rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-              <LoaderSkeleton className="size-16 rounded-full" />
+              <Skeleton className="size-16 rounded-full" />
               <div className="flex grow flex-col gap-2">
-                <LoaderSkeleton className="h-6 max-w-80" />
-                <LoaderSkeleton className="h-4" />
-                <LoaderSkeleton className="h-4" />
+                <Skeleton className="h-6 max-w-80" />
+                <Skeleton className="h-4" />
+                <Skeleton className="h-4" />
               </div>
             </div>
           </div>
           <CodeSnippet
             className="my-2"
             code={`<div className="flex items-center gap-4 rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
-  <LoaderSkeleton className="size-16 rounded-full" />
+  <Skeleton className="size-16 rounded-full" />
   <div className="flex grow flex-col gap-2">
-    <LoaderSkeleton className="h-6 max-w-80" />
-    <LoaderSkeleton className="h-4" />
-    <LoaderSkeleton className="h-4" />
+    <Skeleton className="h-6 max-w-80" />
+    <Skeleton className="h-4" />
+    <Skeleton className="h-4" />
   </div>
 </div>`}
           />

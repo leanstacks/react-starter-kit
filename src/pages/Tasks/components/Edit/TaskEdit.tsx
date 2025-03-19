@@ -10,7 +10,7 @@ import { useGetTask } from 'pages/Tasks/api/useGetTask';
 import { useToasts } from 'common/hooks/useToasts';
 import { useUpdateTask } from 'pages/Tasks/api/useUpdateTask';
 import TaskForm, { TaskFormValues } from '../Form/TaskForm';
-import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
+import Skeleton from 'common/components/Loader/Skeleton';
 import ErrorAlert from 'common/components/Alert/ErrorAlert';
 
 /**
@@ -79,7 +79,7 @@ const TaskEdit = ({ className, testId = 'task-edit' }: TaskEditProps): JSX.Eleme
       </h2>
 
       {/* loading state */}
-      {isLoading && <LoaderSkeleton className="h-10" testId={`${testId}-loading`} />}
+      {isLoading && <Skeleton className="h-10" testId={`${testId}-loading`} />}
 
       {/* error state */}
       {!!taskFetchError && (

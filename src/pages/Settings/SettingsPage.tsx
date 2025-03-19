@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 
 import { useGetCurrentUser } from 'common/api/useGetCurrentUser';
 import Avatar from 'common/components/Icon/Avatar';
-import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
+import Skeleton from 'common/components/Loader/Skeleton';
 import MenuNavLink from 'common/components/Menu/MenuNavLink';
 import Page from 'common/components/Content/Page';
 import SettingsPageBreadcrumbs from './components/SettingsPageBreadcrumbs';
@@ -31,7 +31,7 @@ const SettingsPage = (): JSX.Element => {
           </div>
         ) : (
           <div data-testid="page-settings-header-loader">
-            <LoaderSkeleton className="h-16" />
+            <Skeleton className="h-16" />
           </div>
         )}
 

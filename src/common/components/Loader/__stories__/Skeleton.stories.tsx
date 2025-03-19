@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import LoaderSkeleton from '../LoaderSkeleton';
+import Skeleton from '../Skeleton';
 
 const meta = {
-  title: 'Common/Loader/LoaderSkeleton',
-  component: LoaderSkeleton,
+  title: 'Common/Loader/Skeleton',
+  component: Skeleton,
   parameters: {
     layout: 'centered',
   },
@@ -13,7 +13,7 @@ const meta = {
     className: { description: 'Additional CSS classes.' },
     testId: { description: 'The test identifier.' },
   },
-} satisfies Meta<typeof LoaderSkeleton>;
+} satisfies Meta<typeof Skeleton>;
 
 export default meta;
 
