@@ -71,7 +71,7 @@ const SelectComponents = ({
         color: string()
           .required('Color is required.')
           .oneOf(['blue', 'red', 'yellow'], 'You must select a primary color.'),
-        food: string().required('Last name is required.'),
+        food: string().required('Food is required.'),
       }),
     ),
   });
@@ -112,14 +112,158 @@ const SelectComponents = ({
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg">
+              <Select control={control} name="color" required className="mb-8">
+                <Select.Trigger>
+                  <Select.Value placeholder="None selected" />
+                  <Select.Icon />
+                </Select.Trigger>
+                <Select.Options>
+                  <Select.Heading>Primary Colors</Select.Heading>
+                  <Select.Option value="blue">Blue</Select.Option>
+                  <Select.Option value="red">Red</Select.Option>
+                  <Select.Option value="yellow">Yellow</Select.Option>
+                  <Select.Separator />
+                  <Select.Heading>Secondary Colors</Select.Heading>
+                  <Select.Option value="green">Green</Select.Option>
+                  <Select.Option value="orange">Orange</Select.Option>
+                  <Select.Option value="purple">Purple</Select.Option>
+                </Select.Options>
+              </Select>
+              <Button
+                onClick={() => reset()}
+                size="sm"
+                variant="outline"
+                className="ml-auto"
+                testId="reset-1"
+              >
+                Reset
+              </Button>
+            </form>
+          </div>
+          <CodeSnippet
+            className="my-2"
+            code={`<form onSubmit={handleSubmit(onSubmit)} className="max-w-lg">
+  <Select control={control} name="color" required className="mb-8">
+    <Select.Trigger>
+      <Select.Value placeholder="None selected" />
+      <Select.Icon />
+    </Select.Trigger>
+    <Select.Options>
+      <Select.Heading>Primary Colors</Select.Heading>
+      <Select.Option value="blue">Blue</Select.Option>
+      <Select.Option value="red">Red</Select.Option>
+      <Select.Option value="yellow">Yellow</Select.Option>
+      <Select.Separator />
+      <Select.Heading>Secondary Colors</Select.Heading>
+      <Select.Option value="green">Green</Select.Option>
+      <Select.Option value="orange">Orange</Select.Option>
+      <Select.Option value="purple">Purple</Select.Option>
+    </Select.Options>
+  </Select>
+  <Button
+    onClick={() => reset()}
+    size="sm"
+    variant="outline"
+    className="ml-auto"
+    testId="reset-1"
+  >
+    Reset
+  </Button>
+</form>`}
+          />
+        </div>
+
+        <Heading level={4} className="my-2">
+          Labels
+        </Heading>
+        <div className="mb-4 opacity-85">
+          Use the "label" property to associate a HTML label with the textarea. When the textarea is
+          required, the label is styled to indicate.
+        </div>
+        <div className="my-8">
+          <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+            {/* Example */}
+            <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg">
+              <Select control={control} name="color" label="Color" required className="mb-8">
+                <Select.Trigger>
+                  <Select.Value placeholder="None selected" />
+                  <Select.Icon />
+                </Select.Trigger>
+                <Select.Options>
+                  <Select.Heading>Primary Colors</Select.Heading>
+                  <Select.Option value="blue">Blue</Select.Option>
+                  <Select.Option value="red">Red</Select.Option>
+                  <Select.Option value="yellow">Yellow</Select.Option>
+                  <Select.Separator />
+                  <Select.Heading>Secondary Colors</Select.Heading>
+                  <Select.Option value="green">Green</Select.Option>
+                  <Select.Option value="orange">Orange</Select.Option>
+                  <Select.Option value="purple">Purple</Select.Option>
+                </Select.Options>
+              </Select>
+              <Button
+                onClick={() => reset()}
+                size="sm"
+                variant="outline"
+                className="ml-auto"
+                testId="reset-1"
+              >
+                Reset
+              </Button>
+            </form>
+          </div>
+          <CodeSnippet
+            className="my-2"
+            code={`<form onSubmit={handleSubmit(onSubmit)} className="max-w-lg">
+  <Select control={control} name="color" label="Color" required className="mb-8">
+    <Select.Trigger>
+      <Select.Value placeholder="None selected" />
+      <Select.Icon />
+    </Select.Trigger>
+    <Select.Options>
+      <Select.Heading>Primary Colors</Select.Heading>
+      <Select.Option value="blue">Blue</Select.Option>
+      <Select.Option value="red">Red</Select.Option>
+      <Select.Option value="yellow">Yellow</Select.Option>
+      <Select.Separator />
+      <Select.Heading>Secondary Colors</Select.Heading>
+      <Select.Option value="green">Green</Select.Option>
+      <Select.Option value="orange">Orange</Select.Option>
+      <Select.Option value="purple">Purple</Select.Option>
+    </Select.Options>
+  </Select>
+  <Button
+    onClick={() => reset()}
+    size="sm"
+    variant="outline"
+    className="ml-auto"
+    testId="reset-1"
+  >
+    Reset
+  </Button>
+</form>`}
+          />
+        </div>
+
+        <Heading level={4} className="my-2">
+          Supporting Text
+        </Heading>
+        <div className="mb-4 opacity-85">
+          Use the "supportingText" property to add helpful information below the textarea containing
+          instructions, validation requirements, or other tips for entering information.
+        </div>
+        <div className="my-8">
+          <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+            {/* Example */}
+            <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg">
               <Select
                 control={control}
                 name="color"
                 label="Color"
                 supportingText="Select your favorite color."
                 required
-                className="mb-4"
+                className="mb-8"
               >
                 <Select.Trigger>
                   <Select.Value placeholder="None selected" />
@@ -150,9 +294,38 @@ const SelectComponents = ({
           </div>
           <CodeSnippet
             className="my-2"
-            code={`<form onSubmit={handleSubmit(onSubmit)}>
-  <Input control={control} name="firstName" className="mb-4" />
-  <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto">
+            code={`<form onSubmit={handleSubmit(onSubmit)} className="max-w-lg">
+  <Select
+    control={control}
+    name="color"
+    label="Color"
+    supportingText="Select your favorite color."
+    required
+    className="mb-8"
+  >
+    <Select.Trigger>
+      <Select.Value placeholder="None selected" />
+      <Select.Icon />
+    </Select.Trigger>
+    <Select.Options>
+      <Select.Heading>Primary Colors</Select.Heading>
+      <Select.Option value="blue">Blue</Select.Option>
+      <Select.Option value="red">Red</Select.Option>
+      <Select.Option value="yellow">Yellow</Select.Option>
+      <Select.Separator />
+      <Select.Heading>Secondary Colors</Select.Heading>
+      <Select.Option value="green">Green</Select.Option>
+      <Select.Option value="orange">Orange</Select.Option>
+      <Select.Option value="purple">Purple</Select.Option>
+    </Select.Options>
+  </Select>
+  <Button
+    onClick={() => reset()}
+    size="sm"
+    variant="outline"
+    className="ml-auto"
+    testId="reset-1"
+  >
     Reset
   </Button>
 </form>`}
