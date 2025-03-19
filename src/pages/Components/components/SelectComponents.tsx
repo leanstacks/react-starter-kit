@@ -207,7 +207,7 @@ const SelectComponents = ({
                 size="sm"
                 variant="outline"
                 className="ml-auto"
-                testId="reset-1"
+                testId="reset-2"
               >
                 Reset
               </Button>
@@ -286,7 +286,7 @@ const SelectComponents = ({
                 size="sm"
                 variant="outline"
                 className="ml-auto"
-                testId="reset-1"
+                testId="reset-3"
               >
                 Reset
               </Button>

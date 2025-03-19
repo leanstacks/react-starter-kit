@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { InferType, object, string } from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { render, screen } from 'test/test-utils';
+import { render, screen, waitFor } from 'test/test-utils';
 
 import Select, { SelectProps } from '../Select';
 
@@ -41,8 +41,17 @@ describe('Select', () => {
     // ARRANGE
     render(
       <SelectWrapper name="color">
-        <option value="blue">Blue</option>
-        <option value="red">Red</option>
+        <Select.Trigger>
+          <Select.Value placeholder="None selected" />
+          <Select.Icon />
+        </Select.Trigger>
+        <Select.Options>
+          <Select.Heading>Primary</Select.Heading>
+          <Select.Separator />
+          <Select.Option value="blue">Blue</Select.Option>
+          <Select.Option value="red">Blue</Select.Option>
+          <Select.Option value="yellow">Blue</Select.Option>
+        </Select.Options>
       </SelectWrapper>,
     );
     await screen.findByTestId('select');
@@ -51,13 +60,52 @@ describe('Select', () => {
     expect(screen.getByTestId('select')).toBeDefined();
   });
 
+  it('should render components', async () => {
+    // ARRANGE
+    render(
+      <SelectWrapper name="color">
+        <Select.Trigger>
+          <Select.Value placeholder="None selected" />
+          <Select.Icon />
+        </Select.Trigger>
+        <Select.Options>
+          <Select.Heading>Primary</Select.Heading>
+          <Select.Separator />
+          <Select.Option value="blue">Blue</Select.Option>
+          <Select.Option value="red">Blue</Select.Option>
+          <Select.Option value="yellow">Blue</Select.Option>
+        </Select.Options>
+      </SelectWrapper>,
+    );
+    await screen.findByTestId('select');
+
+    // ASSERT
+    expect(screen.getByTestId('select')).toBeDefined();
+    expect(screen.getByTestId('select-trigger')).toBeDefined();
+    expect(screen.getByTestId('select-value')).toBeDefined();
+    expect(screen.getByTestId('select-icon')).toBeDefined();
+    expect(screen.getByTestId('select-options')).toBeDefined();
+    expect(screen.getByTestId('select-heading')).toBeDefined();
+    expect(screen.getByTestId('select-separator')).toBeDefined();
+    expect(screen.getAllByTestId('select-option')).toHaveLength(3);
+  });
+
   it('should show label', async () => {
     // ARRANGE
     const label = 'label value';
     render(
       <SelectWrapper name="color" label={label}>
-        <option value="blue">Blue</option>
-        <option value="red">Red</option>
+        <Select.Trigger>
+          <Select.Value placeholder="None selected" />
+          <Select.Icon />
+        </Select.Trigger>
+        <Select.Options>
+          <Select.Heading>Primary</Select.Heading>
+          <Select.Separator />
+          <Select.Option value="blue">Blue</Select.Option>
+          <Select.Option value="red">Blue</Select.Option>
+          <Select.Option value="yellow">Blue</Select.Option>
+        </Select.Options>
       </SelectWrapper>,
     );
     await screen.findByTestId('select-label');
@@ -71,8 +119,17 @@ describe('Select', () => {
     const supportingText = 'supporting text content';
     render(
       <SelectWrapper name="color" supportingText={supportingText}>
-        <option value="blue">Blue</option>
-        <option value="red">Red</option>
+        <Select.Trigger>
+          <Select.Value placeholder="None selected" />
+          <Select.Icon />
+        </Select.Trigger>
+        <Select.Options>
+          <Select.Heading>Primary</Select.Heading>
+          <Select.Separator />
+          <Select.Option value="blue">Blue</Select.Option>
+          <Select.Option value="red">Blue</Select.Option>
+          <Select.Option value="yellow">Blue</Select.Option>
+        </Select.Options>
       </SelectWrapper>,
     );
     await screen.findByTestId('select-supporting-text');
@@ -81,20 +138,118 @@ describe('Select', () => {
     expect(screen.getByTestId('select-supporting-text')).toHaveTextContent(supportingText);
   });
 
+  it('should show placeholder when no value selected', async () => {
+    // ARRANGE
+    render(
+      <SelectWrapper name="color">
+        <Select.Trigger>
+          <Select.Value placeholder="None selected" />
+          <Select.Icon />
+        </Select.Trigger>
+        <Select.Options>
+          <Select.Heading>Primary</Select.Heading>
+          <Select.Separator />
+          <Select.Option value="blue">Blue</Select.Option>
+          <Select.Option value="red">Blue</Select.Option>
+          <Select.Option value="yellow">Blue</Select.Option>
+        </Select.Options>
+      </SelectWrapper>,
+    );
+    await screen.findByTestId('select-value');
+
+    // ASSERT
+    expect(screen.getByTestId('select-value')).toBeDefined();
+    expect(screen.getByTestId('select-value')).toHaveTextContent(/none selected/i);
+  });
+
+  it('should show options when trigger clicked', async () => {
+    // ARRANGE
+    const user = userEvent.setup();
+    render(
+      <SelectWrapper name="color">
+        <Select.Trigger>
+          <Select.Value placeholder="None selected" />
+          <Select.Icon />
+        </Select.Trigger>
+        <Select.Options>
+          <Select.Heading>Primary</Select.Heading>
+          <Select.Separator />
+          <Select.Option value="blue">Blue</Select.Option>
+          <Select.Option value="red">Blue</Select.Option>
+          <Select.Option value="yellow">Blue</Select.Option>
+        </Select.Options>
+      </SelectWrapper>,
+    );
+    await screen.findByTestId('select');
+    // expect options to be hidden
+    expect(screen.getByTestId('select-options')).toHaveClass('hidden');
+
+    // ACT
+    await user.click(screen.getByTestId('select-trigger'));
+    await waitFor(() => expect(screen.getByTestId('select-options')).not.toHaveClass('hidden'));
+
+    // ASSERT
+    expect(screen.getByTestId('select-options')).not.toHaveClass('hidden');
+  });
+
+  it('should hide options when backdrop clicked', async () => {
+    // ARRANGE
+    const user = userEvent.setup();
+    render(
+      <SelectWrapper name="color">
+        <Select.Trigger>
+          <Select.Value placeholder="None selected" />
+          <Select.Icon />
+        </Select.Trigger>
+        <Select.Options>
+          <Select.Heading>Primary</Select.Heading>
+          <Select.Separator />
+          <Select.Option value="blue">Blue</Select.Option>
+          <Select.Option value="red">Blue</Select.Option>
+          <Select.Option value="yellow">Blue</Select.Option>
+        </Select.Options>
+      </SelectWrapper>,
+    );
+    await screen.findByTestId('select');
+    // expect options to be hidden
+    expect(screen.getByTestId('select-options')).toHaveClass('hidden');
+
+    // ACT
+    await user.click(screen.getByTestId('select-trigger'));
+    await waitFor(() => expect(screen.getByTestId('select-options')).not.toHaveClass('hidden'));
+
+    await user.click(screen.getByTestId('select-options-backdrop'));
+    await waitFor(() => expect(screen.getByTestId('select-options')).toHaveClass('hidden'));
+
+    // ASSERT
+    expect(screen.getByTestId('select-options')).toHaveClass('hidden');
+  });
+
   it('should show error message', async () => {
     // ARRANGE
     const user = userEvent.setup();
     render(
       <SelectWrapper name="color">
-        <option value="blue" data-testid="option-blue">
-          Blue
-        </option>
-        <option value="red" data-testid="option-red">
-          Red
-        </option>
+        <Select.Trigger>
+          <Select.Value placeholder="None selected" />
+          <Select.Icon />
+        </Select.Trigger>
+        <Select.Options>
+          <Select.Heading>Primary</Select.Heading>
+          <Select.Separator />
+          <Select.Option value="blue" testId="option-blue">
+            Blue
+          </Select.Option>
+          <Select.Option value="red" testId="option-red">
+            Blue
+          </Select.Option>
+          <Select.Option value="yellow" testId="option-yellow">
+            Blue
+          </Select.Option>
+        </Select.Options>
       </SelectWrapper>,
     );
-    await screen.findByTestId('select-select');
+    await screen.findByTestId('option-red');
 
     // ACT
     await user.click(screen.getByTestId('option-red'));
