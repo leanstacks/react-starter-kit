@@ -7,7 +7,7 @@ import { default as MySelect } from '../Select';
 import { SelectProps } from '../Select';
 
 const formSchema = object({
-  color: string().required('Required. ').oneOf(['blue', 'green'], 'Must be blue or green. '),
+  color: string().required('Required. ').oneOf(['blue', 'red'], 'Must be blue or red. '),
 });
 
 type FormValues = InferType<typeof formSchema>;
@@ -28,7 +28,7 @@ const Select = (props: Omit<SelectProps<FormValues>, 'control'>) => {
   const onSubmit = () => {};
 
   return (
-    <form className="w-96" onSubmit={form.handleSubmit(onSubmit)} noValidate>
+    <form className="h-100 w-96" onSubmit={form.handleSubmit(onSubmit)} noValidate>
       <MySelect control={form.control} {...props}></MySelect>
     </form>
   );
@@ -58,17 +58,27 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const options = (
-  <>
-    <option value="blue">Blue</option>
-    <option value="green">Green</option>
-    <option value="red">Red</option>
-  </>
-);
-
 export const WithSupportingText: Story = {
   args: {
-    children: options,
+    children: (
+      <>
+        <MySelect.Trigger>
+          <MySelect.Value />
+          <MySelect.Icon />
+        </MySelect.Trigger>
+        <MySelect.Options>
+          <MySelect.Heading>Primary Colors</MySelect.Heading>
+          <MySelect.Option value="blue">Blue</MySelect.Option>
+          <MySelect.Option value="red">Red</MySelect.Option>
+          <MySelect.Option value="yellow">Yellow</MySelect.Option>
+          <MySelect.Separator />
+          <MySelect.Heading>Secondary Colors</MySelect.Heading>
+          <MySelect.Option value="green">Green</MySelect.Option>
+          <MySelect.Option value="orange">Orange</MySelect.Option>
+          <MySelect.Option value="purple">Purple</MySelect.Option>
+        </MySelect.Options>
+      </>
+    ),
     name: 'color',
     label: 'Color',
     supportingText: 'Choose a color.',
@@ -77,7 +87,25 @@ export const WithSupportingText: Story = {
 
 export const WithLabel: Story = {
   args: {
-    children: options,
+    children: (
+      <>
+        <MySelect.Trigger>
+          <MySelect.Value />
+          <MySelect.Icon />
+        </MySelect.Trigger>
+        <MySelect.Options>
+          <MySelect.Heading>Primary Colors</MySelect.Heading>
+          <MySelect.Option value="blue">Blue</MySelect.Option>
+          <MySelect.Option value="red">Red</MySelect.Option>
+          <MySelect.Option value="yellow">Yellow</MySelect.Option>
+          <MySelect.Separator />
+          <MySelect.Heading>Secondary Colors</MySelect.Heading>
+          <MySelect.Option value="green">Green</MySelect.Option>
+          <MySelect.Option value="orange">Orange</MySelect.Option>
+          <MySelect.Option value="purple">Purple</MySelect.Option>
+        </MySelect.Options>
+      </>
+    ),
     name: 'color',
     label: 'Color',
   },
@@ -85,9 +113,46 @@ export const WithLabel: Story = {
 
 export const Required: Story = {
   args: {
-    children: options,
+    children: (
+      <>
+        <MySelect.Trigger>
+          <MySelect.Value />
+          <MySelect.Icon />
+        </MySelect.Trigger>
+        <MySelect.Options>
+          <MySelect.Heading>Primary Colors</MySelect.Heading>
+          <MySelect.Option value="blue">Blue</MySelect.Option>
+          <MySelect.Option value="red">Red</MySelect.Option>
+          <MySelect.Option value="yellow">Yellow</MySelect.Option>
+          <MySelect.Separator />
+          <MySelect.Heading>Secondary Colors</MySelect.Heading>
+          <MySelect.Option value="green">Green</MySelect.Option>
+          <MySelect.Option value="orange">Orange</MySelect.Option>
+          <MySelect.Option value="purple">Purple</MySelect.Option>
+        </MySelect.Options>
+      </>
+    ),
     name: 'color',
     label: 'Color',
     required: true,
+  },
+};
+
+export const Basic: Story = {
+  args: {
+    children: (
+      <>
+        <MySelect.Trigger>
+          <MySelect.Value />
+          <MySelect.Icon />
+        </MySelect.Trigger>
+        <MySelect.Options>
+          <MySelect.Option value="blue">Blue</MySelect.Option>
+          <MySelect.Option value="red">Red</MySelect.Option>
+          <MySelect.Option value="yellow">Yellow</MySelect.Option>
+        </MySelect.Options>
+      </>
+    ),
+    name: 'color',
   },
 };
