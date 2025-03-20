@@ -85,6 +85,9 @@ const ComponentsPage = (): JSX.Element => {
             <MenuNavLink to="skeleton" styleActive>
               Skeleton
             </MenuNavLink>
+            <MenuNavLink to="spinner" styleActive>
+              Spinner
+            </MenuNavLink>
             <MenuNavLink to="tabs" styleActive>
               Tabs
             </MenuNavLink>
