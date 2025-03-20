@@ -4,7 +4,7 @@ import toNumber from 'lodash/toNumber';
 import { BaseComponentProps } from 'common/utils/types';
 import { useGetTask } from '../api/useGetTask';
 import Breadcrumbs from 'common/components/Breadcrumbs/Breadcrumbs';
-import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
+import Skeleton from 'common/components/Loader/Skeleton';
 
 /**
  * The `TasksPageBreadcrumbs` component renders the `Breadcrumbs` for the tasks
@@ -56,7 +56,7 @@ const TasksPageBreadcrumbs = ({
                 </Breadcrumbs.Link>
               )}
               {isLoadingTask && (
-                <LoaderSkeleton className="h-4 w-30" testId={`${testId}-item-task-loader`} />
+                <Skeleton className="h-4 w-30" testId={`${testId}-item-task-loader`} />
               )}
             </Breadcrumbs.Item>
           </>

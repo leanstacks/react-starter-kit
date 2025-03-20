@@ -5,7 +5,7 @@ import { times } from 'lodash';
 
 import { Task, useGetUserTasks } from 'pages/Tasks/api/useGetUserTasks';
 import { BaseComponentProps } from 'common/utils/types';
-import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
+import Skeleton from 'common/components/Loader/Skeleton';
 import TaskListItem from './TaskListItem';
 import Badge from 'common/components/Badge/Badge';
 import ErrorAlert from 'common/components/Alert/ErrorAlert';
@@ -90,7 +90,7 @@ const TaskList = ({
       {isLoading && (
         <div data-testid={`${testId}-loading`}>
           {times(3, (index) => (
-            <LoaderSkeleton key={`loader-${index}`} className="mb-2 h-6" />
+            <Skeleton key={`loader-${index}`} className="mb-2 h-6" />
           ))}
         </div>
       )}

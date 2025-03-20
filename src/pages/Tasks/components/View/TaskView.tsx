@@ -5,7 +5,7 @@ import { BaseComponentProps } from 'common/utils/types';
 import { Task } from 'pages/Tasks/api/useGetUserTasks';
 import { useGetUser } from 'common/api/useGetUser';
 import Badge from 'common/components/Badge/Badge';
-import LoaderSkeleton from 'common/components/Loader/LoaderSkeleton';
+import Skeleton from 'common/components/Loader/Skeleton';
 
 /**
  * Properties for the `TaskView` component.
@@ -42,9 +42,7 @@ const TaskView = ({ className, task, testId = 'task-view' }: TaskViewProps): JSX
       <div className="mt-4">
         <div className="text-xs font-bold uppercase">Assignee</div>
         <div>
-          {isLoadingUser && (
-            <LoaderSkeleton className="h-4 w-40" testId={`${testId}-user-loading`} />
-          )}
+          {isLoadingUser && <Skeleton className="h-4 w-40" testId={`${testId}-user-loading`} />}
           {isErrorUser && (
             <span data-testid={`${testId}-user-error`}>{t('unable-to-find-short')}</span>
           )}
