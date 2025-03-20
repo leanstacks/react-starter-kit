@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 
 import { AuthContext, AuthContextValue } from './AuthContext';
 import { useGetUserTokens } from 'common/api/useGetUserTokens';
-import LoaderSpinner from 'common/components/Loader/LoaderSpinner';
+import Spinner from 'common/components/Loader/Spinner';
 
 /**
  * The `AuthContextProvider` React component creates, maintains, and provides
@@ -33,7 +33,9 @@ const AuthContextProvider = ({ children }: PropsWithChildren): JSX.Element => {
       {!isReady && (
         <div className="h-[50vh]" data-testid="provider-auth">
           <div className="flex h-full items-center justify-center text-2xl">
-            <LoaderSpinner text="Signing in..." />
+            <Spinner>
+              <Spinner.Text>Signing in...</Spinner.Text>
+            </Spinner>
           </div>
         </div>
       )}
