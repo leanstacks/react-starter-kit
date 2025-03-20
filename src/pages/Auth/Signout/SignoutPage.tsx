@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useSignout } from './api/useSignout';
-import LoaderSpinner from 'common/components/Loader/LoaderSpinner';
+import Spinner from 'common/components/Loader/Spinner';
 import Page from 'common/components/Content/Page';
 import Container from 'common/components/Content/Container';
 
@@ -30,7 +30,9 @@ const SignoutPage = (): JSX.Element => {
     <Page testId="page-signout">
       <Container className="h-[50vh]">
         <div className="flex h-full items-center justify-center text-2xl">
-          <LoaderSpinner text="Signing out..." />
+          <Spinner>
+            <Spinner.Text>Signing out...</Spinner.Text>
+          </Spinner>
         </div>
       </Container>
     </Page>

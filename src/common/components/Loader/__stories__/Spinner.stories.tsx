@@ -1,23 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import LoaderSpinner from '../LoaderSpinner';
+import Spinner from '../Spinner';
 
 const meta = {
-  title: 'Common/Loader/LoaderSpinner',
-  component: LoaderSpinner,
+  title: 'Common/Loader/Spinner',
+  component: Spinner,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
   argTypes: {
+    children: { description: 'Optional. The content, e.g. "Spinner.Text".' },
     className: { description: 'Additional CSS classes.' },
-    icon: { description: 'Optional. The icon name.' },
-    iconClassName: { description: 'Optional. CSS class names for the icon.' },
+    icon: { description: 'Optional. A "FAIconProps" object containing properties for the icon.' },
     testId: { description: 'The test identifier.' },
-    text: { description: 'Optional. The loader text.' },
-    textClassName: { description: 'Optional. CSS class names for the text.' },
   },
-} satisfies Meta<typeof LoaderSpinner>;
+} satisfies Meta<typeof Spinner>;
 
 export default meta;
 
@@ -29,24 +27,24 @@ export const Simple: Story = {
 
 export const Larger: Story = {
   args: {
-    iconClassName: 'text-2xl',
+    icon: { size: '2x' },
   },
 };
 
 export const Colored: Story = {
   args: {
-    iconClassName: 'text-blue-600',
+    icon: { className: 'text-blue-600' },
   },
 };
 
 export const WithText: Story = {
   args: {
-    text: 'Engaging warp engines Captain...',
+    children: <Spinner.Text>Engaging warp engines Captain...</Spinner.Text>,
   },
 };
 
 export const WithAlternativeIcon: Story = {
   args: {
-    icon: 'circleXmark',
+    icon: { icon: 'circleXmark' },
   },
 };
