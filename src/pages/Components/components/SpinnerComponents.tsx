@@ -177,7 +177,7 @@ const SpinnerComponents = ({
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
-            <div className="grid grid-cols-2 place-items-center gap-4">
+            <div className="grid grid-cols-1 place-items-center gap-4 md:grid-cols-2">
               <Spinner>
                 <Spinner.Text>Loading...</Spinner.Text>
               </Spinner>
