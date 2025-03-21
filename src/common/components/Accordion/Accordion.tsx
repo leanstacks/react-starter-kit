@@ -44,17 +44,19 @@ const Accordion = ({ children, className, testId = 'accordion' }: AccordionProps
   );
 };
 
-interface ItemProps extends BaseComponentProps, PropsWithChildren {
-  value: string;
-}
-
 type AccordionItemContextValue = {
+  isOpen: boolean;
   value: string;
 };
 
 const AccordionItemContext = createContext<AccordionItemContextValue>({
+  isOpen: false,
   value: '',
 });
+
+interface ItemProps extends BaseComponentProps, PropsWithChildren {
+  value: string;
+}
 
 const Item = ({
   children,
@@ -62,7 +64,12 @@ const Item = ({
   value,
   testId = 'accordion-item',
 }: ItemProps): JSX.Element => {
-  const { addItem, removeItem } = useContext(AccordionContext);
+  const [isOpen, setIsOpen] = useState(false);
+  const { activeItem, addItem, removeItem } = useContext(AccordionContext);
+
+  /**
+   * When the value changes, update the Accordion context.
+   */
   useEffect(() => {
     addItem(value);
     return () => {
@@ -70,9 +77,22 @@ const Item = ({
     };
   }, [value]);
 
+  /**
+   * When the active item changes, update the "isOpen" state.
+   */
+  useEffect(() => {
+    if (value === activeItem) {
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
+    }
+  }, [activeItem, value]);
+
   return (
     <div className={cn('border-b border-neutral-500/50', className)} data-testid={testId}>
-      <AccordionItemContext.Provider value={{ value }}>{children}</AccordionItemContext.Provider>
+      <AccordionItemContext.Provider value={{ isOpen, value }}>
+        {children}
+      </AccordionItemContext.Provider>
     </div>
   );
 };
@@ -83,9 +103,8 @@ const Trigger = ({
   className,
   testId = 'accordion-trigger',
 }: BaseComponentProps & PropsWithChildren): JSX.Element => {
-  const { activeItem, setActiveItem } = useContext(AccordionContext);
-  const { value } = useContext(AccordionItemContext);
-  const isOpen = activeItem === value;
+  const { setActiveItem } = useContext(AccordionContext);
+  const { isOpen, value } = useContext(AccordionItemContext);
 
   const handleClick = () => {
     if (isOpen) {
@@ -116,9 +135,7 @@ const Content = ({
   className,
   testId = 'accordion-content',
 }: BaseComponentProps & PropsWithChildren): JSX.Element => {
-  const { activeItem } = useContext(AccordionContext);
-  const { value } = useContext(AccordionItemContext);
-  const isOpen = activeItem === value;
+  const { isOpen } = useContext(AccordionItemContext);
 
   return (
     <div
