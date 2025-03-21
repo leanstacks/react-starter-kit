@@ -1,9 +1,10 @@
-import { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
+import { createContext, PropsWithChildren, useContext, useEffect, useRef, useState } from 'react';
 import noop from 'lodash/noop';
 
 import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 import FAIcon from '../Icon/FAIcon';
+import { animated, useSpring } from '@react-spring/web';
 
 export interface AccordionProps extends BaseComponentProps, PropsWithChildren {}
 
@@ -68,7 +69,7 @@ const Item = ({
   const { activeItem, addItem, removeItem } = useContext(AccordionContext);
 
   /**
-   * When the value changes, update the Accordion context.
+   * When the component mounts, add the item to the list of items.
    */
   useEffect(() => {
     addItem(value);
@@ -135,16 +136,41 @@ const Content = ({
   className,
   testId = 'accordion-content',
 }: BaseComponentProps & PropsWithChildren): JSX.Element => {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [contentHeight, setContentHeight] = useState(0);
+  const [springs, api] = useSpring(() => ({
+    height: 0,
+  }));
   const { isOpen } = useContext(AccordionItemContext);
 
+  /**
+   * When the content changes, update the height of the content.
+   */
+  useEffect(() => {
+    setContentHeight(contentRef.current?.scrollHeight || 0);
+  }, [children]);
+
+  /**
+   * When the "isOpen" state changes, animate the height of the content.
+   */
+  useEffect(() => {
+    api.start({
+      from: { height: isOpen ? 0 : contentHeight },
+      to: { height: isOpen ? contentHeight : 0 },
+    });
+  }, [isOpen]);
+
   return (
-    <div
-      className={cn('pb-4', { hidden: !isOpen }, className)}
+    <animated.div
+      className={cn('overflow-hidden', className)}
+      style={{ ...springs }}
       data-state={isOpen ? 'open' : 'closed'}
       data-testid={testId}
     >
-      {children}
-    </div>
+      <div ref={contentRef} className="pb-4">
+        {children}
+      </div>
+    </animated.div>
   );
 };
 Accordion.Content = Content;
