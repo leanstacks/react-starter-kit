@@ -212,7 +212,7 @@ const Content = ({
    */
   useEffect(() => {
     setContentHeight(contentRef.current?.scrollHeight || 0);
-  }, [children]);
+  }, [contentRef.current?.scrollHeight]);
 
   /**
    * When the "isOpen" state changes, animate the height of the content.
