@@ -1,13 +1,14 @@
 import { createContext, PropsWithChildren, useContext, useEffect, useRef, useState } from 'react';
 import noop from 'lodash/noop';
+import { animated, useSpring } from '@react-spring/web';
 
 import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 import FAIcon from '../Icon/FAIcon';
-import { animated, useSpring } from '@react-spring/web';
 
-export interface AccordionProps extends BaseComponentProps, PropsWithChildren {}
-
+/**
+ * Defines the shape of the `AccordionContext` value.
+ */
 type AccordionContextValue = {
   items: string[];
   addItem: (item: string) => void;
@@ -16,6 +17,9 @@ type AccordionContextValue = {
   setActiveItem: (item: string) => void;
 };
 
+/**
+ * The `AccordionContext` instance.
+ */
 const AccordionContext = createContext<AccordionContextValue>({
   items: [],
   addItem: noop,
@@ -24,6 +28,15 @@ const AccordionContext = createContext<AccordionContextValue>({
   setActiveItem: noop,
 });
 
+/**
+ * Properties for the `Accordion` component.
+ */
+export interface AccordionProps extends BaseComponentProps, PropsWithChildren {}
+
+/**
+ * The `Accordion` component organizes content into vertically stacked sections.
+ * Each section has a heading which, when clicked, reveals the content.
+ */
 const Accordion = ({ children, className, testId = 'accordion' }: AccordionProps): JSX.Element => {
   const [activeItem, setActiveItem] = useState('');
   let items: string[] = [];
@@ -45,20 +58,33 @@ const Accordion = ({ children, className, testId = 'accordion' }: AccordionProps
   );
 };
 
+/**
+ * Defines the shape of the `AccordionItemContext` value.
+ */
 type AccordionItemContextValue = {
   isOpen: boolean;
   value: string;
 };
 
+/**
+ * The `AccordionItemContext` instance.
+ */
 const AccordionItemContext = createContext<AccordionItemContextValue>({
   isOpen: false,
   value: '',
 });
 
+/**
+ * Properties for the `Item` component.
+ */
 interface ItemProps extends BaseComponentProps, PropsWithChildren {
   value: string;
 }
 
+/**
+ * The `Item` component represents a single item in the `Accordion`. It contains
+ * a `Trigger` and `Content`.
+ */
 const Item = ({
   children,
   className,
@@ -99,6 +125,10 @@ const Item = ({
 };
 Accordion.Item = Item;
 
+/**
+ * The `Trigger` component represents the trigger for an `Item`. When clicked,
+ * it will open or close the `Content`.
+ */
 const Trigger = ({
   children,
   className,
@@ -106,7 +136,20 @@ const Trigger = ({
 }: BaseComponentProps & PropsWithChildren): JSX.Element => {
   const { setActiveItem } = useContext(AccordionContext);
   const { isOpen, value } = useContext(AccordionItemContext);
+  const [springs, api] = useSpring(() => ({
+    rotate: isOpen ? '180deg' : '0deg',
+  }));
 
+  /**
+   * When the "isOpen" state changes, animate the rotation of the chevron.
+   */
+  useEffect(() => {
+    api.start({ rotate: isOpen ? '180deg' : '0deg' });
+  }, [isOpen]);
+
+  /**
+   * When the trigger is clicked, update the active item.
+   */
   const handleClick = () => {
     if (isOpen) {
       setActiveItem('');
@@ -124,13 +167,20 @@ const Trigger = ({
         data-state={isOpen ? 'open' : 'closed'}
       >
         {children}
-        <FAIcon icon="chevronDown" size="sm" />
+        <animated.span style={{ ...springs }}>
+          <FAIcon icon="chevronDown" size="sm" />
+        </animated.span>
+        {/* <FAIcon icon="chevronDown" size="sm" /> */}
       </button>
     </h5>
   );
 };
 Accordion.Trigger = Trigger;
 
+/**
+ * The `Content` component represents the content of an `Item`. When the `Item`
+ * is open, the content will be displayed.
+ */
 const Content = ({
   children,
   className,
