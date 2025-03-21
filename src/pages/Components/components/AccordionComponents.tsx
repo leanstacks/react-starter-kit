@@ -86,7 +86,19 @@ const AccordionComponents = ({
               </Accordion.Item>
             </Accordion>
           </div>
-          <CodeSnippet className="my-2" code={`<Accordion></Accordion>`} />
+          <CodeSnippet
+            className="my-2"
+            code={`<Accordion className="w-full">
+  <Accordion.Item value="section-1">
+    <Accordion.Trigger>Section 1</Accordion.Trigger>
+    <Accordion.Content>Content for section 1.</Accordion.Content>
+  </Accordion.Item>
+  <Accordion.Item value="section-2">
+    <Accordion.Trigger>Section 2</Accordion.Trigger>
+    <Accordion.Content>Content for section 2.</Accordion.Content>
+  </Accordion.Item>
+</Accordion>`}
+          />
         </div>
       </div>
     </section>

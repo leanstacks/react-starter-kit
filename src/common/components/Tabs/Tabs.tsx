@@ -38,7 +38,7 @@ export interface TabsProps extends BaseComponentProps, PropsWithChildren {
  * Note: The `defaultValue` property must match the `value` of one of the Tab
  * components.
  *
- * *Example:*
+ * **Example:**
  * ```
  * <Tabs defaultValue="list">
  *   <Tabs.List>

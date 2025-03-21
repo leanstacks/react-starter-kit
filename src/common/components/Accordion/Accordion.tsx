@@ -36,6 +36,20 @@ export interface AccordionProps extends BaseComponentProps, PropsWithChildren {}
 /**
  * The `Accordion` component organizes content into vertically stacked sections.
  * Each section has a heading which, when clicked, reveals the content.
+ * 
+ * **Example:**
+ * ```
+  <Accordion className="w-full">
+    <Accordion.Item value="section-1">
+      <Accordion.Trigger>Section 1</Accordion.Trigger>
+      <Accordion.Content>Content for section 1.</Accordion.Content>
+    </Accordion.Item>
+    <Accordion.Item value="section-2">
+      <Accordion.Trigger>Section 2</Accordion.Trigger>
+      <Accordion.Content>Content for section 2.</Accordion.Content>
+    </Accordion.Item>
+  </Accordion>
+ * ```
  */
 const Accordion = ({ children, className, testId = 'accordion' }: AccordionProps): JSX.Element => {
   const [activeItem, setActiveItem] = useState('');
