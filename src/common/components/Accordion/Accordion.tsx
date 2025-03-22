@@ -13,8 +13,9 @@ type AccordionContextValue = {
   items: string[];
   addItem: (item: string) => void;
   removeItem: (item: string) => void;
-  activeItem: string;
-  setActiveItem: (item: string) => void;
+  activeItems: string[];
+  addActiveItem: (item: string) => void;
+  removeActiveItem: (item: string) => void;
 };
 
 /**
@@ -24,16 +25,19 @@ const AccordionContext = createContext<AccordionContextValue>({
   items: [],
   addItem: noop,
   removeItem: noop,
-  activeItem: '',
-  setActiveItem: noop,
+  activeItems: [],
+  addActiveItem: noop,
+  removeActiveItem: noop,
 });
 
 /**
  * Properties for the `Accordion` component.
- * @param defaultValue - The default (or initial) active item.
+ * @param defaultValue - An array of default (or initial) active items.
+ * @param multiple - Whether or not multiple items can be open at the same time.
  */
 export interface AccordionProps extends BaseComponentProps, PropsWithChildren {
-  defaultValue?: string;
+  defaultValue?: string[];
+  multiple?: boolean;
 }
 
 /**
@@ -42,7 +46,7 @@ export interface AccordionProps extends BaseComponentProps, PropsWithChildren {
  * 
  * **Example:**
  * ```
-  <Accordion className="w-full">
+  <Accordion className="w-full" defaultValue="section-1" multiple>
     <Accordion.Item value="section-1">
       <Accordion.Trigger>Section 1</Accordion.Trigger>
       <Accordion.Content>Content for section 1.</Accordion.Content>
@@ -58,22 +62,36 @@ const Accordion = ({
   children,
   className,
   defaultValue,
+  multiple = false,
   testId = 'accordion',
 }: AccordionProps): JSX.Element => {
-  const [activeItem, setActiveItem] = useState(defaultValue || '');
-  let items: string[] = [];
+  const [activeItems, setActiveItems] = useState<string[]>(defaultValue || []);
+  const addActiveItem = (item: string): void => {
+    if (!multiple) {
+      setActiveItems([item]);
+    } else if (!activeItems.includes(item)) {
+      setActiveItems([...activeItems, item]);
+    }
+  };
+  const removeActiveItem = (item: string): void => {
+    setActiveItems(activeItems.filter((i) => i !== item));
+  };
+
+  const [items, setItems] = useState<string[]>([]);
   const addItem = (item: string): void => {
     if (!items.includes(item)) {
-      items.push(item);
+      setItems([...items, item]);
     }
   };
   const removeItem = (item: string): void => {
-    items = items.filter((i) => i !== item);
+    setItems(items.filter((i) => i !== item));
   };
 
   return (
     <div className={cn(className)} data-testid={testId}>
-      <AccordionContext.Provider value={{ items, addItem, removeItem, activeItem, setActiveItem }}>
+      <AccordionContext.Provider
+        value={{ items, addItem, removeItem, activeItems, addActiveItem, removeActiveItem }}
+      >
         {children}
       </AccordionContext.Provider>
     </div>
@@ -114,7 +132,7 @@ const Item = ({
   testId = 'accordion-item',
 }: ItemProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
-  const { activeItem, addItem, removeItem } = useContext(AccordionContext);
+  const { activeItems, addItem, removeItem } = useContext(AccordionContext);
 
   /**
    * When the component mounts, add the item to the list of items.
@@ -130,12 +148,12 @@ const Item = ({
    * When the active item changes, update the "isOpen" state.
    */
   useEffect(() => {
-    if (value === activeItem) {
+    if (activeItems.includes(value)) {
       setIsOpen(true);
     } else {
       setIsOpen(false);
     }
-  }, [activeItem, value]);
+  }, [activeItems, value]);
 
   return (
     <div className={cn('border-b border-neutral-500/50', className)} data-testid={testId}>
@@ -156,7 +174,7 @@ const Trigger = ({
   className,
   testId = 'accordion-trigger',
 }: BaseComponentProps & PropsWithChildren): JSX.Element => {
-  const { setActiveItem } = useContext(AccordionContext);
+  const { addActiveItem, removeActiveItem } = useContext(AccordionContext);
   const { isOpen, value } = useContext(AccordionItemContext);
   const [springs, api] = useSpring(() => ({
     rotate: isOpen ? '180deg' : '0deg',
@@ -174,9 +192,9 @@ const Trigger = ({
    */
   const handleClick = () => {
     if (isOpen) {
-      setActiveItem('');
+      removeActiveItem(value);
     } else {
-      setActiveItem(value);
+      addActiveItem(value);
     }
   };
 
