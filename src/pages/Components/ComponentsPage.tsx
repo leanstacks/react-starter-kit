@@ -25,6 +25,9 @@ const ComponentsPage = (): JSX.Element => {
 
         <Columns layout="1-3" gap="lg" className="my-6">
           <Columns.Column data-testid="page-components-menu">
+            <MenuNavLink to="accordion" styleActive>
+              Accordion
+            </MenuNavLink>
             <MenuNavLink to="alert" styleActive>
               Alert
             </MenuNavLink>

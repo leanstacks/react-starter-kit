@@ -19,6 +19,7 @@ const AppearanceSettings = lazy(() => import('pages/Settings/components/Appearan
 
 // Components Page Family
 const ComponentsPage = lazy(() => import('pages/Components/ComponentsPage'));
+const AccordionComponents = lazy(() => import('pages/Components/components/AccordionComponents'));
 const AlertComponents = lazy(() => import('pages/Components/components/AlertComponents'));
 const AvatarComponents = lazy(() => import('pages/Components/components/AvatarComponents'));
 const BadgeComponents = lazy(() => import('pages/Components/components/BadgeComponents'));
@@ -94,7 +95,11 @@ export const routes: RouteObject[] = [
             children: [
               {
                 index: true,
-                element: <Navigate to="alert" replace />,
+                element: <Navigate to="accordion" replace />,
+              },
+              {
+                path: 'accordion',
+                element: withSuspense(<AccordionComponents />),
               },
               {
                 path: 'alert',
