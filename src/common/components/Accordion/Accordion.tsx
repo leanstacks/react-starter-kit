@@ -202,15 +202,15 @@ const Trigger = ({
     <h5 className={cn(className)} data-testid={testId}>
       <button
         type="button"
-        className="flex w-full cursor-pointer items-center justify-between gap-2 py-4 font-medium hover:underline data-[state=open]:[&>svg]:rotate-180"
+        className="flex w-full cursor-pointer items-center justify-between gap-2 py-4 font-medium hover:underline"
         onClick={handleClick}
         data-state={isOpen ? 'open' : 'closed'}
+        data-testid={`${testId}-button`}
       >
         {children}
-        <animated.span style={{ ...springs }}>
+        <animated.span style={{ ...springs }} data-testid={`${testId}-icon-wrapper`}>
           <FAIcon icon="chevronDown" size="sm" />
         </animated.span>
-        {/* <FAIcon icon="chevronDown" size="sm" /> */}
       </button>
     </h5>
   );
