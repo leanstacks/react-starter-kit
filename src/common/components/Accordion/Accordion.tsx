@@ -46,7 +46,7 @@ export interface AccordionProps extends BaseComponentProps, PropsWithChildren {
  * 
  * **Example:**
  * ```
-  <Accordion className="w-full" defaultValue="section-1" multiple>
+  <Accordion className="w-full" defaultValue={["section-1"]} multiple>
     <Accordion.Item value="section-1">
       <Accordion.Trigger>Section 1</Accordion.Trigger>
       <Accordion.Content>Content for section 1.</Accordion.Content>
@@ -61,11 +61,11 @@ export interface AccordionProps extends BaseComponentProps, PropsWithChildren {
 const Accordion = ({
   children,
   className,
-  defaultValue,
+  defaultValue = [],
   multiple = false,
   testId = 'accordion',
 }: AccordionProps): JSX.Element => {
-  const [activeItems, setActiveItems] = useState<string[]>(defaultValue || []);
+  const [activeItems, setActiveItems] = useState<string[]>(defaultValue);
   const addActiveItem = (item: string): void => {
     if (!multiple) {
       setActiveItems([item]);
