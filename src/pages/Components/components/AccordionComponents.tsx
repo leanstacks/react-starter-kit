@@ -102,6 +102,42 @@ const AccordionComponents = ({
         </div>
 
         <Heading level={4} className="mb-2">
+          Default Active Item
+        </Heading>
+        <div className="mb-4 opacity-85">
+          Using the "defaultValue" property, you can specify which section should be active by
+          default.
+        </div>
+        <div className="my-8">
+          <div className="mb-2 flex place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+            {/* Example */}
+            <Accordion className="w-full" defaultValue="section-2">
+              <Accordion.Item value="section-1">
+                <Accordion.Trigger>Section 1</Accordion.Trigger>
+                <Accordion.Content>Content for section 1.</Accordion.Content>
+              </Accordion.Item>
+              <Accordion.Item value="section-2">
+                <Accordion.Trigger>Section 2</Accordion.Trigger>
+                <Accordion.Content>Content for section 2.</Accordion.Content>
+              </Accordion.Item>
+            </Accordion>
+          </div>
+          <CodeSnippet
+            className="my-2"
+            code={`<Accordion className="w-full" defaultValue="section-2">
+  <Accordion.Item value="section-1">
+    <Accordion.Trigger>Section 1</Accordion.Trigger>
+    <Accordion.Content>Content for section 1.</Accordion.Content>
+  </Accordion.Item>
+  <Accordion.Item value="section-2">
+    <Accordion.Trigger>Section 2</Accordion.Trigger>
+    <Accordion.Content>Content for section 2.</Accordion.Content>
+  </Accordion.Item>
+</Accordion>`}
+          />
+        </div>
+
+        <Heading level={4} className="mb-2">
           Content
         </Heading>
         <div className="mb-4 opacity-85">

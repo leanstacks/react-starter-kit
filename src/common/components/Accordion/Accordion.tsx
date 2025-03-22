@@ -30,8 +30,11 @@ const AccordionContext = createContext<AccordionContextValue>({
 
 /**
  * Properties for the `Accordion` component.
+ * @param defaultValue - The default (or initial) active item.
  */
-export interface AccordionProps extends BaseComponentProps, PropsWithChildren {}
+export interface AccordionProps extends BaseComponentProps, PropsWithChildren {
+  defaultValue?: string;
+}
 
 /**
  * The `Accordion` component organizes content into vertically stacked sections.
@@ -51,8 +54,13 @@ export interface AccordionProps extends BaseComponentProps, PropsWithChildren {}
   </Accordion>
  * ```
  */
-const Accordion = ({ children, className, testId = 'accordion' }: AccordionProps): JSX.Element => {
-  const [activeItem, setActiveItem] = useState('');
+const Accordion = ({
+  children,
+  className,
+  defaultValue,
+  testId = 'accordion',
+}: AccordionProps): JSX.Element => {
+  const [activeItem, setActiveItem] = useState(defaultValue || '');
   let items: string[] = [];
   const addItem = (item: string): void => {
     if (!items.includes(item)) {
