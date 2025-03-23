@@ -100,6 +100,9 @@ const ComponentsPage = (): JSX.Element => {
             <MenuNavLink to="textarea" styleActive>
               Textarea
             </MenuNavLink>
+            <MenuNavLink to="toast" styleActive>
+              Toast
+            </MenuNavLink>
             <MenuNavLink to="toggle" styleActive>
               Toggle
             </MenuNavLink>
