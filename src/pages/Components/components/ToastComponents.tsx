@@ -1,4 +1,5 @@
 import { createColumnHelper } from '@tanstack/react-table';
+import noop from 'lodash/noop';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { ComponentProperty } from '../model/components';
@@ -118,7 +119,7 @@ createToast({
                 createdAt: '2025-03-23T08:29:00',
                 isAutoDismiss: false,
               }}
-              dismiss={() => {}}
+              dismiss={noop}
             />
           </div>
           <CodeSnippet
@@ -130,7 +131,7 @@ createToast({
     createdAt: '2025-03-23T08:29:00',
     isAutoDismiss: false,
   }}
-  dismiss={() => {}}
+  dismiss={noop}
 />`}
           />
         </div>
@@ -154,7 +155,7 @@ createToast({
                   isAutoDismiss: false,
                   variant: 'info',
                 }}
-                dismiss={() => {}}
+                dismiss={noop}
               />
               <Toast
                 toast={{
@@ -164,7 +165,7 @@ createToast({
                   isAutoDismiss: false,
                   variant: 'danger',
                 }}
-                dismiss={() => {}}
+                dismiss={noop}
               />
               <Toast
                 toast={{
@@ -174,7 +175,7 @@ createToast({
                   isAutoDismiss: false,
                   variant: 'success',
                 }}
-                dismiss={() => {}}
+                dismiss={noop}
               />
             </div>
           </div>
@@ -189,7 +190,7 @@ createToast({
       isAutoDismiss: false,
       variant: 'info',
     }}
-    dismiss={() => {}}
+    dismiss={noop}
   />
   <Toast
     toast={{
@@ -199,7 +200,7 @@ createToast({
       isAutoDismiss: false,
       variant: 'danger',
     }}
-    dismiss={() => {}}
+    dismiss={noop}
   />
   <Toast
     toast={{
@@ -209,7 +210,7 @@ createToast({
       isAutoDismiss: false,
       variant: 'success',
     }}
-    dismiss={() => {}}
+    dismiss={noop}
   />
 </div>`}
           />
@@ -233,7 +234,7 @@ createToast({
                 createdAt: '2025-03-23T08:29:00',
                 isAutoDismiss: false,
               }}
-              dismiss={() => {}}
+              dismiss={noop}
             />
           </div>
           <CodeSnippet
@@ -245,7 +246,7 @@ createToast({
     createdAt: '2025-03-23T08:29:00',
     isAutoDismiss: true,
   }}
-  dismiss={() => {}}
+  dismiss={noop}
 />`}
           />
         </div>
@@ -270,6 +271,7 @@ createToast({
                     isAutoDismiss: true,
                   });
                 }}
+                testId="button-auto-dismiss"
               >
                 Auto-Dismiss
               </Button>
@@ -281,6 +283,7 @@ createToast({
                     variant: 'danger',
                   });
                 }}
+                testId="button-manual-dismiss"
               >
                 Manual Dismiss
               </Button>
