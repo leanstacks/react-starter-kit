@@ -48,6 +48,7 @@ const SpinnerComponents = lazy(() => import('pages/Components/components/Spinner
 const TabsComponents = lazy(() => import('pages/Components/components/TabsComponents'));
 const TextComponents = lazy(() => import('pages/Components/components/TextComponents'));
 const TextareaComponents = lazy(() => import('pages/Components/components/TextareaComponents'));
+const ToastComponents = lazy(() => import('pages/Components/components/ToastComponents'));
 const ToggleComponents = lazy(() => import('pages/Components/components/ToggleComponents'));
 
 // Tasks Page Family
@@ -196,6 +197,10 @@ export const routes: RouteObject[] = [
               {
                 path: 'textarea',
                 element: withSuspense(<TextareaComponents />),
+              },
+              {
+                path: 'toast',
+                element: withSuspense(<ToastComponents />),
               },
               {
                 path: 'toggle',

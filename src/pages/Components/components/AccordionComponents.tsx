@@ -25,6 +25,14 @@ const AccordionComponents = ({
       description: 'Optional. Additional CSS class names.',
     },
     {
+      name: 'defaultValue',
+      description: 'Optional. An array of default (or initial) active items.',
+    },
+    {
+      name: 'multiple',
+      description: 'Optional. Whether or not multiple items can be open at the same time.',
+    },
+    {
       name: 'testId',
       description: 'Optional. Identifier for testing.',
     },
