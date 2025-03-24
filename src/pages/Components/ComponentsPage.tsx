@@ -79,6 +79,9 @@ const ComponentsPage = (): JSX.Element => {
             <MenuNavLink to="page" styleActive>
               Page
             </MenuNavLink>
+            <MenuNavLink to="popover" styleActive>
+              Popover
+            </MenuNavLink>
             <MenuNavLink to="search-input" styleActive>
               Search Input
             </MenuNavLink>
