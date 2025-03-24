@@ -6,6 +6,7 @@ import Table from 'common/components/Table/Table';
 import CodeSnippet from 'common/components/Text/CodeSnippet';
 import Heading from 'common/components/Text/Heading';
 import Popover from 'common/components/Popover/Popover';
+import Card from 'common/components/Card/Card';
 
 /**
  * The `PopoverComponents` component renders a set of examples illustrating
@@ -70,13 +71,34 @@ const PopoverComponents = ({
         <Heading level={4} className="my-2">
           Basic
         </Heading>
-        <div className="mb-4 opacity-85">This is the most basic use of the Popover component.</div>
+        <div className="mb-4 opacity-85">
+          This is the most basic use of the Popover component. A popover consists of a trigger and
+          content. When the trigger is clicked, the content is shown. The content is displayed over
+          a full-screen backdrop. Clicking the backdrop or the trigger will close the popover.
+        </div>
         <div className="my-8">
-          <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+          <div className="mb-2 flex flex-col rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
-            <Popover></Popover>
+            <Popover>
+              <Popover.Trigger>Open</Popover.Trigger>
+              <Popover.Content>
+                <Card className="bg-neutral-900 text-white">
+                  <Card.Body>Hello world!</Card.Body>
+                </Card>
+              </Popover.Content>
+            </Popover>
           </div>
-          <CodeSnippet className="my-2" code={`<Popover></Popover>`} />
+          <CodeSnippet
+            className="my-2"
+            code={`<Popover>
+  <Popover.Trigger>Open popover</Popover.Trigger>
+  <Popover.Content>
+    <Card className="bg-neutral-900 text-white">
+      <Card.Body>Hello world!</Card.Body>
+    </Card>
+  </Popover.Content>
+</Popover>`}
+          />
         </div>
       </div>
     </section>
