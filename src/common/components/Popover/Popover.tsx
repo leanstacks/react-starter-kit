@@ -12,7 +12,6 @@ import noop from 'lodash/noop';
 import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 import Backdrop from '../Backdrop/Backdrop';
-import Button, { ButtonProps } from '../Button/Button';
 
 type PopoverContextValue = {
   isOpen: boolean;
@@ -54,13 +53,11 @@ const Popover = ({ children, className, testId = 'popover' }: PopoverProps): JSX
 const Trigger = ({
   children,
   className,
-  size = 'icon',
-  variant = 'text',
   testId = 'popover-trigger',
-}: ButtonProps): JSX.Element => {
+}: BaseComponentProps & PropsWithChildren): JSX.Element => {
   console.log('Trigger');
   const { isOpen, setIsOpen, setTriggerRect } = useContext(PopoverContext);
-  const triggerRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   const updateTriggerRect = () => {
     const {
@@ -97,17 +94,14 @@ const Trigger = ({
   };
 
   return (
-    <div ref={triggerRef}>
-      <Button
-        className={className}
-        onClick={handleClick}
-        size={size}
-        variant={variant}
-        data-testid={testId}
-      >
-        {children}
-      </Button>
-    </div>
+    <button
+      className={cn('hover:cursor-pointer', className)}
+      onClick={handleClick}
+      ref={triggerRef}
+      data-testid={testId}
+    >
+      {children}
+    </button>
   );
 };
 Popover.Trigger = Trigger;

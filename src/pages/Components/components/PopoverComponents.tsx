@@ -77,7 +77,7 @@ const PopoverComponents = ({
           a full-screen backdrop. Clicking the backdrop or the trigger will close the popover.
         </div>
         <div className="my-8">
-          <div className="mb-2 flex flex-col rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+          <div className="mb-2 flex flex-col items-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
             <Popover>
               <Popover.Trigger>Open</Popover.Trigger>
