@@ -1,4 +1,12 @@
-import { createContext, PropsWithChildren, useContext, useEffect, useRef, useState } from 'react';
+import {
+  createContext,
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import noop from 'lodash/noop';
 
 import { cn } from 'common/utils/css';
@@ -61,6 +69,9 @@ const Trigger = ({
       height = 0,
       width = 0,
     } = triggerRef.current?.getBoundingClientRect() || {};
+    console.log(
+      `Trigger::setTriggerPosition::top: ${top}::left: ${left}::height: ${height}::width: ${width}`,
+    );
     setTriggerRect({ top, left, height, width });
   };
 
@@ -68,7 +79,7 @@ const Trigger = ({
     if (isOpen && triggerRef.current) {
       window.addEventListener('resize', setTriggerPosition);
       window.addEventListener('scroll', setTriggerPosition);
-      setTriggerPosition();
+      // setTriggerPosition();
     } else {
       window.removeEventListener('resize', setTriggerPosition);
       window.removeEventListener('scroll', setTriggerPosition);
@@ -80,11 +91,17 @@ const Trigger = ({
     };
   }, [isOpen, triggerRef.current]);
 
+  const handleClick = () => {
+    console.log('Trigger::handleClick');
+    setTriggerPosition();
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div ref={triggerRef}>
       <Button
         className={className}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleClick}
         size={size}
         variant={variant}
         data-testid={testId}
@@ -107,60 +124,81 @@ const Content = ({
   testId = 'popover-content',
 }: ContentProps): JSX.Element => {
   console.log('Content');
-  const { isOpen, setIsOpen, triggerRect } = useContext(PopoverContext);
   const contentRef = useRef<HTMLDivElement>(null);
-
-  const contentRect = contentRef.current?.getBoundingClientRect() || {
-    top: 0,
-    left: 0,
+  const [contentRect, setContentRect] = useState<Pick<DOMRect, 'height' | 'width'>>({
     height: 0,
     width: 0,
-  };
-  console.log(`Content::triggerRect: ${JSON.stringify(triggerRect)}`);
-  console.log(`Content::contentRect: ${JSON.stringify(contentRect)}`);
+  });
+  const { height: contentHeight, width: contentWidth } = contentRect;
+  const { isOpen, setIsOpen, triggerRect } = useContext(PopoverContext);
+  const {
+    top: triggerTop,
+    left: triggerLeft,
+    height: triggerHeight,
+    width: triggerWidth,
+  } = triggerRect;
 
-  const calculatePosition = () => {
+  useEffect(() => {
+    console.log('Content::useEffect');
+    const { height, width } = contentRef.current?.getBoundingClientRect() || {
+      height: 0,
+      width: 0,
+    };
+    setContentRect({ height, width });
+  }, [isOpen, contentRef.current]);
+
+  const { top, left } = useMemo(() => {
+    console.log(
+      `Content::useMemo::triggerTop: ${triggerTop}::triggerLeft: ${triggerLeft}::triggerHeight: ${triggerHeight}::triggerWidth: ${triggerWidth}::contentHeight: ${contentHeight}::contentWidth: ${contentWidth}::side: ${side}`,
+    );
     switch (side) {
       case 'top':
         return {
-          top: triggerRect.top - contentRect.height - 8,
-          left: triggerRect.left,
+          top: triggerTop - contentHeight - 8,
+          left: triggerLeft,
         };
       case 'right': {
         return {
-          top: triggerRect.top,
-          left: triggerRect.left + triggerRect.width + 8,
+          top: triggerTop,
+          left: triggerLeft + triggerWidth + 8,
         };
       }
       case 'left': {
         return {
-          top: triggerRect.top,
-          left: triggerRect.left - contentRect.width - 8,
+          top: triggerTop,
+          left: triggerLeft - contentWidth - 8,
         };
       }
       case 'bottom':
       default: {
         return {
-          top: triggerRect.top + triggerRect.height + 8,
-          left: triggerRect.left,
+          top: triggerTop + triggerHeight + 8,
+          left: triggerLeft,
         };
       }
     }
-  };
+  }, [triggerTop, triggerLeft, triggerHeight, triggerWidth, contentHeight, contentWidth, side]);
 
-  const { top, left } = calculatePosition();
+  const isHidden = !isOpen;
+  const isVisible = isOpen && contentHeight > 0 && contentWidth > 0;
+  console.log(`Content::isHidden: ${isHidden}`);
   console.log(`Content::top: ${top}`);
   console.log(`Content::left: ${left}`);
 
   return (
     <>
       <Backdrop
-        className={cn('bg-transparent', { hidden: !isOpen })}
+        className={cn('bg-transparent', { hidden: isHidden })}
         onClick={() => setIsOpen(false)}
         testId={`${testId}-backdrop`}
       />
       <div
-        className={cn('fixed top-0 left-0 z-1001', { hidden: !isOpen }, className)}
+        className={cn(
+          'fixed top-0 left-0 z-1001',
+          { hidden: isHidden },
+          { invisible: !isVisible },
+          className,
+        )}
         style={{ transform: `translate(${left}px, ${top}px)` }}
         ref={contentRef}
         data-testid={testId}

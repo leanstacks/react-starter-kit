@@ -80,7 +80,7 @@ const PopoverComponents = ({
           <div className="mb-2 flex flex-col rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
             <Popover>
-              <Popover.Trigger className="max-w-fit">Open</Popover.Trigger>
+              <Popover.Trigger>Open</Popover.Trigger>
               <Popover.Content>
                 <Card className="bg-neutral-900 text-white">
                   <Card.Body>Hello world!</Card.Body>
