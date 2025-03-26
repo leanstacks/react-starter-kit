@@ -115,12 +115,14 @@ Popover.Trigger = Trigger;
 
 interface ContentProps extends BaseComponentProps, PropsWithChildren {
   side?: 'top' | 'right' | 'bottom' | 'left';
+  sideOffset?: number;
 }
 
 const Content = ({
   children,
   className,
   side = 'bottom',
+  sideOffset = 8,
   testId = 'popover-content',
 }: ContentProps): JSX.Element => {
   console.log('Content');
@@ -154,30 +156,39 @@ const Content = ({
     switch (side) {
       case 'top':
         return {
-          top: triggerTop - contentHeight - 8,
-          left: triggerLeft,
+          top: triggerTop - contentHeight - sideOffset,
+          left: triggerLeft + (triggerWidth - contentWidth) / 2,
         };
       case 'right': {
         return {
-          top: triggerTop,
-          left: triggerLeft + triggerWidth + 8,
+          top: triggerTop + (triggerHeight - contentHeight) / 2,
+          left: triggerLeft + triggerWidth + sideOffset,
         };
       }
       case 'left': {
         return {
-          top: triggerTop,
-          left: triggerLeft - contentWidth - 8,
+          top: triggerTop + (triggerHeight - contentHeight) / 2,
+          left: triggerLeft - contentWidth - sideOffset,
         };
       }
       case 'bottom':
       default: {
         return {
-          top: triggerTop + triggerHeight + 8,
-          left: triggerLeft,
+          top: triggerTop + triggerHeight + sideOffset,
+          left: triggerLeft + (triggerWidth - contentWidth) / 2,
         };
       }
     }
-  }, [triggerTop, triggerLeft, triggerHeight, triggerWidth, contentHeight, contentWidth, side]);
+  }, [
+    triggerTop,
+    triggerLeft,
+    triggerHeight,
+    triggerWidth,
+    contentHeight,
+    contentWidth,
+    side,
+    sideOffset,
+  ]);
 
   const isHidden = !isOpen;
   const isVisible = isOpen && contentHeight > 0 && contentWidth > 0;
