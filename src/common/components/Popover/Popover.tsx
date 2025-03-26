@@ -62,7 +62,7 @@ const Trigger = ({
   const { isOpen, setIsOpen, setTriggerRect } = useContext(PopoverContext);
   const triggerRef = useRef<HTMLDivElement>(null);
 
-  const setTriggerPosition = () => {
+  const updateTriggerRect = () => {
     const {
       top = 0,
       left = 0,
@@ -70,30 +70,29 @@ const Trigger = ({
       width = 0,
     } = triggerRef.current?.getBoundingClientRect() || {};
     console.log(
-      `Trigger::setTriggerPosition::top: ${top}::left: ${left}::height: ${height}::width: ${width}`,
+      `Trigger::updateTriggerRect::top: ${top}::left: ${left}::height: ${height}::width: ${width}`,
     );
     setTriggerRect({ top, left, height, width });
   };
 
   useEffect(() => {
     if (isOpen && triggerRef.current) {
-      window.addEventListener('resize', setTriggerPosition);
-      window.addEventListener('scroll', setTriggerPosition);
-      // setTriggerPosition();
+      window.addEventListener('resize', updateTriggerRect);
+      window.addEventListener('scroll', updateTriggerRect);
     } else {
-      window.removeEventListener('resize', setTriggerPosition);
-      window.removeEventListener('scroll', setTriggerPosition);
+      window.removeEventListener('resize', updateTriggerRect);
+      window.removeEventListener('scroll', updateTriggerRect);
     }
 
     return () => {
-      window.removeEventListener('resize', setTriggerPosition);
-      window.removeEventListener('scroll', setTriggerPosition);
+      window.removeEventListener('resize', updateTriggerRect);
+      window.removeEventListener('scroll', updateTriggerRect);
     };
   }, [isOpen, triggerRef.current]);
 
   const handleClick = () => {
     console.log('Trigger::handleClick');
-    setTriggerPosition();
+    updateTriggerRect();
     setIsOpen(!isOpen);
   };
 
@@ -142,10 +141,7 @@ const Content = ({
 
   useEffect(() => {
     console.log('Content::useEffect');
-    const { height, width } = contentRef.current?.getBoundingClientRect() || {
-      height: 0,
-      width: 0,
-    };
+    const { height = 0, width = 0 } = contentRef.current?.getBoundingClientRect() || {};
     setContentRect({ height, width });
   }, [isOpen, contentRef.current]);
 
