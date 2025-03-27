@@ -14,7 +14,7 @@ import Card from 'common/components/Card/Card';
  */
 const PopoverComponents = ({
   className,
-  testId = 'components-toast',
+  testId = 'components-popover',
 }: BaseComponentProps): JSX.Element => {
   const data: ComponentProperty[] = [
     {
