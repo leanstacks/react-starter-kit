@@ -60,16 +60,13 @@ const Trigger = ({
   const triggerRef = useRef<HTMLButtonElement>(null);
 
   const updateTriggerRect = () => {
-    const {
-      top = 0,
-      left = 0,
-      height = 0,
-      width = 0,
-    } = triggerRef.current?.getBoundingClientRect() || {};
-    console.log(
-      `Trigger::updateTriggerRect::top: ${top}::left: ${left}::height: ${height}::width: ${width}`,
-    );
-    setTriggerRect({ top, left, height, width });
+    if (triggerRef.current) {
+      const { top, left, height, width } = triggerRef.current.getBoundingClientRect();
+      setTriggerRect({ top, left, height, width });
+      console.log(
+        `Trigger::updateTriggerRect::top: ${top}::left: ${left}::height: ${height}::width: ${width}`,
+      );
+    }
   };
 
   useEffect(() => {
@@ -135,8 +132,10 @@ const Content = ({
 
   useEffect(() => {
     console.log('Content::useEffect');
-    const { height = 0, width = 0 } = contentRef.current?.getBoundingClientRect() || {};
-    setContentRect({ height, width });
+    if (isOpen && contentRef.current) {
+      const { height, width } = contentRef.current.getBoundingClientRect();
+      setContentRect({ height, width });
+    }
   }, [isOpen, contentRef.current]);
 
   const { top, left } = useMemo(() => {
