@@ -13,6 +13,9 @@ import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
 import Backdrop from '../Backdrop/Backdrop';
 
+/**
+ * Defines the shape of the `PopoverContext` value.
+ */
 type PopoverContextValue = {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
@@ -20,6 +23,9 @@ type PopoverContextValue = {
   setTriggerRect: (rect: Pick<DOMRect, 'top' | 'left' | 'height' | 'width'>) => void;
 };
 
+/**
+ * The `PopoverContext` instance.
+ */
 const PopoverContext = createContext<PopoverContextValue>({
   isOpen: false,
   setIsOpen: noop,
@@ -27,8 +33,23 @@ const PopoverContext = createContext<PopoverContextValue>({
   setTriggerRect: noop,
 });
 
+/**
+ * Properties for the `Popover` component.
+ */
 export interface PopoverProps extends BaseComponentProps, PropsWithChildren {}
 
+/**
+ * The `Popover` component displays content in a floating container that is anchored to a trigger element.
+ * It can be used to display tooltips, dropdowns, and other contextual information.
+ *
+ * **Example:**
+ * ```
+ * <Popover>
+ *   <Popover.Trigger>Click me</Popover.Trigger>
+ *   <Popover.Content>Content goes here</Popover.Content>
+ * </Popover>
+ * ```
+ */
 const Popover = ({ children, className, testId = 'popover' }: PopoverProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const [triggerRect, setTriggerRect] = useState<
@@ -49,6 +70,11 @@ const Popover = ({ children, className, testId = 'popover' }: PopoverProps): JSX
   );
 };
 
+/**
+ * The `Trigger` component represents the element that triggers the popover to open or close.
+ * It can be any element, such as a button or a link.
+ * The `Trigger` component is a child of the `Popover` component.
+ */
 const Trigger = ({
   children,
   className,
@@ -97,11 +123,21 @@ const Trigger = ({
 };
 Popover.Trigger = Trigger;
 
+/**
+ * Properties for the `Content` component.
+ * @param side - The side of the trigger where the content will be displayed.
+ * @param sideOffset - The offset between the trigger and the content in pixels.
+ */
 interface ContentProps extends BaseComponentProps, PropsWithChildren {
   side?: 'top' | 'right' | 'bottom' | 'left';
   sideOffset?: number;
 }
 
+/**
+ * The `Content` component represents the content of the popover.
+ * It is displayed when the popover is open.
+ * The `Content` component is a child of the `Popover` component.
+ */
 const Content = ({
   children,
   className,
