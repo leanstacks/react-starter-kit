@@ -19,6 +19,7 @@ dist-ssr
 
 # Tests
 coverage
+__snapshots__
 
 # Editor
 .vscode/*
