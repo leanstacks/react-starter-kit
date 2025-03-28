@@ -30,7 +30,6 @@ const PopoverContext = createContext<PopoverContextValue>({
 export interface PopoverProps extends BaseComponentProps, PropsWithChildren {}
 
 const Popover = ({ children, className, testId = 'popover' }: PopoverProps): JSX.Element => {
-  console.log('Popover');
   const [isOpen, setIsOpen] = useState(false);
   const [triggerRect, setTriggerRect] = useState<
     Pick<DOMRect, 'top' | 'left' | 'height' | 'width'>
@@ -42,7 +41,7 @@ const Popover = ({ children, className, testId = 'popover' }: PopoverProps): JSX
   });
 
   return (
-    <div className={cn('', className)} data-testid={testId}>
+    <div className={cn(className)} data-testid={testId}>
       <PopoverContext.Provider value={{ isOpen, setIsOpen, triggerRect, setTriggerRect }}>
         {children}
       </PopoverContext.Provider>
@@ -55,7 +54,6 @@ const Trigger = ({
   className,
   testId = 'popover-trigger',
 }: BaseComponentProps & PropsWithChildren): JSX.Element => {
-  console.log('Trigger');
   const { isOpen, setIsOpen, setTriggerRect } = useContext(PopoverContext);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
@@ -63,9 +61,6 @@ const Trigger = ({
     if (triggerRef.current) {
       const { top, left, height, width } = triggerRef.current.getBoundingClientRect();
       setTriggerRect({ top, left, height, width });
-      console.log(
-        `Trigger::updateTriggerRect::top: ${top}::left: ${left}::height: ${height}::width: ${width}`,
-      );
     }
   };
 
@@ -85,7 +80,6 @@ const Trigger = ({
   }, [isOpen, triggerRef.current]);
 
   const handleClick = () => {
-    console.log('Trigger::handleClick');
     updateTriggerRect();
     setIsOpen(!isOpen);
   };
@@ -115,7 +109,6 @@ const Content = ({
   sideOffset = 8,
   testId = 'popover-content',
 }: ContentProps): JSX.Element => {
-  console.log('Content');
   const contentRef = useRef<HTMLDivElement>(null);
   const [contentRect, setContentRect] = useState<Pick<DOMRect, 'height' | 'width'>>({
     height: 0,
@@ -131,7 +124,6 @@ const Content = ({
   } = triggerRect;
 
   useEffect(() => {
-    console.log('Content::useEffect');
     if (isOpen && contentRef.current) {
       const { height, width } = contentRef.current.getBoundingClientRect();
       setContentRect({ height, width });
@@ -139,9 +131,6 @@ const Content = ({
   }, [isOpen, contentRef.current]);
 
   const { top, left } = useMemo(() => {
-    console.log(
-      `Content::useMemo::triggerTop: ${triggerTop}::triggerLeft: ${triggerLeft}::triggerHeight: ${triggerHeight}::triggerWidth: ${triggerWidth}::contentHeight: ${contentHeight}::contentWidth: ${contentWidth}::side: ${side}`,
-    );
     switch (side) {
       case 'top':
         return {
@@ -181,9 +170,6 @@ const Content = ({
 
   const isHidden = !isOpen;
   const isVisible = isOpen && contentHeight > 0 && contentWidth > 0;
-  console.log(`Content::isHidden: ${isHidden}`);
-  console.log(`Content::top: ${top}`);
-  console.log(`Content::left: ${left}`);
 
   return (
     <>

@@ -82,7 +82,7 @@ const PopoverComponents = ({
             <Popover>
               <Popover.Trigger>Open</Popover.Trigger>
               <Popover.Content>
-                <Card className="bg-neutral-900 text-white">
+                <Card className="max-w-xs bg-slate-700 text-white dark:bg-slate-800">
                   <Card.Body>Hello world!</Card.Body>
                 </Card>
               </Popover.Content>
@@ -91,10 +91,164 @@ const PopoverComponents = ({
           <CodeSnippet
             className="my-2"
             code={`<Popover>
-  <Popover.Trigger>Open popover</Popover.Trigger>
+  <Popover.Trigger>Open</Popover.Trigger>
   <Popover.Content>
-    <Card className="bg-neutral-900 text-white">
+    <Card className="max-w-xs bg-slate-700 text-white dark:bg-slate-800">
       <Card.Body>Hello world!</Card.Body>
+    </Card>
+  </Popover.Content>
+</Popover>`}
+          />
+        </div>
+
+        <Heading level={4} className="my-2">
+          Sides
+        </Heading>
+        <div className="mb-4 opacity-85">
+          The Popover component can be positioned on any side of the trigger. The default position
+          is bottom. The position can be changed by setting the{' '}
+          <span className="font-mono">"side"</span> prop on the Popover component. The available
+          options are <span className="font-mono">"top"</span>,{' '}
+          <span className="font-mono">"right"</span>, <span className="font-mono">"bottom"</span>,
+          and <span className="font-mono">"left"</span>.
+        </div>
+        <div className="my-8">
+          <div className="mb-2 grid grid-cols-2 justify-items-center gap-4 rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+            {/* Example */}
+            <Popover className="w-fit">
+              <Popover.Trigger className="rounded-md px-4 py-2 transition-all hover:bg-neutral-500/50">
+                Bottom
+              </Popover.Trigger>
+              <Popover.Content side="bottom">
+                <Card className="max-w-xs bg-slate-700 text-white dark:bg-slate-800">
+                  <Card.Body>
+                    This popover appears below the trigger, which is also the default side when not
+                    specified.
+                  </Card.Body>
+                </Card>
+              </Popover.Content>
+            </Popover>
+            <Popover>
+              <Popover.Trigger className="rounded-md px-4 py-2 transition-all hover:bg-neutral-500/50">
+                Top
+              </Popover.Trigger>
+              <Popover.Content side="top">
+                <Card className="max-w-xs bg-slate-700 text-white dark:bg-slate-800">
+                  <Card.Body>This popover appears above the trigger.</Card.Body>
+                </Card>
+              </Popover.Content>
+            </Popover>
+            <Popover>
+              <Popover.Trigger className="rounded-md px-4 py-2 transition-all hover:bg-neutral-500/50">
+                Left
+              </Popover.Trigger>
+              <Popover.Content side="left">
+                <Card className="max-w-xs bg-slate-700 text-white dark:bg-slate-800">
+                  <Card.Body>This popover appears to the left of the trigger.</Card.Body>
+                </Card>
+              </Popover.Content>
+            </Popover>
+            <Popover>
+              <Popover.Trigger className="rounded-md px-4 py-2 transition-all hover:bg-neutral-500/50">
+                Right
+              </Popover.Trigger>
+              <Popover.Content side="right">
+                <Card className="max-w-xs bg-slate-700 text-white dark:bg-slate-800">
+                  <Card.Body>This popover appears to the right of the trigger.</Card.Body>
+                </Card>
+              </Popover.Content>
+            </Popover>
+          </div>
+          <CodeSnippet
+            className="my-2"
+            code={`<>
+  <Popover className="w-fit">
+    <Popover.Trigger className="rounded-md px-4 py-2 transition-all hover:bg-neutral-500/50">
+      Bottom
+    </Popover.Trigger>
+    <Popover.Content side="bottom">
+      <Card className="max-w-xs bg-slate-700 text-white dark:bg-slate-800">
+        <Card.Body>
+          This popover appears below the trigger, which is also the default side when not
+          specified.
+        </Card.Body>
+      </Card>
+    </Popover.Content>
+  </Popover>
+  <Popover>
+    <Popover.Trigger className="rounded-md px-4 py-2 transition-all hover:bg-neutral-500/50">
+      Top
+    </Popover.Trigger>
+    <Popover.Content side="top">
+      <Card className="max-w-xs bg-slate-700 text-white dark:bg-slate-800">
+        <Card.Body>This popover appears above the trigger.</Card.Body>
+      </Card>
+    </Popover.Content>
+  </Popover>
+  <Popover>
+    <Popover.Trigger className="rounded-md px-4 py-2 transition-all hover:bg-neutral-500/50">
+      Left
+    </Popover.Trigger>
+    <Popover.Content side="left">
+      <Card className="max-w-xs bg-slate-700 text-white dark:bg-slate-800">
+        <Card.Body>This popover appears to the left of the trigger.</Card.Body>
+      </Card>
+    </Popover.Content>
+  </Popover>
+  <Popover>
+    <Popover.Trigger className="rounded-md px-4 py-2 transition-all hover:bg-neutral-500/50">
+      Right
+    </Popover.Trigger>
+    <Popover.Content side="right">
+      <Card className="max-w-xs bg-slate-700 text-white dark:bg-slate-800">
+        <Card.Body>This popover appears to the right of the trigger.</Card.Body>
+      </Card>
+    </Popover.Content>
+  </Popover>
+</>`}
+          />
+        </div>
+
+        <Heading level={4} className="my-2">
+          Side Offset
+        </Heading>
+        <div className="mb-4 opacity-85">
+          Use the <span className="font-mono">"sideOffset"</span> prop to set the distance between
+          the trigger and the popover. The default value is 8px.
+        </div>
+        <div className="my-8">
+          <div className="mb-2 flex flex-col items-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+            {/* Example */}
+            <Popover>
+              <Popover.Trigger>Open</Popover.Trigger>
+              <Popover.Content side="top" sideOffset={32}>
+                <Card className="max-w-xs bg-slate-700 text-white dark:bg-slate-800">
+                  <Card.Header>
+                    <Card.Title>Popover with sideOffset</Card.Title>
+                  </Card.Header>
+                  <Card.Separator />
+                  <Card.Body>
+                    This popover has a sideOffset of 32, which means it will be positioned 32px away
+                    from the trigger instead of the default 8px.
+                  </Card.Body>
+                </Card>
+              </Popover.Content>
+            </Popover>
+          </div>
+          <CodeSnippet
+            className="my-2"
+            code={`<Popover>
+  <Popover.Trigger>Open</Popover.Trigger>
+  <Popover.Content side="top" sideOffset={32}>
+    <Card className="max-w-xs bg-slate-700 text-white dark:bg-slate-800">
+      <Card.Header>
+        <Card.Title>Popover with sideOffset</Card.Title>
+      </Card.Header>
+      <Card.Separator />
+      <Card.Body>
+        This popover has a sideOffset of 32, which means it will be positioned 32px
+        away from the trigger instead of the default 8px.
+      </Card.Body>
     </Card>
   </Popover.Content>
 </Popover>`}
