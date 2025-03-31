@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 
 import Page from 'common/components/Content/Page';
@@ -6,7 +7,6 @@ import MenuNavLink from 'common/components/Menu/MenuNavLink';
 import Heading from 'common/components/Text/Heading';
 import ComponentsPageBreadcrumbs from './components/ComponentsPageBreadcrumbs';
 import Columns from 'common/components/Content/Columns';
-import { useEffect } from 'react';
 
 /**
  * The `ComponentsPage` component renders the layout for the components page.
