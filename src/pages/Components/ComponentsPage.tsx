@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 
 import Page from 'common/components/Content/Page';
 import Container from 'common/components/Content/Container';
@@ -6,6 +6,7 @@ import MenuNavLink from 'common/components/Menu/MenuNavLink';
 import Heading from 'common/components/Text/Heading';
 import ComponentsPageBreadcrumbs from './components/ComponentsPageBreadcrumbs';
 import Columns from 'common/components/Content/Columns';
+import { useEffect } from 'react';
 
 /**
  * The `ComponentsPage` component renders the layout for the components page.
@@ -14,6 +15,12 @@ import Columns from 'common/components/Content/Columns';
  * @returns {JSX.Element} JSX
  */
 const ComponentsPage = (): JSX.Element => {
+  const location = useLocation();
+  // Scroll to top when the pathname changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
+
   return (
     <Page testId="page-components">
       <Container className="my-4 min-h-[50vh]">
