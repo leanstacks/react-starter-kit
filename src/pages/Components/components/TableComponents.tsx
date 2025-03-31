@@ -184,7 +184,7 @@ const TableComponents = ({
           </div>
           <CodeSnippet
             className="my-2"
-            code={`<Table<Pet, string> data={petData} columns={petColumns} />`}
+            code={`<Table<Pet> data={petData} columns={petColumns} />`}
           />
         </div>
 
@@ -238,7 +238,7 @@ const petColumnsWithHelper = [
           />
           <CodeSnippet
             className="my-2"
-            code={`<Table<Pet, string> data={petData} columns={petColumnsWithHelper} />`}
+            code={`<Table<Pet> data={petData} columns={petColumnsWithHelper} />`}
           />
         </div>
       </div>
