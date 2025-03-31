@@ -56,7 +56,7 @@ const TableComponents = ({
       cell: (info) => info.renderValue(),
       header: () => 'Description',
     }),
-  ];
+  ] as ColumnDef<ComponentProperty>[];
 
   /* setup for examples */
   const petData: Pet[] = [
@@ -73,6 +73,32 @@ const TableComponents = ({
     { header: 'Age', accessorKey: 'age' },
     { header: 'Owner', accessorKey: 'owner' },
   ];
+  // Using createColumnHelper to create column definitions
+  const petColumnHelper = createColumnHelper<Pet>();
+  const petColumnsWithHelper = [
+    petColumnHelper.accessor('id', {
+      cell: (info) => (
+        <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
+      ),
+      header: () => 'ID',
+    }),
+    petColumnHelper.accessor('name', {
+      cell: (info) => info.renderValue(),
+      header: (info) => <span className="capitalize">{info.column.id}</span>,
+    }),
+    petColumnHelper.accessor('species', {
+      cell: (info) => info.renderValue(),
+      header: () => 'Species',
+    }),
+    petColumnHelper.accessor('age', {
+      cell: (info) => info.renderValue(),
+      header: () => 'Age',
+    }),
+    petColumnHelper.accessor('owner', {
+      cell: (info) => info.renderValue(),
+      header: () => 'Owner',
+    }),
+  ] as ColumnDef<Pet>[];
 
   return (
     <section className={className} data-testid={testId}>
@@ -134,7 +160,7 @@ const TableComponents = ({
           <Heading level={3} className="mb-2">
             Properties
           </Heading>
-          <Table<ComponentProperty, string> data={data} columns={columns} />
+          <Table<ComponentProperty> data={data} columns={columns} />
         </div>
 
         <Heading level={3} className="mb-2">
@@ -154,11 +180,65 @@ const TableComponents = ({
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
-            <Table<Pet, string> data={petData} columns={petColumns} />
+            <Table<Pet> data={petData} columns={petColumns} />
           </div>
           <CodeSnippet
             className="my-2"
             code={`<Table<Pet, string> data={petData} columns={petColumns} />`}
+          />
+        </div>
+
+        <Heading level={4} className="my-2">
+          Column Helper
+        </Heading>
+        <div className="mb-4 opacity-85">
+          Column definitions are plain objects. A column helper, when created with the data type
+          definition, returns a utility that allows you to create column definitions in a type-safe
+          manner. Learn more about the column helper functions in the official{' '}
+          <Link
+            to="https://tanstack.com/table/latest/docs/guide/column-defs#column-helpers"
+            target="_blank_"
+          >
+            documentation
+          </Link>
+          .
+        </div>
+        <div className="my-8">
+          <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+            {/* Example */}
+            <Table<Pet> data={petData} columns={petColumnsWithHelper} />
+          </div>
+          <CodeSnippet
+            className="my-2"
+            code={`const petColumnHelper = createColumnHelper<Pet>();
+const petColumnsWithHelper = [
+  petColumnHelper.accessor('id', {
+    cell: (info) => (
+      <span className="font-mono text-sky-700 dark:text-sky-500">{info.getValue()}</span>
+    ),
+    header: () => 'ID',
+  }),
+  petColumnHelper.accessor('name', {
+    cell: (info) => info.renderValue(),
+    header: (info) => <span className="capitalize">{info.column.id}</span>,
+  }),
+  petColumnHelper.accessor('species', {
+    cell: (info) => info.renderValue(),
+    header: () => 'Species',
+  }),
+  petColumnHelper.accessor('age', {
+    cell: (info) => info.renderValue(),
+    header: () => 'Age',
+  }),
+  petColumnHelper.accessor('owner', {
+    cell: (info) => info.renderValue(),
+    header: () => 'Owner',
+  }),
+] as ColumnDef<Pet>[];`}
+          />
+          <CodeSnippet
+            className="my-2"
+            code={`<Table<Pet, string> data={petData} columns={petColumnsWithHelper} />`}
           />
         </div>
       </div>
