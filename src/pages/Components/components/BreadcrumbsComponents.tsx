@@ -1,4 +1,4 @@
-import { createColumnHelper } from '@tanstack/react-table';
+import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { ComponentProperty } from '../model/components';
@@ -42,7 +42,7 @@ const BreadcrumbsComponents = ({
       cell: (info) => info.renderValue(),
       header: () => 'Description',
     }),
-  ];
+  ] as ColumnDef<ComponentProperty>[];
 
   return (
     <section className={className} data-testid={testId}>
@@ -60,7 +60,7 @@ const BreadcrumbsComponents = ({
           <Heading level={3} className="mb-2">
             Properties
           </Heading>
-          <Table<ComponentProperty, string> data={breadcrumbsData} columns={columns} />
+          <Table<ComponentProperty> data={breadcrumbsData} columns={columns} />
         </div>
 
         <Heading level={3} className="mb-2">

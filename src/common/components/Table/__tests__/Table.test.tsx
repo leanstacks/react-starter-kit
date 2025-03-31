@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createColumnHelper } from '@tanstack/react-table';
+import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
 import { render, screen } from 'test/test-utils';
 import Table from '../Table';
 
@@ -32,11 +32,11 @@ describe('Table', () => {
       ],
     }),
     columnHelper.accessor('max', { cell: (info) => info.renderValue(), header: 'Max' }),
-  ];
+  ] as ColumnDef<Foo>[];
 
   it('should render successfully', async () => {
     // ARRANGE
-    render(<Table<Foo, number> data={data} columns={columns} />);
+    render(<Table<Foo> data={data} columns={columns} />);
     await screen.findByTestId('table');
 
     // ASSERT
@@ -45,7 +45,7 @@ describe('Table', () => {
 
   it('should use custom testId', async () => {
     // ARRANGE
-    render(<Table<Foo, number> data={data} columns={columns} testId="custom-testId" />);
+    render(<Table<Foo> data={data} columns={columns} testId="custom-testId" />);
     await screen.findByTestId('custom-testId');
 
     // ASSERT
@@ -54,7 +54,7 @@ describe('Table', () => {
 
   it('should use custom className', async () => {
     // ARRANGE
-    render(<Table<Foo, number> data={data} columns={columns} className="custom-className" />);
+    render(<Table<Foo> data={data} columns={columns} className="custom-className" />);
     await screen.findByTestId('table');
 
     // ASSERT

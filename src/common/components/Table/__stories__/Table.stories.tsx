@@ -48,7 +48,7 @@ const decoratedTableColumns = [
   columnHelper.accessor('value', {
     header: () => 'Value',
   }),
-];
+] as ColumnDef<TableData>[];
 
 // the data to populate the table
 const myTableData: TableData[] = [
@@ -70,10 +70,7 @@ export const Simple: Story = {
   },
   render: ({ columns, data }) => {
     return (
-      <Table<TableData, string>
-        columns={columns as ColumnDef<TableData, string>[]}
-        data={data as TableData[]}
-      />
+      <Table<TableData> columns={columns as ColumnDef<TableData>[]} data={data as TableData[]} />
     );
   },
 };
@@ -86,10 +83,7 @@ export const DecoratedColumns: Story = {
   },
   render: ({ columns, data }) => {
     return (
-      <Table<TableData, string>
-        columns={columns as ColumnDef<TableData, string>[]}
-        data={data as TableData[]}
-      />
+      <Table<TableData> columns={columns as ColumnDef<TableData>[]} data={data as TableData[]} />
     );
   },
 };

@@ -1,4 +1,4 @@
-import { createColumnHelper } from '@tanstack/react-table';
+import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
 import noop from 'lodash/noop';
 
 import { BaseComponentProps } from 'common/utils/types';
@@ -48,7 +48,7 @@ const ToastComponents = ({
       cell: (info) => info.renderValue(),
       header: () => 'Description',
     }),
-  ];
+  ] as ColumnDef<ComponentProperty>[];
 
   /* set up for examples */
   const { createToast } = useToasts();
@@ -93,7 +93,7 @@ createToast({
           <Heading level={3} className="mb-2">
             Properties
           </Heading>
-          <Table<ComponentProperty, string> data={data} columns={columns} />
+          <Table<ComponentProperty> data={data} columns={columns} />
         </div>
 
         <Heading level={3} className="mb-2">

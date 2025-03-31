@@ -1,4 +1,4 @@
-import { createColumnHelper } from '@tanstack/react-table';
+import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { ComponentProperty } from '../model/components';
@@ -42,7 +42,7 @@ const PopoverComponents = ({
       cell: (info) => info.renderValue(),
       header: () => 'Description',
     }),
-  ];
+  ] as ColumnDef<ComponentProperty>[];
 
   return (
     <section className={className} data-testid={testId}>
@@ -61,7 +61,7 @@ const PopoverComponents = ({
           <Heading level={3} className="mb-2">
             Properties
           </Heading>
-          <Table<ComponentProperty, string> data={data} columns={columns} />
+          <Table<ComponentProperty> data={data} columns={columns} />
         </div>
 
         <Heading level={3} className="mb-2">
