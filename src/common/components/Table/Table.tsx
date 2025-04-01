@@ -19,12 +19,8 @@ export interface TableProps<TData = unknown> extends BaseComponentProps {
 /**
  * The `Table` component renders a `table` element using the column definitions
  * and data supplied in the properties.
- *
- * Uses TanStack Table.
- * @template TData - The type of the table data object.
- * @param {TableProps} props - Component properteis.
- * @returns {JSX.Element} JSX
- * @see {@link https://tanstack.com/table/latest TanStack Table}
+ * This component is built using the `@tanstack/react-table` library.
+ * It provides a simple and flexible way to display tabular data in a React application.
  */
 const Table = <TData,>({
   className,
