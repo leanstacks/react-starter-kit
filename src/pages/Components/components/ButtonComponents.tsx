@@ -2,7 +2,7 @@ import { BaseComponentProps } from 'common/utils/types';
 import Button from 'common/components/Button/Button';
 import CodeSnippet from 'common/components/Text/CodeSnippet';
 import { ComponentProperty } from '../model/components';
-import { createColumnHelper } from '@tanstack/react-table';
+import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
 import Table from 'common/components/Table/Table';
 import FAIcon from 'common/components/Icon/FAIcon';
 import Heading from 'common/components/Text/Heading';
@@ -61,7 +61,7 @@ const ButtonComponents = ({
       cell: (info) => info.renderValue(),
       header: () => 'Description',
     }),
-  ];
+  ] as ColumnDef<ComponentProperty>[];
 
   return (
     <section className={className} data-testid={testId}>
@@ -78,7 +78,7 @@ const ButtonComponents = ({
         <Heading level={3} className="mb-2">
           Properties
         </Heading>
-        <Table<ComponentProperty, string> data={data} columns={columns} />
+        <Table<ComponentProperty> data={data} columns={columns} />
       </div>
 
       <Heading level={3}>Examples</Heading>

@@ -11,28 +11,28 @@ import { BaseComponentProps } from 'common/utils/types';
  * which are used to populate the rows of the table.
  * @see {@link BaseComponentProps}
  */
-export interface TableProps<TData = unknown, TValue = unknown> extends BaseComponentProps {
-  columns: ColumnDef<TData, TValue>[];
+export interface TableProps<TData = unknown> extends BaseComponentProps {
+  columns: ColumnDef<TData>[];
   data: TData[];
 }
 
 /**
  * The `Table` component renders a `table` element using the column definitions
  * and data supplied in the properties.
- *
- * Uses TanStack Table.
- * @template TData - The type of the table data object.
- * @param {TableProps} props - Component properteis.
- * @returns {JSX.Element} JSX
- * @see {@link https://tanstack.com/table/latest TanStack Table}
+ * This component is built using the `@tanstack/react-table` library.
+ * It provides a simple and flexible way to display tabular data in a React application.
  */
-const Table = <TData, TValue>({
+const Table = <TData,>({
   className,
   columns,
   data,
   testId = 'table',
-}: TableProps<TData, TValue>): JSX.Element => {
-  const table = useReactTable({ data, columns, getCoreRowModel: getCoreRowModel() });
+}: TableProps<TData>): JSX.Element => {
+  const table = useReactTable({
+    data,
+    columns,
+    getCoreRowModel: getCoreRowModel(),
+  });
 
   return (
     <table
@@ -66,6 +66,22 @@ const Table = <TData, TValue>({
           </tr>
         ))}
       </tbody>
+      <tfoot>
+        {table.getFooterGroups().map((footerGroup) => (
+          <tr key={footerGroup.id}>
+            {footerGroup.headers.map((header) => (
+              <th
+                key={header.id}
+                className="border-t border-neutral-400/10 py-2 pr-2 font-semibold"
+              >
+                {header.isPlaceholder
+                  ? null
+                  : flexRender(header.column.columnDef.footer, header.getContext())}
+              </th>
+            ))}
+          </tr>
+        ))}
+      </tfoot>
     </table>
   );
 };

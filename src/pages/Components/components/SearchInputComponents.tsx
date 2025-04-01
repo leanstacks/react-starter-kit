@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { createColumnHelper } from '@tanstack/react-table';
+import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
 import { filter } from 'lodash';
 import { map } from 'lodash';
 
@@ -71,7 +71,7 @@ const SearchInputComponents = ({
       cell: (info) => info.renderValue(),
       header: () => 'Description',
     }),
-  ];
+  ] as ColumnDef<ComponentProperty>[];
 
   const colors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet'];
 
@@ -117,7 +117,7 @@ const SearchInputComponents = ({
         <Heading level={3} className="mb-2">
           Properties
         </Heading>
-        <Table<ComponentProperty, string> data={data} columns={columns} />
+        <Table<ComponentProperty> data={data} columns={columns} />
       </div>
 
       <Heading level={3} className="mb-2">

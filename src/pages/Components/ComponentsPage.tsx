@@ -1,4 +1,5 @@
-import { Outlet } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 
 import Page from 'common/components/Content/Page';
 import Container from 'common/components/Content/Container';
@@ -14,6 +15,12 @@ import Columns from 'common/components/Content/Columns';
  * @returns {JSX.Element} JSX
  */
 const ComponentsPage = (): JSX.Element => {
+  const location = useLocation();
+  // Scroll to top when the pathname changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location.pathname]);
+
   return (
     <Page testId="page-components">
       <Container className="my-4 min-h-[50vh]">
@@ -93,6 +100,9 @@ const ComponentsPage = (): JSX.Element => {
             </MenuNavLink>
             <MenuNavLink to="spinner" styleActive>
               Spinner
+            </MenuNavLink>
+            <MenuNavLink to="table" styleActive>
+              Table
             </MenuNavLink>
             <MenuNavLink to="tabs" styleActive>
               Tabs
