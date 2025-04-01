@@ -32,16 +32,16 @@ const TableComponents = ({
       description: 'Optional. Additional CSS class names.',
     },
     {
-      name: 'dismiss',
-      description: 'A function called when the Toast dismisses.',
+      name: 'columns',
+      description: 'Required. An array of column definitions.',
+    },
+    {
+      name: 'data',
+      description: 'Required. An array of data objects.',
     },
     {
       name: 'testId',
       description: 'Optional. Identifier for testing.',
-    },
-    {
-      name: 'toast',
-      description: 'The Toast object.',
     },
   ];
   const columnHelper = createColumnHelper<ComponentProperty>();
