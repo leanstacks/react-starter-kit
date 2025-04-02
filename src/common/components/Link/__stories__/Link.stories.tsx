@@ -56,7 +56,7 @@ export const Icon: Story = {
 export const Styled: Story = {
   args: {
     children: 'Styled link',
-    className: 'decoration-rose-400 text-rose-500 hover:decoration-3 text-xl',
+    className: 'decoration-rose-400 text-rose-500 text-2xl',
     to: '/',
   },
 };

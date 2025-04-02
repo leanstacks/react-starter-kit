@@ -18,7 +18,7 @@ const Link = ({ children, className, testId = 'link', ...props }: LinkProps): JS
   return (
     <RouterLink
       className={cn(
-        'font-medium underline decoration-sky-500 underline-offset-3 hover:decoration-2 dark:decoration-sky-400',
+        'font-medium underline decoration-sky-500 decoration-1 underline-offset-3 hover:decoration-2 dark:decoration-sky-400',
         className,
       )}
       data-testid={testId}
