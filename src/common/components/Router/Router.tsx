@@ -38,6 +38,7 @@ const HelpTextComponents = lazy(() => import('pages/Components/components/HelpTe
 const IconComponents = lazy(() => import('pages/Components/components/IconComponents'));
 const InputComponents = lazy(() => import('pages/Components/components/InputComponents'));
 const LabelComponents = lazy(() => import('pages/Components/components/LabelComponents'));
+const LinkComponents = lazy(() => import('pages/Components/components/LinkComponents'));
 const PageComponents = lazy(() => import('pages/Components/components/PageComponents'));
 const PopoverComponents = lazy(() => import('pages/Components/components/PopoverComponents'));
 const SearchInputComponents = lazy(
@@ -167,6 +168,10 @@ export const routes: RouteObject[] = [
               {
                 path: 'label',
                 element: withSuspense(<LabelComponents />),
+              },
+              {
+                path: 'link',
+                element: withSuspense(<LinkComponents />),
               },
               {
                 path: 'page',
