@@ -1,8 +1,8 @@
 import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { object, string } from 'yup';
 import noop from 'lodash/noop';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { ComponentProperty } from '../model/components';
@@ -60,6 +60,12 @@ const InputComponents = ({
     }),
   ] as ColumnDef<ComponentProperty>[];
 
+  /* example setup */
+  const formSchema = z.object({
+    firstName: z.string(),
+    middleInitial: z.string(),
+    lastName: z.string().min(1, { message: 'Last name is required.' }),
+  });
   const { control, handleSubmit, reset } = useForm({
     defaultValues: {
       firstName: '',
@@ -67,13 +73,7 @@ const InputComponents = ({
       lastName: '',
     },
     mode: 'all',
-    resolver: yupResolver(
-      object({
-        firstName: string(),
-        middleInitial: string(),
-        lastName: string().required('Last name is required.'),
-      }),
-    ),
+    resolver: zodResolver(formSchema),
   });
 
   const onSubmit = noop;

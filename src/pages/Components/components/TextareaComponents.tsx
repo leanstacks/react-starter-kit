@@ -1,8 +1,8 @@
 import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { object, string } from 'yup';
 import noop from 'lodash/noop';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { ComponentProperty } from '../model/components';
@@ -60,18 +60,20 @@ const TextareaComponents = ({
     }),
   ] as ColumnDef<ComponentProperty>[];
 
+  /* example setup */
+  const formSchema = z.object({
+    bio: z
+      .string()
+      .min(1, { message: 'Your bio is required.' })
+      .max(20, { message: 'Your bio may not be longer than 20 characters.' }),
+  });
+
   const { control, handleSubmit, reset } = useForm({
     defaultValues: {
       bio: '',
     },
     mode: 'all',
-    resolver: yupResolver(
-      object({
-        bio: string()
-          .required('Your bio is required.')
-          .max(20, 'Your bio may not be longer than 20 characters.'),
-      }),
-    ),
+    resolver: zodResolver(formSchema),
   });
 
   const onSubmit = noop;

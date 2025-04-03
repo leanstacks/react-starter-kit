@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useForm } from 'react-hook-form';
-import { InferType, object, string } from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { default as MyInput } from '../Input';
 import { InputProps } from '../Input';
 
-const formSchema = object({
-  color: string().required('Required'),
+const formSchema = z.object({
+  color: z.string().min(1, { message: 'Required' }),
 });
 
-type FormValues = InferType<typeof formSchema>;
+type FormValues = z.infer<typeof formSchema>;
 
 /**
  * A wrapper for the `Input` component.  Provides the RHF form `control`
@@ -22,7 +22,7 @@ const Input = (props: Omit<InputProps<FormValues>, 'control'>) => {
       color: '',
     },
     mode: 'all',
-    resolver: yupResolver(formSchema),
+    resolver: zodResolver(formSchema),
   });
 
   const onSubmit = () => {};

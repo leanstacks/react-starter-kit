@@ -1,8 +1,8 @@
 import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { object, string } from 'yup';
 import noop from 'lodash/noop';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { ComponentProperty } from '../model/components';
@@ -60,20 +60,24 @@ const SelectComponents = ({
     }),
   ] as ColumnDef<ComponentProperty>[];
 
+  /* example setup */
+  const formSchema = z.object({
+    color: z
+      .string()
+      .min(1, { message: 'Required' })
+      .refine((val) => ['blue', 'red', 'yellow'].includes(val), {
+        message: 'You must select a primary color.',
+      }),
+    food: z.string().min(1, { message: 'Required' }),
+  });
+
   const { control, handleSubmit, reset } = useForm({
     defaultValues: {
       color: '',
       food: '',
     },
     mode: 'all',
-    resolver: yupResolver(
-      object({
-        color: string()
-          .required('Color is required.')
-          .oneOf(['blue', 'red', 'yellow'], 'You must select a primary color.'),
-        food: string().required('Food is required.'),
-      }),
-    ),
+    resolver: zodResolver(formSchema),
   });
 
   const onSubmit = noop;

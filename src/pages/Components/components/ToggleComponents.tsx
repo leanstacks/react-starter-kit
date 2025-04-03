@@ -1,8 +1,8 @@
 import { ColumnDef, createColumnHelper } from '@tanstack/react-table';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { boolean, object } from 'yup';
 import noop from 'lodash/noop';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { ComponentProperty } from '../model/components';
@@ -68,16 +68,16 @@ const ToggleComponents = ({
     }),
   ] as ColumnDef<ComponentProperty>[];
 
+  /* example setup */
+  const formSchema = z.object({
+    isNotificationsEnabled: z.boolean(),
+  });
   const { control, handleSubmit, reset } = useForm({
     defaultValues: {
       isNotificationsEnabled: true,
     },
     mode: 'all',
-    resolver: yupResolver(
-      object({
-        isNotificationsEnabled: boolean(),
-      }),
-    ),
+    resolver: zodResolver(formSchema),
   });
 
   const onSubmit = noop;

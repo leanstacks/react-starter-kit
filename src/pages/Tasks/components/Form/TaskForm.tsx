@@ -1,7 +1,7 @@
-import { boolean, number, object, string } from 'yup';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import { useTranslation } from 'react-i18next';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
@@ -49,12 +49,13 @@ const TaskForm = ({
   /**
    * Task form validation schema.
    */
-  const validationSchema = object({
-    userId: number().required(t('validation.required')),
-    title: string()
-      .required(t('validation.required'))
-      .max(100, t('validation.max', { count: 100 })),
-    completed: boolean().required(t('validation.required')).default(false),
+  const schema = z.object({
+    userId: z.number().min(1, { message: t('validation.required') }),
+    title: z
+      .string()
+      .min(1, { message: t('validation.required') })
+      .max(100, { message: t('validation.max', { count: 100 }) }),
+    completed: z.boolean().default(false),
   });
 
   /**
@@ -67,7 +68,7 @@ const TaskForm = ({
       completed: task?.completed || false,
     },
     mode: 'all',
-    resolver: yupResolver(validationSchema),
+    resolver: zodResolver(schema),
   });
 
   return (

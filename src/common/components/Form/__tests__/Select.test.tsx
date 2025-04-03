@@ -1,18 +1,17 @@
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 import { useForm } from 'react-hook-form';
-import { InferType, object, string } from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { render, screen, waitFor } from 'test/test-utils';
 
 import Select, { SelectProps } from '../Select';
 
-const formSchema = object({
-  color: string().oneOf(['blue'], 'Must select a value in the list.'),
+const formSchema = z.object({
+  color: z.enum(['blue'], { message: 'Must select a value in the list.' }),
 });
-
-type FormValues = InferType<typeof formSchema>;
+type FormValues = z.infer<typeof formSchema>;
 
 /**
  * A wrapper for testing the `Select` component which requires some
@@ -20,8 +19,8 @@ type FormValues = InferType<typeof formSchema>;
  */
 const SelectWrapper = (props: Omit<SelectProps<FormValues>, 'control'>) => {
   const form = useForm<FormValues>({
-    defaultValues: { color: '' },
-    resolver: yupResolver(formSchema),
+    defaultValues: {},
+    resolver: zodResolver(formSchema),
   });
 
   const onSubmit = () => {};
