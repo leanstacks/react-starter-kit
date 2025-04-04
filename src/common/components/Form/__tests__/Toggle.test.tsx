@@ -21,7 +21,7 @@ type FormValues = z.infer<typeof formSchema>;
  */
 const ToggleWrapper = (props: Omit<ToggleProps<FormValues>, 'control'>) => {
   const form = useForm<FormValues>({
-    defaultValues: { myField: undefined },
+    defaultValues: { myField: false },
     resolver: zodResolver(formSchema),
   });
 
