@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { object, string } from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import { useTranslation } from 'react-i18next';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
@@ -41,11 +41,12 @@ const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): 
   /**
    * Signin form validation schema.
    */
-  const validationSchema = object({
-    password: string().required(t('validation.required')),
-    username: string()
-      .required(t('validation.required'))
-      .max(30, t('validation.max', { count: 30 })),
+  const schema = z.object({
+    password: z.string().min(1, { message: t('validation.required') }),
+    username: z
+      .string()
+      .min(1, { message: t('validation.required') })
+      .max(30, { message: t('validation.max', { count: 30 }) }),
   });
 
   /**
@@ -54,7 +55,7 @@ const SigninForm = ({ className, testId = 'form-signin' }: BaseComponentProps): 
   const { control, formState, handleSubmit } = useForm<SigninFormValues>({
     defaultValues: { username: '', password: '' },
     mode: 'all',
-    resolver: yupResolver(validationSchema),
+    resolver: zodResolver(schema),
   });
 
   /**

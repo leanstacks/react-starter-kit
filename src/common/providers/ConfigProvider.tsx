@@ -1,23 +1,22 @@
 import { PropsWithChildren, useEffect, useState } from 'react';
-import { number, object, ObjectSchema, string, ValidationError } from 'yup';
+import { z, ZodError } from 'zod';
 
 import { Config, ConfigContext } from './ConfigContext';
 
 /**
  * The configuration validation schema.
- * @see {@link https://github.com/jquense/yup | Yup}
  */
-const configSchema: ObjectSchema<Config> = object({
-  VITE_BASE_URL_API: string().url().required(),
-  VITE_BUILD_DATE: string().default('1970-01-01'),
-  VITE_BUILD_TIME: string().default('00:00:00'),
-  VITE_BUILD_TS: string().default('1970-01-01T00:00:00+0000'),
-  VITE_BUILD_COMMIT_SHA: string().default('local'),
-  VITE_BUILD_ENV_CODE: string().default('local'),
-  VITE_BUILD_WORKFLOW_NAME: string().default('local'),
-  VITE_BUILD_WORKFLOW_RUN_NUMBER: number().default(1),
-  VITE_BUILD_WORKFLOW_RUN_ATTEMPT: number().default(1),
-  VITE_TOAST_AUTO_DISMISS_MILLIS: number().default(5000),
+const configSchema = z.object({
+  VITE_BASE_URL_API: z.string().url(),
+  VITE_BUILD_DATE: z.string().default('1970-01-01'),
+  VITE_BUILD_TIME: z.string().default('00:00:00'),
+  VITE_BUILD_TS: z.string().default('1970-01-01T00:00:00+0000'),
+  VITE_BUILD_COMMIT_SHA: z.string().default('local'),
+  VITE_BUILD_ENV_CODE: z.string().default('local'),
+  VITE_BUILD_WORKFLOW_NAME: z.string().default('local'),
+  VITE_BUILD_WORKFLOW_RUN_NUMBER: z.coerce.number().default(1),
+  VITE_BUILD_WORKFLOW_RUN_ATTEMPT: z.coerce.number().default(1),
+  VITE_TOAST_AUTO_DISMISS_MILLIS: z.coerce.number().default(5000),
 });
 
 /**
@@ -35,14 +34,14 @@ const ConfigContextProvider = ({ children }: PropsWithChildren): JSX.Element => 
 
   useEffect(() => {
     try {
-      const validatedConfig = configSchema.validateSync(import.meta.env, {
-        abortEarly: false,
-        stripUnknown: true,
-      });
+      const validatedConfig = configSchema.parse(import.meta.env);
       setConfig(validatedConfig);
       setIsReady(true);
     } catch (err) {
-      if (err instanceof ValidationError) throw new Error(`${err}::${err.errors}`);
+      if (err instanceof ZodError) {
+        const errors = err.errors.map((e) => `${e.path.join('.')}::${e.message}`);
+        throw new Error(`Configuration error: ${errors.join(', ')}`);
+      }
       if (err instanceof Error) throw new Error(`Configuration error: ${err.message}`);
       throw err;
     }

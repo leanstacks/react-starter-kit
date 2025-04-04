@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useForm } from 'react-hook-form';
-import { InferType, object, string } from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { default as MySelect } from '../Select';
 import { SelectProps } from '../Select';
 
-const formSchema = object({
-  color: string().required('Required. ').oneOf(['blue', 'red'], 'Must be blue or red. '),
+const formSchema = z.object({
+  color: z.enum(['blue', 'red'], { message: 'Must be blue or red.' }),
 });
 
-type FormValues = InferType<typeof formSchema>;
+type FormValues = z.infer<typeof formSchema>;
 
 /**
  * A wrapper for the `Select` component.  Provides the RHF form `control`
@@ -18,11 +18,9 @@ type FormValues = InferType<typeof formSchema>;
  */
 const Select = (props: Omit<SelectProps<FormValues>, 'control'>) => {
   const form = useForm({
-    defaultValues: {
-      color: '',
-    },
+    defaultValues: {},
     mode: 'all',
-    resolver: yupResolver(formSchema),
+    resolver: zodResolver(formSchema),
   });
 
   const onSubmit = () => {};

@@ -1,18 +1,19 @@
 import userEvent from '@testing-library/user-event';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { boolean, InferType, object } from 'yup';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { describe, expect, it } from 'vitest';
 import { render, screen } from 'test/test-utils';
 
 import Toggle, { ToggleProps } from '../Toggle';
 
-const formSchema = object({
-  myField: boolean().oneOf([false]),
+const formSchema = z.object({
+  myField: z.boolean().refine((val) => val === false, {
+    message: 'Must be false.',
+  }),
 });
-
-type FormValues = InferType<typeof formSchema>;
+type FormValues = z.infer<typeof formSchema>;
 
 /**
  * A wrapper for testing the `Toggle` component which requires some
@@ -21,7 +22,7 @@ type FormValues = InferType<typeof formSchema>;
 const ToggleWrapper = (props: Omit<ToggleProps<FormValues>, 'control'>) => {
   const form = useForm<FormValues>({
     defaultValues: { myField: false },
-    resolver: yupResolver(formSchema),
+    resolver: zodResolver(formSchema),
   });
 
   const onSubmit = () => {};
@@ -78,6 +79,6 @@ describe('Toggle', () => {
     await screen.findByTestId('toggle-error');
 
     // ASSERT
-    expect(screen.getByTestId('toggle-error')).toHaveTextContent(/must be one of the following/i);
+    expect(screen.getByTestId('toggle-error')).toHaveTextContent(/must be false/i);
   });
 });

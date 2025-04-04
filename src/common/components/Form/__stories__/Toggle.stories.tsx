@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useForm } from 'react-hook-form';
-import { boolean, InferType, object } from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { default as MyToggle } from '../Toggle';
 import { ToggleProps } from '../Toggle';
 
-const formSchema = object({
-  isEnabledNotifications: boolean(),
+const formSchema = z.object({
+  isEnabledNotifications: z.boolean(),
 });
 
-type FormValues = InferType<typeof formSchema>;
+type FormValues = z.infer<typeof formSchema>;
 
 /**
  * A wrapper for the `Toggle` component.  Provides the RHF form `control`
@@ -22,7 +22,7 @@ const Toggle = (props: Omit<ToggleProps<FormValues>, 'control'>) => {
       isEnabledNotifications: false,
     },
     mode: 'all',
-    resolver: yupResolver(formSchema),
+    resolver: zodResolver(formSchema),
   });
 
   const onSubmit = () => {};

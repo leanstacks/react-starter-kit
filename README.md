@@ -38,7 +38,7 @@ The production technology stack includes:
 - Font Awesome - iconography
 - Google Fonts - typography
 - React i18next - internationalization
-- Yup - schema based validation
+- Zod - schema based validation
 - Lodash - utility functions
 - DayJS - date and time utility functions
 - TanStack Table - advanced tables and datagrids
@@ -268,7 +268,7 @@ This project uses GitHub Actions to perform DevOps automation activities such as
 - [TanStack][tanstack]
 - [Axios][axios]
 - [React Hook Form][reacthookform]
-- [Yup][yup]
+- [Zod][zod]
 - [Tailwind CSS][tailwind]
 - [Class Variance Authority][cva]
 - [Font Awesome][fontawesome]
@@ -287,7 +287,6 @@ This project uses GitHub Actions to perform DevOps automation activities such as
 [vite]: https://vitejs.dev/ 'Vite'
 [axios]: https://axios-http.com/ 'Axios'
 [reacthookform]: https://www.react-hook-form.com/ 'React Hook Form'
-[yup]: https://github.com/jquense/yup 'Yup'
 [tailwind]: https://tailwindcss.com/ 'Tailwind CSS'
 [cva]: https://cva.style/ 'Class Variance Authority'
 [fontawesome]: https://fontawesome.com/ 'Font Awesome'
@@ -298,3 +297,4 @@ This project uses GitHub Actions to perform DevOps automation activities such as
 [reactspring]: https://www.react-spring.dev/ 'React Spring'
 [storybook]: https://storybook.js.org/ 'Storybook'
 [recharts]: https://recharts.org/ 'Recharts'
+[zod]: https://zod.dev/ 'Zod'

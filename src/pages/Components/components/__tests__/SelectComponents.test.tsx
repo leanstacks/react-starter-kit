@@ -29,4 +29,18 @@ describe('SelectComponents', () => {
     // ASSERT
     expect(screen.getByTestId('components-select'));
   });
+
+  it('should select a value', async () => {
+    // ARRANGE
+    const user = userEvent.setup();
+    render(<SelectComponents />);
+    await screen.findByTestId('components-select');
+
+    // ACT
+    await user.click(screen.getByTestId('select-trigger-1'));
+    await user.click(screen.getByTestId('select-option-1'));
+
+    // ASSERT
+    expect(screen.getByTestId('components-select'));
+  });
 });

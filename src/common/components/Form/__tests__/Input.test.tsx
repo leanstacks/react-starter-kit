@@ -1,18 +1,18 @@
 import { describe, expect, it } from 'vitest';
 import userEvent from '@testing-library/user-event';
-import { InferType, object, string } from 'yup';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { render, screen } from 'test/test-utils';
 
 import Input, { InputProps } from '../Input';
 
-const formSchema = object({
-  color: string().required('Required'),
+const formSchema = z.object({
+  color: z.string().min(1, { message: 'Required' }),
 });
 
-type FormValues = InferType<typeof formSchema>;
+type FormValues = z.infer<typeof formSchema>;
 
 /**
  * A wrapper for testing the `Input` component which requires some
@@ -21,7 +21,7 @@ type FormValues = InferType<typeof formSchema>;
 const InputWrapper = (props: Omit<InputProps<FormValues>, 'control'>) => {
   const form = useForm<FormValues>({
     defaultValues: { color: '' },
-    resolver: yupResolver(formSchema),
+    resolver: zodResolver(formSchema),
   });
 
   const onSubmit = () => {};

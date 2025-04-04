@@ -47,12 +47,18 @@ describe('TaskForm', () => {
     expect(onCancelSpy).toHaveBeenCalled();
   });
 
-  it('should call onSubmit when cancelled', async () => {
+  it('should call onSubmit when submitted', async () => {
     // ARRANGE
     const onCancelSpy = vi.fn();
     const onSubmitSpy = vi.fn();
     const user = userEvent.setup();
-    render(<TaskForm onCancel={onCancelSpy} onSubmit={onSubmitSpy} />);
+    render(
+      <TaskForm
+        onCancel={onCancelSpy}
+        onSubmit={onSubmitSpy}
+        task={{ title: 'Do a thing', completed: false, userId: 1 }}
+      />,
+    );
     await screen.findByTestId('task-form-button-submit');
 
     // ACT
