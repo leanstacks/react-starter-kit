@@ -118,13 +118,15 @@ const SelectComponents = ({
             {/* Example */}
             <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg">
               <Select control={control} name="color" required className="mb-8">
-                <Select.Trigger>
+                <Select.Trigger testId="select-trigger-1">
                   <Select.Value placeholder="None selected" />
                   <Select.Icon />
                 </Select.Trigger>
                 <Select.Options>
                   <Select.Heading>Primary Colors</Select.Heading>
-                  <Select.Option value="blue">Blue</Select.Option>
+                  <Select.Option value="blue" testId="select-option-1">
+                    Blue
+                  </Select.Option>
                   <Select.Option value="red">Red</Select.Option>
                   <Select.Option value="yellow">Yellow</Select.Option>
                   <Select.Separator />
