@@ -9,7 +9,7 @@ import { render, screen, waitFor } from 'test/test-utils';
 import Select, { SelectProps } from '../Select';
 
 const formSchema = z.object({
-  color: z.enum(['blue'], { message: 'Must select a value in the list.' }),
+  color: z.string().refine((val) => ['blue'].includes(val), { message: 'Must select blue.' }),
 });
 type FormValues = z.infer<typeof formSchema>;
 
@@ -256,8 +256,6 @@ describe('Select', () => {
     await screen.findByTestId('select-error');
 
     // ASSERT
-    expect(screen.getByTestId('select-error')).toHaveTextContent(
-      /must select a value in the list/i,
-    );
+    expect(screen.getByTestId('select-error')).toHaveTextContent(/must select blue/i);
   });
 });
