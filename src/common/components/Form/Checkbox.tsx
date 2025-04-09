@@ -60,16 +60,11 @@ const Checkbox = <T extends FieldValues>({
         >
           {isChecked && <FAIcon icon="check" size="sm" fixedWidth className="text-white" />}
         </button>
-        <Label
-          htmlFor={name}
-          required={required}
-          className="m-0 inline leading-0"
-          testId={`${testId}-label`}
-        >
+        <Label htmlFor={name} required={required} className="m-0" testId={`${testId}-label`}>
           {label}
         </Label>
       </div>
-      <div className="flex items-center">
+      <div className="flex flex-wrap items-center">
         <FieldError message={fieldState.error?.message} testId={`${testId}-error`} />
         {supportingText && (
           <HelpText testId={`${testId}-supporting-text`}>{supportingText}</HelpText>
