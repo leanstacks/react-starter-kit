@@ -138,6 +138,7 @@ const CheckboxComponents = ({
                 className="mb-4"
                 required
                 supportingText="You must accept the terms and conditions to proceed."
+                testId="checkbox-terms"
               />
               <Checkbox
                 control={control}

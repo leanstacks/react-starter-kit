@@ -56,6 +56,7 @@ const Checkbox = <T extends FieldValues>({
           onClick={handleClick}
           role="checkbox"
           aria-checked={field.value === true}
+          data-testid={`${testId}-button`}
         >
           {isChecked && <FAIcon icon="check" size="sm" fixedWidth className="text-white" />}
         </button>
