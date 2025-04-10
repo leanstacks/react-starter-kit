@@ -1,4 +1,5 @@
 import { Control, FieldValues, Path, useController } from 'react-hook-form';
+import { cva } from 'class-variance-authority';
 
 import { BaseComponentProps } from 'common/utils/types';
 import { cn } from 'common/utils/css';
@@ -7,6 +8,36 @@ import FieldError from './FieldError';
 import HelpText from '../Text/HelpText';
 import FAIcon from '../Icon/FAIcon';
 
+/**
+ * Define the `Checkbox` component base and variant styles.
+ */
+const checkboxVariants = cva('flex size-4 appearance-none items-center justify-center rounded-sm', {
+  variants: {
+    checked: {
+      true: 'bg-blue-600',
+      false: 'bg-gray-300',
+    },
+    disabled: {
+      true: 'cursor-not-allowed opacity-50',
+      false: 'cursor-pointer',
+    },
+  },
+  defaultVariants: {
+    checked: false,
+    disabled: false,
+  },
+});
+
+/**
+ * Properties for the `Checkbox` component.
+ * @param {Control} control - Object containing methods for registering components
+ * into React Hook Form.
+ * @param {boolean} [disabled] - Optional. Indicates if the checkbox is disabled. Default: `false`
+ * @param {string} label - The label text.
+ * @param {string} name - Name of the form control.
+ * @param {boolean} [required] - Optional. Indicates if the checkbox is required. Default: `false`
+ * @param {string} [supportingText] - Optional. Help text or instructions.
+ */
 export interface CheckboxProps<T extends FieldValues> extends BaseComponentProps {
   control: Control<T>;
   disabled?: boolean;
@@ -16,6 +47,10 @@ export interface CheckboxProps<T extends FieldValues> extends BaseComponentProps
   supportingText?: string;
 }
 
+/**
+ * The `Checkbox` component renders a checkbox input. It is used to capture
+ * boolean input from a user.
+ */
 const Checkbox = <T extends FieldValues>({
   className,
   control,
@@ -29,9 +64,6 @@ const Checkbox = <T extends FieldValues>({
   const { field, fieldState } = useController({ control, name: name as Path<T> });
   const isChecked = field.value === true;
 
-  // console.log(`Checkbox::${name}::`, { field, fieldState });
-  // console.log(`Checkbox::${name}::error::`, fieldState.error);
-
   const handleClick = () => {
     if (!disabled) {
       field.onChange(!isChecked);
@@ -44,15 +76,7 @@ const Checkbox = <T extends FieldValues>({
         <button
           type="button"
           name={name}
-          className={cn(
-            'flex size-4 appearance-none items-center justify-center rounded-sm',
-            { 'bg-blue-600': isChecked },
-            { 'bg-gray-300': !isChecked },
-            { 'cursor-not-allowed opacity-50': disabled },
-            {
-              'cursor-pointer': !disabled,
-            },
-          )}
+          className={cn(checkboxVariants({ checked: isChecked, disabled }))}
           onClick={handleClick}
           role="checkbox"
           aria-checked={field.value === true}
