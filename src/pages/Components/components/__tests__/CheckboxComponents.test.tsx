@@ -39,11 +39,10 @@ describe('CheckboxComponents', () => {
     await user.click(screen.getByTestId('checkbox-terms-button'));
     // Click the button to uncheck the checkbox
     await user.click(screen.getByTestId('checkbox-terms-button'));
+
+    // ASSERT
     await waitFor(() => {
       expect(screen.getByTestId('checkbox-terms-error')).toBeDefined();
     });
-
-    // ASSERT
-    expect(screen.getByTestId('checkbox-terms-error')).toBeDefined();
   });
 });
