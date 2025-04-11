@@ -7,11 +7,11 @@ import { BaseComponentProps } from 'common/utils/types';
 /**
  * Define the `Label` component base and variant styles.
  */
-const labelVariants = cva('mb-1 block text-sm font-medium', {
+const labelVariants = cva('mb-1 block text-sm', {
   variants: {
     required: {
       true: 'font-bold after:content-["*"]',
-      false: '',
+      false: 'font-medium',
     },
   },
   defaultVariants: {
