@@ -35,13 +35,16 @@ export interface LabelProps extends BaseComponentProps, LabelHTMLAttributes<HTML
  * a form control.
  */
 const Label = ({
+  children,
   className,
   required = false,
   testId = 'label',
   ...props
 }: LabelProps): JSX.Element => {
   return (
-    <label className={cn(labelVariants({ required }), className)} data-testid={testId} {...props} />
+    <label className={cn(labelVariants({ required }), className)} data-testid={testId} {...props}>
+      {children}
+    </label>
   );
 };
 
