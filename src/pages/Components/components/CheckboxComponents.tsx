@@ -30,12 +30,20 @@ const CheckboxComponents = ({
       description: 'The React Hook Form control object.',
     },
     {
+      name: 'disabled',
+      description: 'Optional. Indicates if the checkbox is disabled.',
+    },
+    {
       name: 'label',
       description: 'The label text.',
     },
     {
       name: 'name',
       description: 'The form control name.',
+    },
+    {
+      name: 'required',
+      description: 'Optional. Indicates if the checkbox is required.',
     },
     {
       name: 'supportingText',
@@ -90,15 +98,17 @@ const CheckboxComponents = ({
 
       <div className="my-8">
         <div className="mb-4">
-          The <span className="font-mono font-bold">Input</span> component renders a HTML input
-          element. It is used to capture a single line of text input. The Input component internally
-          uses the Label, HelpText, and FieldError components.
+          The <span className="font-mono font-bold">Checkbox</span> component renders a HTML button
+          that serves as a checkbox input. It is used to capture boolean input from a user. The
+          checkbox can be checked or unchecked, and it can also be disabled to prevent user
+          interaction. The component is integrated with React Hook Form, allowing for easy form
+          validation and state management.
         </div>
         <div className="mb-4">
-          In addition to the custom properties listed below, the Input component also accepts all
-          standard HTML input element attribute React properties.
+          The checkbox is styled using Tailwind CSS and can be customized with additional CSS class
+          names. It also supports a label and optional supporting text to provide additional context
+          or instructions to the user.
         </div>
-
         <div className="my-8">
           <Heading level={3} className="mb-2">
             Properties

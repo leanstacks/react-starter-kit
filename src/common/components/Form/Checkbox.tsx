@@ -48,8 +48,8 @@ export interface CheckboxProps<T extends FieldValues> extends BaseComponentProps
 }
 
 /**
- * The `Checkbox` component renders a checkbox input. It is used to capture
- * boolean input from a user.
+ * The `Checkbox` component renders a button that serves as a checkbox input.
+ * It is used to capture boolean input from a user.
  */
 const Checkbox = <T extends FieldValues>({
   className,
