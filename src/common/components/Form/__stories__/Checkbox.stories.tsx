@@ -19,7 +19,7 @@ type FormValues = z.infer<typeof formSchema>;
 
 /**
  * A wrapper for the `Checkbox` component.  Provides the React Hook Form `control`
- * to the `Input` component.
+ * to the `Checkbox` component.
  */
 const Checkbox = (props: Omit<CheckboxProps<FormValues>, 'control'>) => {
   const form = useForm({
@@ -50,16 +50,27 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    className: { description: 'Additional CSS classes.' },
+    className: { description: 'Additional CSS classes.', control: { type: 'text' } },
     control: {
       description: 'Object containing methods for registering components into React Hook Form.',
     },
-    label: { description: 'The field label.' },
-    name: { description: 'The form field name.' },
-    supportingText: { description: 'Additional field instructions.' },
-    testId: { description: 'The test identifier.' },
+    disabled: {
+      description: 'Indicates if the checkbox is disabled.',
+      control: { type: 'boolean' },
+    },
+    label: { description: 'The field label.', control: { type: 'text' } },
+    name: { description: 'The form field name.', control: { type: 'text' } },
+    required: {
+      description: 'Indicates if the checkbox is required.',
+      control: { type: 'boolean' },
+    },
+    supportingText: { description: 'Additional field instructions.', control: { type: 'text' } },
+    testId: { description: 'The test identifier.', control: { type: 'text' } },
   },
-  args: {},
+  args: {
+    disabled: false,
+    testId: 'checkbox',
+  },
 } satisfies Meta<typeof MyCheckbox>;
 
 export default meta;

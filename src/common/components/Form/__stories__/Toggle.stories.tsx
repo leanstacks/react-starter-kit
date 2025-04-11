@@ -14,7 +14,7 @@ type FormValues = z.infer<typeof formSchema>;
 
 /**
  * A wrapper for the `Toggle` component.  Provides the RHF form `control`
- * to the `Input` component.
+ * to the `Toggle` component.
  */
 const Toggle = (props: Omit<ToggleProps<FormValues>, 'control'>) => {
   const form = useForm({
