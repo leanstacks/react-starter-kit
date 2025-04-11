@@ -25,9 +25,6 @@ on:
       env_file:
         required: true
 
-concurrency:
-  group: ${{ github.workflow }}
-
 env:
   APP_NAME: react-starter-storybook.leanstacks.net
 
