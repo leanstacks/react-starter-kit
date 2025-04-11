@@ -12,6 +12,7 @@ concurrency:
 
 jobs:
   storybook:
+    name: Storybook
     uses: ./.github/workflows/deploy-storybook.yml
     with:
       aws_cfn_stack_name: ls-ui-reactstarter-storybook-resources-dev
