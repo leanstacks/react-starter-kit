@@ -1,4 +1,4 @@
-name: Deploy to Development
+name: Deploy Storybook to Development
 
 on:
   push:
@@ -10,23 +10,14 @@ on:
 concurrency:
   group: ${{ github.workflow }}
 
-env:
-  AWS_CFN_STACK_NAME: ls-ui-reactstarter-storybook-resources-dev
-  AWS_CFN_TEMPLATE: .aws/cfn/storybook.yml
-  AWS_ENV_CODE: dev
-  AWS_REGION: ${{ vars.AWS_REGION }}
-  AWS_ROLE_ARN: ${{ vars.AWS_ROLE_ARN_DEV }}
-  ENV_FILE: ${{ secrets.ENV_DEV }}
-
 jobs:
   storybook:
     uses: ./.github/workflows/deploy-storybook.yml
     with:
-      aws_cfn_stack_name: ${{ env.AWS_CFN_STACK_NAME }}
-      aws_cfn_template: ${{ env.AWS_CFN_TEMPLATE }}
-      aws_env_code: ${{ env.AWS_ENV_CODE }}
-      aws_region: ${{ env.AWS_REGION }}
-      aws_role_arn: ${{ env.AWS_ROLE_ARN }}
-      env_file: ${{ env.ENV_FILE }}
+      aws_cfn_stack_name: ls-ui-reactstarter-storybook-resources-dev
+      aws_cfn_template: .aws/cfn/storybook.yml
+      aws_region: ${{ vars.AWS_REGION }}
+      aws_role_arn: ${{ vars.AWS_ROLE_ARN_DEV }}
+      env: dev
     secrets:
       env_file: ${{ secrets.ENV_DEV }}
