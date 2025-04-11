@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  AWS_CFN_TEMPLATE: template.yml
+  AWS_CFN_TEMPLATE: .aws/cfn/app.yml
   AWS_REGION: ${{ vars.AWS_REGION }}
   AWS_ROLE_ARN: ${{ vars.AWS_ROLE_ARN_DEV }}
   ENV_FILE: ${{ secrets.ENV_CI }}

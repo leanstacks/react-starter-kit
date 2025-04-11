@@ -14,7 +14,7 @@ concurrency:
 env:
   APP_NAME: react-starter.leanstacks.net
   AWS_CFN_STACK_NAME: ls-ui-reactstarter-resources-prod
-  AWS_CFN_TEMPLATE: template.yml
+  AWS_CFN_TEMPLATE: .aws/cfn/app.yml
   AWS_ENV_CODE: prod
   AWS_REGION: ${{ vars.AWS_REGION }}
   AWS_ROLE_ARN: ${{ vars.AWS_ROLE_ARN_PROD }}
