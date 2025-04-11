@@ -21,21 +21,21 @@ export interface LabelProps extends BaseComponentProps, LabelHTMLAttributes<HTML
  * @returns JSX
  */
 const Label = ({
-  children,
   className,
-  htmlFor,
   required = false,
   testId = 'label',
+  ...props
 }: LabelProps): JSX.Element => {
   return (
     <label
-      htmlFor={htmlFor}
-      className={cn('mb-1 block text-sm font-medium', { 'font-bold': required }, className)}
+      className={cn(
+        'mb-1 block text-sm font-medium',
+        { 'font-bold after:content-["*"]': required },
+        className,
+      )}
       data-testid={testId}
-    >
-      {children}
-      {required && '*'}
-    </label>
+      {...props}
+    />
   );
 };
 
