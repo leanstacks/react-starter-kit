@@ -79,12 +79,29 @@ const Checkbox = <T extends FieldValues>({
           className={cn(checkboxVariants({ checked: isChecked, disabled }))}
           onClick={handleClick}
           role="checkbox"
-          aria-checked={field.value === true}
+          aria-labelledby={`${name}-label`}
+          aria-checked={isChecked}
+          aria-disabled={disabled}
+          disabled={disabled}
           data-testid={`${testId}-button`}
         >
-          {isChecked && <FAIcon icon="check" size="sm" fixedWidth className="text-white" />}
+          {isChecked && (
+            <FAIcon
+              icon="check"
+              size="sm"
+              fixedWidth
+              className="text-white"
+              testId={`${testId}-icon`}
+            />
+          )}
         </button>
-        <Label htmlFor={name} required={required} className="m-0" testId={`${testId}-label`}>
+        <Label
+          id={`${name}-label`}
+          htmlFor={name}
+          required={required}
+          className="m-0"
+          testId={`${testId}-label`}
+        >
           {label}
         </Label>
       </div>
