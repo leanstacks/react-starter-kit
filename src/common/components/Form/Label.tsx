@@ -1,7 +1,23 @@
 import { LabelHTMLAttributes } from 'react';
+import { cva } from 'class-variance-authority';
 
 import { cn } from 'common/utils/css';
 import { BaseComponentProps } from 'common/utils/types';
+
+/**
+ * Define the `Label` component base and variant styles.
+ */
+const labelVariants = cva('mb-1 block text-sm', {
+  variants: {
+    required: {
+      true: 'font-bold after:content-["*"]',
+      false: 'font-medium',
+    },
+  },
+  defaultVariants: {
+    required: false,
+  },
+});
 
 /**
  * Properties for the `Label` component.
@@ -17,24 +33,17 @@ export interface LabelProps extends BaseComponentProps, LabelHTMLAttributes<HTML
 /**
  * The `Label` component renders a HTML `label` element. It is used to describe
  * a form control.
- * @param {LabelProps} props - Component properties.
- * @returns JSX
  */
 const Label = ({
   children,
   className,
-  htmlFor,
   required = false,
   testId = 'label',
+  ...props
 }: LabelProps): JSX.Element => {
   return (
-    <label
-      htmlFor={htmlFor}
-      className={cn('mb-1 block text-sm font-medium', { 'font-bold': required }, className)}
-      data-testid={testId}
-    >
+    <label className={cn(labelVariants({ required }), className)} data-testid={testId} {...props}>
       {children}
-      {required && '*'}
     </label>
   );
 };

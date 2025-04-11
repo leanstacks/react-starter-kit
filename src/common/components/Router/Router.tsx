@@ -28,6 +28,7 @@ const BreadcrumbsComponents = lazy(
 );
 const ButtonComponents = lazy(() => import('pages/Components/components/ButtonComponents'));
 const CardComponents = lazy(() => import('pages/Components/components/CardComponents'));
+const CheckboxComponents = lazy(() => import('pages/Components/components/CheckboxComponents'));
 const ColumnComponents = lazy(() => import('pages/Components/components/ColumnsComponents'));
 const ContainerComponents = lazy(() => import('pages/Components/components/ContainerComponents'));
 const DialogComponents = lazy(() => import('pages/Components/components/DialogComponents'));
@@ -128,6 +129,10 @@ export const routes: RouteObject[] = [
               {
                 path: 'card',
                 element: withSuspense(<CardComponents />),
+              },
+              {
+                path: 'checkbox',
+                element: withSuspense(<CheckboxComponents />),
               },
               {
                 path: 'columns',

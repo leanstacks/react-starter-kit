@@ -31,6 +31,9 @@ describe('Label', () => {
     await screen.findByTestId('label');
 
     // ASSERT
-    expect(screen.getByTestId('label')).toHaveTextContent(`${value}*`);
+    const label = screen.getByTestId('label');
+    expect(label).toHaveTextContent(value);
+    expect(label).toHaveClass('font-bold');
+    expect(label).toHaveClass('after:content-["*"]');
   });
 });
