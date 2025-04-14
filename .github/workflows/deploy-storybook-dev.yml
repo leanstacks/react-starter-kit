@@ -11,13 +11,11 @@ concurrency:
   group: ${{ github.workflow }}
 
 jobs:
-  storybook:
-    name: Storybook
+  deploy:
+    name: Deploy SB DV
     uses: ./.github/workflows/deploy-storybook.yml
     with:
       aws_cfn_stack_name: ls-ui-reactstarter-storybook-resources-dev
-      aws_cfn_template: .aws/cfn/storybook.yml
-      aws_region: ${{ vars.AWS_REGION }}
       aws_role_arn: ${{ vars.AWS_ROLE_ARN_DEV }}
       env: dev
     secrets:
