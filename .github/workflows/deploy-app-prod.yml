@@ -14,9 +14,9 @@ concurrency:
 jobs:
   deploy:
     name: Deploy App PR
-    uses: ./.github/workflows/deploy-storybook.yml
+    uses: ./.github/workflows/deploy-app.yml
     with:
-      aws_cfn_stack_name: ls-ui-reactstarter-storybook-resources-prod
+      aws_cfn_stack_name: ls-ui-reactstarter-resources-prod
       aws_role_arn: ${{ vars.AWS_ROLE_ARN_PROD }}
       env: prod
     secrets:
