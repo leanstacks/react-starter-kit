@@ -10,7 +10,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  AWS_CFN_TEMPLATE: template.yml
+  AWS_CFN_TEMPLATE_APP: .aws/cfn/app.yml
+  AWS_CFN_TEMPLATE_STORYBOOK: .aws/cfn/storybook.yml
   AWS_REGION: ${{ vars.AWS_REGION }}
   AWS_ROLE_ARN: ${{ vars.AWS_ROLE_ARN_DEV }}
   ENV_FILE: ${{ secrets.ENV_CI }}
@@ -140,7 +141,12 @@ jobs:
           role-to-assume: ${{ env.AWS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Validate AWS CloudFormation Template
+      - name: Validate App Template
         run: |-
           aws cloudformation validate-template \
-          --template-body file://${{ env.AWS_CFN_TEMPLATE }}
+          --template-body file://${{ env.AWS_CFN_TEMPLATE_APP }}
+
+      - name: Validate Storybook Template
+        run: |-
+          aws cloudformation validate-template \
+          --template-body file://${{ env.AWS_CFN_TEMPLATE_STORYBOOK }}
