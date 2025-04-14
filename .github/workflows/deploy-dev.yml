@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   deploy:
-    name: Deploy DV
+    name: Deploy App DV
     uses: ./.github/workflows/deploy-storybook.yml
     with:
       aws_cfn_stack_name: ls-ui-reactstarter-storybook-resources-dev

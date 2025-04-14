@@ -41,7 +41,7 @@ env:
 
 jobs:
   deploy:
-    name: Deploy App
+    name: Deploy
 
     runs-on: ubuntu-latest
     timeout-minutes: 20
