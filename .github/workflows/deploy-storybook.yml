@@ -3,6 +3,10 @@ name: Deploy Storybook
 on:
   workflow_call:
     inputs:
+      app_name:
+        required: false
+        type: string
+        default: 'react-starter-storybook.leanstacks.net'
       aws_region:
         required: false
         type: string
@@ -24,9 +28,6 @@ on:
     secrets:
       env_file:
         required: true
-
-env:
-  APP_NAME: react-starter-storybook.leanstacks.net
 
 jobs:
   deploy:
@@ -79,7 +80,7 @@ jobs:
           --stack-name ${{ inputs.aws_cfn_stack_name }} \
           --template-file ${{ inputs.aws_cfn_template }} \
           --parameter-overrides EnvironmentCode=${{ inputs.env }} \
-          --tags App=${{ env.APP_NAME }} Env=${{ inputs.env }} OU=leanstacks Owner='Matthew Warman'
+          --tags App=${{ inputs.app_name }} Env=${{ inputs.env }} OU=leanstacks Owner='Matthew Warman'
 
       - name: Get CloudFormation Stack Outputs
         id: cloudformation

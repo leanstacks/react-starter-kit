@@ -30,15 +30,6 @@ on:
       env_file:
         required: true
 
-env:
-  APP_NAME: react-starter.leanstacks.net
-  AWS_CFN_STACK_NAME: ls-ui-reactstarter-resources-dev
-  AWS_CFN_TEMPLATE: .aws/cfn/app.yml
-  AWS_ENV_CODE: dev
-  AWS_REGION: ${{ vars.AWS_REGION }}
-  AWS_ROLE_ARN: ${{ vars.AWS_ROLE_ARN_DEV }}
-  ENV_FILE: ${{ secrets.ENV_DEV }}
-
 jobs:
   deploy:
     name: Deploy
@@ -65,12 +56,12 @@ jobs:
 
       - name: Create Environment Configuration
         run: |
-          echo "${{ env.ENV_FILE }}" > .env
+          echo "${{ secrets.ENV_FILE }}" > .env
           echo "VITE_BUILD_DATE=$(date +'%Y-%m-%d')" >> .env
           echo "VITE_BUILD_TIME=$(date +'%H:%M:%S%z')" >> .env
           echo "VITE_BUILD_TS=$(date +'%Y-%m-%dT%H:%M:%S%z')" >> .env
           echo "VITE_BUILD_COMMIT_SHA=${{ github.sha }}" >> .env
-          echo "VITE_BUILD_ENV_CODE=${{ env.AWS_ENV_CODE }}" >> .env
+          echo "VITE_BUILD_ENV_CODE=${{ inputs.env }}" >> .env
           echo "VITE_BUILD_WORKFLOW_NAME=${{ github.workflow }}" >> .env
           echo "VITE_BUILD_WORKFLOW_RUN_NUMBER=${{ github.run_number }}" >> .env
           echo "VITE_BUILD_WORKFLOW_RUN_ATTEMPT=${{ github.run_attempt }}" >> .env
@@ -81,23 +72,23 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: ${{ env.AWS_ROLE_ARN }}
-          aws-region: ${{ env.AWS_REGION }}
+          role-to-assume: ${{ inputs.aws_role_arn }}
+          aws-region: ${{ inputs.aws_region }}
 
       - name: Deploy AWS CloudFormation Stack
         run: |-
           aws cloudformation deploy \
-          --stack-name ${{ env.AWS_CFN_STACK_NAME }} \
-          --template-file ${{ env.AWS_CFN_TEMPLATE }} \
-          --parameter-overrides EnvironmentCode=${{ env.AWS_ENV_CODE }} \
-          --tags App=${{ env.APP_NAME }} Env=${{ env.AWS_ENV_CODE }} OU=leanstacks Owner='Matthew Warman'
+          --stack-name ${{ inputs.aws_cfn_stack_name }} \
+          --template-file ${{ inputs.aws_cfn_template }} \
+          --parameter-overrides EnvironmentCode=${{ inputs.env }} \
+          --tags App=${{ inputs.app_name }} Env=${{ inputs.env }} OU=leanstacks Owner='Matthew Warman'
 
       - name: Get CloudFormation Stack Outputs
         id: cloudformation
         run: |-
           APP_BUCKET_NAME=$(
             aws cloudformation describe-stacks \
-            --stack-name ${{ env.AWS_CFN_STACK_NAME }} \
+            --stack-name ${{ inputs.aws_cfn_stack_name }} \
             --query "Stacks[0].Outputs[?OutputKey=='AppBucketName'].OutputValue | [0]"
           )
           echo "APP_BUCKET_NAME=$APP_BUCKET_NAME" >> "$GITHUB_OUTPUT"
