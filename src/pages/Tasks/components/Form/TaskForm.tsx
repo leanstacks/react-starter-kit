@@ -61,7 +61,7 @@ const TaskForm = ({
   /**
    * Initializes management of the form.
    */
-  const { control, formState, handleSubmit } = useForm<TaskFormValues>({
+  const { control, formState, handleSubmit } = useForm({
     defaultValues: {
       userId: task?.userId || 0,
       title: task?.title || '',
