@@ -42,6 +42,7 @@ const LabelComponents = lazy(() => import('pages/Components/components/LabelComp
 const LinkComponents = lazy(() => import('pages/Components/components/LinkComponents'));
 const PageComponents = lazy(() => import('pages/Components/components/PageComponents'));
 const PopoverComponents = lazy(() => import('pages/Components/components/PopoverComponents'));
+const RadioGroupComponents = lazy(() => import('pages/Components/components/RadioGroupComponents'));
 const SearchInputComponents = lazy(
   () => import('pages/Components/components/SearchInputComponents'),
 );
@@ -185,6 +186,10 @@ export const routes: RouteObject[] = [
               {
                 path: 'popover',
                 element: withSuspense(<PopoverComponents />),
+              },
+              {
+                path: 'radio-group',
+                element: withSuspense(<RadioGroupComponents />),
               },
               {
                 path: 'search-input',

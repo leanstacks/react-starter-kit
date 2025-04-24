@@ -9,7 +9,9 @@ import {
   faChevronDown,
   faChevronRight,
   faChevronUp,
+  faCircle,
   faCircleCheck,
+  faCircleDot,
   faCircleExclamation,
   faCircleInfo,
   faCircleNotch,
@@ -53,7 +55,9 @@ export type FAIconName =
   | 'chevronDown'
   | 'chevronRight'
   | 'chevronUp'
+  | 'circle'
   | 'circleCheck'
+  | 'circleDot'
   | 'circleExclamation'
   | 'circleInfo'
   | 'circleNotch'
@@ -106,6 +110,8 @@ const icons: Record<FAIconName, IconProp> = {
   chevronRight: faChevronRight,
   chevronUp: faChevronUp,
   circleCheck: faCircleCheck,
+  circle: faCircle,
+  circleDot: faCircleDot,
   circleExclamation: faCircleExclamation,
   circleInfo: faCircleInfo,
   circleNotch: faCircleNotch,

@@ -95,6 +95,9 @@ const ComponentsPage = (): JSX.Element => {
             <MenuNavLink to="popover" styleActive>
               Popover
             </MenuNavLink>
+            <MenuNavLink to="radio-group" styleActive>
+              Radio Group
+            </MenuNavLink>
             <MenuNavLink to="search-input" styleActive>
               Search Input
             </MenuNavLink>
