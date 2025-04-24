@@ -1,5 +1,6 @@
 import { createContext, InputHTMLAttributes, useContext } from 'react';
 import { Control, FieldValues, Path, useController } from 'react-hook-form';
+import { cva } from 'class-variance-authority';
 import noop from 'lodash/noop';
 
 import { PropsWithTestId } from 'common/utils/types';
@@ -23,12 +24,25 @@ const RadioGroupContext = createContext<RadioGroupContextValue>({
   value: undefined,
 });
 
+const radioGroupOptionsVariants = cva('flex', {
+  variants: {
+    orientation: {
+      horizontal: 'flex-row gap-8',
+      vertical: 'flex-col gap-2',
+    },
+  },
+  defaultVariants: {
+    orientation: 'vertical',
+  },
+});
+
 export interface RadioGroupProps<T extends FieldValues>
   extends InputHTMLAttributes<HTMLInputElement>,
     PropsWithTestId {
   control: Control<T>;
   label?: string;
   name: string;
+  orientation?: 'horizontal' | 'vertical';
   supportingText?: string;
 }
 
@@ -38,18 +52,17 @@ const RadioGroup = <T extends FieldValues>({
   control,
   label,
   name,
+  orientation = 'vertical',
   supportingText,
   testId = 'radio-group',
   ...props
 }: RadioGroupProps<T>) => {
   const { field, fieldState } = useController({ control, name: name as Path<T> });
-  console.log('field', field);
-  console.log('fieldState', fieldState);
 
   return (
-    <div className={cn(className)} data-testid={testId}>
+    <div className={cn('flex flex-col gap-2', className)} data-testid={testId}>
       {!!label && (
-        <Label htmlFor={name} className="mb-2" required={props.required} testId={`${testId}-label`}>
+        <Label htmlFor={name} required={props.required} className="mb-0" testId={`${testId}-label`}>
           {label}
         </Label>
       )}
@@ -61,12 +74,14 @@ const RadioGroup = <T extends FieldValues>({
           value: field.value,
         }}
       >
-        <div className="flex flex-col gap-2">{children}</div>
+        <div className={cn(radioGroupOptionsVariants({ orientation }))}>{children}</div>
       </RadioGroupContext.Provider>
-      <FieldError message={fieldState.error?.message} testId={`${testId}-error`} />
-      {!!supportingText && (
-        <HelpText testId={`${testId}-supporting-text`}>{supportingText}</HelpText>
-      )}
+      <div>
+        <FieldError message={fieldState.error?.message} testId={`${testId}-error`} />
+        {!!supportingText && (
+          <HelpText testId={`${testId}-supporting-text`}>{supportingText}</HelpText>
+        )}
+      </div>
     </div>
   );
 };

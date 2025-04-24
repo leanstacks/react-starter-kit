@@ -62,11 +62,19 @@ const RadioGroupComponents = ({
 
   /* example setup */
   const formSchema = z.object({
-    color: z.string().min(1, { message: 'Please select a color.' }),
+    color: z
+      .string()
+      .min(1, { message: 'Please select a color.' })
+      .refine(
+        (val) => {
+          return ['red', 'blue'].includes(val);
+        },
+        { message: 'Must be a primary color.' },
+      ),
   });
   const { control, handleSubmit, reset } = useForm({
     defaultValues: {
-      color: 'green',
+      color: '',
     },
     mode: 'all',
     resolver: zodResolver(formSchema),
@@ -112,8 +120,7 @@ const RadioGroupComponents = ({
           information).
         </div>
         <div className="mb-4 opacity-85">
-          To view an example validation error message, click or tab into the Last Name input and
-          then exit the field without entering a value.
+          To view an example validation error message, select "Green".
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -138,8 +145,18 @@ const RadioGroupComponents = ({
           <CodeSnippet
             className="my-2"
             code={`<form onSubmit={handleSubmit(onSubmit)}>
-  <Input control={control} name="firstName" className="mb-4" />
-  <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto">
+  <RadioGroup name="color" control={control} className="mb-4">
+    <RadioGroup.Item id="color-red" value="red" className="mb-2" label="Red" />
+    <RadioGroup.Item id="color-green" value="green" className="mb-2" label="Green" />
+    <RadioGroup.Item id="color-blue" value="blue" className="mb-2" label="Blue" />
+  </RadioGroup>
+  <Button
+    onClick={() => reset()}
+    size="sm"
+    variant="outline"
+    className="ml-auto"
+    testId="reset-1"
+  >
     Reset
   </Button>
 </form>`}
@@ -153,10 +170,6 @@ const RadioGroupComponents = ({
           Use the "label" property to add a label to the RadioGroup component. The label will be
           displayed above the RadioGroup. When the RadioGroup is required, the label is styuled to
           indicate.
-        </div>
-        <div className="mb-4 opacity-85">
-          To view an example validation error message, click or tab into the Last Name input and
-          then exit the field without entering a value.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -181,8 +194,146 @@ const RadioGroupComponents = ({
           <CodeSnippet
             className="my-2"
             code={`<form onSubmit={handleSubmit(onSubmit)}>
-  <Input control={control} name="firstName" className="mb-4" />
-  <Button onClick={() => reset()} size="sm" variant="outline" className="ml-auto">
+  <RadioGroup name="color" control={control} className="mb-4" label="Color" required>
+    <RadioGroup.Item id="color-red" value="red" className="mb-2" label="Red" />
+    <RadioGroup.Item id="color-green" value="green" className="mb-2" label="Green" />
+    <RadioGroup.Item id="color-blue" value="blue" className="mb-2" label="Blue" />
+  </RadioGroup>
+  <Button
+    onClick={() => reset()}
+    size="sm"
+    variant="outline"
+    className="ml-auto"
+    testId="reset-1"
+  >
+    Reset
+  </Button>
+</form>`}
+          />
+        </div>
+
+        <Heading level={4} className="my-2">
+          Supporting Text
+        </Heading>
+        <div className="mb-4 opacity-85">
+          Use the "supportingText" property to add helpful information, validation requirements, or
+          other tips for entering information to the RadioGroup component. The supporting text will
+          be displayed below the RadioGroup.
+        </div>
+        <div className="my-8">
+          <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+            {/* Example */}
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <RadioGroup
+                name="color"
+                control={control}
+                className="mb-4"
+                label="Color"
+                supportingText="Select a primary color."
+                required
+              >
+                <RadioGroup.Item id="color-red" value="red" className="mb-2" label="Red" />
+                <RadioGroup.Item id="color-green" value="green" className="mb-2" label="Green" />
+                <RadioGroup.Item id="color-blue" value="blue" className="mb-2" label="Blue" />
+              </RadioGroup>
+              <Button
+                onClick={() => reset()}
+                size="sm"
+                variant="outline"
+                className="ml-auto"
+                testId="reset-1"
+              >
+                Reset
+              </Button>
+            </form>
+          </div>
+          <CodeSnippet
+            className="my-2"
+            code={`<form onSubmit={handleSubmit(onSubmit)}>
+  <RadioGroup
+    name="color"
+    control={control}
+    className="mb-4"
+    label="Color"
+    supportingText="Select a primary color."
+    required
+  >
+    <RadioGroup.Item id="color-red" value="red" className="mb-2" label="Red" />
+    <RadioGroup.Item id="color-green" value="green" className="mb-2" label="Green" />
+    <RadioGroup.Item id="color-blue" value="blue" className="mb-2" label="Blue" />
+  </RadioGroup>
+  <Button
+    onClick={() => reset()}
+    size="sm"
+    variant="outline"
+    className="ml-auto"
+    testId="reset-1"
+  >
+    Reset
+  </Button>
+</form>`}
+          />
+        </div>
+
+        <Heading level={4} className="my-2">
+          Orientation
+        </Heading>
+        <div className="mb-4 opacity-85">
+          Use the "orientation" property to set the orientation of the RadioGroup component. The
+          default orientation is "vertical". The "horizontal" orientation displays the RadioGroup
+          items in a single row.
+        </div>
+        <div className="my-8">
+          <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+            {/* Example */}
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <RadioGroup
+                name="color"
+                control={control}
+                className="mb-4"
+                orientation="horizontal"
+                label="Color"
+                supportingText="Select a primary color."
+                required
+              >
+                <RadioGroup.Item id="color-red" value="red" className="mb-2" label="Red" />
+                <RadioGroup.Item id="color-green" value="green" className="mb-2" label="Green" />
+                <RadioGroup.Item id="color-blue" value="blue" className="mb-2" label="Blue" />
+              </RadioGroup>
+              <Button
+                onClick={() => reset()}
+                size="sm"
+                variant="outline"
+                className="ml-auto"
+                testId="reset-1"
+              >
+                Reset
+              </Button>
+            </form>
+          </div>
+          <CodeSnippet
+            className="my-2"
+            code={`<form onSubmit={handleSubmit(onSubmit)}>
+  <RadioGroup
+    name="color"
+    control={control}
+    className="mb-4"
+    orientation="horizontal"
+    label="Color"
+    supportingText="Select a primary color."
+    required
+  >
+    <RadioGroup.Item id="color-red" value="red" className="mb-2" label="Red" />
+    <RadioGroup.Item id="color-green" value="green" className="mb-2" label="Green" />
+    <RadioGroup.Item id="color-blue" value="blue" className="mb-2" label="Blue" />
+  </RadioGroup>
+  <Button
+    onClick={() => reset()}
+    size="sm"
+    variant="outline"
+    className="ml-auto"
+    testId="reset-1"
+  >
     Reset
   </Button>
 </form>`}
