@@ -74,7 +74,7 @@ export const WithSupportingText: Story = {
     children: (
       <>
         <MyRadioGroup.Item id="color-blue" value="blue" label="Blue" />
-        <MyRadioGroup.Item id="color-red" value="red" label="Yellow" />
+        <MyRadioGroup.Item id="color-red" value="red" label="Red" />
         <MyRadioGroup.Item id="color-yellow" value="yellow" label="Yellow" />
         <MyRadioGroup.Item id="color-green" value="green" label="Green" />
       </>
