@@ -213,6 +213,10 @@ A detailed test coverage report is created in the `./coverage` directory.
 
 > **NOTE:** This is the command which should be utilized by CI/CD platforms.
 
+### `npm run test:ui`
+
+Executes the tests and opens the [Vitest UI](https://vitest.dev/guide/ui) to view and interact with the unit tests.
+
 ### `npm run build`
 
 Builds the app for production to the `dist` folder.
@@ -236,9 +240,9 @@ Build a static version the [Storybook][storybook] UI which may be deployed to a 
 
 ### Cloud Resources
 
-The AWS resources for this application component are provisioned via AWS CloudFormation. The `template.yml` file is the CloudFormation template.
+The AWS resources for this application component are provisioned via AWS CloudFormation. CloudFormation templates are located in the `.aws/` directory. The `app.yml` file contains the CloudFormation template which provisions resources to host the React app. The `storybook.yml` file contains the CloudFormation template which provisions resources to host the Storybook static website.
 
-The resources provisioned are:
+The resources provisioned to host the React app are:
 
 | Resource                | Description                                                                   |
 | ----------------------- | ----------------------------------------------------------------------------- |
