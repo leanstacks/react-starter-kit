@@ -30,12 +30,24 @@ const RadioGroupComponents = ({
       description: 'The React Hook Form control object.',
     },
     {
+      name: 'disabled',
+      description: 'Optional. Indicates if the field is disabled.',
+    },
+    {
       name: 'label',
       description: 'Optional. The label text.',
     },
     {
       name: 'name',
       description: 'The form control name.',
+    },
+    {
+      name: 'orientation',
+      description: 'Optional. The orientation of the RadioGroup. Default: vertical.',
+    },
+    {
+      name: 'required',
+      description: 'Optional. Indicates if the field is required.',
     },
     {
       name: 'supportingText',
@@ -127,9 +139,9 @@ const RadioGroupComponents = ({
             {/* Example */}
             <form onSubmit={handleSubmit(onSubmit)}>
               <RadioGroup name="color" control={control} className="mb-4">
-                <RadioGroup.Item id="color-red" value="red" className="mb-2" label="Red" />
-                <RadioGroup.Item id="color-green" value="green" className="mb-2" label="Green" />
-                <RadioGroup.Item id="color-blue" value="blue" className="mb-2" label="Blue" />
+                <RadioGroup.Item id="color-red" value="red" label="Red" />
+                <RadioGroup.Item id="color-green" value="green" label="Green" />
+                <RadioGroup.Item id="color-blue" value="blue" label="Blue" />
               </RadioGroup>
               <Button
                 onClick={() => reset()}
@@ -146,9 +158,9 @@ const RadioGroupComponents = ({
             className="my-2"
             code={`<form onSubmit={handleSubmit(onSubmit)}>
   <RadioGroup name="color" control={control} className="mb-4">
-    <RadioGroup.Item id="color-red" value="red" className="mb-2" label="Red" />
-    <RadioGroup.Item id="color-green" value="green" className="mb-2" label="Green" />
-    <RadioGroup.Item id="color-blue" value="blue" className="mb-2" label="Blue" />
+    <RadioGroup.Item id="color-red" value="red" label="Red" />
+    <RadioGroup.Item id="color-green" value="green" label="Green" />
+    <RadioGroup.Item id="color-blue" value="blue" label="Blue" />
   </RadioGroup>
   <Button
     onClick={() => reset()}
@@ -176,9 +188,9 @@ const RadioGroupComponents = ({
             {/* Example */}
             <form onSubmit={handleSubmit(onSubmit)}>
               <RadioGroup name="color" control={control} className="mb-4" label="Color" required>
-                <RadioGroup.Item id="color-red" value="red" className="mb-2" label="Red" />
-                <RadioGroup.Item id="color-green" value="green" className="mb-2" label="Green" />
-                <RadioGroup.Item id="color-blue" value="blue" className="mb-2" label="Blue" />
+                <RadioGroup.Item id="color-red" value="red" label="Red" />
+                <RadioGroup.Item id="color-green" value="green" label="Green" />
+                <RadioGroup.Item id="color-blue" value="blue" label="Blue" />
               </RadioGroup>
               <Button
                 onClick={() => reset()}
@@ -195,9 +207,9 @@ const RadioGroupComponents = ({
             className="my-2"
             code={`<form onSubmit={handleSubmit(onSubmit)}>
   <RadioGroup name="color" control={control} className="mb-4" label="Color" required>
-    <RadioGroup.Item id="color-red" value="red" className="mb-2" label="Red" />
-    <RadioGroup.Item id="color-green" value="green" className="mb-2" label="Green" />
-    <RadioGroup.Item id="color-blue" value="blue" className="mb-2" label="Blue" />
+    <RadioGroup.Item id="color-red" value="red" label="Red" />
+    <RadioGroup.Item id="color-green" value="green" label="Green" />
+    <RadioGroup.Item id="color-blue" value="blue" label="Blue" />
   </RadioGroup>
   <Button
     onClick={() => reset()}
@@ -232,9 +244,9 @@ const RadioGroupComponents = ({
                 supportingText="Select a primary color."
                 required
               >
-                <RadioGroup.Item id="color-red" value="red" className="mb-2" label="Red" />
-                <RadioGroup.Item id="color-green" value="green" className="mb-2" label="Green" />
-                <RadioGroup.Item id="color-blue" value="blue" className="mb-2" label="Blue" />
+                <RadioGroup.Item id="color-red" value="red" label="Red" />
+                <RadioGroup.Item id="color-green" value="green" label="Green" />
+                <RadioGroup.Item id="color-blue" value="blue" label="Blue" />
               </RadioGroup>
               <Button
                 onClick={() => reset()}
@@ -258,9 +270,9 @@ const RadioGroupComponents = ({
     supportingText="Select a primary color."
     required
   >
-    <RadioGroup.Item id="color-red" value="red" className="mb-2" label="Red" />
-    <RadioGroup.Item id="color-green" value="green" className="mb-2" label="Green" />
-    <RadioGroup.Item id="color-blue" value="blue" className="mb-2" label="Blue" />
+    <RadioGroup.Item id="color-red" value="red" label="Red" />
+    <RadioGroup.Item id="color-green" value="green" label="Green" />
+    <RadioGroup.Item id="color-blue" value="blue" label="Blue" />
   </RadioGroup>
   <Button
     onClick={() => reset()}
@@ -296,9 +308,9 @@ const RadioGroupComponents = ({
                 supportingText="Select a primary color."
                 required
               >
-                <RadioGroup.Item id="color-red" value="red" className="mb-2" label="Red" />
-                <RadioGroup.Item id="color-green" value="green" className="mb-2" label="Green" />
-                <RadioGroup.Item id="color-blue" value="blue" className="mb-2" label="Blue" />
+                <RadioGroup.Item id="color-red" value="red" label="Red" />
+                <RadioGroup.Item id="color-green" value="green" label="Green" />
+                <RadioGroup.Item id="color-blue" value="blue" label="Blue" />
               </RadioGroup>
               <Button
                 onClick={() => reset()}
@@ -323,9 +335,135 @@ const RadioGroupComponents = ({
     supportingText="Select a primary color."
     required
   >
-    <RadioGroup.Item id="color-red" value="red" className="mb-2" label="Red" />
-    <RadioGroup.Item id="color-green" value="green" className="mb-2" label="Green" />
-    <RadioGroup.Item id="color-blue" value="blue" className="mb-2" label="Blue" />
+    <RadioGroup.Item id="color-red" value="red" label="Red" />
+    <RadioGroup.Item id="color-green" value="green" label="Green" />
+    <RadioGroup.Item id="color-blue" value="blue" label="Blue" />
+  </RadioGroup>
+  <Button
+    onClick={() => reset()}
+    size="sm"
+    variant="outline"
+    className="ml-auto"
+    testId="reset-1"
+  >
+    Reset
+  </Button>
+</form>`}
+          />
+        </div>
+
+        <Heading level={4} className="my-2">
+          Disabled Group
+        </Heading>
+        <div className="mb-4 opacity-85">
+          Use the "disabled" property to disable the RadioGroup component. The disabled RadioGroup
+          will not respond to user input. The disabled state is styled to indicate that the
+          RadioGroup is not interactive.
+        </div>
+        <div className="my-8">
+          <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+            {/* Example */}
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <RadioGroup
+                name="color"
+                control={control}
+                className="mb-4"
+                label="Color"
+                supportingText="Select a primary color."
+                disabled
+              >
+                <RadioGroup.Item id="color-red" value="red" label="Red" />
+                <RadioGroup.Item id="color-green" value="green" label="Green" />
+                <RadioGroup.Item id="color-blue" value="blue" label="Blue" />
+              </RadioGroup>
+              <Button
+                onClick={() => reset()}
+                size="sm"
+                variant="outline"
+                className="ml-auto"
+                testId="reset-1"
+              >
+                Reset
+              </Button>
+            </form>
+          </div>
+          <CodeSnippet
+            className="my-2"
+            code={`<form onSubmit={handleSubmit(onSubmit)}>
+  <RadioGroup
+    name="color"
+    control={control}
+    className="mb-4"
+    label="Color"
+    supportingText="Select a primary color."
+    disabled
+  >
+    <RadioGroup.Item id="color-red" value="red" label="Red" />
+    <RadioGroup.Item id="color-green" value="green" label="Green" />
+    <RadioGroup.Item id="color-blue" value="blue" label="Blue" />
+  </RadioGroup>
+  <Button
+    onClick={() => reset()}
+    size="sm"
+    variant="outline"
+    className="ml-auto"
+    testId="reset-1"
+  >
+    Reset
+  </Button>
+</form>`}
+          />
+        </div>
+
+        <Heading level={4} className="my-2">
+          Disabled Item
+        </Heading>
+        <div className="mb-4 opacity-85">
+          Use the "disabled" property to disable individual RadioGroup.Item components. The disabled
+          Item will not respond to user input. The disabled state is styled to indicate that the
+          RadioGroup is not interactive.
+        </div>
+        <div className="my-8">
+          <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
+            {/* Example */}
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <RadioGroup
+                name="color"
+                control={control}
+                className="mb-4"
+                label="Color"
+                supportingText="Select a primary color."
+                required
+              >
+                <RadioGroup.Item id="color-red" value="red" label="Red" />
+                <RadioGroup.Item id="color-green" value="green" label="Green" />
+                <RadioGroup.Item id="color-blue" value="blue" label="Blue" disabled />
+              </RadioGroup>
+              <Button
+                onClick={() => reset()}
+                size="sm"
+                variant="outline"
+                className="ml-auto"
+                testId="reset-1"
+              >
+                Reset
+              </Button>
+            </form>
+          </div>
+          <CodeSnippet
+            className="my-2"
+            code={`<form onSubmit={handleSubmit(onSubmit)}>
+  <RadioGroup
+    name="color"
+    control={control}
+    className="mb-4"
+    label="Color"
+    supportingText="Select a primary color."
+    required
+  >
+    <RadioGroup.Item id="color-red" value="red" label="Red" />
+    <RadioGroup.Item id="color-green" value="green" label="Green" />
+    <RadioGroup.Item id="color-blue" value="blue" label="Blue" disabled />
   </RadioGroup>
   <Button
     onClick={() => reset()}
