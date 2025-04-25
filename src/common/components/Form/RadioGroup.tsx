@@ -196,7 +196,7 @@ const Item = ({
       <FAIcon
         icon={isChecked ? 'circleDot' : 'circle'}
         className={cn('me-2', { 'text-blue-600': isChecked }, { 'text-neutral-500': !isChecked })}
-        data-testid={`${testId}-icon`}
+        testId={`${testId}-icon`}
       />
       <label htmlFor={id} data-testid={`${testId}-label`}>
         {props.label}

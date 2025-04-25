@@ -138,9 +138,14 @@ const RadioGroupComponents = ({
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
             {/* Example */}
             <form onSubmit={handleSubmit(onSubmit)}>
-              <RadioGroup name="color" control={control} className="mb-4">
+              <RadioGroup name="color" control={control} className="mb-4" testId="radio-group-1">
                 <RadioGroup.Item id="color-red" value="red" label="Red" />
-                <RadioGroup.Item id="color-green" value="green" label="Green" />
+                <RadioGroup.Item
+                  id="color-green"
+                  value="green"
+                  label="Green"
+                  testId="color-green-1"
+                />
                 <RadioGroup.Item id="color-blue" value="blue" label="Blue" />
               </RadioGroup>
               <Button
@@ -197,7 +202,7 @@ const RadioGroupComponents = ({
                 size="sm"
                 variant="outline"
                 className="ml-auto"
-                testId="reset-1"
+                testId="reset-2"
               >
                 Reset
               </Button>
@@ -253,7 +258,7 @@ const RadioGroupComponents = ({
                 size="sm"
                 variant="outline"
                 className="ml-auto"
-                testId="reset-1"
+                testId="reset-3"
               >
                 Reset
               </Button>
@@ -317,7 +322,7 @@ const RadioGroupComponents = ({
                 size="sm"
                 variant="outline"
                 className="ml-auto"
-                testId="reset-1"
+                testId="reset-4"
               >
                 Reset
               </Button>
@@ -381,7 +386,7 @@ const RadioGroupComponents = ({
                 size="sm"
                 variant="outline"
                 className="ml-auto"
-                testId="reset-1"
+                testId="reset-5"
               >
                 Reset
               </Button>
@@ -421,7 +426,7 @@ const RadioGroupComponents = ({
         <div className="mb-4 opacity-85">
           Use the "disabled" property to disable individual RadioGroup.Item components. The disabled
           Item will not respond to user input. The disabled state is styled to indicate that the
-          RadioGroup is not interactive.
+          Item is not interactive.
         </div>
         <div className="my-8">
           <div className="mb-2 flex flex-col place-content-center rounded-sm border border-neutral-500/10 p-4 dark:bg-neutral-700/25">
@@ -444,7 +449,7 @@ const RadioGroupComponents = ({
                 size="sm"
                 variant="outline"
                 className="ml-auto"
-                testId="reset-1"
+                testId="reset-6"
               >
                 Reset
               </Button>
